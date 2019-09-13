@@ -163,16 +163,16 @@
       </div>
   </main>
 
-  <footer *ngIf="userObj.identity_number != ''" class='pwaSize w-full p-0-5' style="position:fixed; bottom: 5px;">
+  <footer class='pwaSize w-full p-0-5' style="position:fixed; bottom: 5px;">
     <form [formGroup]="answer" style="display: flex">        
-        <input placeholder="Show me some profiles" formControlName="ans" id="text" class='t-l' style="width: calc(100% - 50px); margin: 0 !important; padding: 8px 15px !important; font-size: 14px !important;">
-        <div style="width: 40px; margin-left: 10px;" id="send-button">
-            <div class="circle flex-c-c pointer flex-c-c" (click)="read('typed')"><i class="fa fa-paper-plane flex-c-c white" style="font-size: 25px !important; width: 40px !important; height: 40px !important;"></i></div>
+        <input placeholder="Show me some profiles" formControlName="ans" id="text" class='t-l' style="width: calc(100% - 50px); margin: 0 !important; padding: 8px 15px !important; font-size: 14px !important;" disabled>
+        <div style="width: 3rem; margin-left: 10px;" id="send-button">
+            <div class="circle flex-c-c pointer flex-c-c" (click)="read('typed')"><i class="fa fa-paper-plane flex-c-c white" style="font-size: 25px !important; width: 2.5rem !important; height: 2.5rem !important;"></i></div>
         </div>
     </form>
 </footer>
-<footer *ngIf="userObj.identity_number==''" style="position: fixed; bottom: 10px;" class='pwaSize w-full p-0-5 flex-c-c'>
+<!-- <footer *ngIf="userObj.identity_number==''" style="position: fixed; bottom: 10px;" class='pwaSize w-full p-0-5 flex-c-c'>
     <button class='btn btn-blue' routerLink="/login">Login</button>
-</footer>
+</footer> -->
 
 </main>
