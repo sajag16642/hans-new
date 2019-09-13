@@ -1,5 +1,5 @@
 
-<main class='pwaSize fixed t-0 b-0 bg-light w-full HC main' style="height: 90vh;">
+<main class='pwaSize fixed t-0 b-0 bg-light w-full HC main'>
   <div class='bg-lightblue fixed t-0 w-full pwaSize p-0-5 z-10 white hide' style="display: flex;justify-content:space-between">
       <div class='flex-fs-c'>
           <img src='../../assets/logo_short.png' class='w-40' style="border-radius: 100%; object-fit: cover; height: 2.5rem; width: 2.5rem; background-color: white">
@@ -167,7 +167,7 @@
     <form [formGroup]="answer" style="display: flex">        
         <input placeholder="Show me some profiles" formControlName="ans" id="text" class='t-l' style="width: calc(100% - 50px); margin: 0 !important; padding: 8px 15px !important; font-size: 14px !important;" disabled>
         <div style="width: 3rem; margin-left: 10px;" id="send-button">
-            <div class="circle flex-c-c pointer flex-c-c" (click)="read('typed')"><i class="fa fa-paper-plane flex-c-c white" style="font-size: 25px !important; width: 2.5rem !important; height: 2.5rem !important;"></i></div>
+            <div class="circle flex-c-c pointer flex-c-c" (click)="read('typed')" style="text-align: center"><i class="fa fa-paper-plane flex-c-c white" style="font-size: 25px !important; width: 2.5rem !important; height: 2.5rem !important; margin-left: -3px; margin-top: -1px"></i></div>
         </div>
     </form>
 </footer>
