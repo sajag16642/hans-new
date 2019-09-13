@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   routerUrl: string;
   isLogin='false';
   footer=true;
-  header=true;
+  @Input() header=true;
   clickToggle=false;
   btnToggle;
   clickEvent:any;
@@ -82,8 +82,8 @@ export class AppComponent implements OnInit {
   {
      if(location.href.indexOf('dash')>-1 || location.href.indexOf('Edit')>-1 || location.href.indexOf('contactedUserProfiles')>-1 || location.href.indexOf('chat')>-1|| location.href.indexOf('register')>-1)
     { this.footer=false;
-      if(location.href.indexOf('chat')>-1){
-        this.header=false;
+      if (location.href.indexOf('chat') >-1) {
+        this.header = false; 
       }
       this.isLogin='true';
       document.getElementById('navbar').style.zIndex='200';

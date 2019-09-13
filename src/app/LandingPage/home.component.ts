@@ -31,9 +31,9 @@ this.router.navigateByUrl('register');
     if(localStorage.getItem('loggedIn'))
     this.loggedIn = localStorage.getItem('loggedIn');
 
-    if(this.loggedIn=='true')
+    if(this.loggedIn =='true')
     {
-      this.router.navigateByUrl('dashboard');    
+      this.router.navigateByUrl('dashboard');
     }   
     if (window.screen.width > 768) {
       this.Advertise = true;
