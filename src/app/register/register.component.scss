@@ -1,0 +1,612 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+mat-horizontal-stepper {
+  background-color: transparent;
+}
+.mat-stroked-button {
+  border-radius: 0;
+}
+.container{
+  padding-top: 2%;
+}
+
+.stepper{
+  padding-top: 0%;
+}
+.text-center2{
+  position: relative;
+  left: 12%;
+
+}
+.verifyHeader{
+  text-align: center;font-size: 45px;    margin-top: 10%;
+}
+.highlight {
+  color: #f44336;
+  font-weight: bold;
+}
+.mat-icon-button{
+  padding-top:16px !important
+}
+.subtitle {
+  font-size: 0.6em;
+}
+
+button {
+  margin-right: 5px;
+}
+
+.button-inactive {
+  background-color: ghostwhite;
+  color: grey;
+  font-weight: bold;
+}
+
+.button-active {
+  font-weight: bold;
+  background-color: #f44336;
+  color: white;
+}
+
+.form-title {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.top{
+  margin-top:3rem
+}
+sup {
+  color: red;
+}
+hr{
+  margin-top:0 !important
+}
+.heading {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.square{
+  font-size: 100px !important;
+}
+
+#file {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+#frontfile , #backfile , #Fullfile , #fontfile , #dfile{
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.bg {
+  min-height: 80vh;
+  background: url('https://wallpapercave.com/wp/2ujUKnj.jpg') no-repeat center;
+  background-size: 100% 250px;
+  background-position: top center;
+}
+
+.radio{
+  margin-left:1em;width:7em
+}
+.col-md-6{
+  margin-left: 15%;
+}
+mat-horizontal-stepper{
+  overflow: hidden;
+  padding: 0 0px 22px 0px !important;
+  /* margin-right: 48%; */
+  width: 100%;
+  overflow: visible;
+  position: relative !important;
+  right: 16% !important;
+}
+#labels{
+  position: relative !important;
+    right: 16% !important;
+
+}
+.text-center{
+  position: relative;
+  right: 2%;
+}
+
+input[type="date"]::-webkit-input-placeholder{ 
+  visibility: hidden !important;
+}
+
+input::-webkit-calendar-picker-indicator{
+  display: none;
+}
+
+.box{
+  margin-left: 28%;
+}
+
+.enterOtp{
+  margin-left: auto;
+  margin-right:auto;
+    width:60px;
+}
+.changeNumber{
+  margin-left: 40%;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+}
+.pref{
+  position: relative;
+  left: 134px;
+}
+@media only screen and (max-width: 768px) {
+  .bg {
+    min-height: 80vh;
+    background: url('https://wallpapercave.com/wp/2ujUKnj.jpg') no-repeat center;
+    background-size: 100% 275px;
+    background-position: top center;
+  }
+  .radio{
+    margin-left:0.5em;widows: 7em;margin-bottom:1em
+  }
+  .top{
+    margin-top:1rem
+  }
+  .heading {
+    font-size:0.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top:4px
+  }
+  ::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-label{
+    font-size: 0.5rem
+  }
+  ::ng-deep .mat-step-label{
+    overflow:visible !important
+  }
+  .col-md-6{
+    margin-left: 0%;
+  }
+  
+}
+
+
+// ::ng-deep .mat-step-header .mat-step-icon {
+//   background-color: orange;
+//   color: rgba(255,255,255,.87);
+// }
+
+::ng-deep .mat-step-header .mat-step-label.mat-step-label-active {
+ color: white !important
+}
+
+::ng-deep .mat-stepper-horizontal-line{
+border-top-color: white !important;
+margin:0 !important
+}
+::ng-deep .mat-step-header .mat-step-icon{
+  color: white;
+  background:orange
+}
+::ng-deep .mat-step-header .mat-step-icon-selected{
+  background-color: red;
+  color:white
+}
+.submitButton{
+  font-size: 20px;
+  position: absolute;
+  left: 33%;
+  top: 179px;
+
+}
+.submitButton1{
+  font-size: 20px;
+  position: absolute;
+  left: 22%;
+  margin-left: 24px;
+  top: 50px;
+}
+#changeContact{
+  margin-left: 5%;
+}
+
+#loader{
+  display: none;
+  position: absolute;
+}
+@media only screen and (max-width: 1024px) {
+  /* .diya{
+      height:14em;
+      position: absolute;
+      right: 0;
+  } */
+  .close{
+    font-size: 20px;
+    position: relative;
+    bottom: 37px;
+    left: 30px;
+
+  }
+  .verifyHeader{
+    text-align: center;
+    font-size: 18px;
+    margin-top: -28%;
+    position: relative;
+    top: 18px;
+    left: 19px;
+
+  }
+  .preferences h1,h3,p{
+    text-align: center;
+  }
+  .weights{
+    position: relative;
+    top:20px;
+  }
+
+.text-center{
+  position: relative;
+  left: 0%;
+
+}
+  .enterOtp{
+    margin-left: 2px;
+    width: 34px;
+    position: relative;
+    left: 2px;
+
+  }
+  .changeNumber{
+    margin-left: auto;
+    margin-right:auto;
+    margin-bottom:0px
+    }
+  .box{
+    margin-left: auto;
+    margin-right: auto;
+    width: 160px;
+    margin-top: -10%
+
+  }
+  .resendOtp{
+    margin-left: auto;
+    margin-right:auto;
+    background-color : #007BFF;
+    color : white;
+    border-radius : 5px;
+    border : 2px solid #007BFF
+  }
+  .didntgetCode{
+    margin-left: auto;
+    margin-right:auto;
+    font-size: 16px;
+  }
+  .submitButton{
+    font-size: 20px;
+    position: absolute;
+    left: 25%;
+    top: 115px;
+
+  }
+  #changeContact{
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+mat-horizontal-stepper {
+  background-color: transparent;
+}
+.mat-stroked-button {
+  border-radius: 0;
+}
+.container{
+  padding-top: 2%;
+}
+
+.stepper{
+  padding-top: 0%;
+}
+.text-center2{
+  position: relative;
+  left: 12%;
+
+}
+.verifyHeader{
+  text-align: center;font-size: 45px;    margin-top: 10%;
+}
+.highlight {
+  color: #f44336;
+  font-weight: bold;
+}
+.mat-icon-button{
+  padding-top:16px !important
+}
+.subtitle {
+  font-size: 0.6em;
+}
+
+button {
+  margin-right: 5px;
+}
+
+.button-inactive {
+  background-color: ghostwhite;
+  color: grey;
+  font-weight: bold;
+}
+
+.button-active {
+  font-weight: bold;
+  background-color: #f44336;
+  color: white;
+}
+
+.form-title {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.top{
+  margin-top:3rem
+}
+sup {
+  color: red;
+}
+hr{
+  margin-top:0 !important
+}
+.heading {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.square{
+  font-size: 100px !important;
+}
+
+#file {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+#frontfile , #backfile , #Fullfile , #fontfile , #dfile{
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.bg {
+  min-height: 80vh;
+  background: url('https://wallpapercave.com/wp/2ujUKnj.jpg') no-repeat center;
+  background-size: 100% 250px;
+  background-position: top center;
+}
+
+.radio{
+  margin-left:1em;width:7em
+}
+.col-md-6{
+  margin-left: 15%;
+}
+mat-horizontal-stepper{
+  overflow: hidden;
+  padding: 0 0px 22px 0px !important;
+  /* margin-right: 48%; */
+  width: 100%;
+  overflow: visible;
+  position: relative !important;
+  right: 16% !important;
+}
+#labels{
+  position: relative !important;
+    right: 16% !important;
+
+}
+.text-center{
+  position: relative;
+  right: 2%;
+}
+
+input[type="date"]::-webkit-input-placeholder{ 
+  visibility: hidden !important;
+}
+
+input::-webkit-calendar-picker-indicator{
+  display: none;
+}
+
+.box{
+  margin-left: 28%;
+}
+
+.enterOtp{
+  margin-left: auto;
+  margin-right:auto;
+    width:60px;
+}
+.changeNumber{
+  margin-left: 40%;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+}
+.pref{
+  position: relative;
+  left: 134px;
+}
+@media only screen and (max-width: 768px) {
+  .bg {
+    min-height: 80vh;
+    background: url('https://wallpapercave.com/wp/2ujUKnj.jpg') no-repeat center;
+    background-size: 100% 275px;
+    background-position: top center;
+  }
+  .radio{
+    margin-left:0.5em;widows: 7em;margin-bottom:1em
+  }
+  .top{
+    margin-top:1rem
+  }
+  .heading {
+    font-size:0.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top:4px
+  }
+  ::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-label{
+    font-size: 0.5rem
+  }
+  ::ng-deep .mat-step-label{
+    overflow:visible !important
+  }
+  .col-md-6{
+    margin-left: 0%;
+  }
+  
+}
+
+
+// ::ng-deep .mat-step-header .mat-step-icon {
+//   background-color: orange;
+//   color: rgba(255,255,255,.87);
+// }
+
+::ng-deep .mat-step-header .mat-step-label.mat-step-label-active {
+ color: white !important
+}
+
+::ng-deep .mat-stepper-horizontal-line{
+border-top-color: white !important;
+margin:0 !important
+}
+::ng-deep .mat-step-header .mat-step-icon{
+  color: white;
+  background:orange
+}
+::ng-deep .mat-step-header .mat-step-icon-selected{
+  background-color: red;
+  color:white
+}
+.submitButton{
+  font-size: 20px;
+  position: absolute;
+  left: 33%;
+  top: 179px;
+
+}
+.submitButton1{
+  font-size: 20px;
+  position: absolute;
+  left: 22%;
+  margin-left: 24px;
+  top: 50px;
+}
+#changeContact{
+  margin-left: 5%;
+}
+
+#loader{
+  display: none;
+  position: absolute;
+}
+@media only screen and (max-width: 1024px) {
+  /* .diya{
+      height:14em;
+      position: absolute;
+      right: 0;
+  } */
+  .close{
+    font-size: 20px;
+    position: relative;
+    bottom: 37px;
+    left: 30px;
+
+  }
+  .verifyHeader{
+    text-align: center;
+    font-size: 18px;
+    margin-top: -28%;
+    position: relative;
+    top: 18px;
+    left: 19px;
+
+  }
+  .preferences h1,h3,p{
+    text-align: center;
+  }
+  .weights{
+    position: relative;
+    top:20px;
+  }
+
+.text-center{
+  position: relative;
+  left: 0%;
+
+}
+  .enterOtp{
+    margin-left: 2px;
+    width: 34px;
+    position: relative;
+    left: 2px;
+
+  }
+  .changeNumber{
+    margin-left: auto;
+    margin-right:auto;
+    margin-bottom:0px
+    }
+  .box{
+    margin-left: auto;
+    margin-right: auto;
+    width: 160px;
+    margin-top: -10%
+
+  }
+  .resendOtp{
+    margin-left: auto;
+    margin-right:auto;
+    background-color : #007BFF;
+    color : white;
+    border-radius : 5px;
+    border : 2px solid #007BFF
+  }
+  .didntgetCode{
+    margin-left: auto;
+    margin-right:auto;
+    font-size: 16px;
+  }
+  .submitButton{
+    font-size: 20px;
+    position: absolute;
+    left: 25%;
+    top: 115px;
+
+  }
+  #changeContact{
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+

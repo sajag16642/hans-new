@@ -1,0 +1,117 @@
+<ng-container >
+    <main id="main" style="background-color:#f5f5f5; margin-top:-30px;">
+        <main id="second-main">
+            <div class="header" style="margin-top:10vh">
+                <div class="back-ground">
+                  <div class="text-center">
+                      <h5 >We Provide Convenient packages to choose From!</h5>
+                  </div>
+                </div> 
+                <div class="back-ground">
+                    <div class="text-center"><br>
+                        <h6>What are Credits?</h6>
+                        <p>Each Credit will give you one contact detail from 100's of profiles shared on daily basis.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="plan-option" style="text-align: center;">
+               <div class="col-sm-6 col-md-6 col-lg-6" id="button-div" style="margin: 10px 0px;">
+                  <button type="button" class="btn btn-primary"  id="button">Online PLans</button>
+               </div>
+               <div class="col-sm-6 col-md-6 col-lg-6" id="button-div" style="margin: 10px 0px;">
+                  <button type="button" class="btn btn-primary"  id="button">Personalised Plans</button>
+               </div>
+            </div>
+          
+            <div class="card-wrapper" *ngIf="show1">
+      
+                <div id="option" class="option">
+                    <div id="contain">
+                        <div class="col-3">
+                            <p class="feature">Limited</p>
+                            <p id="p"><s>{{ plans?.Limited?.PrevAmt }}</s></p>
+                            <p id="p">{{ plans?.Limited?.CurrentAmt }}</p> 
+                        </div>
+                        <div class="col-3">
+                            <p><span class="feature">Credits</span><br><span class="value" style="padding-top:10px">{{ plans?.Limited?.Credits}}</span></p>                 
+                        </div>
+                        <div class="col-3">
+                            <p><span class="feature">Validity</span><br><span class="value" style="padding-top:10px">{{ plans?.Limited?.Validity}}</span></p>      
+                        </div>
+                        <div class="col-3">
+                           <button type="button" class="btn btn-primary">Buy now</button>
+                        </div>
+                    </div>
+                 </div>
+
+                 <div id="option" class="option">
+                    <div id="contain">
+                        <div class="col-sm-3 col-md-3 col-lg-3 v-align">
+                            <p class="feature">Premium</p>
+                            <p id="p"><s>{{ plans?.Premium?.PrevAmt }}</s></p>
+                            <p id="p">{{ plans?.Premium?.CurrentAmt }}</p> 
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 v-align">
+                            <p><span class="feature">Credits</span><br><span class="value" style="padding-top:10px">{{ plans?.Premium?.Credits}}</span></p>                 
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 v-align">
+                            <p><span class="feature">Validity</span><br><span class="value" style="padding-top:10px">{{ plans?.Premium?.Validity}}</span></p>      
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 v-align">
+                           <button type="button" class="btn btn-primary">Buy now</button>
+                        </div>
+                    </div>
+                 </div>
+
+                 <div id="option" class="option">
+                    <div id="contain">
+                        <div class="col-sm-3 col-md-3 col-lg-3 v-align">
+                            <p class="feature">Supreme</p>
+                            <p id="p"><s>{{ plans?.Supreme?.PrevAmt }}</s></p>
+                            <p id="p">{{ plans?.Supreme?.CurrentAmt }}</p> 
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 v-align">
+                            <p><span class="feature">Credits</span><br><span class="value" style="padding-top:10px">{{ plans?.Supreme?.Credits}}</span></p>                 
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 v-align">
+                            <p><span class="feature">Validity</span><br><span class="value" style="padding-top:10px">{{ plans?.Supreme?.Validity}}</span></p>      
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 v-align">
+                           <button type="button" class="btn btn-primary">Buy now</button>
+                        </div>
+                    </div>
+                 </div>
+      
+              
+      
+              
+            </div>
+          </main>
+    </main>
+
+    <!-- <footer style="background-color:#f1f1f1; width: 60%;margin-left: auto;margin-right: auto;margin-top:60px">
+        <div class="text-center" style="padding:10px">
+            <div class="text-center"> <h5>Contact</h5></div>
+            <div class="row" style="display:inline-flex">
+                <div class="text-center">
+                    <p><i class="fa fa-mobile" style="color:#007BFF"></i>&nbsp;&nbsp;&nbsp;+91-9697989697</p>
+                 </div>      
+               <div class="text-center">
+                  <p><i class="fa fa-envelope" style="color:#007BFF"></i>&nbsp;&nbsp;&nbsp;matches@hansmatrimony.com</p>
+               </div>
+                 
+            </div>
+        </div>
+
+    </footer> -->
+</ng-container>
+
+<!-- <div class="col-md-5 col-lg-4">
+    <div class="item" style="border:1px solid orange;border-radius: 5px">
+        <div class="ribbon">Best Value</div>
+        <div class="heading"></div>
+        <div class="features"><br> </div>
+          <div class="price"></div>
+          <button (click)="pay(data?.Supreme?.CurrentAmt,'live')"  class="btn btn-block btn-danger" type="submit">BUY NOW</button>
+      </div>
+</div> -->

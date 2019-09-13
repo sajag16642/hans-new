@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<base href="/">
+<head>
+  <meta charset="utf-8">
+  <title>HansWebApp</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  
+  <style>
+    * {
+    font-family: 'Raleway', sans-serif;
+}
+body, html {
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+}
+  </style>
+  <link rel="icon" type="image/x-icon" href="assets/logo1.ico">
+<link rel="stylesheet" href="styles.92b993b2d84303e37bc8.css"></head>
+
+<body>
+  <app-root></app-root>
+  <ng-snotify></ng-snotify>
+  <!-- Load Facebook SDK for JavaScript -->
+  <div id="fb-root" *ngIf="routerUrl != '/dashboard'"></div>
+  <!-- Your customer chat code -->
+<div class="fb-customerchat"
+attribution=setup_tool
+page_id="1927627064231716">
+</div>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        xfbml            : true,
+        version          : 'v3.2'
+      });
+    };
+    
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+<script type="text/javascript" src="runtime.b57bf819d5bdce77f1c7.js"></script><script type="text/javascript" src="polyfills.05e428c7deb03eca82a1.js"></script><script type="text/javascript" src="scripts.ee7fed27c36eaa5fa8a9.js"></script><script type="text/javascript" src="main.f4ba553507d361af7cd2.js"></script></body>
+
+</html>

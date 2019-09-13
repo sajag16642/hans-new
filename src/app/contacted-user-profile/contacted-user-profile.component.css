@@ -1,0 +1,528 @@
+body {
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+}
+
+.emp-profile {
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
+}
+
+.icons {
+    position: fixed;
+    top: 100%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+}
+
+
+
+#Fullfile{
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.profile-img {
+    text-align: center;
+}
+
+.profile-img img {
+    width: 70%;
+    height: 100%;
+}
+
+.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: -20%;
+    width: 70%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
+}
+
+.profile-img .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+
+.profile-head h5 {
+    color: #333;
+}
+
+.profile-head h6 {
+    color: #0062cc;
+}
+
+.profile-edit-btn {
+    border: none;
+    border-radius: 1.5rem;
+    width: 100%;
+    padding: 2%;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+    outline: none;
+
+}
+
+.takeAction {
+    border: none;
+    background-color: inherit;
+    padding: 14px 28px;
+    outline: none;
+    cursor: pointer;
+    opacity: .4;
+    transition: .4s all ease-in;
+}
+
+.takeAction:hover {
+    opacity: 1;
+}
+
+
+
+
+.proile-rating {
+    font-size: 12px;
+    color: #818182;
+    margin-top: 5%;
+}
+
+.proile-rating span {
+    color: #495057;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.profile-head .nav-tabs {
+    margin-bottom: 5%;
+}
+
+.profileNav {
+    min-width: 656px;
+}
+
+.profile-head .nav-tabs .nav-link {
+    font-weight: 600;
+    border: none;
+}
+
+.profile-head .nav-tabs .nav-link.active {
+    border: none;
+    border-bottom: 2px solid #0062cc;
+}
+
+.profile-work {
+    padding: 14%;
+    margin-top: -15%;
+}
+
+.profile-work p {
+    font-size: 12px;
+    color: #818182;
+    font-weight: 600;
+    margin-top: 10%;
+}
+
+.profile-work a {
+    text-decoration: none;
+    color: #495057;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.profile-work ul {
+    list-style: none;
+}
+
+.profile-tab label {
+    font-weight: 600;
+}
+
+.profile-tab p {
+    font-weight: 600;
+    color: #0062cc;
+}
+
+.rProfiles {
+    margin-right: 60px;
+    margin-left: 60px;
+    margin-bottom: 60px;
+    margin-top: 10%;
+}
+
+.recom {
+    color: orange;
+    margin-bottom: 0;
+    /* padding-bottom: 0.5rem; */
+    padding-top: 2.5rem;
+    font-size: 26px
+}
+
+
+.innerTabGroup .mat-tab-header {
+    position: relative !important;
+    bottom: 354px !important;
+}
+
+
+.cardas {
+    margin-top: 30px;
+}
+
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: orange !important
+}
+
+::ng-deep {
+    height: 4px !important;
+}
+
+.taa {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 4rem
+}
+
+.div-recom {
+    margin-bottom: 2%;
+    background-color: #500312;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+
+}
+
+::ng-deep .mat-tab-body-wrapper {
+    height: 100%;
+}
+
+.recommend-icon {
+    margin-right: 1rem
+}
+
+::ng-deep .mat-tab-label {
+    min-width: 420px !important;
+}
+
+.mat-success {
+    background-color: red !important
+}
+
+.font-increase {
+    font-size: 1.5em;
+    margin-bottom: 0.5rem;
+}
+
+.left {
+    margin-top: 20px;
+    text-align: start;
+    margin-left: 100px;
+    width: 160px;
+    float: left;
+}
+
+.sas {
+    margin-top: 2rem;
+    margin-bottom: 2rem
+}
+
+.right {
+    text-align: end;
+    margin-right: 100px;
+    float: right;
+}
+
+.example-card {
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 2rem;
+    height: 29.6rem;
+}
+
+.about-card {
+    background-color: #F7F7F7;
+    text-align: start;
+    height: auto;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 10%;
+}
+
+/* .icons {
+    position: fixed;
+    top: 75%;
+    left: 40%
+} */
+
+.profileEdit {
+    position: fixed;
+    top: 83%;
+    right: 0
+}
+
+.circle {
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0Yn0mytOiEltFjmQ85PanPBafzyxXd0AJMatWaiELkIEi2v9Y_w);
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    background-color: grey;
+    margin-left: 30%;
+    position: relative;
+    left: 16%;
+        background-size: cover;
+}
+
+#square{
+    bottom: 0;
+    position: relative;
+    right: 164px;
+    float: right;
+    background-color: rgba(255, 248, 220, .7);
+}
+
+ #square:hover{
+    background-color: rgba(255, 248, 220, 1);
+}
+
+.closed {
+    height: 1rem;
+    width: 1rem;
+    position: relative;
+    top: 2rem;
+    float: right;
+}
+
+.history {
+    min-height: 43vh;
+}
+
+.recom-image {
+    width: 70%;
+    height: 75%;
+}
+
+::ng-deep .mat-tab-label .mat-tab-label-content {
+    font-weight: bolder !important;
+}
+
+::ng-deep .mat-tab-group.mat-background-warn .mat-tab-header,
+.mat-tab-group.mat-background-warn .mat-tab-links,
+.mat-tab-nav-bar.mat-background-warn .mat-tab-header,
+.mat-tab-nav-bar.mat-background-warn .mat-tab-links {
+    background-color: #500312 !important;
+    z-index: 1000;
+}
+
+
+.round {
+    border-radius: 50px !important
+}
+
+.dsa {
+    margin-bottom: 0.5rem
+}
+
+.taa1 {
+    margin-top: 0px;
+    bottom: -40px;
+    position: relative;
+    width: 100%;
+    z-index: 1000000 !important;
+}
+
+.historySections {
+    position: relative;
+    /* margin-top: 20% !important; */
+    top: 130px;
+}
+
+
+.takeAction {
+    border: none;
+    background-color: inherit;
+    padding: 14px 28px;
+    outline: none;
+    cursor: pointer;
+    opacity: .4;
+    transition: .4s all ease-in;
+}
+@media only screen and (max-width: 1324px) {
+    .overflow{
+        overflow-x: hidden;
+        margin-top: 50px;
+    }
+
+
+
+    #square{
+            bottom: 280px;
+            position: relative;
+            float: right; 
+            right:0px;
+           }
+
+    .historySections {
+        position: relative;
+        /* margin-top: 20% !important; */
+        top: 0px;
+    }
+
+    .dsa {
+        margin-bottom: 0.15rem
+    }
+
+    .recom {
+        color: orange;
+        margin-bottom: 0;
+        padding-top: 0.5rem;
+        font-size: 22px
+    }
+
+    .cardas {
+        margin-top: 10px;
+    }
+
+    .left {
+        margin-top: 20px;
+        text-align: start;
+        margin-left: 0px;
+        float: left;
+    }
+
+    .right {
+        text-align: end;
+        float: right;
+        margin-right: 0px
+    }
+
+    .div-recom {
+        top: 177px;
+        position: fixed;
+    }
+
+    .recom-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .taa {
+        bottom: 0;
+        position: fixed;
+        top: 3.5rem
+    }
+
+    .taa1 {
+        margin-top: 14px;
+        bottom: auto;
+        position: fixed;
+        top: 7.5rem;
+        font-size: 12px;
+    }
+
+    .sas {
+        margin-top: 0.5em;
+        margin-bottom: 1rem;
+        display: flex;
+    }
+
+    .about-card {
+        background-color: #F7F7F7;
+        text-align: center;
+        height: auto;
+        margin-left: 0%;
+        margin-right: 0%;
+        margin-bottom: 10%;
+    }
+
+    .example-card {
+        text-align: center;
+        margin-left: 0;
+        margin-top: 4rem;
+        height: 15%
+    }
+
+    ::ng-deep .mat-tab-label {
+        min-width: 0px !important;
+        padding-left: 0px !important;
+        padding-right: 0px !important
+    }
+
+    .recommend-icon {
+        margin-right: 0.1rem
+    }
+
+    .circle {
+        height: 3rem;
+        width: 3rem;
+        border-radius: 50%;
+        background-color: grey;
+        margin-left: 25%;
+        left: 45px;    }
+
+    h3 {
+        margin-top: 60px;
+    }
+
+    .sas {
+        display: block;
+    }
+
+    .rProfiles {
+        margin-right: 0;
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+
+    .whole {
+        overflow-x: hidden;
+    }
+
+    .Rprofile {
+        position: relative;
+        left: 0%;
+        margin-bottom: 188%;
+    }
+
+    .profileEdit {
+        display: none;
+    }
+
+    .div-recom h2 {
+        margin-top: 60px;
+        font-size: 35px;
+    }
+
+    .emp-profile {
+        margin-top: 27%;
+        overflow-x: hidden;
+    }
+
+    .profile-head h6 {
+        word-wrap: break-word;
+    }
+
+    .profile-head .nav-tabs {
+        display: block;
+        position: relative;
+        right: 57%;
+    }
+
+    .profile-edit-btn {
+        position: relative;
+        top: 15px;
+    }
+    .takeAction{
+        opacity: 1;
+    }
+}

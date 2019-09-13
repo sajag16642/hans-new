@@ -1,0 +1,239 @@
+<main class='pwaSize fixed t-0 b-0 bg-white w-full HC overflowY'>
+  <!-- <div class="container t-c">
+      <div class="section">
+          <div class="container" style="margin-left:auto;margin-right:auto"> 
+              <p> <img src="../../../assets/images/logo.png" style="width:25%"> &nbsp; &nbsp;Hans Matrimony</p>
+          </div>              
+      </div>
+  </div> -->
+  <div class="container" style="width:80%">
+    <div class="w-full" style="margin-left:auto;margin-right:auto">
+      <form [formGroup]="PreferencesDetails">
+          <div class="row">
+              <div class="col-6">
+                  <mat-form-field class="full-width" appearance="standard">
+                    <mat-label>Min Age</mat-label>
+                    <input matInput type="number" [value]="minAge" formControlName="age_min">
+                  </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field class="full-width" appearance="standard">
+                      <mat-label>Max Age</mat-label>
+                      <input matInput type="number" [value]="maxAge" formControlName="age_max">
+                    </mat-form-field>
+                  </div>
+          </div>
+          <div class="row">
+              <div class="col-6">
+                  <mat-form-field class="full-width" appearance="standard">
+                    <mat-label>Min Height</mat-label>
+                    <mat-select matNativeControl  formControlName="height_min">
+                        <!-- <option *ngFor="let  option of Heights" >
+                          {{option}}
+                        </option> -->
+                        <mat-option value="55">4'7"</mat-option>
+                                      <mat-option value="56">4'8"</mat-option>
+                                      <mat-option value="57">4'9"</mat-option>
+                                      <mat-option value="58">4'10"</mat-option>
+                                      <mat-option value="59">4'11"</mat-option>
+                                      <mat-option value="60">5'0"</mat-option>
+                                      <mat-option value="61">5'1"</mat-option>
+                                      <mat-option value="62">5'2"</mat-option>
+                                      <mat-option value="63">5'3"</mat-option>
+                                      <mat-option value="64">5'4"</mat-option>
+                                      <mat-option value="65">5'5"</mat-option>
+                                      <mat-option value="66">5'6"</mat-option>
+                                      <mat-option value="67">5'7"</mat-option>
+                                      <mat-option value="68">5'8"</mat-option>
+                                      <mat-option value="69">5'9"</mat-option>
+                                      <mat-option value="70">5'10"</mat-option>
+                                      <mat-option value="71">5'11"</mat-option>
+                                      <mat-option value="72">6'0"</mat-option>
+                                      <mat-option value="73">6'1"</mat-option>
+                                      <mat-option value="74">6'2"</mat-option>
+                                      <mat-option value="75">6'3"</mat-option>
+                                      <mat-option value="76">6'4"</mat-option>
+                                      <mat-option value="77">6'5"</mat-option>
+                                      <mat-option value="78">6'6"</mat-option>
+                                      <mat-option value="79">6'7"</mat-option>
+                                      <mat-option value="80">6'8"</mat-option>
+                                      <mat-option value="81">6'9"</mat-option>
+                                      <mat-option value="82">6'10"</mat-option>
+                                      <mat-option value="83">6'11"</mat-option>
+                                      <mat-option value="84">7'0"</mat-option>
+                      </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field class="full-width" appearance="standard">
+                      <mat-label>Max Height</mat-label>
+                      <mat-select matNativeControl  formControlName="height_max" [value]="maxHeight">
+                        <mat-option value="55">4'7"</mat-option>
+                        <mat-option value="56">4'8"</mat-option>
+                        <mat-option value="57">4'9"</mat-option>
+                        <mat-option value="58">4'10"</mat-option>
+                        <mat-option value="59">4'11"</mat-option>
+                        <mat-option value="60">5'0"</mat-option>
+                        <mat-option value="61">5'1"</mat-option>
+                        <mat-option value="62">5'2"</mat-option>
+                        <mat-option value="63">5'3"</mat-option>
+                        <mat-option value="64">5'4"</mat-option>
+                        <mat-option value="65">5'5"</mat-option>
+                        <mat-option value="66">5'6"</mat-option>
+                        <mat-option value="67">5'7"</mat-option>
+                        <mat-option value="68">5'8"</mat-option>
+                        <mat-option value="69">5'9"</mat-option>
+                        <mat-option value="70">5'10"</mat-option>
+                        <mat-option value="71">5'11"</mat-option>
+                        <mat-option value="72">6'0"</mat-option>
+                        <mat-option value="73">6'1"</mat-option>
+                        <mat-option value="74">6'2"</mat-option>
+                        <mat-option value="75">6'3"</mat-option>
+                        <mat-option value="76">6'4"</mat-option>
+                        <mat-option value="77">6'5"</mat-option>
+                        <mat-option value="78">6'6"</mat-option>
+                        <mat-option value="79">6'7"</mat-option>
+                        <mat-option value="80">6'8"</mat-option>
+                        <mat-option value="81">6'9"</mat-option>
+                        <mat-option value="82">6'10"</mat-option>
+                        <mat-option value="83">6'11"</mat-option>
+                        <mat-option value="84">7'0"</mat-option>
+                  </mat-select>
+                       
+                    </mat-form-field>
+                  </div>
+          </div>
+          <div class="row">
+            <!-- <div class="col-md-12">
+              <mat-form-field class="full-width" appearance="standard">
+                <mat-label>Mother Tongue</mat-label>
+                <input type="text" matInput required [matAutocomplete]="autoGroup" [value]="motherTongue" formControlName="mother_tongue">
+                <mat-autocomplete #autoGroup="matAutocomplete">
+                  <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
+                    <mat-option *ngFor="let name of group.names" [value]="name" >
+                      {{name}}
+                    </mat-option>
+                  </mat-optgroup>
+                </mat-autocomplete>
+              </mat-form-field>
+            </div> -->
+            <div class="col-md-12">
+              <mat-form-field class="full-width" appearance="standard" style="height:60px">
+                <mat-label>Mother Tongue</mat-label>
+                <input type="text" matInput formControlName="stateGroup" required [matAutocomplete]="autoGroup">
+                <mat-autocomplete #autoGroup="matAutocomplete">
+                  <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
+                    <mat-option *ngFor="let name of group.names" [value]="name"  required>
+                      {{name}}
+                    </mat-option>
+                  </mat-optgroup>
+                </mat-autocomplete>   
+              </mat-form-field>
+          </div>
+          </div>
+          <!-- <div class="row">
+            <div class="col-md-12">
+              <mat-form-field class="full-width" appearance="standard">
+                <mat-label>Caste</mat-label>
+                <select matNativeControl  formControlName="caste" required name="Sect">
+                  <option *ngFor="let  option of castePref" [value]="option">
+                    {{option}}
+                  </option>
+                </select>               
+              </mat-form-field>
+            </div>
+          </div> -->
+          <div class="row">
+            <div class="col-md-12">
+              <mat-form-field class="full-width" appearance="standard"  style="height:60px">
+                <mat-label>caste</mat-label>
+                <input formControlName="caste" required placeholder="caste" matInput type="text" >
+                <!-- <mat-select  formControlName="caste" required >
+                  <mat-option *ngFor="let  option of dropdownList" [value]="option.id">
+                    {{option.itemName}}
+                  </mat-option>
+                 </mat-select> -->
+              </mat-form-field> 
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <mat-form-field class="full-width" appearance="standard"  style="height:60px">
+                  <mat-label>Manglik</mat-label>
+                  <mat-select  formControlName="manglik" required >
+                    <mat-option value="Manglik">Manglik</mat-option>
+                    <mat-option value="Non-manglik">Non-manglik</mat-option>
+                    <mat-option value="Anshik Manglik">Anshik Manglik</mat-option>
+                  </mat-select>
+              
+              </mat-form-field>
+          </div>   
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <mat-form-field class="full-width" appearance="standard">
+                <mat-label>Marital Status</mat-label>
+                <select matNativeControl name="MaritalStatus" [value]="maritalStatus" formControlName="marital_status">
+                    <option *ngFor="let  option of MaritalStaus" [value]="option">
+                      {{option}}
+                    </option>
+                  </select> 
+               
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-md-12">
+                  <mat-form-field class="full-width" appearance="standard">
+                    <mat-label>Food Choice</mat-label>
+                    <select matNativeControl name="foodpreference" [value]="foodpreferences[0]" formControlName="food_choice">
+                      <option *ngFor="let  preferences of foodpreferences" [value]="preferences">
+                        {{preferences}}
+                      </option>
+                    </select>
+                  </mat-form-field>
+                </div>
+          </div>
+          <!-- <div class="row">
+              <div class="col-md-12">
+                  <mat-form-field class="full-width" appearance="standard">
+                    <mat-label>Working Status</mat-label>
+                    <input matInput type="text" value="Doesn't matter" formControlName="working">
+                  </mat-form-field>
+                </div>
+          </div> -->
+          <div class="row ">
+            <div class="col-md-12">
+              <mat-form-field class="full-width" appearance="standard">
+                <mat-label>Working Status</mat-label>
+                <select matNativeControl  formControlName="working" required name="working">
+                    <option *ngFor="let  option of Working" [value]="option">
+                      {{option}}
+                    </option>
+                  </select> 
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-md-12">
+                <mat-form-field appearance="standard" class="full-width">
+                  <mat-label>About your Preferences</mat-label>
+                  <input matInput placeholder="Write about your preferences" formControlName="description">
+                </mat-form-field>
+              </div>
+            </div>
+            
+            <div class="col-xs-12 m-t-20" style="margin-left:auto;margin-right:auto;text-align:center;margin-bottom: 20px;">
+              <div style="margin-left:auto;margin-right:auto;display:flex">
+                <button class="btn-skip" style="margin-left:auto;margin-right:auto" type="button" >Skip</button>
+                <button class="btn btn-blue" style="margin-left:auto;margin-right:auto" type="button" (click)=" sixthStep()">Submit</button>
+            </div>
+      
+        </div>
+       
+        </form>
+    </div>    
+</div>
+
+</main>
+

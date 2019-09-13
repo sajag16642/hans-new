@@ -1,0 +1,267 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+.back-ground{
+  /* background: url('https://wallpapercave.com/wp/2ujUKnj.jpg') no-repeat center; */
+  background-size: 100% 250px;
+  background-position: top center;
+}
+
+.benefitContent
+{
+  display: block;
+  text-align: center;
+  padding: 10px;
+
+}
+
+
+.declaration{
+  padding-top:30px
+}
+.pricing-table{
+  background-color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.pricing-table .block-heading {
+  padding-top: 50px;
+  margin-bottom: 40px;
+  text-align: center; 
+}
+
+.pricing-table .block-heading h2 {
+  color: #3b99e0;
+}
+
+.pricing-table .block-heading p {
+  text-align: center;
+  max-width: 420px;
+  margin: auto;
+  opacity: 0.7; 
+}
+
+.pricing-table .heading {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid orange;
+  margin: 10px
+}
+
+.pricing-table .item {
+  overflow: hidden;
+  position: relative; 
+}
+
+.pricing-table .col-md-5:not(:last-child) .item {
+  margin-bottom: 30px; 
+}
+
+.pricing-table .item button {
+  font-weight: 600; 
+}
+
+.pricing-table .ribbon {
+  width: 160px;
+  height: 32px;
+  font-size: 12px;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0px 2px 3px rgba(136, 136, 136, 0.25);
+  background:#500312;
+  color:orange;
+  transform: rotate(45deg);
+  position: absolute;
+  right: -42px;
+  top: 20px;
+  padding-top: 7px; 
+}
+
+.pricing-table .item p {
+  text-align: center;
+  margin-top: 20px;
+  opacity: 0.7; 
+}
+
+.pricing-table .features .feature {
+  color:red}
+
+.pricing-table .features h4 {
+  text-align: center;
+  font-size: 18px;
+  padding: 5px; 
+}
+
+.pricing-table .price h4 {
+  margin: 15px 0;
+  font-size: 45px;
+  text-align: center;
+  color: orange; 
+}
+
+.pricing-table .buy-now button {
+  text-align: center;
+  margin: auto;
+  font-weight: 600;
+  padding: 9px 0; 
+}
+
+
+
+
+
+
+
+
+
+
+
+nav > .nav.nav-tabs{
+  border: none;
+    color:red;
+    background:white;
+    border-radius:0;
+
+}
+#nav-profile-tab{
+  color:orange
+ }
+
+nav > div a.nav-item.nav-link.active
+{
+  border: none;
+    padding: 18px 25px;
+    color:white;
+    background:red;
+    border-radius:0;
+}
+
+
+#nav-home-tab{
+  color:orange
+}
+nav > div a.nav-item.nav-link.active:after
+ {
+  content: "";
+  position: relative;
+  bottom: -55px;
+  left: -10%;
+  border: 15px solid transparent;
+  border-top-color: red ;
+}
+.tab-content{
+  background: #fdfdfd;
+    line-height: 25px;
+    padding:30px 25px;
+}
+
+nav > div a.nav-item.nav-link:hover,
+nav > div a.nav-item.nav-link:focus
+{
+  border: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .declaration{
+    padding:30px 0;
+
+  }
+  .back-ground{
+    height: auto;
+    /* background: url(https://wallpapercave.com/wp/2ujUKnj.jpg) no-repeat center; */
+    background-size: 100% 100%;
+  }
+  nav{
+    padding: 0 45px;
+  }
+}
+
+
+@media (min-width : 576px){
+  .headers{
+      border-bottom: 2px solid #d8d8d8;background-color:white
+  }
+
+  #headers-left{
+      width:50%;margin-left:0px;height:70px;
+  }
+
+  #headers-left-main{
+      display:inline-flex;margin-top:auto;margin-bottom:auto;margin-left: 15px
+  }
+
+  #logo{
+      width:50px;height:50px
+  }
+
+  .header{
+      padding: 10px;
+  }
+  #company-name{
+      font-size:1rem;margin-top:auto;margin-bottom:auto
+  }
+  .back-ground{
+     padding: 5px;
+     padding-top:0px
+  }
+  .row{
+      width: 100%;
+      padding: 0px;
+      margin:0px
+  }
+  
+  #button-div{
+      text-align: center;
+      padding: 0px
+  }
+  
+  .v-align{
+      margin-top: auto;
+      margin-bottom: auto
+  }
+  
+  p{
+      font-size: 1.1rem;
+      text-align: center;
+      margin-bottom : 0.5rem;
+  }
+  
+  .feature{
+      font-weight: bold
+  }
+  
+  .text-center{
+      margin-left: auto;
+      margin-right: auto
+  }
+
+  /* #second-main{
+      background-image: url('../../../assets/images/bgicon.png');
+  } */
+
+  h5 {
+      color: black;margin-bottom: 0px
+  }
+
+ #plan-option{
+   display:inline-flex
+ }
+
+ #option{
+  margin-top:25px;background-color:white;height: 110px
+ }
+
+ #contain{
+  display:inline-flex;width: 100%
+ }
+
+ #p{
+  font-weight:bold;color:#007BFF
+ }
+  
+}
+
+.option{
+  background-color:White;
+  margin:2rem;
+  border-radius:10px;
+}

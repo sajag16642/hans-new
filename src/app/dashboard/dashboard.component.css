@@ -1,0 +1,789 @@
+body {
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+}
+
+.emp-profile {
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
+}
+
+.isRecommended{
+    margin: 14%;
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: 4px;}
+
+.hideInput{
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+
+
+.profile-img {
+    text-align: center;
+}
+
+.profile-img img {
+    width: 70%;
+    height: 100%;
+}
+
+.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: -20%;
+    width: 70%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
+}
+
+.profile-img .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+
+.profile-head h5 {
+    color: #333;
+}
+
+.profile-head h6 {
+    color: #0062cc;
+}
+
+.profile-edit-btn {
+    border: none;
+    border-radius: 1.5rem;
+    width: 100%;
+    padding: 2%;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+    outline: none;
+
+}
+
+.takeAction {
+    border: none;
+    background-color: inherit;
+    padding: 14px 28px;
+    outline: none;
+    cursor: pointer;
+    opacity: .4;
+    transition: .4s all ease-in;
+}
+
+.takeAction:hover {
+    opacity: 1;
+}
+
+/* #Familydetails {
+    display: none;
+}
+
+#preference {
+    display: none;
+} */
+
+
+.proile-rating {
+    font-size: 12px;
+    color: #818182;
+    margin-top: 5%;
+}
+
+.proile-rating span {
+    color: #495057;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.profile-head .nav-tabs {
+    margin-bottom: 5%;
+}
+
+.profileNav {
+    min-width: 656px;
+}
+
+.profile-head .nav-tabs .nav-link {
+    font-weight: 600;
+    border: none;
+}
+
+.profile-head .nav-tabs .nav-link.active {
+    border: none;
+    border-bottom: 2px solid #0062cc;
+}
+
+.profile-work {
+    padding: 14%;
+    margin-top: -15%;
+}
+
+.profile-work p {
+    font-size: 12px;
+    color: #818182;
+    font-weight: 600;
+    margin-top: 10%;
+}
+
+.profile-work a {
+    text-decoration: none;
+    color: #495057;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.profile-work ul {
+    list-style: none;
+}
+
+.profile-tab label {
+    font-weight: 600;
+}
+
+.profile-tab p {
+    font-weight: 600;
+    color: #0062cc;
+}
+
+.rProfiles {
+    margin-right: 60px;
+    margin-left: 60px;
+    margin-bottom: 60px;
+    margin-top: 10%;
+}
+
+.recom {
+    color: orange;
+    margin-bottom: 0;
+    /* padding-bottom: 0.5rem; */
+    padding-top: 0.3rem;
+    font-size: 26px
+}
+
+.icons {
+    position: fixed;
+    left: 50%;
+    top:70%;
+    width:460px;
+}
+
+.icons1{
+    position: relative;
+    left:-50%;
+}
+
+.innerTabGroup .mat-tab-header {
+    position: relative !important;
+    bottom: 354px !important;
+}
+
+
+.cardas {
+    margin-top: 30px;
+}
+
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: orange !important
+}
+
+::ng-deep {
+    height: 4px !important;
+}
+
+.taa {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 5.5rem
+}
+
+.div-recom {
+    margin-bottom: 2%;
+    height: 50px;
+    background-color: #500312;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+
+}
+
+::ng-deep .mat-tab-body-wrapper {
+    height: 100%;
+}
+
+.recommend-icon {
+    margin-right: 1rem
+}
+
+::ng-deep .mat-tab-label {
+    min-width: 420px !important;
+}
+
+.mat-success {
+    background-color: red !important
+}
+
+.font-increase {
+    font-size: 1.5em;
+    margin-bottom: 0.5rem;
+}
+
+.left {
+    margin-top: 20px;
+    text-align: start;
+    margin-left: 100px;
+    width: 160px;
+    float: left;
+}
+
+.sas {
+    margin-top: 2rem;
+    margin-bottom: 2rem
+}
+
+.right {
+    text-align: end;
+    margin-right: 100px;
+    float: right;
+}
+
+.example-card {
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 2rem;
+    height: 29.6rem;
+}
+
+.about-card {
+    background-color: #F7F7F7;
+    text-align: start;
+    height: auto;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 10%;
+}
+.profileEdit {
+    position: fixed;
+    bottom: 7%;
+    right: 0%;
+}
+
+.circle {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0Yn0mytOiEltFjmQ85PanPBafzyxXd0AJMatWaiELkIEi2v9Y_w');
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+ background-color: grey;
+    margin:auto;
+    position: relative;
+        background-size: cover;
+        cursor: pointer;
+}
+
+#square{
+    bottom: 0;
+    position: relative;
+    right: 19%;
+    float: right;
+    background-color: rgba(255, 248, 220, .7);
+    cursor: pointer;
+    z-index:2;
+}
+
+.carouselControl
+{
+    z-index:1 !important;
+}
+
+ #square:hover{
+    background-color: rgba(255, 248, 220, 1);
+}
+
+.closed {
+    height: 1rem;
+    width: 1rem;
+    position: relative;
+    top: 2rem;
+    float: right;
+}
+.centered {
+    position: absolute;
+    font-weight: 600;
+    font-size: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+.history {
+    min-height: 64vh;
+    height: auto;}
+
+.recom-image {
+    width: 70%;
+    height: 75%;
+}
+
+::ng-deep .mat-tab-label .mat-tab-label-content {
+    font-weight: bolder !important;
+}
+
+::ng-deep .mat-tab-group.mat-background-warn .mat-tab-header,
+.mat-tab-group.mat-background-warn .mat-tab-links,
+.mat-tab-nav-bar.mat-background-warn .mat-tab-header,
+.mat-tab-nav-bar.mat-background-warn .mat-tab-links {
+    background-color: #500312 !important;
+    z-index: 1000;
+}
+
+
+.round {
+    border-radius: 50px !important
+}
+
+.dsa {
+    margin-bottom: 0.5rem
+}
+
+.taa1 {
+    margin-top: 0px;
+    position: relative;
+    width: 100%;
+    z-index: 1000000 !important;
+}
+
+.historySections {
+    position: relative;
+    /* margin-top: 20% !important; */
+    top: 130px;
+}
+
+@media only screen and (max-width: 1324px) {
+
+    .isRecommended{
+        font-size: 19px;
+        margin-top: 48%;
+        }
+    
+        .icons1{
+     position: relative;
+     left: -76%;   
+     height:0;
+
+    }
+ 
+     .toggleShow{
+         font-size: 15px;
+     }
+ 
+     .mat-tab-body-content{
+         transform: translate3d(0,0,0) !important;
+     }
+ 
+     .contactModal{
+         font-size : 10px;
+     }
+ 
+     .verifyHeader{
+         font-size: 12px;
+     }
+ 
+     .overflow{
+         overflow-x: hidden;
+         margin-top: 50px;
+     }
+     .close{
+         font-size: 20px;
+         position: relative;
+         bottom: 37px;
+         left: 30px;
+     
+       }
+     #square{
+             bottom: 20px;
+             position: fixed;
+             float: right; 
+             right:0px;
+            }
+ 
+     .historySections {
+         position: relative;
+         /* margin-top: 20% !important; */
+         top: 0px;
+     }
+ 
+     .history{
+        min-height: 72vh;
+        overflow: scroll;
+        height: auto;
+    }
+     .dsa {
+         margin-bottom: 0.15rem
+     }
+ 
+     .recom {
+         color: orange;
+         margin-bottom: 0;
+         padding-top: 0.5rem;
+         font-size: 22px
+     }
+ 
+     .cardas {
+         margin-top: 10px;
+     }
+ 
+     .left {
+         margin-top: 20px;
+         text-align: start;
+         margin-left: 0px;
+         float: left;
+     }
+ 
+     .right {
+         text-align: end;
+         float: right;
+         margin-right: 0px
+     }
+ 
+     .div-recom {
+         position: fixed;
+     }
+ 
+     .recom-image {
+         width: 100%;
+         height: auto;
+     }
+ 
+     .taa {
+         bottom: 0;
+         position: fixed;
+         /* top: 3.5rem */
+     }
+ 
+     .taa1 {
+         margin-top: 27px;
+         bottom: auto;
+         position: fixed;
+         font-size: 12px;
+     
+     }
+ 
+     .sas {
+         margin-top: 0.5em;
+         margin-bottom: 1rem;
+         display: flex;
+     }
+ 
+     .icons {
+         /* position: fixed;
+         float: left;
+         top: 72%;
+         width: 154%;
+         left: -13%; */
+         font-size: 20px;
+         -webkit-transform: scale(.5,.5);
+         transform: scale(.6,.6);
+     }
+ 
+     .takeAction{
+         opacity: 1;
+     }
+ 
+     .about-card {
+         background-color: #F7F7F7;
+         text-align: center;
+         height: auto;
+         margin-left: 0%;
+         margin-right: 0%;
+         margin-bottom: 10%;
+     }
+ 
+     .example-card {
+         text-align: center;
+         margin-left: 0;
+         margin-top: 4rem;
+         height: 29rem;
+     }
+ 
+     ::ng-deep .mat-tab-label {
+         min-width: 0px !important;
+         padding-left: 0px !important;
+         padding-right: 0px !important
+     }
+ 
+     .recommend-icon {
+         margin-right: 0.1rem
+     }
+ 
+     .circle {
+         height: 3rem;
+         width: 3rem;
+         border-radius: 50%;
+         background-color: grey;
+         margin-left: auto;
+     left: 0;
+         }
+ 
+     h3 {
+         margin-top: 60px;
+     }
+ 
+     .sas {
+         display: block;
+     }
+ 
+     .rProfiles {
+         margin-right: 0;
+         margin-left: 0;
+         margin-bottom: 0;
+     }   
+  
+ 
+     .whole {
+         overflow-x: hidden;
+     }
+ 
+     .Rprofile {
+         position: relative;
+         left: 0%;
+         margin-bottom: 188%;
+     }
+ 
+     .profileEdit {
+         transform: scale(.6,.6);
+         right: -12%;
+         bottom: 5%;    }
+ 
+     .div-recom h2 {
+         margin-top: 60px;
+         font-size: 35px;
+     }
+ 
+     .emp-profile {
+         margin-top: 27%;
+         overflow-x: hidden;
+     }
+ 
+     .profile-head h6 {
+         word-wrap: break-word;
+     }
+ 
+     .profile-head .nav-tabs {
+         display: block;
+         position: relative;
+         right: 57%;
+     }
+ 
+     .profile-edit-btn {
+         position: relative;
+         top: 15px;
+     }
+ 
+ }
+
+@media only screen and (max-width: 480px) {
+
+    .contactModal{
+        font-size : 10px;
+    }
+
+    .verifyHeader{
+        font-size: 12px;
+    }
+
+    .overflow{
+        overflow-x: hidden;
+        margin-top: 50px;
+    }
+    .close{
+        font-size: 20px;
+        position: relative;
+        bottom: 37px;
+        left: 30px;
+    
+      }
+    #square{
+            bottom: 20px;
+            position: fixed;
+            float: right; 
+            right:42%;
+           }
+
+    .historySections {
+        position: relative;
+        /* margin-top: 20% !important; */
+        top: 60px;
+    }
+   
+
+    .dsa {
+        margin-bottom: 0.15rem
+    }
+
+    .recom {
+        color: orange;
+        margin-bottom: 0;
+        padding-top: 0.5rem;
+        font-size: 22px
+    }
+
+    .cardas {
+        margin-top: 10px;
+    }
+
+    .left {
+        margin-top: 20px;
+        text-align: start;
+        margin-left: 0px;
+        float: left;
+    }
+
+    .right {
+        text-align: end;
+        float: right;
+        margin-right: 0px
+    }
+
+    .div-recom {
+        position: fixed;
+    }
+
+    .recom-image {
+        width: 100%;
+        height: 200px;
+    }
+
+    .taa {
+        top : 3.5rem;
+        position: fixed;
+        /* top: 5.5rem */
+    }
+
+
+
+    .taa1 {
+    margin-top: 0px;
+    bottom: auto;
+    position: fixed;
+    font-size: 12px;
+    }
+
+    .sas {
+        margin-top: 0.5em;
+        margin-bottom: 1rem;
+        display: flex;
+    }
+
+    .icons {
+        /* position: fixed;
+        float: left;
+        top: 72%;
+        width: 154%;
+        left: -25%; */
+        transform: scale(.6,.6);
+        }
+
+    .about-card {
+        background-color: #F7F7F7;
+        text-align: center;
+        height: auto;
+        margin-left: 0%;
+        margin-right: 0%;
+        margin-bottom: 10%;
+    }
+
+    .example-card {
+        text-align: center;
+        margin-left: 0;
+        margin-top: 4rem;
+        height: 15%
+    }
+
+    ::ng-deep .mat-tab-label {
+        min-width: 0px !important;
+        padding-left: 0px !important;
+        padding-right: 0px !important
+    }
+
+    .recommend-icon {
+        margin-right: 0.1rem
+    }
+
+    .circle {
+        height: 3rem;
+        width: 3rem;
+        border-radius: 50%;
+        background-color: grey;
+        margin-left: auto;
+    left: 0;
+        }
+
+    h3 {
+        margin-top: 60px;
+    }
+
+    .sas {
+        display: block;
+    }
+
+    .rProfiles {
+        margin-right: 0;
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+    .takeAction{
+        opacity: 1;
+    }
+    .whole {
+        overflow-x: hidden;
+    }
+
+    .Rprofile {
+        position: relative;
+        left: 0%;
+        margin-bottom: 188%;
+    }
+
+
+
+    .div-recom h2 {
+        margin-top: 60px;
+        font-size: 35px;
+    }
+
+    .emp-profile {
+        margin-top: 27%;
+        overflow-x: hidden;
+    }
+
+    .profile-head h6 {
+        word-wrap: break-word;
+    }
+
+    .profile-head .nav-tabs {
+        display: block;
+        position: relative;
+        right: 57%;
+    }
+
+    .profile-edit-btn {
+        position: relative;
+        top: 15px;
+    }
+
+}
+
+
+

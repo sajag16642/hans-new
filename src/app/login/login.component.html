@@ -1,0 +1,120 @@
+<div class="modal-header" *ngIf="login">
+    <h5 class="modal-title" id="exampleModalLabel" style="color:#DC3545">Welcome to Hans Matrimony</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModal" >
+      <span aria-hidden="true"><img class="img-responsive" src="../assets/pop-close.webp" style="height:2rem"> </span>
+    </button>
+  </div>
+  <div class="modal-body"  *ngIf="login">
+      <form [formGroup]="loginDetails">
+        <mat-form-field class="full-width" >
+          <input matInput formControlName="email" required placeholder="Your Email">
+          <mat-hint align="end">We do not spam</mat-hint>
+          <mat-error *ngIf="loginDetails.get('email').hasError('email') && !loginDetails.get('email').hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="loginDetails.get('email').hasError('required')">
+            Email is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" >
+          <input type="password" matInput formControlName="password" required placeholder="Password">
+          <mat-hint align="end">Do not share it with anyone</mat-hint>
+          <mat-error *ngIf="loginDetails.get('password').hasError('required')">
+            Password is required
+          </mat-error>
+        </mat-form-field>
+            <div class="row">
+              <div class="container">
+            <a  style="text-decoration:none;color:black;cursor: pointer;"  (click)="forgot()" >Forgot Password?</a>
+            <!-- <div class="form-check pull-right ">
+              <input type="checkbox" class="form-check-input " id="exampleCheck1">
+              <label class="form-check-label " for="exampleCheck1">Keep Me logged in</label>
+            </div> -->
+          </div>
+          </div>
+          <br>
+          <div class="text-center">
+          <button class="btn btn-danger " (click)="submitLogin()" >  &nbsp;   &nbsp; Login &nbsp;&nbsp;
+          </button>
+        </div>
+        <br>
+        <div class="row">
+          <div class="container text-center">
+          <h6 style="margin-right:0;display: inline;">Don't Have an account?</h6>&nbsp;
+           <a routerLink="/register" data-dismiss="modal" style="text-decoration:none;color:#DC3545">Register For free</a>
+        </div>
+        </div>
+      </form>
+  </div>
+  <div class="modal-header"  *ngIf="fdorgot">
+      <h5 class="modal-title" id="exampleModalLabel">Forgot password</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+        <span aria-hidden="true"><img class="img-responsive" src="../assets/pop-close.webp" style="height:2rem"> </span>
+      </button>
+    </div>
+    <div class="modal-body" *ngIf="fdorgot">
+        <form [formGroup]="forgotDetails" (ngSubmit)="forgotPassword()" >
+          <mat-form-field class="full-width" >
+            <input matInput formControlName="email" required placeholder="Your Email">
+            <mat-hint align="end">We do not spam</mat-hint>
+            <mat-error *ngIf="forgotDetails.get('email').hasError('email') && !forgotDetails.get('email').hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="forgotDetails.get('email').hasError('required')">
+              Email is required
+            </mat-error>
+          </mat-form-field>
+          <br> <br>
+
+                  <button mat-raised-button class="pull-right" color="warn"  [disabled]="!forgotDetails.valid">Reset</button>
+                  <br> <br>
+          </form>  
+    </div>
+
+    <div class="modal-body" *ngIf="sucess">
+     <p>Password Sent Succesfully to your PhoneNumber</p>
+    </div>
+
+    <div class="modal-header" *ngIf="mverify">
+        <h5 class="modal-title" id="exampleModalLabel">Verify Mobile Number</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+          <span aria-hidden="true"><img class="img-responsive" src="../assets/pop-close.webp" style="height:2rem"> </span>
+        </button>
+      </div>
+      <div class="modal-body"  *ngIf="mverify">
+        <div class="text-center">
+        <small style="color:gray" >We have sent You A code via Sms to your Mobile<br>Please enter your code to verify</small>
+      </div> 
+      <br>
+        <form>
+              <div class="row ">
+                <div class="container text-center" style="display:flex;margin-left: 35%;margin-right: 35%">
+                  <div class="form-group" style="width:2rem" >
+                      <input type="email" class="form-control"  >
+                    </div>&nbsp;&nbsp;
+                    <div class="form-group" style="width:2rem" >
+                        <input type="email" class="form-control" >
+                      </div>&nbsp;&nbsp;
+                      <div class="form-group" style="width:2rem" >
+                          <input type="email" class="form-control"  >
+                        </div> &nbsp;&nbsp;
+                        <div class="form-group" style="width:2rem" >
+                            <input type="email" class="form-control"  >
+                          </div>
+                  </div>
+                </div>
+                  <br>
+                  <div class="text-center">
+                      <button class="btn btn-danger btn-sm" >  &nbsp;   &nbsp; Verify &nbsp;&nbsp;
+                      </button>
+                  </div>
+                  <br>
+                  <div class="row">
+                      <div class="container text-center">
+                      <h6 style="margin-right:0;display: inline;">Didn't got code ?</h6>&nbsp;&nbsp;
+                       <button   class="btn btn-danger btn-sm" >Resend
+                      </button>
+                    </div>
+                    </div>
+            </form>     
+      </div>

@@ -1,0 +1,449 @@
+
+<!-- Recommended Profiles -->
+<mat-tab-group headerPosition="below" class="outerMatTab" backgroundColor="warn" color="primary" mat-align-tabs="center" style="background-color:#F7F7F7" class="taa" >
+   <mat-tab>
+     <div style="background-color:#500312;" class="div-recom">
+       <p class="text-center recom">Recommended</p>
+     </div>
+    <ng-template mat-tab-label>
+      <img src="../../assets/recommended.webp" class="recommend-icon" style="height:1.5rem;width:1.5rem">
+      Recommended
+    </ng-template>
+             <h4 *ngIf="recommendedProfileDetails.length <= 0" class="isRecommended">MATCHING PROFILES WILL BE AVAILABLE AFTER 3 DAYS.<br> PLEASE CALL ON <i style="color:rgb(95, 95, 204)">96-97-98-96-97</i></h4>
+              <div  *ngFor="let user of recommendedProfileDetails;let isFirst = first">
+            <div class="row rProfiles ">
+              <div class="col-md-6 text-center overflow" style="padding:0">
+                <div class="example-card container">
+
+                  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                      <div class="carousel-inner">
+                          <div class="carousel-item active">
+                              <div class="container">
+                                  <img *ngIf="recommendedUserGender=='Female'" [src]="user?.profile?.photo ? 'https://hansmatrimony.s3.ap-south-1.amazonaws.com/uploads/'+user?.profile?.photo : 'https://cdn1.iconfinder.com/data/icons/website-internet/48/website_-_female_user-512.png'" alt="Photo" class="recom-image ">
+                                  <img *ngIf="recommendedUserGender=='Male'" [src]="user?.profile?.photo ? 'https://hansmatrimony.s3.ap-south-1.amazonaws.com/uploads/'+user?.profile?.photo : 'https://cdn2.iconfinder.com/data/icons/rcons-users-color/32/boy-512.png'" alt="Photo" class="recom-image ">
+                                    <div *ngIf="!user.profile.photo" class="centered">Share on Demand</div>
+                                </div>
+                            </div>
+                          <div class="carousel-item" *ngFor="let photo of carouselrecommendedUserPics">
+                              <img [src]="photo ? 'https://hansmatrimony.s3.ap-south-1.amazonaws.com/uploads/'+ photo : '../../assets/Review2.webp'" alt="Photo" class="recom-image ">
+                          </div>
+                      </div>
+                      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev" *ngIf="carouselrecommendedUserPics.length!=0">
+                          <span class="carousel-control-prev-icon" style="background-color: #5742cb; background-size: 74%;" aria-hidden="true"></span>
+                          <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next" *ngIf="carouselrecommendedUserPics.length!=0">
+                          <span class="carousel-control-next-icon"  style="background-color: #5742cb; background-size: 74%;"  aria-hidden="true"></span>
+                          <span class="sr-only">Next</span>
+                      </a>
+                  </div>
+                  <mat-card-content class="cardas">
+                    <div class='left'>
+                        <p class="font-increase" style="margin-bottom:0.5rem">{{ user.profile?.name.split(' ')[0]  }} ******* 
+                      <p class="font-increase" style="margin-bottom:0.5rem">{{recommendedUserAge ? recommendedUserAge : '-' }} years &nbsp;&nbsp;{{user?.profile?.height ? user?.profile?.height : '-' }}&nbsp;|&nbsp;{{user?.profile?.weight ? user?.profile?.weight : '-' }} kgs</p>
+                      <p style="margin-bottom:0.5rem">{{user?.profile?.occupation ? user?.profile?.occupation : '-' }} | {{user?.profile?.education ? user?.profile?.education : '-' }}</p>
+                      <p style="margin-bottom:0.5rem">{{user?.profile?.monthly_income ? user?.profile?.monthly_income : '-' }} | {{user?.profile?.city ? user?.profile?.city : '-' }}</p>
+                    </div>
+                    <div class='right'>
+                      <p class="dsa">{{user?.family?.religion ? user?.family?.religion : '-' }}&nbsp;|&nbsp;{{user?.family?.caste ? user?.family?.sub_caste : '-' }}&nbsp;|&nbsp;{{user?.family?.gotra ? user?.family?.gotra : '-' }}</p>
+                      <p class="dsa">{{user?.profile?.marital_status ? user?.profile?.marital_status : '-' }}</p>
+                      <p class="dsa">{{user?.profile?.manglik ? user?.profile?.manglik : '-' }}</p>
+                      <p class="dsa">{{user?.profile?.food_choice ? user?.profile?.food_choice : '-' }}</p>
+                    </div>
+                  </mat-card-content>
+                </div>
+              </div>
+              <div class="col-md-6 text-center" >
+                <div class="container sas" >
+                  <button type="button" class="btn btn-outline-warning round active" [ngClass]="{'active': isClicked}"  (click)="scroll('About')">About <span *ngIf="recommendedUserGender=='Male'">Him</span><span *ngIf="recommendedUserGender=='Female'">Her</span></button>
+                 &nbsp; 
+                  <button type="button" class="btn btn-outline-warning round" (click)="scroll('Familydetails')">Family
+                    details</button>
+                    &nbsp;
+                  <button type="button" class="btn btn-outline-warning round" (click)="scroll('preference')">Preferences</button>
+                </div>
+                <div style="height:26rem;overflow-y:visible">
+                <mat-card class="about-card" >
+                  <mat-card-content>
+                    <div id="About">
+                      <h5 class="text-center" style="color:rebeccapurple">ABOUT</h5>
+                     <p class="text-justify">
+                      {{user?.profile?.about}}
+                      <br><br>
+                      <h6 >Education</h6><br>
+                      <!-- <p class="text-justify"> Education : {{ user?.profile?.education ? user?.profile?.education : 'N/A' }}  </p> -->
+                      <p class="text-justify"> College : {{ user?.profile?.college ? user?.profile?.college : 'N/A' }} / Degree : {{ user?.profile?.degree ? user?.profile?.degree : 'N/A' }}
+                          <p class="text-justify"> Current City : {{ user?.family?.city ? user?.family?.city : 'N/A' }}   
+
+                        <p class="text-justify"> Additional Details : {{ user?.profile?.additional_qualification ? user?.profile?.additional_qualification : 'N/A' }} 
+        
+                     </p>
+                     </div>
+                     <div  id="careerDetails">
+                      <hr><br>
+                      <h5 class="text-center" style="color:rebeccapurple">CAREER DETAILS</h5>
+                    <br>
+                    <!-- <p class="text-justify"> Occupation : {{ user?.profile?.occupation ? user?.profile?.occupation : 'N/A' }}  </p> -->
+                   <p class="text-justify"> Profession : {{ user?.profile?.profession ? user?.profile?.profession : 'N/A' }} at {{ user?.profile?.company ? user?.profile?.company : 'N/A' }}  </p>           
+                    <p class="text-justify"> Current City : {{ user?.profile?.working_city ? user?.profile?.working_city : 'N/A' }} 
+                    <p class="text-justify"> Annual Income : {{ user?.profile?.monthly_income ? user?.profile?.monthly_income : 'N/A' }} lpa
+                  </div>
+        
+                  <div  id="horoscopeDetails">
+                    <hr><br>
+                    <h5 class="text-center" style="color:rebeccapurple">HOROSCOPE DETAILS</h5>
+                  <br>
+                  <p class="text-justify"> Manglik Status : {{ user?.profile?.manglik ? user?.profile?.manglik : 'N/A' }}  </p>
+                  <p class="text-justify"> Date of Birth : {{ user?.profile?.birth_date ? recommendedProfileBirthDay : 'N/A' }} 
+                  <p class="text-justify"> Birth Place : {{ user?.profile?.birth_place ? user?.profile?.birth_place : 'N/A' }} 
+                    <p class="text-justify"> Timing of Birth : {{ user?.profile?.birth_time ? user?.profile?.birth_time : 'N/A' }} 
+        
+                  </div>
+        
+                  <!-- <div  id="contactDetails">
+                    <hr><br>
+                    <h5 class="text-center" style="color:rebeccapurple">CONTACT DETAILS</h5>
+                  <br>
+                  <p class="text-justify"> Email : {{ user?.family?.email ? user?.family?.email : 'N/A' }}  </p>
+                  <p class="text-justify"> Mobile : {{ user?.family?.mobile ? user?.family?.mobile : 'N/A' }} 
+                  <p class="text-justify"> Whatsapp : {{ user?.family?.whats_app_no ? user?.family?.whats_app_no : 'N/A' }} 
+        
+                  </div> -->
+        
+                     <div  id="Familydetails">
+                        <hr><br>
+                        <h5 class="text-center" style="color:rebeccapurple">FAMILY DETAILS</h5>
+                     <p class="text-justify">
+                      {{user?.family?.about}}<br><br>
+                      Address : {{ user?.family?.address }}
+                      <br>
+                      <h6 >Parent's Details</h6><br>
+                      <!-- <p class="text-justify"> Parental Status : {{ user?.family?.parental_status ? user?.family?.parental_status : 'N/A' }}  </p> -->
+                      <p class="text-justify" *ngIf="user?.family?.father_status=='Alive' "> Father's Occupation : {{ user?.family?.occupation ? user?.family?.occupation : 'N/A' }}  </p>
+                      <p class="text-justify" *ngIf="user?.family?.mother_status=='Alive'"> Mother's Occupation : {{ user?.family?.occupation_mother ? user?.family?.occupation_mother : 'N/A' }}  </p>
+                      <p class="text-justify"> Family Income : {{ user?.family?.family_income ? user?.family?.family_income : 'N/A' }} lpa </p>
+        
+                      <p class="text-justify"> Family Type : {{ user?.family?.family_type ? user?.family?.family_type : 'N/A' }}  </p>
+                      <p class="text-justify"> Mother Tongue : {{ user?.family?.mother_tongue ? user?.family?.mother_tongue : 'N/A' }} 
+                      <p class="text-justify"> Mother's Occupation : {{ user?.family?.occupation_mother ? user?.family?.occupation_mother : 'N/A' }} 
+        
+                          <h6 >Siblings's Details</h6><br>
+                          <p class="text-justify"> Has {{ user?.family?.unmarried_daughters ? user?.family?.unmarried_daughters : '0' }} unmarried sisters and {{ user?.family?.married_daughters ? user?.family?.married_daughters : '0' }} married sisters. </p>
+                          <p class="text-justify"> Has {{ user?.family?.unmarried_sons ? user?.family?.unmarried_sons : '0' }} unmarried brothers and {{ user?.family?.married_sons ? userFamilyDetails?.married_sons : '0' }} married brothers. </p>
+            
+                    </div>
+                    <div  id="preference">
+                        <hr><br>
+                        <h5 class="text-center" style="color:rebeccapurple">PREFERENCES</h5>
+                        <p class="text-justify">
+                          {{user?.preferences?.description ? user?.preferences?.description : 'No description for preferences' }}<br>
+                          <br>
+                          Height : {{user?.preferences?.height_min ? user?.preferences?.height_min : 'N/A' }} - {{user?.preferences?.height_max ? user?.preferences?.height_max : 'N/A' }} <br><br>
+                          Age : {{user?.preferences?.age_min ? user?.preferences?.age_min : 'N/A' }} - {{user?.preferences?.age_max ? user?.preferences?.age_max : 'N/A' }}<br><br>
+                          Caste : {{user?.preferences?.caste ? user?.preferences?.caste : 'N/A' }}<br><br>
+                          Working Status : {{userPreferenceDetails?.working ? userPreferenceDetails?.working : 'N/A' }}<br><br>
+                          Manglik Status : {{user?.preferences?.manglik ? user?.preferences?.manglik : 'N/A' }}<br><br>
+                          Marital Status : {{user?.preferences?.marital_status ? user?.preferences?.marital_status : 'N/A' }}<br><br>
+                          Mother Tongue : {{user?.preferences?.mother_tongue ? user?.preferences?.mother_tongue : 'N/A' }}<br><br>
+                        </p>
+                       </div>
+                    
+                  </mat-card-content>
+                </mat-card>
+              </div>
+              </div>
+            </div> 
+            <div class="icons">
+              <div class="icons1">
+              <button class="takeAction" matTooltip="Shortlist the user"
+        (click)="updateProfileStatus(user?.profile?.id,'S')">
+                <img src="http://pngimg.com/uploads/like/like_PNG62.png" style="height:4rem;width:4rem">
+              </button>
+              <button class="takeAction" matTooltip="Contact the user" (click)="getWhatsappPoints()">
+                <img src="../../assets/whatsapp.webp" style="height:4rem;width:4rem">
+              </button>
+              <button class="takeAction" matTooltip="Reject the user" (click)="updateProfileStatus(user?.profile?.id,'R')">
+                <img src="https://cdn1.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/thumbs-down-circle-red-512.png" style="height:4rem;width:4rem">
+              </button>
+            </div>
+            </div>
+          </div>
+  </mat-tab> 
+
+
+  <!-- History -->
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <img src="../../assets/history.webp" class="recommend-icon" style="height:1.5rem;width:1.5rem">
+      History
+    </ng-template>
+      <mat-tab-group headerPosition="top" backgroundColor="warn" color="primary" mat-align-tabs="center" style="background-color:#F7F7F7" class="taa1" >
+        <mat-tab>
+         <ng-template mat-tab-label>
+           <img src="../../assets/recommended.webp" class="recommend-icon" style="height:1.5rem;width:1.5rem">
+           Shortlisted
+         </ng-template>
+         <div class="history">
+          <div class="container historySections" style="margin-top:1rem">
+            <div class="row ">
+              <h2 style="text-align: center" class="toggleShow" *ngIf="!likedUserHistory">Nothing to show !</h2>
+              <div  class="col text-center" *ngFor="let user of likedUserHistory">
+                <!-- <p style="margin-bottom:0;color:grey">30 July'18</p> -->
+                
+                <div class="circle" [ngStyle]="user.photo && user.photo && user.photo &&  {'background-image':'url(https://hansmatrimony.s3.ap-south-1.amazonaws.com/uploads/'+user?.photo+')'}" [routerLink]="['/contactedUserProfiles',user.id,'shortlisted']">
+                  <img src="http://pngimg.com/uploads/like/like_PNG62.png" class="img-responsive closed">
+                </div>
+                <p>Shortlisted</p>
+              </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+       <mat-tab>
+         <ng-template mat-tab-label>
+           <img src="../../assets/history.webp" class="recommend-icon" style="height:1.5rem;width:1.5rem">
+           Contacted
+         </ng-template>
+          <div class="history" >
+           <div class="container historySections" style="margin-top:1rem">
+            <div class="row ">
+                <h2 style="text-align: center" *ngIf="!contactedUserHistory" class="toggleShow">Nothing to show !</h2>
+
+              <div class="col text-center" *ngFor="let user of contactedUserHistory">
+                <div class="circle" [routerLink]="['/contactedUserProfiles',user.id,'contacted']" [ngStyle]="user.photo && user.photo && {'background-image':'url(https://hansmatrimony.s3.ap-south-1.amazonaws.com/uploads/'+user?.photo+')'}">
+                  <img src="../../assets/whatsapp.webp" class="img-responsive closed">
+                </div>
+                <p>Contacted</p>
+              </div>
+              </div></div>
+            </div>
+         </mat-tab>
+       <mat-tab>
+         
+           <ng-template mat-tab-label>
+             <img src="../../assets/recommended.webp" class="recommend-icon" style="height:1.5rem;width:1.5rem">
+             Rejected
+           </ng-template>
+             <div class="history">
+              <div class="container historySections" style="margin-top:1rem">
+                <div class="row ">
+                    <h2 style="text-align: center" *ngIf="!dislikedUserHistory" class="toggleShow">Nothing to show !</h2>
+
+                  <div class="col text-center" *ngFor="let user of dislikedUserHistory">
+                    <!-- <p style="margin-bottom:0;color:grey">30 July'18</p> -->
+                    <div *ngIf="user.status!='P'">
+                    <div class="circle" [ngStyle]="user.photo && {'background-image':'url(https://hansmatrimony.s3.ap-south-1.amazonaws.com/uploads/'+user?.photo+')'}" [routerLink]="['/contactedUserProfiles',user.id,'rejected']">
+                      <img src="https://cdn1.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/thumbs-down-circle-red-512.png" class="img-responsive closed">
+                    </div>
+                    <p>Rejected</p>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+        
+         </mat-tab>
+     </mat-tab-group>
+  </mat-tab>
+
+  <!-- User profile -->
+  <mat-tab>
+    
+      <ng-template mat-tab-label>
+        <img src="../../assets/recommended.webp" class="recommend-icon" style="height:1.5rem;width:1.5rem">
+        My Profile
+      </ng-template>
+
+      <div style="background-color:#500312;" class="div-recom">
+          <p class="text-center recom">My Profile</p>
+        </div>
+
+      <div class="row" style="margin-right:0;margin-left:0;margin-top:5.3%;">
+        <div class="col-md-6 text-center overflow" style="padding:0">
+          <div class="example-card container">
+
+            
+
+
+            <form  >
+              <label>
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <label for="Fullfile">
+                        <input class="hideInput" #Fullfile type="file" id="Fullfile" accept='image/*' (change)="previewFull(Fullfile.files,0)"  />
+                        <div class="container">
+                            <img id="proPic0" class="propic" *ngIf="loggedInUserGender=='Female'" [src]="userProfileDetails.photo ? 'https://hansmatrimony.s3.ap-south-1.amazonaws.com/uploads/'+userProfileDetails.photo : 'https://cdn1.iconfinder.com/data/icons/website-internet/48/website_-_female_user-512.png'" alt="Photo" class="recom-image ">
+                            <img id="proPic0" class="propic" *ngIf="loggedInUserGender=='Male'" [src]="userProfileDetails.photo ? 'https://hansmatrimony.s3.ap-south-1.amazonaws.com/uploads/'+userProfileDetails.photo : 'https://cdn2.iconfinder.com/data/icons/rcons-users-color/32/boy-512.png'" alt="Photo" class="recom-image ">
+                            <div class="centered" *ngIf="!userProfileDetails.photo">Share on Demand</div>
+                            
+                          </div>
+                        
+                            <i class="fa fa-plus-square-o" id="square" aria-hidden="true" matTooltip="Click to Edit your profile pic"></i>
+                        </label>
+                          </div>
+                        <div class="carousel-item" *ngFor="let photo of carouselLoggedInUserPics;let i=index">
+                            <label  [for]="'Fullfile'+(i+1)">
+                                <input #Fullfile type="file" [id]="'Fullfile' + (i+1)" class="hideInput" accept='image/*' (change)="previewFull(Fullfile.files,i+1)"  />
+                                <i class="fa fa-plus-square-o" id="square" aria-hidden="true" matTooltip="Click to Edit your profile pic"></i>
+                            <img [id]="'proPic'+(i+1)" class="propic" [src]="photo ? 'https://hansmatrimony.s3.ap-south-1.amazonaws.com/uploads/'+photo : '../../assets/Review2.webp'" alt="Photo" class="recom-image ">
+                            </label>
+                          </div>
+                    </div>
+                    <a class="carousel-control-prev carouselControl" href="#myCarousel" *ngIf="carouselLoggedInUserPics.length!=0" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" style="background-color: #5742cb; background-size: 74%;" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next carouselControl" href="#myCarousel" *ngIf="carouselLoggedInUserPics.length!=0" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" style="background-color: #5742cb; background-size: 74%;"  aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div> 
+            </label>                   
+           </form>
+            <mat-card-content class="cardas">
+              <div class='left'>
+                  <p class="font-increase" style="margin-bottom:0.5rem">{{ userProfileDetails?.name }}
+                <p class="font-increase" style="margin-bottom:0.5rem">{{currentAge ? currentAge : '-' }} years &nbsp;&nbsp;{{userProfileDetails?.height ? userProfileDetails?.height : '-' }}&nbsp;|&nbsp;{{userProfileDetails?.weight ? userProfileDetails?.weight : '-' }} kgs</p>
+                <p style="margin-bottom:0.5rem">{{ userProfileDetails?.profession ? userProfileDetails?.profession : 'N/A' }} at {{ userProfileDetails?.company ? userProfileDetails?.company : 'N/A' }} | {{userProfileDetails?.degree ? userProfileDetails?.degree : '-' }}</p>
+                <p style="margin-bottom:0.5rem">{{userProfileDetails?.monthly_income ? userProfileDetails?.monthly_income : '-' }} lpa | {{userFamilyDetails?.city ? userFamilyDetails?.city : '-' }} </p>
+              </div>
+              <div class='right'>
+                <p class="dsa">{{userFamilyDetails?.religion ? userFamilyDetails?.religion : '-' }}&nbsp;|&nbsp;{{userFamilyDetails?.caste ? userFamilyDetails?.caste : '-' }}&nbsp;|{{userFamilyDetails?.gotra ? userFamilyDetails?.gotra : '-' }}</p>
+                <p class="dsa">{{userProfileDetails?.marital_status ? userProfileDetails?.marital_status : '-' }}</p>
+                <p class="dsa">{{userProfileDetails?.manglik ? userProfileDetails?.manglik : '-' }}</p>
+                <p class="dsa">{{userProfileDetails?.food_choice ? userProfileDetails?.food_choice : '-' }}</p>
+              </div>
+            </mat-card-content>
+          </div>
+        </div><hr>
+        <div class="col-md-6 text-center" >
+          <div class="container sas" >
+            <button type="button" class="btn btn-outline-warning round active" [ngClass]="{'active': isClicked}"  (click)="scroll('About')">About <span *ngIf="loggedInUserGender=='Male'">Him</span><span *ngIf="loggedInUserGender=='Female'">Her</span></button>
+           &nbsp; 
+            <button type="button" class="btn btn-outline-warning round" (click)="scroll('Familydetails')">Family
+              details</button>
+              &nbsp;
+            <button type="button" class="btn btn-outline-warning round" (click)="scroll('preference')">Preferences</button>
+          </div>
+          <div style="height:26rem;overflow-y:visible">
+          <mat-card class="about-card" >
+            <mat-card-content>
+              <div id="About">
+              <h5 class="text-center" style="color:rebeccapurple">ABOUT</h5>
+             <p class="text-justify">
+              {{userProfileDetails?.about}}
+              <br><br>
+              <h6 >Education</h6><br>
+              <!-- <p class="text-justify"> Education : {{ userProfileDetails?.education ? userProfileDetails?.education : 'N/A' }}  </p> -->
+              <p class="text-justify"> College : {{ userProfileDetails?.college ? userProfileDetails?.college : 'N/A' }} / Degree : {{ userProfileDetails?.degree ? userProfileDetails?.degree : 'N/A' }}
+              <p class="text-justify"> Current City : {{ userFamilyDetails?.city ? userFamilyDetails?.city : 'N/A' }}   
+              <p class="text-justify"> Additional Details : {{ userProfileDetails?.additional_qualification ? userProfileDetails?.additional_qualification : 'N/A' }} 
+
+             </p>
+             </div>
+             <div  id="careerDetails">
+              <hr><br>
+              <h5 class="text-center" style="color:rebeccapurple">CAREER DETAILS</h5>
+            <br>
+            <p class="text-justify"> Occupation : {{ userProfileDetails?.occupation ? userProfileDetails?.occupation : 'N/A' }}  </p>
+            <p class="text-justify"> Profession : {{ userProfileDetails?.profession ? userProfileDetails?.profession : 'N/A' }} at {{ userProfileDetails?.company ? userProfileDetails?.company : 'N/A' }}  </p>           
+            <!-- <p class="text-justify"> Current City : {{ userProfileDetails?.city ? userProfileDetails?.city : 'N/A' }}  -->
+            <p class="text-justify"> Annual Income : {{ userProfileDetails?.monthly_income ? userProfileDetails?.monthly_income : 'N/A' }} lpa
+          </div>
+
+          <div  id="horoscopeDetails">
+            <hr><br>
+            <h5 class="text-center" style="color:rebeccapurple">HOROSCOPE DETAILS</h5>
+          <br>
+          <p class="text-justify"> Manglik Status : {{ userProfileDetails?.manglik ? userProfileDetails?.manglik : 'N/A' }}  </p>
+          <p class="text-justify"> Date of Birth : {{ userProfileDetails?.birth_date ? userProfileBirthDay : 'N/A' }} 
+          <p class="text-justify"> Birth Place : {{ userProfileDetails?.birth_place ? userProfileDetails?.birth_place : 'N/A' }} 
+            <p class="text-justify"> Timing of Birth : {{ userProfileDetails?.birth_time ? userProfileDetails?.birth_time : 'N/A' }} 
+
+          </div>
+
+          <div  id="contactDetails">
+            <hr><br>
+            <h5 class="text-center" style="color:rebeccapurple">CONTACT DETAILS</h5>
+          <br>
+          <p class="text-justify"> Email : {{ userFamilyDetails?.email ? userFamilyDetails?.email : 'N/A' }}  </p>
+          <p class="text-justify"> Mobile : {{ userFamilyDetails?.mobile ? userFamilyDetails?.mobile : 'N/A' }} 
+          <p class="text-justify"> Whatsapp : {{ userProfileDetails?.whatsapp ? userProfileDetails?.whatsapp : 'N/A' }} 
+
+          </div>
+
+             <div  id="Familydetails">
+                <hr><br>
+                <h5 class="text-center" style="color:rebeccapurple">FAMILY DETAILS</h5>
+             <p class="text-justify">
+              {{userFamilyDetails?.about}}<br><br>
+              Address : {{ userFamilyDetails?.address }}
+              <br>
+              <h6 >Parent's Details</h6><br>
+              <!-- <p class="text-justify"> Parental Status : {{ userFamilyDetails?.parental_status ? userFamilyDetails?.parental_status : 'N/A' }}  </p> -->
+              <p class="text-justify" *ngIf="userFamilyDetails?.father_status=='Alive'"> Father's Occupation : {{ userFamilyDetails?.occupation ? userFamilyDetails?.occupation : 'N/A' }}  </p>
+              <p class="text-justify" *ngIf="userFamilyDetails?.mother_status=='Alive'"> Mother's Occupation : {{ userFamilyDetails?.occupation_mother ? userFamilyDetails?.occupation_mother : 'N/A' }}  </p>
+              <p class="text-justify"> Family Income : {{ userFamilyDetails?.family_income ? userFamilyDetails?.family_income : 'N/A' }} lpa </p>
+
+              <p class="text-justify"> Family Type : {{ userFamilyDetails?.family_type ? userFamilyDetails?.family_type : 'N/A' }}  </p>
+              <p class="text-justify"> Mother Tongue : {{ userFamilyDetails?.mother_tongue ? userFamilyDetails?.mother_tongue : 'N/A' }} 
+              <p class="text-justify"> Mother's Occupation : {{ userFamilyDetails?.occupation_mother ? userFamilyDetails?.occupation_mother : 'N/A' }} 
+
+                  <h6 >Siblings's Details</h6><br>
+                  <p class="text-justify"> Has {{ userFamilyDetails?.unmarried_daughters ? userFamilyDetails?.unmarried_daughters : '0' }} unmarried sisters and {{ userFamilyDetails?.married_daughters ? userFamilyDetails?.married_daughters : '0' }} married sisters. </p>
+                  <p class="text-justify"> Has {{ userFamilyDetails?.unmarried_sons ? userFamilyDetails?.unmarried_sons : '0' }} unmarried brothers and {{ userFamilyDetails?.married_sons ? userFamilyDetails?.married_sons : '0' }} married brothers. </p>
+    
+            </div>
+            <div  id="preference">
+                <hr><br>
+                <h5 class="text-center" style="color:rebeccapurple">PREFERENCES</h5>
+                <p class="text-justify">
+                  {{userPreferenceDetails?.description ? userPreferenceDetails?.description : 'No description for preferences' }}<br>
+                  <br>
+                  Height : {{userPreferenceDetails?.height_min ? userPreferenceDetails?.height_min : 'N/A' }} - {{userPreferenceDetails?.height_max ? userPreferenceDetails?.height_max : 'N/A' }} <br><br>
+                  Age : {{userPreferenceDetails?.age_min ? userPreferenceDetails?.age_min : 'N/A' }} - {{userPreferenceDetails?.age_max ? userPreferenceDetails?.age_max : 'N/A' }}<br><br>
+                  Caste : {{userPreferenceDetails?.caste ? userPreferenceDetails?.caste : 'N/A' }}<br><br>
+                  Working Status : {{userPreferenceDetails?.working ? userPreferenceDetails?.working : 'N/A' }}<br><br>
+                  Manglik Status : {{userPreferenceDetails?.manglik ? userPreferenceDetails?.manglik : 'N/A' }}<br><br>
+                  Marital Status : {{userPreferenceDetails?.marital_status ? userPreferenceDetails?.marital_status : 'N/A' }}<br><br>
+                  Mother Tongue : {{userPreferenceDetails?.mother_tongue ? userPreferenceDetails?.mother_tongue : 'N/A' }}<br><br>
+                </p>
+               </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        </div>
+      </div>
+      <div class="profileEdit">
+          <button matTooltip="Click to Edit your profile" style="  border: none;
+        background-color: inherit; padding: 14px 28px;outline: none;cursor: pointer;" (click)="navigateToEditProfile()">
+            <img src="https://img.icons8.com/cotton/2x/edit--v1.png" style="height:4rem;width:4rem">
+          </button>
+        </div>
+    </mat-tab>
+</mat-tab-group>
+
+
+<ng-template class="contactmodal" #contactModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <button type="button" style="outline: none" class="close" aria-label="Close" (click)="Cross_click()">X
+      </button>
+    </div>
+    <div class="modal-body">
+      <div *ngIf="whatsappCredit>0">
+        <p class="verifyHeader">You have {{ whatsappCredit }} credit/credits. This will cost you 1 credit.</p>
+        <p class="verifyHeader"> Please press Yes to Proceed otherwise No</p>
+        <button mat-raised-button color="accent" mat-btn (click)="contactUser(recommendedUserId)">Yes</button>
+        <button style="float:right" mat-raised-button color="warn" (click)="Cross_click()">No</button>
+
+      </div>  
+
+      <div *ngIf="whatsappCredit<=0">
+          <p class="verifyHeader">You have {{ whatsappCredit }} credit/credits. </p>
+          <p class="verifyHeader"> Please subscribe to buy credits.</p>
+          <button mat-raised-button color="accent" mat-btn routerLink="/subscription" (click)="Cross_click()">Go to Subscription Page</button>
+        </div>  
+  </div>
+
+</ng-template>

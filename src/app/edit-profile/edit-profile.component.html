@@ -1,0 +1,364 @@
+<div style="background-color:#500312">
+  <p class="text-center recom" style="color:orange;position: relative;font-size: 28px">Edit Profile</p>
+</div>
+<div class="center">
+  <div class="circle"  *ngIf="loggedInUserGender=='Female'" [ngStyle]="{'background-image':'url(https://cdn1.iconfinder.com/data/icons/website-internet/48/website_-_female_user-512.png)'}">    <img src="../../assets/w.webp" class="img-responsive closed">
+  </div>
+    <div class="circle"  *ngIf="loggedInUserGender=='Male'" [ngStyle]="{'background-image':'url(https://cdn2.iconfinder.com/data/icons/rcons-users-color/32/boy-512.png)'}">    <img src="../../assets/w.webp" class="img-responsive closed">
+    </div>
+</div>
+    <br>
+<div class="container sas" >
+  <div class="container sas" >
+      <button type="button" class="btn btn-outline-warning round active" [ngClass]="{'active': isClicked}"  (click)="scroll('PersonalDetails')">About Him</button>
+     &nbsp; 
+      <button type="button" class="btn btn-outline-warning round" (click)="scroll('FamilyDetails')">Family
+        details</button>
+        &nbsp;
+      <button type="button" class="btn btn-outline-warning round preference" (click)="scroll('Preferences')">Preferences</button>
+    </div>
+</div>
+<br>
+<form [formGroup]="userEditDetails" (ngSubmit)="postEditDetails()">
+<div class="container" id="PersonalDetails" >    
+<div class="row">
+<div class="col-md-6">
+<mat-card style="background-color:#F7F7F7">
+
+  <p class="pull-left head">About</p>
+  <button class="pull-right" style="border: none;
+  background-color: inherit;outline: none;cursor: pointer;" >
+      
+    </button>
+    <br><br>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label> About Yourself</mat-label>
+      <textarea matInput [value]="userEditDetails.value.about" formControlName="about" placeholder="Write about your intrests and hobbies etc" [(ngModel)]='About'  ></textarea>
+    </mat-form-field>
+    <br><br>
+</mat-card>
+</div>
+<div class="col-md-6 space" >
+  <mat-card style="background-color:#F7F7F7">
+      <p class="pull-left head">Basic Details</p>
+      <button class="pull-right" style="border: none;
+      background-color: inherit;outline: none;cursor: pointer;">
+          
+        </button>
+        <br><br>
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input matInput [value]="userEditDetails.value.name"  formControlName="name">
+                  </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Birth Date</mat-label>
+                    <input matInput  [value]="userEditDetails.value.birth_date"  formControlName="birth_date">
+                  </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Marital Status</mat-label>
+                <select matNativeControl [value]="userEditDetails.value.marital_status" formControlName="marital_status" >
+                    <option [ngValue]="undefined" disabled>Marital Status</option>
+                    <option *ngFor="let option of MaritalStatus">
+                      {{option}}
+                    </option>
+                  </select>
+                  </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Religion</mat-label>
+                  <select #religion matNativeControl id="selectReligion" [value]="userEditDetails.value.religion" formControlName="religion" (click)="Religion($event)">
+                    <option *ngFor="let  option of Religions">
+                      {{option}}
+                    </option>
+                  </select>
+                  </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Height</mat-label>
+                <select matNativeControl  formControlName="height" [value]="userEditDetails.value.height">
+                    <option *ngFor="let  option of Heights" >
+                      {{option}}
+                    </option>
+                  </select>
+                  </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Caste</mat-label>
+                  <input type="text" matInput formControlName="caste" [value]="userEditDetails.value.caste" required [matAutocomplete]="caste" required>
+                    <mat-autocomplete autoActiveFirstOption #caste="matAutocomplete">
+                        <mat-optgroup *ngFor="let group of Castes" [label]="group.group">
+                            <mat-option *ngFor="let name of group.names" [value]="name" required>
+                              {{name}}
+                            </mat-option>
+                          </mat-optgroup>
+                    </mat-autocomplete>
+ </mat-form-field> 
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Weight(Kg)</mat-label>
+                    <input matInput [value]="userEditDetails.value.weight"  formControlName="weight"> 
+                  </mat-form-field>
+            </div>
+          <div class="col-md-6">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Mobile</mat-label>
+                <input matInput [value]="userEditDetails.value.mobile"  formControlName="mobile"> 
+              </mat-form-field>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field class="full-width" appearance="outline" >
+                    <mat-label>Current City</mat-label>
+                    <input type="text" matInput [matAutocomplete]="city" formControlName="city">
+                    <mat-autocomplete autoActiveFirstOption #city="matAutocomplete">
+                      <mat-option *ngFor="let option of citis | async" [value]="userEditDetails.value.city">
+                        {{option}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Food Choice</mat-label>
+                <select matNativeControl [value]="userEditDetails.value.food_choice" formControlName="food_choice">
+                    <option [ngValue]="undefined" disabled>Food Choice</option>
+                    <option *ngFor="let option of FoodChoice">
+                      {{option}}
+                    </option>
+                  </select>
+                  </mat-form-field>
+            </div>
+          
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+              <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Address</mat-label>
+                  <input matInput [value]="userEditDetails.value.address"  formControlName="address"> 
+                </mat-form-field>
+          </div>
+          </div>
+        <br><br>
+      </mat-card>    
+</div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-6 space" >
+      <mat-card style="background-color:#F7F7F7">
+          <p class="pull-left head">Education</p>
+          <button class="pull-right" style="border: none;
+          background-color: inherit;outline: none;cursor: pointer;">
+            </button>
+            <br><br>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Degree</mat-label>
+                        <input matInput placeholder="Degree" [value]="userEditDetails.value.degree" formControlName="degree">
+                      </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>College</mat-label>
+                        <input placeholder="College" matInput  [value]="userEditDetails.value.college" formControlName="college">
+                      </mat-form-field>
+                </div>
+            </div>
+            <br><br><br><br>
+            <br><br>
+      </mat-card>
+    </div>
+    <div class="col-md-6">
+      <mat-card style="background-color:#F7F7F7">
+        <p class="pull-left head">Career</p>
+        <button class="pull-right" style="border: none;
+        background-color: inherit;outline: none;cursor: pointer;" >
+            
+          </button><br><br>
+          <div class="row">
+              <div class="col-md-6">
+                  <mat-form-field class="full-width" appearance="outline">
+                      <mat-label>Occupation</mat-label>
+                      <input matInput  [value]="userEditDetails.value.occupation" formControlName="occupation">
+                    </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                  <mat-form-field class="full-width" appearance="outline">
+                      <mat-label>Annual Income</mat-label>
+                      <input type="text" matInput [value]="userEditDetails.value.annual_income" formControlName="annual_income" required name="Occupation">lacs
+                    </mat-form-field>
+              </div>
+          </div>
+          <br><br>
+          <br><br>
+      </mat-card>
+    </div>
+    </div>
+    <br>
+</div>
+<br><br>
+<div class="container" id="FamilyDetails">
+  <div class="row">
+  <div class="col-md-6">
+    <mat-card style="background-color:#F7F7F7">
+      <p class="pull-left head">About Family</p>
+      <button class="pull-right" style="border: none;
+      background-color: inherit;outline: none;cursor: pointer;" >
+          
+        </button>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>About</mat-label>
+            <textarea matInput  placeholder="Family About" [value]="userEditDetails.value.family_about" formControlName="family_about" row="6"></textarea>
+          </mat-form-field>
+        <br><br>
+        <br><br>
+    </mat-card>
+  </div>
+  <div class="col-md-6 space" >
+      <mat-card style="background-color:#F7F7F7">
+          <p class="pull-left head">Family Details</p>
+          <button class="pull-right" style="border: none;
+          background-color: inherit;outline: none;cursor: pointer;">
+            </button>
+            <br><br>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="full-width" appearance="outline">
+                          <mat-label>Family Type</mat-label>
+                      <select matNativeControl [value]="userEditDetails.value.family_type" formControlName="family_type">
+                          <option [ngValue]="undefined" disabled>Family Type</option>
+                          <option *ngFor="let option of FamilyType">
+                            {{option}}
+                          </option>
+                        </select>
+                      </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Family City</mat-label>
+                    <input matInput  [value]="userEditDetails.value.family_city" formControlName="family_city">
+                  </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Father's Occupation</mat-label>
+                        <input matInput   [value]="userEditDetails.value.occupation_father" formControlName="occupation_father">
+                      </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Mother's Occupation</mat-label>
+                        <input matInput   [value]="userEditDetails.value.occupation_mother" formControlName="occupation_mother">
+                      </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Family's Address</mat-label>
+                        <input matInput   [value]="userEditDetails.value.family_address" formControlName="family_address">
+                      </mat-form-field>
+                </div>
+            </div>
+            <br><br>
+      </mat-card>
+    </div>
+</div></div>
+<br>
+  <div class="container" id="Preferences">
+      <div class="row">
+      <div class="col-md-12 space" >
+          <mat-card style="background-color:#F7F7F7">
+              <p class="pull-left head">Preference</p>
+              <button class="pull-right" style="border: none;
+              background-color: inherit;outline: none;cursor: pointer;">
+                    </button>
+                <br><br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Caste</mat-label>
+                            <input matInput  [value]="userEditDetails.value.pref_caste" formControlName="pref_caste">
+                          </mat-form-field> -->
+                          <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedItems" 
+                  [settings]="dropdownSettings" 
+                  (onSelect)="onItemSelect($event)" 
+                        (onDeSelect)="OnItemDeSelect($event)"
+                        (onSelectAll)="onSelectAll($event)"
+                        (onDeSelectAll)="onDeSelectAll($event)" formControlName="pref_caste"></angular2-multiselect>
+                        
+                        
+                    </div>
+                    <div class="col-md-6">          
+                      <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Marital Status</mat-label>
+                    <select matNativeControl [value]="userEditDetails.value.pref_marital_status" formControlName="pref_marital_status">
+                        <option [ngValue]="undefined" disabled>Marital Status</option>
+                        <option *ngFor="let option of MaritalStatus">
+                          {{option}}
+                        </option>
+                      </select>
+                      </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Manglik</mat-label>
+                            <select matNativeControl name="prefManglik" [value]="userEditDetails.value.pref_manglik" formControlName="pref_manglik">
+                              <option *ngFor="let  option of prefManglik" [value]="option">
+                                {{option}}
+                              </option>
+                            </select> 
+                          </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Working</mat-label>
+                            <select matNativeControl [value]="userEditDetails.value.working"  formControlName="working" required name="working">
+                              <option *ngFor="let  option of Working" [value]="option">
+                                {{option}}
+                              </option>
+                            </select>                           </mat-form-field>
+                    </div>
+                </div>
+                <!-- <div class="row">
+                    <div class="col-md-6">
+                          <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Food Choice</mat-label>
+                        <select matNativeControl   [value]="userEditDetails.value.pref_food_choice" formControlName="pref_food_choice">
+                            <option [ngValue]="undefined" disabled>Food Choice</option>
+                            <option *ngFor="let option of FoodChoice">
+                              {{option}}
+                            </option>
+                          </select>
+                          </mat-form-field>
+                    </div>
+                </div> -->
+                <button mat-raised-button color="warn" type="submit" class="pull-right">Save All</button>
+                <br><br>
+          </mat-card>
+        </div>
+      </div></div></form>
+      <br><br>

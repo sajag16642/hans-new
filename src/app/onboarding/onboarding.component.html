@@ -1,0 +1,178 @@
+
+<main class='pwaSize fixed t-0 b-0 bg-light w-full HC main' style="height: 90vh;">
+  <div class='bg-lightblue fixed t-0 w-full pwaSize p-0-5 z-10 white hide' style="display: flex;justify-content:space-between">
+      <div class='flex-fs-c'>
+          <img src='../../assets/logo1.ico' class='w-40' style="border-radius: 100%">
+          <div class='f16 white m-l-10 pointer'>Hans Matrimony</div>
+      </div>
+
+      <div style="display: flex">
+          <div class="dropdown">
+              <i class="pointer fa fa-language" data-toggle="dropdown" style="font-size: 28px;"></i>
+              <ul class="dropdown-menu dropdown-menu-right t-l">
+                  <li>
+                      <a class='flex-fs-c' [routerLink]="['/register']"><span class='p-0-5'>English</span></a>
+                  </li>
+
+
+
+
+
+
+
+                  <li>
+                      <a class='flex-fs-c' [routerLink]="['/register']"><span class='p-0-5'>Hindi</span></a>
+                  </li>
+              </ul>
+          </div>
+          <div class="dropdown m-l-5">
+              <i class="pointer fa fa-bars" data-toggle="dropdown" style="font-size: 28px;"></i>
+              <ul class="dropdown-menu dropdown-menu-right t-l">
+                  <li>
+                      <a class='flex-fs-c' [routerLink]="['/register']"><i class="fa fa-phone"></i><span class='m-l-10'>English</span></a>
+                  </li>
+                  <li>
+                      <a class='flex-fs-c' [routerLink]="['/register']"><i class="fa fa-envelope"></i><span class='m-l-10'>Hindi</span></a>
+                  </li>
+                  <li>
+                      <a class='flex-fs-c' [routerLink]="['/register']"><i class="fa fa-ellipsis-v"></i><span class='m-l-10'>Gujrati</span></a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+  
+  <div id="my-botui-app" class='mainBody pwaSize w-full bg-white'>
+      <bot-ui></bot-ui>
+  </div>
+  <main *ngIf="1>2" class='mainBody pwaSize w-full bg-white'>
+
+      <div style="margin-top:20px;" class="section" id="body">
+          <div class="section" *ngFor ="let i of show_arr" style="margin-top:20px">
+              <div class="section" *ngIf="i.sent===1" style="margin-top:20px;display:block" >
+                  <div class="pull-right" style="display: block;border-radius:10px;text-align:center;padding: 8px;margin-right: 10px;background-color: #34b7f1;display:block;margin-left:15%" id="color1">
+                      <p style="color:white;margin-top:auto;margin-bottom:auto"><span id="display1" style="font-size : 20px">{{i.data}}</span></p>
+                  </div> 
+              </div>
+      
+              <div class="section" *ngIf="i.message===1" style="margin-top:20px;display: block" >
+                  <div class="pull-left" style="display: block;border-radius:10px;text-align:center;padding: 8px;margin-left: 10px;margin-top: 20px;margin-bottom : 20px;background-color: #34b7f1;display:block;margin-right:15%" id="color2">
+                      <p style="color:white;margin-top:auto;margin-bottom:auto"><span id="display2" style="font-size : 20px">{{i.data}}</span></p>
+                  </div>                                
+              </div>
+              <div class="section" *ngIf = "i.profile===1" style="margin-top:20px;display: block;" >
+                  <div class="section"  style="margin-top:20px"> 
+                      <div class="section">
+                          <img src="https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651__340.png" style="width : 100%;height : 16rem;background-color : white;margin-top:30px">
+                      </div>
+                  </div>
+              
+                  <!-- carousel done -->
+                  
+                  <div class="container"  style="background-color : white;;padding:10px;width: 100%">
+                      <div class="row" style="text-align:left">
+                          <p>{{i.data.name}}</p>
+                      </div>
+                          
+                  </div> 
+                  <div class="container" style="background-color:white;padding:10px;width: 100%">     
+                      <div class="section" style="display:flex">
+                          <div class="col-sm-4 col-md-4 col-lg-4" style="text-align:left ;display : flex">
+                              <img src="../../../assets/color_icons/calendar-alt_gradient.svg">
+                      
+                              <p>{{i.data.birth_date}}</p>
+                          </div>
+                          <div class="col-sm-4 col-md-4 col-lg-4" style="text-align:center; display : flex">
+                              <img src="../../../assets/color_icons/ruler.svg">
+                      
+                              <p>{{i.data.height}} inches</p>
+                          </div>
+                          <div class="col-sm-4 col-md-4 col-lg-4" style="text-align:right;display : flex">
+                              <img src="../../../assets/color_icons/weight.svg">
+                      
+                              <p>{{i.data.weight}} kg</p>
+                          </div>
+                      </div>
+                      
+              
+                  
+                  </div>
+              
+                  <div class="container" style="background-color:white;;padding:10px;width: 100%">     
+                      <div class="section" style="display:flex">
+                          <div class="col-sm-4 col-md-4 col-lg-4" style="text-align:left ;display : flex">
+                              <img src="../../../assets/color_icons/graduation-hat.svg">
+                      
+                              <p>{{i.data.degree}}</p>
+                          </div>
+                          <div class="col-sm-4 col-md-4 col-lg-4" style="text-align:center; display : flex">
+                              <img src="../../../assets/color_icons/Rupee.svg">
+                      
+                              <p>{{i.data.monthly_income}}</p>
+                          </div>
+                          <div class="col-sm-4 col-md-4 col-lg-4" style="text-align:right;display : flex">
+                              <img src="../../../assets/color_icons/map-marker_blue.svg">
+                      
+                              <p>{{i.data.locality}}</p>
+                          </div>
+                      </div>
+                      
+              
+                  
+                  </div>
+              
+                  <div class="container" style="background-color:white;;padding:10px;width: 100%">     
+                      <div class="section" style="display:flex">
+                          <div class="col-sm-4 col-md-4 col-lg-4" style="text-align:left ;display : flex">
+                              <img src="../../../assets/color_icons/church.svg">
+                      
+                              <p>{{i.data.religion}}</p>
+                          </div>
+                          <div class="col-sm-4 col-md-4 col-lg-4" style="text-align:center; display : flex">
+                              <img src="../../../assets/color_icons/heart.svg">
+                      
+                              <p>{{i.data.marital_status}}</p>
+                          </div>
+                          <div class="col-sm-4 col-md-4 col-lg-4" style="text-align:right;display : flex">
+                              <img src="../../../assets/color_icons/crockery.svg">
+                      
+                              <p>{{i.data.food_choice}}</p>
+                          </div>
+                      </div>
+                      
+              
+                  
+                  </div>
+
+                  <div class="container" style="background-color:white;;padding:10px;width: 100%" >  
+                      <div class="row" style="width:100%;text-align:center;display : block;margin-top:20px">
+                          <div class="text-center" style="margin-left:auto;margin-right:auto" (click)="knowMore()"  *ngIf="DoNotshowfull">
+                          <p style="color : #34b7f1;text-align: center" >KNOW MORE</p>
+                          </div>
+
+                          
+                          
+                          <div style="margin-left:auto;margin-right:auto;display:flex;margin-top:15px">
+                              <button class="btn btn-success" style="margin-left:auto;margin-right:auto" type="button" (click)="sendresponse('YES')">YES</button>
+                              <button class="btn btn-danger" style="margin-left:auto;margin-right:auto" type="button" (click)="sendresponse('NO')">NO</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </main>
+
+  <footer *ngIf="userObj.identity_number != ''" class='pwaSize w-full p-0-5' style="position:fixed; bottom: 5px;">
+    <form [formGroup]="answer" style="display: flex">        
+        <input placeholder="Show me some profiles" formControlName="ans" id="text" class='t-l' style="width: calc(100% - 50px); margin: 0 !important; padding: 8px 15px !important; font-size: 14px !important;">
+        <div style="width: 40px; margin-left: 10px;" id="send-button">
+            <div class="circle flex-c-c pointer flex-c-c" (click)="read('typed')"><i class="fa fa-paper-plane flex-c-c white" style="font-size: 25px !important; width: 40px !important; height: 40px !important;"></i></div>
+        </div>
+    </form>
+</footer>
+<footer *ngIf="userObj.identity_number==''" style="position: fixed; bottom: 10px;" class='pwaSize w-full p-0-5 flex-c-c'>
+    <button class='btn btn-blue' routerLink="/login">Login</button>
+</footer>
+
+</main>

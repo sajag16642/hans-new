@@ -1,0 +1,85 @@
+<!-- Navbar start -->
+<div *ngIf="header">
+<header>
+  <div class="card" style="max-height:40px;
+        border-radius:0 !important;background-color: #7b1429" *ngIf="routerUrl != '/hanswebapp/dashboard'">
+    <p class="contact-details text-right">help@hansmatrimony.com +919697989697 </p>
+  </div>
+  <nav id="navbar" class="navbar navbar-expand-md fixed-top navBarTop " style="background-color:whitesmoke;">
+    <a class="navbar-brand" href="#" style="color:white;margin-right:0.1rem;padding-top:0;padding-bottom: 0">
+      <img src="../../assets/Icons/unnamed.jpg" class="banner-img"></a>
+    <button class="navbar-toggler" type="button" (click)="myFunction()" id="toggle" data-toggle="collapse"
+      data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon" style="padding-top: 3px"><img src="../../assets/menu.png" alt="menu.png" style="width: 15px;"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+
+        </li>
+        <li class="nav-item">
+
+        </li>
+        <li class="nav-item">
+
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-warning btn-responsive" (click)="subscription()">Subscription</button>
+        &nbsp; &nbsp; &nbsp;
+        <button class="btn btn-warning btn-responsive login" data-toggle="modal" *ngIf=" isLogin=='false'"
+          data-target="#loginModal">Login/Register</button>
+        &nbsp;
+
+        <button class="btn btn-warning btn-responsive" type="submit" *ngIf="isLogin=='true'"
+          (click)="logout()">Logout</button>
+      </form>
+    </div>
+  </nav>
+</header>
+</div>
+<!-- Navbar end -->
+<lib-ngx-notification></lib-ngx-notification> <!-- Notifications -->
+<div *ngIf="footer">
+  <button mat-raised-button id="backBtn" color="warn" (click)="back()">Back</button>
+</div>
+<router-outlet (activate)="changeOfRoutes()"></router-outlet>
+<div class="footer" *ngIf="footer">
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-3 text-center">
+        <h4 style="color:white; font-weight: bold">Contact</h4>
+        <p style="color:white; margin-bottom: 8px;" class="sizeIt">
+          9697989697
+        </p>
+        <span style="color:white;" class="sizeIt">matches@hansmatrimony.com</span>
+        
+      </div>
+      <div class="col-md-5 col-5 text-center">
+        <h4 style="color:white ;font-weight: bold">Follow Us</h4>
+          <i class="fa fa-facebook-official" aria-hidden="true" style="color:white"></i>
+          <i class="fa fa-twitter-square" aria-hidden="true" style="color:white"></i>
+      </div>
+      <div class="col-md-4 col-4 text-center">
+        <h4 style="color:white; font-weight: bold">Policy Info</h4>
+        <a href="#" class="link-footer sizeIt">Privacy Policy</a><br>
+        <a href="#" class="link-footer sizeIt">Terms Of use</a><br>
+        <a href="#" class="link-footer sizeIt">Cancellation</a><br>
+        <a href="#" class="link-footer sizeIt">FAQ</a>
+      </div>
+    </div>
+    <div style="text-align: center;">
+        <p style="color:white;margin: 0px 0px; padding-bottom: 20px;" class="sizeIt">Twango social network pvt ltd</p>
+</div>
+  </div>
+</div>
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered" role="document">
+      <div class="modal-content" style="background:#F7F7F7;border:1px solid orange">
+        <app-login></app-login>
+      </div>
+    </div>
+  </div>

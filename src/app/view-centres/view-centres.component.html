@@ -1,0 +1,40 @@
+<main>
+  <div class="headers" style="border-bottom: 5px solid #f1f1f1">
+      <div class="row" style="width:50%;margin-left:0px;height:70px;">
+         <div style="display:inline-flex;margin-top:auto;margin-bottom:auto;margin-left: 15px"><img src="../../../assets/images/logo.png" style="width:50px;height:50px"> &nbsp; &nbsp;<p style="font-size:1rem;margin-top:auto;margin-bottom:auto">Our Centers</p></div>
+      </div>
+  </div>
+  <ng-container>
+      <div class="row">
+         <h5 style="color:blue;text-align:center;margin-left: auto;margin-right: auto;margin-bottom:0px;padding: 10px">Head Office</h5>
+      </div>   
+      <div class="card-wrapper">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="width:77%;margin-left: auto;margin-right: auto;padding: 5px">
+                  <div class="row" style="margin-left: auto;margin-right: auto;margin-bottom:0px;padding: 10px;background-color:#F1F1F1;border-radius:20px;">
+                     <div style="display:inline-flex;margin-bottom: 10px;padding: 5px"><i class="fa fa-map-marker " aria-hidden="true" style="margin-top:auto;margin-bottom:auto"></i><p style="margin-top:auto;margin-bottom:auto">&nbsp;&nbsp;H-18, Bali Nagar, New Delhi</p></div>
+                     <div style="display:inline-flex;margin-bottom: 10px;padding: 5px"><i class="fa fa-phone" aria-hidden="true" style="margin-top:auto;margin-bottom:auto"></i><p style="margin-top:auto;margin-bottom:auto">&nbsp;&nbsp;9818215198</p></div>
+                     <div style="display:inline-flex;padding: 5px"><i class="fa fa-envelope" aria-hidden="true" style="margin-top:auto;margin-bottom:auto"></i><p style="margin-top:auto;margin-bottom:auto">&nbsp;&nbsp;matches@hansmatrimony.com</p></div>
+                  </div>
+            </div>
+      </div>
+  </ng-container>
+  <ng-container>
+      <div class="row" style="margin-right:0px;margin-left:0px">
+       <h5 style="color:blue;margin-left: auto;margin-right: auto;margin-bottom:-15px;padding: 10px">Subsidiary Offices</h5>
+      </div>
+      <div class="card-wrapper" id="centres" style="margin-top:0px">
+         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="centres-list" *ngFor = "let user of centres" style="display:inline-flex;margin-top: 20px">                
+            <div class="row" style="background-color:#F1F1F1;width:80%;margin-left: auto;margin-right: auto;padding: 5px;border-radius:20px;">
+                  <div class="column-l" style="width:50%">
+                     <div style="padding:10px;text-align:center"> <img src="{{user.profile_photo}}" style="border-radius: 50%;width: 100px;" ></div>
+                     <div><p style="text-align:center">{{user.representatives}}</p></div>
+                  </div>
+                  <div class="column-r" style="width:50%;margin-top:auto;margin-bottom:auto">      
+                     <div style="display:inline-flex;margin-bottom: 10px"><i class="fa fa-phone" aria-hidden="true" style="margin-top:auto;margin-bottom:auto"></i><p style="margin-top:auto;margin-bottom:auto">&nbsp;&nbsp;{{user.mobile}}</p></div>
+                     <div style="display:inline-flex"><i class="fa fa-map-marker" aria-hidden="true" style="padding-top:2px"></i>&nbsp;<p style="padding:2px;padding-top:0px">{{user.name}}</p></div>     
+                  </div>
+            </div>
+         </div> 
+     </div>
+  </ng-container>
+</main>
