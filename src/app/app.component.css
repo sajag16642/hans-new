@@ -20,7 +20,8 @@ lib-ngx-notification{
     z-index: inherit 99999;;
 }
 .banner-img{
-    height : 4rem;
+    height : 3.5rem;
+    margin-left: 16px;
 }
 .navBarTop {
     padding-bottom: 0.2rem;
@@ -39,6 +40,7 @@ lib-ngx-notification{
 }
 .sizeIt {
     font-size: 16px;
+    margin: 0px 0px;
 }
 @media only screen and (max-width: 900px) {
     .footer {
@@ -56,6 +58,7 @@ lib-ngx-notification{
 
     .banner-img{
         height : 3rem;
+        margin-left: 16px;
     }
     .follow{
         margin-left: 5%;
@@ -88,6 +91,9 @@ lib-ngx-notification{
     }
     .sizeIt {
         font-size: 12px;
+    }
+    .sizeFor {
+        margin-top: 1rem;
     }
 }
 

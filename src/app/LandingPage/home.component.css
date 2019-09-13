@@ -23,21 +23,31 @@
     background-size: cover;
 }
 .vcenter{
-margin-top: 5em
+margin-top: 2em
 }
 .bot{
     padding-bottom: 45px
 }
 .whats {
     margin-top: 1rem;
+    width: 20rem;
     margin-bottom: 2rem;
 }
+.textWhats {
+    font-size: 14px;
+}
+.center {
+    font-size: 1.6rem;
+}
+.text-left{
+    margin-top: 50px;
+}
 .cards{
-    background:url(https://wallpapercave.com/wp/2ujUKnj.jpg);height:4rem;margin-left:10%;margin-right:10%;border-radius:0
+    background-image: url('../../assets/redback.jpg');height:4rem;margin-left:10%;margin-right:10%;border-radius:0
 }
 .sliding {
     width: 100%;
-    height: 45rem;
+    height: 30rem;
 }
 .deepak{
     height:20rem
@@ -66,11 +76,18 @@ margin-top: 5em
     top: -4rem;
     left: 4rem
 }
+.bannerHead {
+    font-size: 22px;
+    text-align: center;
+    color: white;
+}
 .trust{
     height:4rem;
     margin-left:0%;
 }
-
+.trust_text {
+    font-size: 1rem;
+}
 .quote-text {
     color: white;
     font-weight: bolder
@@ -97,7 +114,7 @@ margin-top: 5em
 }
 
 .map-banner {
-    background: url(https://wallpapercave.com/wp/2ujUKnj.jpg);
+    background-image: url('../../assets/redback.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -149,7 +166,7 @@ reisterf-btn{
     margin-left:45%;
     height: 45px;
     width: 90px;
-    background: url(https://wallpapercave.com/wp/2ujUKnj.jpg);
+    background-image: url('../../assets/redback.jpg');
     border-bottom-left-radius: 90px;
     border-bottom-right-radius: 90px
 }
@@ -158,13 +175,13 @@ reisterf-btn{
     position: absolute;
     right: 0;
 }
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 600px) {
     .vcenter{
         margin-top:2.5em;
         margin-bottom: 2.5em;
         }
     .cards{
-        background:url(https://wallpapercave.com/wp/2ujUKnj.jpg);height:4rem;margin-left:0%;margin-right:0%;border-radius:0
+        background-image: url('../../assets/redback.jpg');height:4rem;margin-left:0%;margin-right:0%;border-radius:0
     }
     reisterf-btn{
         width: 100%;
@@ -204,9 +221,16 @@ reisterf-btn{
         margin-left: 0%;
         margin-top: 0%
     }
+    .bannerHead {
+        color: white;
+        font-size: 14px;
+    }
     .trust{
         height: 2rem;
         text-align: center;
+    }
+    .trust_text {
+        font-size: 14px;
     }
     .sliding {
         height: 20rem;
@@ -252,7 +276,7 @@ reisterf-btn{
     }
 
     .map-banner {
-        background: url(https://wallpapercave.com/wp/2ujUKnj.jpg);
+        background-image: url('../../assets/redback.jpg');
         background-repeat: no-repeat;
         background-size: cover;
     }
@@ -264,7 +288,7 @@ reisterf-btn{
         margin-left:45%;
         height:1em;
         width: 2em;
-        background: url(https://wallpapercave.com/wp/2ujUKnj.jpg);
+        background-image: url('../../assets/redback.jpg');
         border-bottom-left-radius: 90px;
         border-bottom-right-radius: 90px
     }
@@ -301,6 +325,10 @@ reisterf-btn{
         margin-left:5px
     }
     .text-left{
+        text-align: center !important;
+        margin-top: 35px;
+    }
+    .personalised-left{
         text-align: center !important;
         margin-top: 35px;
     }
