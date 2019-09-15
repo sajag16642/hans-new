@@ -21,8 +21,8 @@ export class AppComponent implements OnInit {
   name: string = "amit";
   socialInfo:string;
   routerUrl: string;
-  isLogin='false';
   footer=true;
+  isLogin='false';
   @Input() header=true;
   clickToggle=false;
   btnToggle;
@@ -33,8 +33,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.btnToggle = document.getElementById('toggle');
-  if(localStorage.getItem('loggedIn'))  
+  if(localStorage.getItem('loggedIn')) {  
   this.isLogin = localStorage.getItem('loggedIn');
+  }
       console.log("wegrefgr",this.isLogin);
 
       this.changeOfRoutes();
@@ -46,14 +47,6 @@ export class AppComponent implements OnInit {
       });     
 }
 
-  logout()
-  {
-    localStorage.setItem('loggedIn','false');
-    if(localStorage.getItem('loggedIn')) 
-    this.isLogin = localStorage.getItem('loggedIn');
-
-    this.router.navigateByUrl('home');
-  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(LoginComponent, {
@@ -68,10 +61,14 @@ export class AppComponent implements OnInit {
     });
   }
 
-  subscription() {
-    this.router.navigateByUrl('/subscription');
-  }
+  logout()
+  {
+    localStorage.setItem('loggedIn','false');
+    if(localStorage.getItem('loggedIn')) 
+    this.isLogin = localStorage.getItem('loggedIn');
 
+    this.router.navigateByUrl('home');
+  }
   back()
   {
     this._location.back();
@@ -95,23 +92,21 @@ export class AppComponent implements OnInit {
       this.isLogin='false';
       document.getElementById('navbar').style.zIndex='1';
      }   
-     if(this.clickToggle==true)
+     if(this.clickToggle===true)
      {
       this.btnToggle.dispatchEvent(this.clickEvent);
      }
-     if(location.href.indexOf('home')>-1 || location.href.indexOf('register')>-1 || location.href.indexOf('subscription')>-1)
+
+     if(location.href.indexOf('home')>-1 || location.href.indexOf('register')>-1 || location.href.indexOf('subscription')>-1 || location.href.indexOf('viewCentres')>-1)
      {
         document.getElementById('backBtn').style.display = 'none';
      }
      else
      {
-      document.getElementById('backBtn').style.display = '';     
+      document.getElementById('backBtn').style.display = '';
      }
-  }
- 
-  myFunction()
-  {
+    }
+   myFunction(){
    this.clickToggle = true;
-
   }
 }

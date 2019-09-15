@@ -15,6 +15,7 @@ declare var Razorpay: any;
 export class HomeComponent implements OnInit {
  Advertise:Boolean;
  loggedIn='false';
+ isLogin='false';
  callbackDetails:any;
   constructor(public router:Router,private ngxNotificationService :NgxNotificationService,  private auth : AuthService, private _formBuilder: FormBuilder ) {
 
@@ -39,9 +40,7 @@ this.router.navigateByUrl('register');
       this.Advertise = true;
     } else {
       this.Advertise = false;
-    }
-
-    
+    } 
   }
 
   callBack(name,email,phone)
@@ -51,11 +50,15 @@ this.router.navigateByUrl('register');
       'email': email.value,
       'phone':phone.value,
     };
-    this.auth.callback(this.callbackDetails).subscribe(res=>{
+    this.auth.callback(this.callbackDetails).subscribe(res => {
       console.log(res);
       this.ngxNotificationService.sendMessage('Thank you for showing your interest, We will call you right back!', 'danger', 'top-right');
 
-    })
+    });
+  }
+
+  subscription() {
+    this.router.navigateByUrl('/subscription');
   }
 
 }
