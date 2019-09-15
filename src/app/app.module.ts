@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
@@ -84,7 +85,7 @@ export function provideConfig() {
     RegisterFourComponent,
     RegisterFiveComponent,
     RegisterSixComponent,
-    ChatComponent
+    ChatComponent,
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -94,6 +95,7 @@ export function provideConfig() {
     MDBBootstrapModule.forRoot(),FormsModule,
     NgMultiSelectDropDownModule.forRoot(),
     NgbModule,
+    GooglePlaceModule,
     Angular5TimePickerModule,
     AngularMultiSelectModule,
     CommonModule,

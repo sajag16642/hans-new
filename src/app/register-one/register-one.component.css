@@ -1,0 +1,15 @@
+.textPersonal {
+        font-weight:bolder;
+        padding-top:1rem;
+        text-align: center;
+         color: #285fdd
+}
+@media only screen and (max-width: 900px) {
+
+ .textPersonal {
+        font-weight:bolder;
+        padding-top:1rem;
+        text-align: center;
+         color: #285fdd
+}
+}

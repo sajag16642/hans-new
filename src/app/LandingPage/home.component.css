@@ -16,6 +16,10 @@
 .carousel-caption{
     bottom: 30px;
 }
+.headerSetting {
+    position: absolute;
+     margin-top: 30%;
+}
 .banner {
     height: 75%;
     background-position: center;
@@ -45,11 +49,22 @@ margin-top: 2em
 .cards{
     background-image: url('../../assets/redback.jpg');height:4rem;margin-left:10%;margin-right:10%;border-radius:0
 }
+.banner-img{
+    height : 3.5rem;
+    margin-left: 16px;
+}
 .sliding {
     width: 100%;
     height: 30rem;
     object-fit: fill;
 }
+.textTalkToUs {
+    font-weight:bolder;
+    padding-top:1rem;
+    font-size: 20px;
+    text-align: center;
+     color: #285fdd
+ }
 .deepak{
     height:20rem
 }
@@ -226,6 +241,10 @@ reisterf-btn{
         color: white;
         font-size: 14px;
     }
+    .headerSetting {
+        position: absolute;
+         margin-top: 40%;
+    }
     .trust{
         height: 2rem;
         text-align: center;
@@ -259,6 +278,17 @@ reisterf-btn{
         margin-top:0.5rem;
         margin-left: 0.5rem;
      }
+     .textTalkToUs {
+        font-weight:bolder;
+        padding-top:1rem;
+        text-align: center;
+        font-size: 14px;
+         color: #285fdd
+     }
+     .banner-img{
+        height : 3rem;
+        margin-left: 16px;
+    }
 
      .whats {
         margin-top: 1rem;
@@ -355,8 +385,7 @@ reisterf-btn{
       .mat-form-field {
           font-size: 12px;
       }
-}
-
+    }
 @media only screen and (max-width: 1024px) {
     /* .diya{
         height:14em;

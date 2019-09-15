@@ -1,44 +1,4 @@
 <!-- Navbar start -->
-<div *ngIf="header">
-  <header>
-    <div class="card" style="max-height:40px;
-          border-radius:0 !important;background-color: #7b1429" *ngIf="routerUrl != '/hanswebapp/dashboard'">
-      <p class="contact-details text-right">help@hansmatrimony.com +919697989697 </p>
-    </div>
-    <nav id="navbar" class="navbar  fixed-top navBarTop " style="background-color:whitesmoke;padding:0px;">
-      <a class="navbar-brand" href="#" style="color:white;margin-right:0.1rem;padding-top:0;padding-bottom: 0">
-        <img src="../../assets/logo_hans.png" class="banner-img" style="object-fit: cover"></a>
-      <button class="navbar-toggler" type="button" (click)="myFunction()" id="toggle" data-toggle="collapse"
-        data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon" style="padding-top: 3px"><img src="../../assets/menu.png" alt="menu.png" style="width: 15px;"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
-  
-          </li>
-          <li class="nav-item">
-  
-          </li>
-          <li class="nav-item">
-  
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <button style="margin-bottom: 20px" class="btn btn-warning btn-responsive" (click)="subscription()">Subscription</button>
-          &nbsp; &nbsp; &nbsp;
-          <button  style="margin-bottom: 20px" class="btn btn-warning btn-responsive login" data-toggle="modal" *ngIf=" isLogin=='false'"
-            data-target="#loginModal">Login/Register</button>
-          &nbsp;
-  
-          <button style="margin-bottom: 20px" class="btn btn-warning btn-responsive" type="submit" *ngIf="isLogin=='true'"
-            (click)="logout()">Logout</button>
-        </form>
-      </div>
-    </nav>
-  </header>
-  </div>
   <!-- Navbar end -->
   <lib-ngx-notification></lib-ngx-notification> <!-- Notifications -->
   <div *ngIf="footer">

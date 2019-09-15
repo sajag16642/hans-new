@@ -40,13 +40,13 @@ export class ChatComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private router: Router,
-    private http:HttpClient,
+    private http: HttpClient,
     public userObj: UserService
-  ) { 
+  ) {
     this.answer = this._formBuilder.group({
       'ans': [''],
     });
-  }    
+  }
 
   ngOnInit() {
     this.currentUrl = this.router.url.substring(13);
@@ -83,13 +83,13 @@ export class ChatComponent implements OnInit {
                   this.repeatMEssage(res.value, this.currentUrl);
                 });
               } else {
-                this.botui.action.button({
-                  action: [{
-                    text: 'Register with us',
-                    value: 'register'
-                  }]
-                }).then(() => {
-                  this.router.navigateByUrl('register');
+                this.botui.action.text({
+                  action: {
+                    sub_type: 'number',
+                    placeholder: 'Enter mobile number'
+                  }
+                }).then(res => {
+                  this.repeatMEssage('SHOW', res.value);
                 });
               }
             });
@@ -136,39 +136,39 @@ export class ChatComponent implements OnInit {
   })
       console.log(this.show_arr);
       this.DoNotshowfull = true;
-    
+
   }
 
-  knowMore(){
+  knowMore() {
     this.DoNotshowfull = false;
    }
- 
-   read(data){
+
+   read(data) {
      (<HTMLInputElement>document.getElementById('text')).value = '';
      this.show_arr.push({'side':1,'data':this.answer.value.ans,'sent':1,'message':0,'profile':0})
      // this.chatRequest(data);
    }
- 
+
    sendresponse(data){
      this.show_arr.push({'side':1,'data':data,'sent':1,'message':0,'profile':0})
      // this.chatRequest(data);
    }
- 
+
    showProfile(value) {
          // const Data = new FormData();
          // Data.append('identity_number' , localStorage.getItem('identity_number'));
          // this.sent = false;
          // this.profile = true;
- 
+
          // this.http.post('https://partner.hansmatrimony.com/api/getRecommendedProfiles' , Data).subscribe((res : any) => {
          //   this.user_profile = res;
          //   console.log(res);
          // })
- 
+
          this.show_arr.push({'side':1,'data':value,'sent':1,'message':0,'profile':0}) ;
          // this.chatRequest(value);
-   } 
- 
+   }
+
    chatRequest(data, mobile): Observable<any> {
        this.Data = {
          from : mobile,
@@ -177,14 +177,13 @@ export class ChatComponent implements OnInit {
           text : data,
           channel_name : 'app'
        }
- 
+
      var myJSON = JSON.stringify(this.Data);
      console.log(myJSON);
- 
+
      const data1 = new FormData();
      data1.append('data', myJSON);
- 
- 
+
      return this.http.post<any>(' https://matchmakerz.in/api/v1/sendMessages' , data1 );
    }
    revertResponse(mobile) {
@@ -206,7 +205,7 @@ export class ChatComponent implements OnInit {
    checkUrl(num: string): Observable<any> {
        return this.http.get<any>(' https://matchmakerz.in/api/v1/auth', {params: { ['phone_number'] : num}});
    }
- 
+
    repeatMEssage(ans: String, mob) {
          this.chatRequest(ans, mob).subscribe(
            (data: any) => {
@@ -388,6 +387,15 @@ export class ChatComponent implements OnInit {
                    this.answer = res.value;
                    this.repeatMEssage(res.value, mob);
                  });
+                 } else {
+                   this.botui.action.button({
+                     action: [{
+                       text: 'REGISTER',
+                       value: 'REGISTER'
+                     }]
+                   }).then(() => {
+                     this.router.navigateByUrl('register');
+                   });
                  }
              });
            }
