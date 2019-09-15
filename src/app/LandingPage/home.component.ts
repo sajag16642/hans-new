@@ -15,6 +15,7 @@ declare var Razorpay: any;
 export class HomeComponent implements OnInit {
  Advertise:Boolean;
  loggedIn='false';
+ clickToggle=false;
  isLogin='false';
  callbackDetails:any;
   constructor(public router:Router,private ngxNotificationService :NgxNotificationService,  private auth : AuthService, private _formBuilder: FormBuilder ) {
@@ -60,5 +61,8 @@ this.router.navigateByUrl('register');
   subscription() {
     this.router.navigateByUrl('/subscription');
   }
+  myFunction(){
+    this.clickToggle = true;
+   }
 
 }
