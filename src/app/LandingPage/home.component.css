@@ -18,7 +18,7 @@
 }
 .headerSetting {
     position: absolute;
-     margin-top: 30%;
+     margin-top: 20%;
 }
 .banner {
     height: 75%;
@@ -45,6 +45,9 @@ margin-top: 2em
 }
 .text-left{
     margin-top: 50px;
+}
+.invi {
+    display: inline-block;
 }
 .cards{
     background-image: url('../../assets/redback.jpg');height:4rem;margin-left:10%;margin-right:10%;border-radius:0
@@ -213,6 +216,9 @@ reisterf-btn{
     }
     .review-indicators{
         top:25rem !important
+    }
+    .invi {
+        display: none;
     }
     .capt{
         color:White;Font-weight:bold;font-size:1em;margin-bottom:0;vertical-align: middle

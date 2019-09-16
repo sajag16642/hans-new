@@ -70,19 +70,20 @@ export class ChatComponent implements OnInit {
         (data: any) => {
           let text: String = data.apiwha_autoreply;
           console.log(text);
+          if (text.match('Show')) {
             this.botui.message.add({
               content: text
             }).then(() => {
-              if (text.match('Show')) {
                 this.botui.action.button({
                   action: [{
                     text: 'SHOW',
                     value: 'SHOW'
                   }]
-                }).then((res) => {
+                }).then(res => {
                   this.repeatMEssage(res.value, this.currentUrl);
                 });
-              } else {
+          });
+        } else {
                 this.botui.action.text({
                   action: {
                     sub_type: 'number',
@@ -92,13 +93,11 @@ export class ChatComponent implements OnInit {
                   this.repeatMEssage('SHOW', res.value);
                 });
               }
-            });
         },
         (error: any) => {
           console.log(error);
-        }
-      );
-    }
+    });
+  }
     const data = new FormData();
     data.append('identity_number', localStorage.getItem('identity_number'));;
 

@@ -1,55 +1,57 @@
 
 <main>
-  <div  style="border-bottom: 5px solid #f1f1f1">
-      <div class="row" style="width:50%;margin-left:0px;height:70px;">
-         <div style="display:inline-flex;margin-top:auto;margin-bottom:auto;margin-left: 15px"><img src="../../../assets/images/logo.png" style="width:50px;height:50px"> &nbsp; &nbsp;<p style="font-size:1rem;margin-top:auto;margin-bottom:auto">Our Centers</p></div>
-      </div>
-  </div>
-  <ng-container>
-      <div class="row">
-         <h5 style="color:blue;text-align:center;margin-left: auto;margin-right: auto;margin-bottom:0px;padding: 10px">Head Office</h5>
-      </div>   
-      <div class="card-wrapper">
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="width:77%;margin-left: auto;margin-right: auto;padding: 5px">
-                  <div class="row" style="margin-left: auto;margin-right: auto;margin-bottom:0px;padding: 10px;background-color:#F1F1F1;border-radius:20px;">
-                     <div style="display:inline-flex;margin-bottom: 10px;padding: 5px"><i class="fa fa-map-marker " aria-hidden="true" style="margin-top:auto;margin-bottom:auto"></i><p style="margin-top:auto;margin-bottom:auto">&nbsp;&nbsp;H-18, Bali Nagar, New Delhi</p></div>
-                     <div style="display:inline-flex;margin-bottom: 10px;padding: 5px"><i class="fa fa-phone" aria-hidden="true" style="margin-top:auto;margin-bottom:auto"></i><p style="margin-top:auto;margin-bottom:auto">&nbsp;&nbsp;96-97-98-96-97</p></div>
-                     <div style="display:inline-flex;padding: 5px"><i class="fa fa-envelope" aria-hidden="true" style="margin-top:auto;margin-bottom:auto"></i><p style="margin-top:auto;margin-bottom:auto">&nbsp;&nbsp;matches@hansmatrimony.com</p></div>
-                  </div>
-            </div>
-      </div>
-  </ng-container>
-  <ng-container>
-      <div class="row" style="margin-right:0px;margin-left:0px">
-       <h5 style="color:blue;margin-left: auto;margin-right: auto;margin-bottom:-15px;padding: 10px">Subsidiary Offices</h5>
-      </div>
-      <div class="card-wrapper" id="centres" style="margin-top:0px">
-         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="centres-list" *ngFor = "let user of centres" style="display:inline-flex;margin-top: 20px">                
-               <div class="container">
-                     <div class="card flex-row flex-wrap"  style="background-color: white">
-                         <div class="card-header border-0"  style="background-color: white">
-                             <img style="width: 100px; background-color: white" src="{{user.profile_photo}}" alt="">
-                         </div>
-                         <div class="card-block px-2"  style="background-color: white">
-                             <p class="card-title" style="padding: 0px; margin: 0px;text-align: left;background-color: white"><i class="fa fa-user" style="margin: 0px; background-color: white" aria-hidden="true"></i>{{user.representatives}}</p>
-                             <p class="card-text" style="padding: 0px;margin: 0px;background-color: white"><i class="fa fa-map-marker" style="margin: 0px;background-color: white" aria-hidden="true"></i>{{user.name}}</p>
-                         </div>
-                     </div>
-                 </div>
-                     
-            </div>
-         </div> 
-  </ng-container>
-</main>
-<!-- <div  style="background-color:#F1F1F1;width:80%;margin-left: auto;margin-right: auto;border-radius:40px;"></div> -->
-<!-- <div class="row card">
-      <div class="card-body">
-      <div class="col-md-4">
-    <div style="padding:10px;display:inline-flex"> <img src="{{user.profile_photo}}" style="width: 100px;" ></div>
-      </div>
-    <div class="col-md-8">
-         <div style="display:inline-flex;"><i class="fa fa-user" aria-hidden="true"></i><p>&nbsp;&nbsp;{{user.representatives}}</p></div>
-         <div style="display: inline-block"><i class="fa fa-map-marker" aria-hidden="true" style="padding-top:2px"></i>&nbsp;<p style="padding:2px;padding-top:0px;display: inline;">{{user.name}}</p></div> 
-    </div>  
-   </div>  
-</div> -->
+    <div  style="border-bottom: 5px solid #f1f1f1">
+        <div class="row" style="width:50%;margin-left:0px;height:70px;">
+           <div style="display:inline-flex;margin-top:auto;margin-bottom:auto;"><img src="../../../assets/images/logo.png" style="width:50px;height:50px"> &nbsp; &nbsp;<p style="font-size:1rem;">Hans Matrimony</p></div>
+        </div>
+        <h2 style="margin: 0px auto; font-size: 20px; color:blue;text-align: center">Our Centers</h2>
+    </div>
+    <ng-container>
+           <h5 style="color:blue;text-align:center; margin-left: auto;margin-right: auto;margin-bottom:0px;padding: 10px">Head Office</h5>
+        <div class="row" style="background-color:#F1F1F1;border-radius:20px;">
+                       <div class="col-sm-4 mobSize" ><i class="fa fa-map-marker " aria-hidden="true" ></i><p class="mobSizeText">&nbsp;&nbsp;H-18, Bali Nagar, New Delhi</p></div>
+                       <div class="col-sm-4 mobSize" ><i class="fa fa-phone" aria-hidden="true" ></i><p class="mobSizeText">&nbsp;&nbsp;96-97-98-96-97</p></div>
+                       <div class="col-sm-4 mobSize"><i class="fa fa-envelope" aria-hidden="true" ></i><p class="mobSizeText">&nbsp;&nbsp;matches@hansmatrimony.com</p></div>
+              </div>
+    </ng-container>
+    <!-- <div style="background: white;border-radius: 5px;width: 100%;border:1px solid #285fdd;">
+          <input style="width: 60%; background:white; height:2rem;" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
+          <button type="submit" class="btn-user" style="outline: none" (click)="findLocation()"> Submit</button>
+      </div> -->
+    <ng-container>
+        <div class="row" style="margin-right:0px;margin-left:0px;">
+         <h5 style="color:blue;margin-left: auto;margin-right: auto;margin-bottom:-15px;padding: 10px">Subsidiary Offices</h5>
+        </div>
+        <div class="card-wrapper" id="centres" style="margin-top:0px">
+           <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="centres-list" *ngFor = "let user of centres" style="display:inline-flex;margin-top: 20px">                
+                 <div class="container">
+                       <div class="card flex-row flex-wrap"  style="background-color: white">
+                           <div class="card-header border-0"  style="background-color: white">
+                               <img style="width: 100px; background-color: white" src="{{user.profile_photo}}" alt="">
+                           </div>
+                           <div class="card-block px-2"  style="background-color: white">
+                               <p class="card-title" style="padding: 0px; margin: 0px;text-align: left;background-color: white"><i class="fa fa-user" style="margin: 0px; background-color: white" aria-hidden="true"></i>{{user.representatives}}</p>
+                               <div class="row" style="background-color: white; margin: 0px;">
+                                      <i class="fa fa-map-marker" style="margin: 0px;background-color: white;" aria-hidden="true"></i>
+                                      <p class="card-body" style="width:200px;padding: 20px 0px 0px 0px;margin: 0px;text-align: left;background-color: white;">{{user.name}}</p>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                       
+              </div>
+           </div> 
+    </ng-container>
+  </main>
+  <!-- <div  style="background-color:#F1F1F1;width:80%;margin-left: auto;margin-right: auto;border-radius:40px;"></div> -->
+  <!-- <div class="row card">
+        <div class="card-body">
+        <div class="col-md-4">
+      <div style="padding:10px;display:inline-flex"> <img src="{{user.profile_photo}}" style="width: 100px;" ></div>
+        </div>
+      <div class="col-md-8">
+           <div style="display:inline-flex;"><i class="fa fa-user" aria-hidden="true"></i><p>&nbsp;&nbsp;{{user.representatives}}</p></div>
+           <div style="display: inline-block"><i class="fa fa-map-marker" aria-hidden="true" style="padding-top:2px"></i>&nbsp;<p style="padding:2px;padding-top:0px;display: inline;">{{user.name}}</p></div> 
+      </div>  
+     </div>  
+  </div> -->

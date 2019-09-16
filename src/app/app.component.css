@@ -3,11 +3,6 @@
     color: white
 }
 
-#backBtn{
-    display: none;
-    left: 2.3%;
-    z-index: 9999;
-}
 
 .contact-details {
     vertical-align: middle;
@@ -17,7 +12,7 @@
     color:white;font-size:1rem;
 }
 lib-ngx-notification{
-    z-index: inherit 99999;;
+    z-index: inherit 99999;
 }
 .banner-img{
     height : 3.5rem;
@@ -109,12 +104,6 @@ lib-ngx-notification{
         margin-top: 20px;
 
       }
-
-     #backBtn{
-         display: inline-block;
-        margin-top: 14%;  
-        left: calc(100% - 80px);
-    }
     
 
 }

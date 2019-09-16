@@ -1,9 +1,7 @@
 <!-- Navbar start -->
+
   <!-- Navbar end -->
   <lib-ngx-notification></lib-ngx-notification> <!-- Notifications -->
-  <div *ngIf="footer">
-    <button mat-raised-button id="backBtn" color="warn" (click)="back()">Back</button>
-  </div>
   <router-outlet (activate)="changeOfRoutes()"></router-outlet>
   <div class="footer" *ngIf="footer">
     <br>
