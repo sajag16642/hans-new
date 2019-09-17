@@ -3,6 +3,9 @@
     height: 11rem;
     bottom: 4rem
 }
+.body {
+    background: white;
+}
 .example-container {
     position: absolute;
     top: 0;
@@ -30,7 +33,7 @@
 }
 .headerSetting {
     position: absolute;
-     margin-top: 30%;
+     margin-top: 40%;
 }
 .banner {
     height: 75%;
