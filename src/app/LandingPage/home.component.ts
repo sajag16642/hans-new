@@ -18,6 +18,10 @@ export class HomeComponent implements OnInit {
  clickToggle=false;
  isLogin='false';
  callbackDetails:any;
+ events: string[] = [];
+  opened: boolean;
+
+  // tslint:disable-next-line: max-line-length
   constructor(public router:Router,private ngxNotificationService :NgxNotificationService,  private auth : AuthService, private _formBuilder: FormBuilder ) {
 
   }
@@ -44,11 +48,9 @@ this.router.navigateByUrl('register');
     } 
   }
 
-  callBack(name,email,phone)
-  { console.log(name);
+  callBack(phone) {
+     console.log(name);
     this.callbackDetails = {
-      'name': name.value,
-      'email': email.value,
       'phone':phone.value,
     };
     this.auth.callback(this.callbackDetails).subscribe(res => {
@@ -61,7 +63,7 @@ this.router.navigateByUrl('register');
   subscription() {
     this.router.navigateByUrl('/subscription');
   }
-  myFunction(){
+  myFunction() {
     this.clickToggle = true;
    }
 

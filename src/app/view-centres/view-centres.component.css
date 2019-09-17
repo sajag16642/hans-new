@@ -15,7 +15,7 @@ text-align: center;
 box-shadow: 7px 7px 10px #a46c6c;
 }
 .mobSizeText {
-display: inline-flex;
+display: block;
 }
 .second-box{
 position: relative;
@@ -27,8 +27,8 @@ left: 25%;
 box-shadow: 7px 7px 10px #a46c6c;
 }
 .mobSize {
-display:inline-flex;
 margin-bottom: 10px;
+text-align: center;
 padding: 5px
 }
 
@@ -49,6 +49,9 @@ max-width: 388px;}
 .sub{
     margin-left: 16px;
 
+}
+.sizeIt {
+    width: 200px;
 }
 
 @media only screen and (max-width: 1024px) 
@@ -90,4 +93,9 @@ float: right;
 width: 60%;
 padding: 5px; 
 max-height: 250px
+}
+@media only screen and (max-width: 900px) {
+    .sizeIt {
+        width: 100px;
+    }
 }

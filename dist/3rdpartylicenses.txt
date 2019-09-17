@@ -448,6 +448,8 @@ SOFTWARE.
 @angular/router
 MIT
 
+@angular/material/sidenav
+
 ngx-notification
 
 @angular/material/core

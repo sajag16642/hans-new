@@ -65,7 +65,7 @@ export class ChatComponent implements OnInit {
             this.repeatMEssage(res.value, localStorage.getItem('number'));
       });
     });
-    } else {
+    } else if (this.currentUrl) {
       this.checkUrl(this.currentUrl).subscribe(
         (data: any) => {
           let text: String = data.apiwha_autoreply;
@@ -87,7 +87,7 @@ export class ChatComponent implements OnInit {
                 this.botui.action.text({
                   action: {
                     sub_type: 'number',
-                    placeholder: 'Enter mobile number'
+                    placeholder: 'कृपया अपना १० अंको का मोबाइल नंबर डालें'
                   }
                 }).then(res => {
                   this.repeatMEssage('SHOW', res.value);
@@ -97,6 +97,19 @@ export class ChatComponent implements OnInit {
         (error: any) => {
           console.log(error);
     });
+  } else {
+    this.botui.message.add({
+      content: 'कृपया अपना १० अंको का मोबाइल नंबर डालें'
+    }).then(() => {
+    this.botui.action.text({
+      action: {
+        sub_type: 'number',
+        placeholder: 'Enter your mobile number'
+      }
+    }).then(res => {
+      this.numberValidation(res.value);
+    });
+  });
   }
     const data = new FormData();
     data.append('identity_number', localStorage.getItem('identity_number'));;
@@ -214,7 +227,7 @@ export class ChatComponent implements OnInit {
                  console.log(values.profile_photo);
                  this.botui.message.add({
                    type: 'html',
-                   content: '<img style="width=200px" src='+this.getProfilePhoto(values.profile_photo)+'>'
+                   content: '<img src='+this.getProfilePhoto(values.profile_photo, values.gender)+'>'
                  }).then(() => {
                    if (values.language === 'English') {
                      this.botui.message.add({
@@ -376,17 +389,7 @@ export class ChatComponent implements OnInit {
                    this.answer = res.value;
                    this.repeatMEssage(res.value, mob);
                  });
-                 } else if (data.buttons.match('Show')) {
-                   return this.botui.action.button({
-                     action: [
-                       { text: 'SHOW', value: 'SHOW'},
-                     ]
-                 }).then(res => {
-                   console.log('chose' + res.value);
-                   this.answer = res.value;
-                   this.repeatMEssage(res.value, mob);
-                 });
-                 } else {
+                 }  else if (data.buttons.match('Register')) {
                    this.botui.action.button({
                      action: [{
                        text: 'REGISTER',
@@ -395,7 +398,17 @@ export class ChatComponent implements OnInit {
                    }).then(() => {
                      this.router.navigateByUrl('register');
                    });
-                 }
+                 } else {
+                  return this.botui.action.button({
+                    action: [
+                      { text: 'SHOW', value: 'SHOW'},
+                    ]
+                }).then(res => {
+                  console.log('chose' + res.value);
+                  this.answer = res.value;
+                  this.repeatMEssage(res.value, mob);
+                });
+                }
              });
            }
            },
@@ -496,14 +509,18 @@ export class ChatComponent implements OnInit {
  }
  }
  
- getProfilePhoto(num: String): String {
+ getProfilePhoto(num: String, gen: number): String {
  if (num === null) {
- return '../../assets/profile.webp';
+   if (gen === 0) {
+     return '../../assets/male_pic.png';
+   } else {
+     return '../../assets/female_pic.png';
+   }
  } else {
  return num;
  }
  }
- 
+
  getSiblingCount(num: Number): Number {
  if (num === null) {
  return 0;
@@ -562,5 +579,23 @@ export class ChatComponent implements OnInit {
      case 84: return "7\'"
      default: return 'N/A'
  }
+ }
+ numberValidation(num: string) {
+  if (num.length === 10 && num.match('(0/91)?[6-9][0-9]{9}')) {
+    this.repeatMEssage('SHOW', num);
+  } else {
+    this.botui.message.add({
+      content: 'कृपया अपना १० अंको का मोबाइल नंबर डालें'
+    }).then(() => {
+    this.botui.action.text({
+      action: {
+        sub_type: 'number',
+        placeholder: 'Enter your mobile number'
+      }
+    }).then(res => {
+      this.numberValidation(res.value);
+    });
+  });
+  }
  }
 }

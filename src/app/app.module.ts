@@ -14,7 +14,7 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 
 import {
   MatFormFieldModule, MatDatepickerModule, MatIconModule, MatInputModule, MatButtonToggleModule,
-  MatAutocompleteModule, MatCheckboxModule, MatSelectModule,MatTabsModule, MatTooltipModule
+  MatAutocompleteModule, MatCheckboxModule, MatSelectModule,MatTabsModule, MatTooltipModule, MatSidenavModule
 } from '@angular/material';
 
 import { Angular5TimePickerModule } from 'angular5-time-picker';
@@ -107,6 +107,7 @@ export function provideConfig() {
     MatFormFieldModule,
     MatCheckboxModule,
     MatSelectModule,
+    MatSidenavModule,
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
