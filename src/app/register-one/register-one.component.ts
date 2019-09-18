@@ -284,6 +284,9 @@ export class RegisterOneComponent implements OnInit {
   Pageextra: FormGroup;
   
   getcastes: any = [];
+  options:any=[];
+  location:any='';
+  casteo: Observable<string[]>;
  
   constructor(public dialog: MatDialog, private _formBuilder: FormBuilder, private Auth: AuthService, private router: Router,private http : HttpClient,
     private ngxNotificationService: NgxNotificationService) {
@@ -334,17 +337,19 @@ export class RegisterOneComponent implements OnInit {
 
     return this.HigherEducation;
   }
-  private _Castefilter(value: string): hd[] {
-    if (value) {
-      return this.Castes
-        .map(group => ({
-          group: group.group,
-          names: _filter(group.names, value),
-          mapping_id: group.mapping_id
-        }))
-        .filter(group => group.names.length > 0);
-    }
-    return this.Castes;
+  private _Castefilter(value: string): string[] {
+    // if (value) {
+    //   return this.Castes
+    //     .map(group => ({
+    //       group: group.group,
+    //       names: _filter(group.names, value),
+    //       mapping_id: group.mapping_id
+    //     }))
+    //     .filter(group => group.names.length > 0);
+    // }
+    // return this.Castes;
+    const filterValue = value.toLowerCase();
+    return this.getcastes.filter(option => option.toLowerCase().includes(filterValue));
   }
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
@@ -421,8 +426,22 @@ export class RegisterOneComponent implements OnInit {
     this.http.get('https://partner.hansmatrimony.com/api/getAllCaste').subscribe((res:any)=>{
       this.getcastes = res;
      
-    })
+    });
+
+    this.casteo = this.PageTwo.get('Castes').valueChanges.pipe(
+      startWith(''),
+      map(value => this._Castefilter(value))
+    );
+
+
   }
+
+  handleAddressChange(e){
+    this.location = e.formatted_address;  
+    // console.log(e.geometry.location.lat())
+
+  }
+
 
 
   // Calucalting age
@@ -907,6 +926,13 @@ export class RegisterOneComponent implements OnInit {
     });
   }
 
+  onAutocompleteSelected(event){
+    console.log(event);
+  }
+
+  onLocationSelected(e){
+    console.log(e);
+  }
 
 }
 
