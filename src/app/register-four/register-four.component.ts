@@ -239,6 +239,8 @@ export class RegisterFourComponent implements OnInit {
     'Rs 7.5-12 Lakh',
     'Rs 12-15 Lakh', 'Rs 15-20 Lakh', 'Rs 20-25 Lakh', 'Rs 25-50 Lakh', 'Rs 50Lakh-1Crore', 'Rs 1Crore+'
   ];
+  options:any=[];
+  location:any='';
   Castes: hd[];
   Mangalika: string[];
   HoroScope: string[];
@@ -480,9 +482,9 @@ export class RegisterFourComponent implements OnInit {
     return this.Sister.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
   }
   private stt(value: string): string[] {
+    console.log('sajag');
     const filterValue = value.toLowerCase();
-
-    return this.state.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+    return this.state.filter(option => option.toLowerCase().includes(filterValue));
   }
 
 
@@ -1508,6 +1510,12 @@ export class RegisterFourComponent implements OnInit {
     
   }
 
+  handleAddressChange(e){
+    this.location = e.formatted_address;  
+    // console.log(e.geometry.location.lat())
+
+  }
+
   sixthStep() {
     const sixthstepdata = new FormData();
 
@@ -1650,6 +1658,7 @@ export class RegisterFourComponent implements OnInit {
       startWith(''),
       map(value => this.sist(value))
     );
+
     this.stateo = this.FamilyDetails.get('state').valueChanges.pipe(
       startWith(''),
       map(value => this.stt(value))
@@ -1664,14 +1673,14 @@ export class RegisterFourComponent implements OnInit {
     //   itemsShowLimit: 3,
     //   allowSearchFilter: true
     // };
-    this.dropdownSettings = {
-      singleSelection: false,
-      text: "Select Castes",
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      enableSearchFilter: true,
-      classes: "myclass custom-class"
-    };
+    // this.dropdownSettings = {
+    //   singleSelection: false,
+    //   text: "Select Castes",
+    //   selectAllText: 'Select All',
+    //   unSelectAllText: 'UnSelect All',
+    //   enableSearchFilter: true,
+    //   classes: "myclass custom-class"
+    // };
   }
 
   getCastes() {
@@ -1707,7 +1716,16 @@ export class RegisterFourComponent implements OnInit {
   onDeSelectAll(items: any) {
     console.log(items);
   }
+
+  onAutocompleteSelected(event){
+    console.log(event);
+  }
+
+  onLocationSelected(e){
+    console.log(e);
+  }
 }
+
 
 
 

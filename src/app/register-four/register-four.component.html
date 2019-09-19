@@ -127,24 +127,28 @@
             <div class="col-md-12">
               <mat-form-field class="full-width" appearance="standard">
                 <mat-label>Family Living In</mat-label>
-                <input type="text" matInput [matAutocomplete]="ste" formControlName="state">
-                <mat-autocomplete autoActiveFirstOption #ste="matAutocomplete">
+                <input type="text" matInput matValidateAddress matGoogleMapsAutocomplete #matGoogleMapsAutocomplete="matGoogleMapsAutocomplete" 
+                (onAutocompleteSelected)="onAutocompleteSelected($event)"
+                         (onLocationSelected)="onLocationSelected($event)" formControlName="state">
+                <!-- <mat-autocomplete autoActiveFirstOption #ste="matAutocomplete">
                   <mat-option *ngFor="let option of stateo | async" [value]="option">
                     {{option}}
                   </mat-option>
-                </mat-autocomplete>
+                </mat-autocomplete> -->
               </mat-form-field>
             </div>
          
             <div class="col-md-12">
               <mat-form-field class="full-width" appearance="standard">
                 <mat-label>Native City</mat-label>
-                <input type="text" matInput [matAutocomplete]="city" formControlName="city">
-                <mat-autocomplete autoActiveFirstOption #city="matAutocomplete">
+                <input type="text" matInput matValidateAddress matGoogleMapsAutocomplete #matGoogleMapsAutocomplete="matGoogleMapsAutocomplete" 
+                (onAutocompleteSelected)="onAutocompleteSelected($event)"
+                         (onLocationSelected)="onLocationSelected($event)" formControlName="city">
+                <!-- <mat-autocomplete autoActiveFirstOption #city="matAutocomplete">
                   <mat-option *ngFor="let option of citis | async" [value]="option">
                     {{option}}
                   </mat-option>
-                </mat-autocomplete>
+                </mat-autocomplete> -->
               </mat-form-field>
             </div>
          

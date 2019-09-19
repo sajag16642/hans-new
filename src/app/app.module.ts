@@ -11,6 +11,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
 
 import {
   MatFormFieldModule, MatDatepickerModule, MatIconModule, MatInputModule, MatButtonToggleModule,
@@ -89,9 +90,10 @@ export function provideConfig() {
   ],
   imports: [
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyADj37ebmp8y5eGpy3C5GhjTY7Gzuo3Y6U",
+      apiKey: "AIzaSyBUwQ9bDNmOKANAAyKfa187kHgf30O-IZ4",
       libraries: ["places"]
     }),
+    MatGoogleMapsAutocompleteModule.forRoot(),
     MDBBootstrapModule.forRoot(),FormsModule,
     NgMultiSelectDropDownModule.forRoot(),
     NgbModule,
