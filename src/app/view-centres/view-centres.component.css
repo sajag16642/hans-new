@@ -1,9 +1,20 @@
 
 *{
-    background-color:#f6f1f1;
+    background-color:white;
 
 }
-
+.HeadText {
+    margin: 10px auto auto;
+     font-size: 22px;
+    display: inline-block;
+    color:#285fdd;
+    font-weight: bolder;
+    text-align: center"
+}
+.headRow {
+    margin-top: -45px;
+     margin-left:10px
+}
 .first-box{
 position: relative;
 height: auto;
@@ -51,7 +62,7 @@ max-width: 388px;}
 
 }
 .sizeIt {
-    width: 200px;
+    width: 150px;
 }
 
 @media only screen and (max-width: 1024px) 
@@ -82,6 +93,29 @@ td{
 
 }
 
+.cardImg {
+    width: 200px;
+     background-color: white;
+}
+.cardText {
+    background-color: white;
+    padding-top: 20px;
+    
+}
+.cardBodyText {
+    width:200px;
+    padding: 10px 0px 0px 0px;
+    margin: 0px;
+    text-align: left;
+    background-color: white;
+}
+.cardBodyText1 {
+    width:200px;
+    padding: 10px 0px 0px 0px;
+    margin: 0px;
+    text-align: left;
+    background-color: white;
+}
 .column-l{
 float: left;
 width: 40%;
@@ -95,7 +129,41 @@ padding: 5px;
 max-height: 250px
 }
 @media only screen and (max-width: 900px) {
+    .HeadText {
+        margin: auto;
+         font-size: 18px;
+        display: inline-block;
+        color:#285fdd;
+        font-weight: bolder;
+        text-align: center"
+    }
+    .headRow {
+        margin-top: -32px;
+         margin-left:10px
+    }
     .sizeIt {
         width: 100px;
     }
-}
+    .cardImg {
+        width: 100px;
+         background-color: white;
+    }
+    .cardText {
+        background-color: white;
+        padding-top: 0px;
+        
+    }
+    .cardBodyText {
+        width:100px;
+        padding: 10px 0px 0px 0px;
+        margin: 0px;
+        text-align: left;
+        background-color: white;
+    }
+    .cardBodyText1 {
+        width:100px;
+        padding: 15px 0px 0px 0px;
+        margin: 0px;
+        text-align: left;
+        background-color: white;
+    }

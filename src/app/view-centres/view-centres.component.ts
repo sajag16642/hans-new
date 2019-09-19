@@ -11,7 +11,7 @@ import { Address } from 'ngx-google-places-autocomplete/objects/address';
 
 export class ViewCentresComponent implements OnInit {
 
-  centres : any = [];
+  centres: any = [];
 
   @ViewChild('placesRef') placesRef : GooglePlaceDirective;
 
@@ -23,20 +23,24 @@ export class ViewCentresComponent implements OnInit {
       'Content-Type': 'application/json',
     })
 
-
-    this.http.get('https://partner.hansmatrimony.com/api/viewCentres', {headers : headers}).subscribe((res:any) => {
+    this.http.get('https://partner.hansmatrimony.com/api/viewCentres', {headers : headers}).subscribe((res: any) => {
       this.centres = res;
       console.log(this.centres);
 
       var l = this.centres.length;
-      for(let i=0;i<l;i++)
-      if (i%2===0) {
+
+      for (let i = 0; i < l; i++) {
+      if (i % 2 === 0) {
+        // tslint:disable-next-line: max-line-length
         this.centres[i].profile_photo = 'https://matchmakerz.s3.ap-south-1.amazonaws.com/static/matchmakerz/profile_pic/temple.pngimage.jpg';
+        
       } else {
+        // tslint:disable-next-line: max-line-length
         this.centres[i].profile_photo = 'https://matchmakerz.s3.ap-south-1.amazonaws.com/static/matchmakerz/profile_pic/temple_yellow.pngimage.jpg';
         
       }
-    })
+      }
+    });
   }
   public handleAddressChange(address: Address) {
     // Do some stuff

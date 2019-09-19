@@ -3,7 +3,6 @@
     color: white
 }
 
-
 .contact-details {
     vertical-align: middle;
     margin-top: 5px;
@@ -37,10 +36,84 @@ lib-ngx-notification{
     font-size: 16px;
     margin: 0px 0px;
 }
+#footer {
+    padding: 5% 5%;
+    bottom: 0px;
+    background-color: #46132B; 
+  }
+  .footerCol {
+    padding: 0%;
+  }
+  .footerHeadings {
+    color: white;
+     font-family: 'Titillium Web', sans-serif; 
+     font-weight: normal ; 
+     font-size: 16px; 
+     border-bottom: 2px solid #036cdb; 
+     display: inline;
+  }
+  .footerLink {
+    color: white;
+    margin-top: 5px;
+    font-size: 14px;
+    padding: 0%;
+  }
+  .footerLink:hover {
+    color: pink;
+  }
+  .footerContact {
+    display: inline-block;
+    line-height: 2rem;
+    font-size: 14px;
+    padding: 0%;
+  }
+  
+  .iconFooter {
+    background:#46132B; 
+    font-size: 20px !important;
+    margin: 0px auto;
+    height: 2rem;
+    width: 2rem !important;
+    padding: 0% 10%;
+  
+  }
+  .spaceCol {
+    display: inline-block;
+}
+.bottomCol {
+margin-top: 0px;
+}
+.infoText {
+    color: white;
+     font-size:12px;
+     display:inline;
+     margin-left: 10px;
+     font-weight: normal;
+}
 @media only screen and (max-width: 900px) {
     .footer {
         background-color: #46132B;
     }
+    #footer {
+        text-align: center;
+      }
+      .footerContact {
+        display: inline;
+        line-height: 2rem;
+        font-size: 14px;
+        padding: 0% ;
+        margin: 0px 0px 0px 10px;
+      }
+      .footerLink {
+        color: white;
+        font-size: 14px;
+        padding: 0%;
+        margin: 0%;
+      }
+      .footerCol {
+        padding: 0%;
+        margin: 0px;
+      }
     .fa {
         padding: 0%;
         height: 0px;
@@ -90,6 +163,21 @@ lib-ngx-notification{
     .sizeFor {
         margin-top: 1rem;
     }
+    .spaceCol {
+        display: none;
+    }
+    .bottomCol{
+        margin-top: 20px;
+        padding: 0px 10px;
+    }
+    .infoText {
+      color: white;
+       font-size:12px;
+       display:inline-block;
+       margin-bottom: 0px;
+       font-weight: normal;
+       margin-left: 0px
+  }
 }
 
 @media only screen and (max-width: 1024px) {

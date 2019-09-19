@@ -72,7 +72,8 @@ export class ChatComponent implements OnInit {
           console.log(text);
           if (text.match('Show')) {
             this.botui.message.add({
-              content: text
+              type: 'html',
+              content: '<h6>'+text+'</h6>'
             }).then(() => {
                 this.botui.action.button({
                   action: [{
@@ -99,7 +100,8 @@ export class ChatComponent implements OnInit {
     });
   } else {
     this.botui.message.add({
-      content: 'कृपया अपना १० अंको का मोबाइल नंबर डालें'
+      type: 'html',
+      content: '<h6>कृपया अपना १० अंको का मोबाइल नंबर डालें</h6>'
     }).then(() => {
     this.botui.action.text({
       action: {
@@ -375,7 +377,8 @@ export class ChatComponent implements OnInit {
                  });
              } else {
              this.botui.message.add({
-                 content: data.apiwha_autoreply
+                type: 'html',
+                 content: '<h6>'+data.apiwha_autoreply+'</h6>'
              }).then(() => {
                  if (data.buttons.match('Yes' || 'No')) {
                    return this.botui.action.button({
@@ -597,5 +600,8 @@ export class ChatComponent implements OnInit {
     });
   });
   }
+ }
+ changeLanguage(phon:string,lang:string):Observable<any> {
+  return this.http.get<any>(' https://matchmakerz.in/api/v1/auth', {params: { ['phone_number'] : phon,['language'] : lang}});
  }
 }

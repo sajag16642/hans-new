@@ -1,15 +1,17 @@
 
 <main> 
-        <img class="sizeIt" src="../../assets/logo_hans.png" alt="logo">
-    <div  style="border-bottom: 5px solid #f1f1f1;text-align: center">
-         <h2 style="margin: 0px auto; font-size: 20px; display: inline-block; color:blue;text-align: center">Our Centers</h2>
-    </div>
+  <div class="row">
+      <h2 class="HeadText">Our Centers</h2>
+  </div>
+  <div class="row headRow" >
+      <img class="sizeIt" src="../../assets/logo_hans.png" alt="logo">
+  </div>
     <ng-container>
-           <h5 style="color:blue;text-align:center; margin-left: auto;margin-right: auto;margin-bottom:0px;padding: 10px">Head Office</h5>
-        <div class="row" style="background-color:#F1F1F1;border-radius:20px;">
-                       <div class="col-sm-4 mobSize" ><i class="fa fa-map-marker " aria-hidden="true" ></i><p class="mobSizeText">&nbsp;&nbsp;H-18, Bali Nagar, New Delhi</p></div>
-                       <div class="col-sm-4 mobSize" ><i class="fa fa-phone" aria-hidden="true" ></i><p class="mobSizeText">&nbsp;&nbsp;96-97-98-96-97</p></div>
-                       <div class="col-sm-4 mobSize"><i class="fa fa-envelope" aria-hidden="true" ></i><p class="mobSizeText">&nbsp;&nbsp;matches@hansmatrimony.com</p></div>
+           <h5 style="color:#285fdd;text-align:center; margin-left: auto;margin-right: auto;margin-bottom:0px;padding: 10px">Head Office</h5>
+        <div class="row" style="background-color:white;border-radius:20px;">
+                       <div class="col-sm-4 mobSize" ><i class="fa fa-map-marker" style="color: #285fdd" aria-hidden="true" ></i><p class="mobSizeText">&nbsp;&nbsp;H-18, Bali Nagar, New Delhi</p></div>
+                       <div class="col-sm-4 mobSize" ><i class="fa fa-phone" style="color: #285fdd" aria-hidden="true" ></i><p class="mobSizeText">&nbsp;&nbsp;96-97-98-96-97</p></div>
+                       <div class="col-sm-4 mobSize"><i class="fa fa-envelope" style="color: #285fdd" aria-hidden="true" ></i><p class="mobSizeText">&nbsp;&nbsp;matches@hansmatrimony.com</p></div>
               </div>
     </ng-container>
     <!-- <div style="background: white;border-radius: 5px;width: 100%;border:1px solid #285fdd;">
@@ -18,20 +20,23 @@
       </div> -->
     <ng-container>
         <div class="row" style="margin-right:0px;margin-left:0px;">
-         <h5 style="color:blue;margin-left: auto;margin-right: auto;margin-bottom:-15px;padding: 10px">Subsidiary Offices</h5>
+         <h5 style="color:#285fdd;margin-left: auto;margin-right: auto;margin-bottom:-15px;padding: 10px">Subsidiary Offices</h5>
         </div>
-        <div class="card-wrapper" id="centres" style="margin-top:0px">
-           <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="centres-list" *ngFor = "let user of centres" style="display:inline-flex;margin-top: 20px">                
+        <div class="card-wrapper" id="centres" style="margin-top:0px;padding-bottom: 20px;">
+           <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="centres-list" *ngFor = "let user of centres; let i = index" style="display:inline-flex;margin-top: 20px">                
                  <div class="container">
                        <div class="card flex-row flex-wrap"  style="background-color: white">
-                           <div class="card-header border-0"  style="background-color: white">
-                               <img style="width: 100px; background-color: white" src="{{user.profile_photo}}" alt="">
+                           <div class="card-header border-0"  style="background-color: white;">
+                               <img class="cardImg" src="{{user.profile_photo}}" alt="">
                            </div>
-                           <div class="card-block px-2"  style="background-color: white">
-                               <p class="card-title" style="padding: 0px; margin: 0px;text-align: left;background-color: white"><i class="fa fa-user" style="margin: 0px; background-color: white" aria-hidden="true"></i>{{user.representatives}}</p>
+                           <div class="card-block px-2 cardText">
                                <div class="row" style="background-color: white; margin: 0px;">
-                                      <i class="fa fa-map-marker" style="margin: 0px;background-color: white;" aria-hidden="true"></i>
-                                      <p class="card-body" style="width:200px;padding: 20px 0px 0px 0px;margin: 0px;text-align: left;background-color: white;">{{user.name}}</p>
+                                <i class="fa fa-user" style="margin: 0px;background-color: white;color: #285fdd" aria-hidden="true"></i>
+                                <p class="card-body cardBodyText1" >{{user.representatives}}</p>
+                         </div>
+                               <div class="row" style="background-color: white; margin: 0px;">
+                                      <i class="fa fa-map-marker" style="margin: 0px;background-color: white;color: #285fdd" aria-hidden="true"></i>
+                                      <p class="card-body cardBodyText" >{{user.name}}</p>
                                </div>
                            </div>
                        </div>

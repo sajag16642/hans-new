@@ -1,7 +1,7 @@
-<ng-container >
-    <main id="main" style="background-color:#f5f5f5; margin-top:-30px;">
+<ng-container>
+    <main id="main" style="background-color:#f5f5f5; margin: 0px 300px 0px;padding-bottom: 30px;">
         <main id="second-main">
-            <div class="header" style="margin-top:10vh">
+            <div class="header">
                 <div class="back-ground">
                   <div class="text-center">
                       <h5 >We Provide Convenient packages to choose From!</h5>
@@ -19,7 +19,7 @@
                   <button type="button" class="btn btn-primary"  id="button">Online PLans</button>
                </div>
                <div class="col-sm-6 col-md-6 col-lg-6" id="button-div" style="margin: 10px 0px;">
-                  <button type="button" class="btn btn-primary"  id="button">Personalised Plans</button>
+                  <button type="button" style="background-color: transparent;color: black" class="btn btn-primary"  id="button">Personalised Plans</button>
                </div>
             </div>
           
@@ -38,7 +38,7 @@
                         <div class="col-3">
                             <p><span class="feature">Validity</span><br><span class="value" style="padding-top:10px">{{ plans?.Limited?.Validity}}</span></p>      
                         </div>
-                        <div class="col-3">
+                        <div class="col-sm-3 col-md-3 col-lg-3 v-align">
                            <button type="button" class="btn btn-primary">Buy now</button>
                         </div>
                     </div>
