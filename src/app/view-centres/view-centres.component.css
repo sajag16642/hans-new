@@ -11,6 +11,7 @@
     font-weight: bolder;
     text-align: center"
 }
+
 .headRow {
     margin-top: -45px;
      margin-left:10px
@@ -128,7 +129,12 @@ width: 60%;
 padding: 5px; 
 max-height: 250px
 }
-@media only screen and (max-width: 900px) {
+.card-header {
+    background-color: white;
+    padding: 0px;
+    margin: 10px 0px 0px 10px;
+}
+ @media only screen and (max-width: 900px) {
     .HeadText {
         margin: auto;
          font-size: 18px;
@@ -166,4 +172,9 @@ max-height: 250px
         margin: 0px;
         text-align: left;
         background-color: white;
+    }
+    .card-header {
+        background-color: white;
+        padding: 0px;
+        margin: 10px 0px 0px 10px;
     }
