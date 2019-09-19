@@ -51,6 +51,7 @@ import {
   MAT_DIALOG_DATA,
   MatTooltip
 } from '@angular/material/';
+import { HttpClient } from '@angular/common/http';
 export interface StateGroup {
   letter: string;
   names: string[];
@@ -230,7 +231,8 @@ export class RegisterSixComponent implements OnInit {
     letter: 'Others',
     names: ['English']
   }];
-  Heights: string[] = ['4.0"', '4.1"', '4.2"', '4.3"', '4.4"', '4.5"', '4.6"', '4.7"', '4.8"', '4.9"', '5.0', '5.1"', '5.2"', '5.3"', '5.5"', '5.5"', '5.6"', '5.7"', '5.8"', '5.9"', '6.0"', '6.1"', '6.2"', '6.3"', '6.6"', '6.5"', '6.6"', '6.7"', '6.8"', '6.9"', '7.0"'];
+  Heights: string[] = ['4.0"', '4.1"', '4.2"', '4.3"', '4.4"', '4.5"', '4.6"', '4.7"', '4.8"', '4.9"', '4.10"','4.11"','5.0', '5.1"', '5.2"', '5.3"', '5.4"', '5.5"', '5.6"', '5.7"', '5.8"', '5.9"','5.10"','5.11"', '6.0"', '6.1"', '6.2"', '6.3"', '6.4"', '6.5"', '6.6"', '6.7"', '6.8"', '6.9"', '6.10"','6.11"','7.0"'];
+  Heights1: string[] = ['48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84']
   Religions: string[] = ['Hindu', 'Muslim', 'Sikh', 'Christian', 'Buddhist', 'Jain', 'Parsi', 'Jewish', 'Bahai'];
   MaritalStaus: string[] = ['Never Married', 'Awaiting Divorce', 'Divorced', 'Widowed', 'Anulled'];
   Occupation: string[] = ['Private Company', 'Business/Self Employed', 'Government Job', 'Doctor', 'Teacher', 'Not Working'];
@@ -280,7 +282,9 @@ export class RegisterSixComponent implements OnInit {
   AOptions: Observable < any[] > ;
   HigherEducationOptions: Observable < hd[] > ;
   Pageextra: FormGroup;
-  constructor(public dialog: MatDialog, private _formBuilder: FormBuilder, private Auth: AuthService, private router: Router,
+  getcastes: any = [];
+  casteo: Observable<string[]>;
+  constructor(public dialog: MatDialog, private _formBuilder: FormBuilder, private Auth: AuthService, private router: Router,private http : HttpClient,
     private ngxNotificationService: NgxNotificationService) {
     this.PageTwo = this._formBuilder.group({
       'PageTwo': ['', Validators
@@ -402,17 +406,21 @@ export class RegisterSixComponent implements OnInit {
 
     return this.HigherEducation;
   }
-  private _Castefilter(value: string): hd[] {
-    if (value) {
-      return this.Castes
-        .map(group => ({
-          group: group.group,
-          names: _filter(group.names, value),
-          mapping_id: group.mapping_id
-        }))
-        .filter(group => group.names.length > 0);
-    }
-    return this.Castes;
+  private _Castefilter(value: string): string[] {
+    // if (value) {
+    //   return this.Castes
+    //     .map(group => ({
+    //       group: group.group,
+    //       names: _filter(group.names, value),
+    //       mapping_id: group.mapping_id
+    //     }))
+    //     .filter(group => group.names.length > 0);
+    // }
+
+    // return this.Castes;
+
+    const filterValue = value.toLowerCase();
+    return this.getcastes.filter(option => option.toLowerCase().includes(filterValue));
   }
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
@@ -1511,8 +1519,8 @@ export class RegisterSixComponent implements OnInit {
 
     sixthstepdata.append('age_min', this.PreferencesDetails.value.age_min);
     sixthstepdata.append('age_max', this.PreferencesDetails.value.age_max);
-    sixthstepdata.append('height_min', this.PreferencesDetails.value.height_min);
-    sixthstepdata.append('height_max', this.PreferencesDetails.value.height_max);
+    sixthstepdata.append('height_min', this.Heights1[this.PreferencesDetails.value.height_min]);
+    sixthstepdata.append('height_max', this.Heights1[this.PreferencesDetails.value.height_max]);
     sixthstepdata.append('caste', this.PreferencesDetails.value.caste);
     sixthstepdata.append('marital_status', this.PreferencesDetails.value.marital_status);
     sixthstepdata.append('manglik', this.PreferencesDetails.value.manglik);
@@ -1530,7 +1538,7 @@ export class RegisterSixComponent implements OnInit {
       this.suc = suc;
       console.log(this.suc);
       if(this.suc.sixth_page_status === 'Y')
-         this.router.navigate(['/onboarding']);
+         this.router.navigate(['/chat']);
       else
         alert('Something went wrong !!');
       
@@ -1557,7 +1565,40 @@ export class RegisterSixComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getCastes();
+    this.http.get('https://partner.hansmatrimony.com/api/getAllCaste').subscribe((res:any)=>{
+      this.getcastes = res;
+     
+    });
+
+    this.casteo = this.PreferencesDetails.get('caste').valueChanges.pipe(
+      startWith(''),
+      map(value => this._Castefilter(value))
+    );
+
+    console.log(localStorage.getItem('minHeight'));
+    console.log(localStorage.getItem('maxHeight'));
+    console.log(localStorage.getItem('currentAge'));
+    console.log(localStorage.getItem('minAge'));
+    console.log(localStorage.getItem('maxAge'));
+
+    let mini = this.Heights.indexOf(localStorage.getItem('minHeight'));
+    let maxi = this.Heights.indexOf(localStorage.getItem('maxHeight'));
+
+
+
+
+    this.minAge = parseInt(localStorage.getItem('minAge'),10);
+    this.maxAge = parseInt(localStorage.getItem('maxAge'),10);
+    this.minHeight = this.Heights1[mini];
+    this.maxHeight = this.Heights1[maxi];
+
+    this.PreferencesDetails = this._formBuilder.group({
+      age_min : [parseInt(localStorage.getItem('minAge'),10)],
+      age_max : [parseInt(localStorage.getItem('maxAge'),10)],
+      // height_min : mini,
+      // height_max : maxi,
+    });
+
 
     // this.autocomplete();
     this.Auth.getAlldegree().subscribe((res: any) => {
@@ -1602,10 +1643,10 @@ export class RegisterSixComponent implements OnInit {
       map(value => this._Maritalfilter(value))
     );
     // tslint:disable-next-line:no-non-null-assertion
-    this.CasteOptions = this.PageTwo.get('Castes').valueChanges.pipe(
-      startWith(''),
-      map(value => this._Castefilter(value))
-    );
+    // this.CasteOptions = this.PageTwo.get('Castes').valueChanges.pipe(
+    //   startWith(''),
+    //   map(value => this._Castefilter(value))
+    // );
     this.ProfileOptions = this.PageOne.get('create').valueChanges.pipe(
       startWith(''),
       map(value => this._profilefilter(value))

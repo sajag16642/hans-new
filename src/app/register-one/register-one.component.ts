@@ -910,6 +910,14 @@ export class RegisterOneComponent implements OnInit {
     firststepdata.append('annual_income', this.PageTwo.value.AnnualIncome);
     firststepdata.append('city', this.PageTwo.value.Currentcity);
 
+    if(localStorage.getItem('gender')=='Male'){
+      localStorage.setItem('minHeight','4.0"');
+      localStorage.setItem('maxHeight',this.Heights[this.PageTwo.value.Height-1]);
+    }
+    else{
+      localStorage.setItem('minHeight',this.Heights[this.PageTwo.value.Height+1]);
+      localStorage.setItem('maxHeight','7.0"');
+    }
     console.log(firststepdata);
 
     this.Auth.secondPage(firststepdata).subscribe(suc => {

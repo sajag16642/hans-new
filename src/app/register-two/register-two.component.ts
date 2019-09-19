@@ -415,6 +415,8 @@ export class RegisterTwoComponent implements OnInit {
     const timediffernce = Math.abs(Date.now() - event);
     this.currentAge = Math.floor((timediffernce / (1000 * 3600 * 24)) / 365);
 
+    localStorage.setItem('currentAge',this.currentAge.toString());
+
     function convert(str) {
       var date = new Date(str),
         mnth = ("0" + (date.getMonth() + 1)).slice(-2),
@@ -442,17 +444,17 @@ export class RegisterTwoComponent implements OnInit {
 
   // Calucalting age
   calculateTime(event: any) {
-    //   this.birthDate = convert(event);
-    //   const timediffernce = Math.abs(Date.now() - event);
-    //   this.currentAge = Math.floor((timediffernce / (1000 * 3600 * 24)) / 365);
+      this.birthDate = convert(event);
+      const timediffernce = Math.abs(Date.now() - event);
+      localStorage.setItem('currentAge1',(Math.floor((timediffernce / (1000 * 3600 * 24)) / 365)).toString());
 
-    //   function convert(str) {
-    //     var date = new Date(str),
-    //         mnth = ("0" + (date.getMonth()+1)).slice(-2),
-    //         day  = ("0" + date.getDate()).slice(-2);
-    //     return [ day, mnth,date.getFullYear()  ].join("/");
+      function convert(str) {
+        var date = new Date(str),
+            mnth = ("0" + (date.getMonth()+1)).slice(-2),
+            day  = ("0" + date.getDate()).slice(-2);
+        return [ day, mnth,date.getFullYear()  ].join("/");
 
-    // }
+    }
     // this.addSlashes();
 
     //   if (this.currentAge < 18) {
@@ -1221,7 +1223,17 @@ export class RegisterTwoComponent implements OnInit {
     secondstepdata.append('birth_date', this.Pageextra.value.birth_date);
     secondstepdata.append('mother_tongue', this.Pageextra.value.stateGroup);
     secondstepdata.append('food_choice', this.Pageextra.value.food_choice);
-   
+    this.calculateAge(this.Pageextra.value.birth_date);
+
+    if(localStorage.getItem('gender')=='Male'){
+      localStorage.setItem('minAge',(this.currentAge-5).toString());
+      localStorage.setItem('maxAge',(this.currentAge-1).toString());
+    }
+    else{
+      localStorage.setItem('minAge',(this.currentAge+1).toString());
+      localStorage.setItem('maxAge',(this.currentAge+5).toString());
+    }
+
 
     this.Auth.newPage(secondstepdata).subscribe(suc => {
       this.suc = suc;

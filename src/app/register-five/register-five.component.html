@@ -18,41 +18,41 @@
         </div>
          </div>
         <div class="row"  style="margin-top:20px;    margin-right: 20px;">
-           <div class="col-md-12 text-center">
-              <img [src]="fullimgURL"  height="80" width="170" *ngIf="fullimgURL">
-              <br>
-            <div>
+           <!-- <div class="col-md-12 text-center"> -->
+              <!-- <img [src]="fullimgURL"  height="80" width="170" *ngIf="fullimgURL"> -->
+              <!-- <br> -->
+            <!-- <div>
                 <input #Fullfile type="file" id="Fullfile" accept='image/*' (change)="previewFull(Fullfile.files,0)"  />
               <label for="Fullfile">
               <i class="fa fa-plus-square-o square" aria-hidden="true" *ngIf="!Fullfile.value" ></i>
             </label>                   
-            </div>
-           </div>
+            </div> -->
+           <!-- </div> -->
         </div>
       <div class="row"  style="margin-top:20px;    margin-right: 26px;">
-        <div class="col-4 text-center">
-            <img [src]="imgURL"  height="80" width="170" *ngIf="imgURL">
-            <br>
-          <div>
+        <!-- <div class="col-4 text-center"> -->
+            <!-- <img [src]="imgURL"  height="80" width="170" *ngIf="imgURL"> -->
+            <!-- <br> -->
+          <!-- <div>
               <input #dfile type="file" id="dfile" accept='image/*' (change)="preview(dfile.files,1)"  />
             <label for="dfile">
             <i class="fa fa-plus-square-o square" aria-hidden="true" *ngIf="!dfile.value"></i>
           </label>                   
-          </div>
-        </div>
+          </div> -->
+        <!-- </div> -->
         
         <div class="col-4 text-center">
-            <img [src]="frontfile"  height="80" width="170" *ngIf="frontfile">
-            <br>
-          <div>
+            <!-- <img [src]="frontfile"  height="80" width="170" *ngIf="frontfile"> -->
+            <!-- <br> -->
+          <!-- <div>
               <input #fontfile type="file" id="fontfile" accept='image/*' (change)="previewfront(fontfile.files,2)"  />
             <label for="fontfile">
             <i class="fa fa-plus-square-o square" aria-hidden="true" *ngIf="!fontfile.value"></i>
           </label>                   
-          </div>
+          </div> -->
         </div>
-        <div class="col-4 text-center">
-            <img [src]="BackimgURL" height="80" width="170" *ngIf="BackimgURL">
+        <div class="text-center">
+            <img [src]="BackimgURL" height="100" width="170" *ngIf="BackimgURL">
             <br>
           <div>
               <input #backfile type="file" id="backfile" accept='image/*' (change)="previewBack(backfile.files,3)"  />

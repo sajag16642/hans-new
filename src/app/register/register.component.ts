@@ -1154,6 +1154,9 @@ export class RegisterComponent implements OnInit {
     firststepdata.set('relation', this.PageOne.value.create);
     firststepdata.set('gender', this.PageOne.value.gender);
     firststepdata.set('name', this.PageOne.value.fullname);
+    localStorage.setItem('gender', this.PageOne.value.gender);
+
+
     // firststepdata.set('birth_time', this.PageOne.value.birth_time);
     // firststepdata.set('birth_place', this.PageOne.value.birth_place);
     // firststepdata.append('food_choice', this.PageOne.value.food_choice);
