@@ -25,21 +25,23 @@
         <div class="card-wrapper" id="centres" style="margin-top:0px;padding-bottom: 20px;">
            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="centres-list" *ngFor = "let user of centres; let i = index" style="display:inline-flex;margin-top: 20px">                
                  <div class="container">
-                       <div class="card flex-row flex-wrap"  style="background-color: white">
-                           <div class="card-header border-0">
-                               <img class="cardImg" src="{{user.profile_photo}}" alt="">
-                           </div>
-                           <div class="card-block px-2 cardText">
-                               <div class="row" style="background-color: white; margin: 0px;">
-                                <i class="fa fa-user" style="margin: 0px;background-color: white;color: #285fdd" aria-hidden="true"></i>
-                                <p class="card-body cardBodyText1" >{{user.representatives}}</p>
-                         </div>
-                               <div class="row" style="background-color: white; margin: 0px;">
-                                      <i class="fa fa-map-marker" style="margin: 0px;background-color: white;color: #285fdd" aria-hidden="true"></i>
-                                      <p class="card-body cardBodyText" >{{user.name}}</p>
-                               </div>
-                           </div>
-                       </div>
+                   <div class="row">
+                      <div class="card flex-row flex-wrap"  style="background-color: white">
+                          <div class="card-header border-0">
+                              <img class="cardImg" src="{{user.profile_photo}}" alt="">
+                          </div>
+                          <div class="card-block px-2 cardText">
+                              <div class="row" style="background-color: white; margin: 0px;">
+                               <i class="fa fa-user" style="margin: 0px;background-color: white;color: #285fdd" aria-hidden="true"></i>
+                               <p class="card-body cardBodyText1" >{{user.representatives}}</p>
+                        </div>
+                              <div class="row" style="background-color: white; margin: 0px;">
+                                     <i class="fa fa-map-marker" style="margin: 0px;background-color: white;color: #285fdd" aria-hidden="true"></i>
+                                     <p class="card-body cardBodyText" >{{user.name}}</p>
+                              </div>
+                          </div>
+                      </div>
+                   </div>
                    </div>
                        
               </div>
