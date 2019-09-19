@@ -125,7 +125,7 @@ export function provideConfig() {
     SocialLoginModule,
     HttpClientModule,MatTooltipModule,
     MatTabsModule,NgxNotificationModule,FormsModule,HttpClientModule,
-    OwlDateTimeModule,OwlNativeDateTimeModule, MatGoogleMapsAutocompleteModule, AgmCoreModule.forRoot()
+    OwlDateTimeModule,OwlNativeDateTimeModule
   ],
   providers: [{provide : 'SnotifyToastConfig' , useValue: ToastDefaults}, AuthService , SnotifyService, {
     provide: AuthServiceConfig,
