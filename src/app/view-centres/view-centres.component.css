@@ -42,7 +42,18 @@
         padding: 0px;
         margin: 10px 0px 0px 10px;
     }
+    .nearByTemple{
+        width: 60%;
+        border: 1px solid grey;
+        border-radius: 4px;
+    }
 
+}
+
+.nearByTemple{
+    width: 60%;
+    border: 1px solid grey;
+    border-radius: 4px;
 }
 
 *{
@@ -202,5 +213,14 @@ td{
         margin: 0px;
         text-align: left;
         background-color: white;
+    }
+    .nearByTemple{
+        width: 60%;
+        border: 1px solid grey;
+        border-radius: 4px;
+        
+    }
+    .colTemple {
+        border: 1px solid black;
     }
 }

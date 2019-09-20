@@ -88,7 +88,6 @@ margin-top: 0px;
      font-size:14px;
      display:inline;
      margin-left: 10px;
-     font-weight: normal;
 }
 .footerLast {
   text-align: center;
@@ -119,7 +118,7 @@ margin-top: 0px;
         margin: 0%;
       }
       .footerCol {
-        padding: 0%;
+        padding: 0% 2%;
         margin: 0px;
       }
     .fa {
@@ -183,7 +182,6 @@ margin-top: 0px;
        font-size:14px;
        display:block;
        margin-bottom: 0px;
-       font-weight: normal;
        margin-left: 0px
   }
   .footerLast {
