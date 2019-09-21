@@ -7,7 +7,6 @@
     background: white;
 }
   .sideNavSet {
-      width: 400px;
       background-color: white;
   }
   
@@ -61,7 +60,6 @@ margin-top: 2em
     background-image: url('../../assets/redback.jpg');height:4rem;margin-left:10%;margin-right:10%;border-radius:0
 }
 .sideNavSet {
-    width: 300px;
     background-color: white;
 }
 .banner-img{

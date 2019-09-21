@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/user.service';
 import { Observable } from 'rxjs';
+import { isInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
+import { skip } from 'rxjs/operators';
 
 declare let BotUI: Function;
 
@@ -36,6 +38,8 @@ export class ChatComponent implements OnInit {
   text: String;
   currentUrl: string;
   botui: any;
+  langChanged = false;
+
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -62,6 +66,17 @@ export class ChatComponent implements OnInit {
             value: 'SHOW'
           }]
         }).then(res => {
+            if (this.langChanged === true) {
+              this.changeLanguage(localStorage.getItem('mobile_number'), localStorage.getItem('language')).subscribe(
+                (data : any) => {
+                  console.log(data);
+                }, 
+                (error:any) => {
+                  console.log(error);
+                }
+                );
+              this.langChanged = false;
+            }
             this.repeatMEssage(res.value, localStorage.getItem('number'));
       });
     });
@@ -81,6 +96,17 @@ export class ChatComponent implements OnInit {
                     value: 'SHOW'
                   }]
                 }).then(res => {
+                  if (this.langChanged === true) {
+                    this.changeLanguage(this.currentUrl, localStorage.getItem('language')).subscribe(
+                      (data : any) => {
+                        console.log(data);
+                      }, 
+                      (error:any) => {
+                        console.log(error);
+                      }
+                      );
+                    this.langChanged = false;
+                  }
                   this.repeatMEssage(res.value, this.currentUrl);
                 });
           });
@@ -91,6 +117,17 @@ export class ChatComponent implements OnInit {
                     placeholder: 'कृपया अपना १० अंको का मोबाइल नंबर डालें'
                   }
                 }).then(res => {
+                  if (this.langChanged === true) {
+                    this.changeLanguage(res.value, localStorage.getItem('language')).subscribe(
+                      (data : any) => {
+                        console.log(data);
+                      }, 
+                      (error:any) => {
+                        console.log(error);
+                      }
+                      );
+                    this.langChanged = false;
+                  }
                   this.repeatMEssage('SHOW', res.value);
                 });
               }
@@ -109,6 +146,17 @@ export class ChatComponent implements OnInit {
         placeholder: 'Enter your mobile number'
       }
     }).then(res => {
+      if (this.langChanged === true) {
+        this.changeLanguage(res.value, localStorage.getItem('language')).subscribe(
+          (data : any) => {
+            console.log(data);
+          }, 
+          (error:any) => {
+            console.log(error);
+          }
+          );
+        this.langChanged = false;
+      }
       this.numberValidation(res.value);
     });
   });
@@ -144,7 +192,6 @@ export class ChatComponent implements OnInit {
       }
       var div = (<HTMLInputElement>document.getElementById('body'));
       // div.scrollIntoView(false);
-      console.log(div.clientHeight)
       console.log(div.scrollHeight);
       console.log(div.offsetHeight);
   })
@@ -198,26 +245,10 @@ export class ChatComponent implements OnInit {
      const data1 = new FormData();
      data1.append('data', myJSON);
 
-     return this.http.post<any>(' https://matchmakerz.in/api/v1/sendMessages' , data1 );
-   }
-   revertResponse(mobile) {
-     this.Data1 = {
-       to : mobile,
-       event : "MESSAGEPROCESSED",
-     }
- 
-     var myJSON2 = JSON.stringify(this.Data1);
-     console.log(myJSON2);
- 
-     const data2 = new FormData();
-     data2.append('data', myJSON2);
- 
-     this.http.post(' https://matchmakerz.in/api/v1/sendMessages' , data2 ).subscribe((data) => {
-       console.log(data);
-     })
+     return this.http.post<any>(' https://partner.hansmatrimony.com/api/sendMessages' , data1 );
    }
    checkUrl(num: string): Observable<any> {
-       return this.http.get<any>(' https://matchmakerz.in/api/v1/auth', {params: { ['phone_number'] : num}});
+       return this.http.get<any>(' https://partner.hansmatrimony.com/api/auth', {params: { ['phone_number'] : num}});
    }
 
    repeatMEssage(ans: String, mob) {
@@ -226,10 +257,10 @@ export class ChatComponent implements OnInit {
              console.log(data);
              if (data.type === 'profile') {
                  let values = data.apiwha_autoreply;
-                 console.log(values.profile_photo);
+                 console.log(values.photo);
                  this.botui.message.add({
                    type: 'html',
-                   content: '<img src='+this.getProfilePhoto(values.profile_photo, values.gender)+'>'
+                   content: '<img src='+this.getProfilePhoto(values.photo, values.gender)+' width="200" >'
                  }).then(() => {
                    if (values.language === 'English') {
                      this.botui.message.add({
@@ -237,46 +268,46 @@ export class ChatComponent implements OnInit {
                        // tslint:disable-next-line: max-line-length
                        content:'<b> &#128100 Personal Details</b> <br> <br>' +
                        'Name: ' +values.name +'<br>'+
-                       'Age: ' +values.age+ '<br>'+
-                       'Height: '+this.getHeight(values.height) +' <br>'+
-                       'Weight: '+ values.weight+' <br>'+
-                       'Religion: '+values.religion+' <br>'+
-                       'Caste: '+values.caste+' <br>'+
-                       'Food Choice: '+this.getFoodChoiceString(values.food_choice)+' <br>'+
-                       'Locality: '+values.current_city+' <br>'+
-                       'Marital Status: '+this.getMaritalStatusString(values.marital_status)+' <br>'+
-                       'Disability: '+this.getMaritalStatusString(values.disability) +' <br> <br>'
+                       // tslint:disable-next-line: max-line-length
+                       this.profileSet('Age: ' , String(Math.floor((Date.now() - new Date(values.birth_date).getTime())/(1000*60*60*24*365))))+
+                       this.profileSet('Height: ',values.height)+
+                       this.profileSet('Weight: ',values.weight)+
+                       this.profileSet('Religion: ',values.religion)+
+                       this.profileSet('Caste: ',values.caste)+
+                       this.profileSet('Food Choice: ',values.food_choice)+
+                       this.profileSet('Locality: ',values.locality)+
+                       this.profileSet('Marital Status: ',values.marital_status)+
+                       this.profileSet('Disability: ',values.disability) +' <br> <br>'
                         +
                        '<b> &#9803 Horoscope Details</b> <br><br>' +
-                       'Birth Date: '+values.birth_date+' <br>'+
-                       'Birth Time: '+values.birth_time+' <br>'+
-                       'Bith Place: '+values.birth_place+' <br>'+
-                       'Manglik: '+this.getManglikString(values.manglik)+' <br> <br>'
+                       this.profileSet('Birth Date: ',values.birth_date)+
+                       this.profileSet('Birth Time: ',values.birth_time)+
+                       this.profileSet('Bith Place: ',values.birth_place)+
+                       this.profileSet('Manglik: ',values.manglik)+' <br> <br>'
                        +
                        '<b> &#128218 Education Details</b> <br><br>' +
-                       'Education: '+values.education+' <br>'+
-                       'Degree: '+values.degree+' <br>'+
-                       'College: '+values.college+' <br><br>'
+                       this.profileSet('Education: ',values.education)+
+                       this.profileSet('Degree: ',values.degree)+
+                       this.profileSet('College: ',values.college)+' <br><br>'
                        +
                        '<b> &#128188 Work Details</b> <br><br>' +
-                       'Occupation: '+this.getOccupationString(values.occupation)+'<br>'+
-                       'Annual Income: '+values.yearly_income+' LPA<br>'+
-                       'Profession: '+this.getSubOccupation(values.sub_occupation)+' <br>'+
-                       'Working City: '+this.getHomeTown(values.office_address)+' <br><br>'
+                       this.profileSet('Occupation: ',values.occupation)+'<br>'+
+                       this.profileSet('Annual Income: ',String(values.monthly_income/100000))+
+                       this.profileSet('Profession: ',values.profession)+
+                       this.profileSet('Working City: ',values.working_city)+' <br><br>'
                        +
                        '<b> &#128106 Family Details</b> <br><br>' +
-                       'Family Type: '+this.getFamilyTypeString(values.family_type)+' <br>'+
-                       'House Type: '+this.getHouseTypeString(values.house_type)+' <br>'+
-                       'Mother Status: '+this.getLifeStatusString(values.mother_status)+' <br>'+
-                       'Father Status: '+this.getLifeStatusString(values.father_status)+' <br>'+
-                       'Mothers Occupation: '+this.getOccupationString(values.mother_occupation)+' <br>'+
-                       'Fathers Occupation: '+this.getOccupationString(values.mother_occupation)+' <br>'+
-                       'Family Income: '+values.family_income+' LPA <br>'+
-                       'Married Brothers: '+this.getSiblingCount(values.married_son)+' <br>'+
-                       'Married Sisters: '+this.getSiblingCount(values.married_daughter)+' <br>'+
-                       'Unmarried Brothers: '+this.getSiblingCount(values.unmarried_son)+' <br>'+
-                       'UnMarried Sisters: '+this.getSiblingCount(values.unmarried_daughter)+' <br>'+
-                       'Home Town: '+this.getHomeTown(values.hometown)+' <br>'
+                       this.profileSet('Family Type: ',values.family_type)+
+                       this.profileSet('House Type: ',values.house_type)+
+                       this.profileSet('Mother Status: ',values.mother_status)+
+                       this.profileSet('Father Status: ',values.father_status)+
+                       this.profileSet('Mothers Occupation: ',values.mother_occupation)+
+                       this.profileSet('Fathers Occupation: ',values.father_occupation)+
+                       this.profileSet('Family Income: ',String(values.family_income/100000))+
+                       this.profileSet('Married Brothers: ',values.married_sons)+
+                       this.profileSet('Married Sisters: ',values.married_daughters)+
+                       this.profileSet('Unmarried Brothers: ',values.unmarried_sons)+
+                       this.profileSet('UnMarried Sisters: ',values.unmarried_daughters)
                    }).then(() => {
                        if (data.buttons.match('Yes' || 'No')) {
                          return this.botui.action.button({
@@ -286,6 +317,17 @@ export class ChatComponent implements OnInit {
                              {text: 'NO', value: 'NO' }
                            ]
                        }).then(res => {
+                        if (this.langChanged === true) {
+                          this.changeLanguage(mob, localStorage.getItem('language')).subscribe(
+                            (data : any) => {
+                              console.log(data);
+                            }, 
+                            (error:any) => {
+                              console.log(error);
+                            }
+                            );
+                          this.langChanged = false;
+                        }
                          this.answer = res.value;
                          console.log('chose' + res.value);
                          this.repeatMEssage(res.value, mob);
@@ -296,6 +338,17 @@ export class ChatComponent implements OnInit {
                              { text: 'SHOW', value: 'SHOW'},
                            ]
                        }).then(res => {
+                        if (this.langChanged === true) {
+                          this.changeLanguage(mob, localStorage.getItem('language')).subscribe(
+                            (data : any) => {
+                              console.log(data);
+                            }, 
+                            (error:any) => {
+                              console.log(error);
+                            }
+                            );
+                          this.langChanged = false;
+                        }
                          console.log('chose' + res.value);
                          this.answer = res.value;
                          this.repeatMEssage(res.value, mob);
@@ -308,46 +361,46 @@ export class ChatComponent implements OnInit {
                        // tslint:disable-next-line: max-line-length
                        content:'<b> &#128100 पर्सनल डिटेल्स</b> <br> <br>' +
                        'नाम: ' +values.name +'<br>'+
-                       'उम्र: ' +values.age+ '<br>'+
-                       'कद: '+this.getHeight(values.height) +' <br>'+
-                       'वजन: '+ values.weight+' <br>'+
-                       'धर्म: '+values.religion+' <br>'+
-                       'जाती: '+values.caste+' <br>'+
-                       'खान-पान: '+this.getFoodChoiceString(values.food_choice)+' <br>'+
-                       'पता: '+values.current_city+' <br>'+
-                       'वैवाहिक स्तिथि: '+this.getMaritalStatusString(values.marital_status)+' <br>'+
-                       'विकलांगता: '+this.getMaritalStatusString(values.disability) +' <br> <br>'
+                       // tslint:disable-next-line: max-line-length
+                       this.profileSet('उम्र: ',String((Math.floor((Date.now() - new Date(values.birth_date).getTime())/(1000*60*60*24*365)))))+
+                       this.profileSet('कद: ',this.getHeight(Number(values.height)))+
+                       this.profileSet('वजन: ',values.weight)+
+                       this.profileSet('धर्म: ',values.religion)+
+                       this.profileSet('जाती: ',values.caste)+
+                       this.profileSet('खान-पान: ',values.food_choice)+
+                       this.profileSet('पता: ',values.locality)+
+                       this.profileSet('वैवाहिक स्तिथि: ',values.marital_status)+
+                       this.profileSet('विकलांगता: ',values.disability)+' <br> <br>'
                         +
                        '<b> &#9803 होरोस्कोप डिटेल्स</b> <br><br>' +
-                       'जन्म दिवस: '+values.birth_date+' <br>'+
-                       'जन्म का समय: '+values.birth_time+' <br>'+
-                       'जन्म स्थान: '+values.birth_place+' <br>'+
-                       'मांगलिक: '+this.getManglikString(values.manglik)+' <br> <br>'
+                       this.profileSet('जन्म दिवस: ',values.birth_date)+
+                       this.profileSet('जन्म का समय: ',values.birth_time)+
+                       this.profileSet('जन्म स्थान: ',values.birth_place)+
+                       this.profileSet('मांगलिक: ',values.manglik)+' <br> <br>'
                        +
                        '<b> &#128218 एजुकेशन डिटेल्स</b> <br><br>' +
-                       'शिक्षा: '+values.education+' <br>'+
-                       'डिग्री: '+values.degree+' <br>'+
-                       'कॉलेज: '+values.college+' <br><br>'
+                       this.profileSet('शिक्षा: ',values.education)+
+                       this.profileSet('डिग्री: ',values.degree)+
+                       this.profileSet('कॉलेज: ',values.college)+' <br><br>'
                        +
                        '<b> &#128188 वर्क डिटेल्स</b> <br><br>' +
-                       'व्यसाय: '+this.getOccupationString(values.occupation)+'<br>'+
-                       'वार्षिक आय: '+values.yearly_income+' LPA<br>'+
-                       'पेशा: '+this.getSubOccupation(values.sub_occupation)+' <br>'+
-                       'कार्य स्थान: '+this.getHomeTown(values.office_address)+' <br><br>'
+                       this.profileSet('व्यसाय: ',values.occupation)+
+                       this.profileSet('वार्षिक आय: ',String(values.monthly_income/100000))+
+                       this.profileSet('पेशा: ',values.profession)+
+                       this.profileSet('कार्य स्थान: ',values.working_city)+' <br><br>'
                        +
                        '<b> &#128106 फॅमिली डिटेल्स</b> <br><br>' +
-                       'परिवार: '+this.getFamilyTypeString(values.family_type)+' <br>'+
-                       'घर: '+this.getHouseTypeString(values.house_type)+' <br>'+
-                       'मदर स्टेटस: '+this.getLifeStatusString(values.mother_status)+' <br>'+
-                       'फादर स्टेटस: '+this.getLifeStatusString(values.father_status)+' <br>'+
-                       'माता का व्यसाय: '+this.getOccupationString(values.mother_occupation)+' <br>'+
-                       'पिता का व्यसाय : '+this.getOccupationString(values.mother_occupation)+' <br>'+
-                       'पारिवारिक आय: '+values.family_income+' LPA <br>'+
-                       'मैरिड भाई: '+this.getSiblingCount(values.married_son)+' <br>'+
-                       'मैरिड बेहेने : '+this.getSiblingCount(values.married_daughter)+' <br>'+
-                       'अव्यावाहित भाई: '+this.getSiblingCount(values.unmarried_son)+' <br>'+
-                       'अव्यावाहित बेहेने : '+this.getSiblingCount(values.unmarried_daughter)+' <br>'+
-                       'होम टाउन: '+this.getHomeTown(values.hometown)+' <br>'
+                       this.profileSet('परिवार: ',values.family_type)+
+                       this.profileSet('घर: ',values.house_type)+
+                       this.profileSet('मदर स्टेटस: ',values.mother_status)+
+                       this.profileSet('फादर स्टेटस: ',values.father_status)+
+                       this.profileSet('माता का व्यसाय: ',values.mother_occupation)+
+                       this.profileSet('पिता का व्यसाय : ',values.father_occupation)+
+                       this.profileSet('पारिवारिक आय: ',String(values.family_income/100000))+
+                       this.profileSet('मैरिड भाई: ',values.married_sons)+
+                       this.profileSet('मैरिड बेहेने : ',values.married_daughters)+
+                       this.profileSet('अव्यावाहित भाई: ',values.unmarried_sons)+
+                       this.profileSet('अव्यावाहित बेहेने : ',values.unmarried_daughters)
                    }).then(() => {
                        if (data.buttons.match('Yes' || 'No')) {
                          return this.botui.action.button({
@@ -357,6 +410,17 @@ export class ChatComponent implements OnInit {
                              {text: 'NO', value: 'NO' }
                            ]
                        }).then(res => {
+                        if (this.langChanged === true) {
+                          this.changeLanguage(mob, localStorage.getItem('language')).subscribe(
+                            (data : any) => {
+                              console.log(data);
+                            }, 
+                            (error:any) => {
+                              console.log(error);
+                            }
+                            );
+                          this.langChanged = false;
+                        }
                          this.answer = res.value;
                          console.log('chose' + res.value);
                          this.repeatMEssage(res.value, mob);
@@ -367,6 +431,17 @@ export class ChatComponent implements OnInit {
                              { text: 'SHOW', value: 'SHOW'},
                            ]
                        }).then(res => {
+                        if (this.langChanged === true) {
+                          this.changeLanguage(mob, localStorage.getItem('language')).subscribe(
+                            (data : any) => {
+                              console.log(data);
+                            }, 
+                            (error:any) => {
+                              console.log(error);
+                            }
+                            );
+                          this.langChanged = false;
+                        }
                          console.log('chose' + res.value);
                          this.answer = res.value;
                          this.repeatMEssage(res.value, mob);
@@ -380,14 +455,24 @@ export class ChatComponent implements OnInit {
                 type: 'html',
                  content: '<h6>'+data.apiwha_autoreply+'</h6>'
              }).then(() => {
-                 if (data.buttons.match('Yes' || 'No')) {
+                 if (data.buttons.match('No')) {
                    return this.botui.action.button({
-                     cssClass: 'styleButton',
                      action: [
                        { text: 'YES', value: 'YES'},
                        {text: 'NO', value: 'NO' }
                      ]
                  }).then(res => {
+                  if (this.langChanged === true) {
+                    this.changeLanguage(mob, localStorage.getItem('language')).subscribe(
+                      (data : any) => {
+                        console.log(data);
+                      }, 
+                      (error:any) => {
+                        console.log(error);
+                      }
+                      );
+                    this.langChanged = false;
+                  }
                    console.log('chose' + res.value);
                    this.answer = res.value;
                    this.repeatMEssage(res.value, mob);
@@ -407,6 +492,17 @@ export class ChatComponent implements OnInit {
                       { text: 'SHOW', value: 'SHOW'},
                     ]
                 }).then(res => {
+                  if (this.langChanged === true) {
+                    this.changeLanguage(mob, localStorage.getItem('language')).subscribe(
+                      (data : any) => {
+                        console.log(data);
+                      }, 
+                      (error:any) => {
+                        console.log(error);
+                      }
+                      );
+                    this.langChanged = false;
+                  }
                   console.log('chose' + res.value);
                   this.answer = res.value;
                   this.repeatMEssage(res.value, mob);
@@ -420,23 +516,19 @@ export class ChatComponent implements OnInit {
            }
          );
  }
- getFoodChoiceString(num: Number): String {
- if (num === 0) {
- return 'Vegetarian';
- } else {
- return 'Non Vegetarian';
- }
- }
- getMaritalStatusString(num: Number): String {
- switch (num) {
- case 0:
- return 'Never Married';
- case 1:
- return 'Divorced';
- case 2:
- return 'Widowed';
- default:
+ getFoodChoiceString(num: string): String {
+ if (num === null) {
  return 'N/A';
+ } else {
+ return num;
+ }
+ }
+ getMaritalStatusString(num: string): String {
+ switch (num) {
+ case null:
+ return 'N/A';
+ default:
+ return num;
  }
  }
  getDisabilityString(num: Number): String {
@@ -450,34 +542,20 @@ export class ChatComponent implements OnInit {
  }
  }
  
- getManglikString(num: Number): String {
+ getManglikString(num: String): String {
  switch (num) {
- case 0:
- return 'Non Manglik';
- case 1:
- return 'Manglik';
- case 2:
- return 'Anshik Manglik';
- default:
+ case null:
  return 'N/A';
+ default:
+ return num;
  }
  }
- getOccupationString(num: Number): String {
+ getOccupationString(num: String): String {
  switch (num) {
- case 0:
- return 'Not Working';
- case 1:
- return 'Private Job';
- case 2:
- return 'Self Employed';
- case 3:
- return 'Government Job';
- case 4:
- return 'Doctor';
- case 5:
- return 'Teacher';
- default:
+ case null:
  return 'N/A';
+ default:
+ return num;
  }
  }
  getFamilyTypeString(num: Number): String {
@@ -524,14 +602,13 @@ export class ChatComponent implements OnInit {
  }
  }
 
- getSiblingCount(num: Number): Number {
+ getSiblingCount(num: string): String {
  if (num === null) {
- return 0;
+ return 'N/A';
  } else {
  return num;
  }
  }
- 
  getHomeTown(num: String): String {
  if (num === null) {
  return 'N/A';
@@ -539,6 +616,13 @@ export class ChatComponent implements OnInit {
  return num;
  }
  }
+ getReligion(num: String): String {
+  if (num === null) {
+  return 'N/A';
+  } else {
+  return num;
+  }
+  }
  getSubOccupation(num: String): String {
  if (num === null) {
  return 'N/A';
@@ -546,7 +630,14 @@ export class ChatComponent implements OnInit {
  return num;
  }
  }
- getHeight(num:Number){
+ getStringForm(num: String): String {
+  if (num === null) {
+  return 'N/A';
+  } else {
+  return num;
+  }
+}
+ getHeight(num:number){
    switch (num) {
     case 53: return "4\'5\""
     case 54: return "4\'6\""
@@ -580,7 +671,7 @@ export class ChatComponent implements OnInit {
      case 82: return "6\'10\""
      case 83: return "6\'11\""
      case 84: return "7\'"
-     default: return 'N/A'
+     default: return null
  }
  }
  numberValidation(num: string) {
@@ -602,6 +693,23 @@ export class ChatComponent implements OnInit {
   }
  }
  changeLanguage(phon:string,lang:string):Observable<any> {
-  return this.http.get<any>(' https://matchmakerz.in/api/v1/auth', {params: { ['phone_number'] : phon,['language'] : lang}});
+   console.log('changing language');
+  return this.http.get<any>(' https://partner.hansmatrimony.com/api/language', {params: { ['phone_number'] : phon,['language'] : lang}});
  }
+ languageEnglish() {
+  localStorage.setItem('language','English');
+  this.langChanged = true;
+  console.log('language changed to english');
+ }
+ languageHindi() {
+  localStorage.setItem('language','Hindi');
+  this.langChanged = true;
+  console.log('language changed to hindi');
+   }
+
+   profileSet(key:string,value:string): String {
+    if (value != null) {
+      return key+': '+value+'<br>'
+    } else {return ""}
+   }
 }
