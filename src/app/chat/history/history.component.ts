@@ -36,5 +36,12 @@ export class HistoryComponent implements OnInit {
        }
      );
   }
+  getProfilePhoto(num: any, gen: number): String {
+    if (num === null) {
+        return '../../assets/female_pic.png';
+    } else {
+    return 'http://hansmatrimony.s3.ap-south-1.amazonaws.com/uploads/'+num;
+    }
+    }
 
 }

@@ -2,9 +2,9 @@
   <div class="row" *ngFor="let item of profile" style="display: inline-flex;margin: 0px 0px 0px 10px;">
     <div class="imageSet">
       <a (click)="shareData(item.id)">
-        <img style="border-radius: 100%;width: 80px;background-color: lightblue;margin: 20px auto 0px;" src="http://hansmatrimony.s3.ap-south-1.amazonaws.com/uploads/{{item.photo}}" alt="">
+        <img style="border-radius: 100%;width: 80px;background-color: lightblue;margin: 20px auto 0px;" [src]=getProfilePhoto(item.photo) alt="">
       </a>
-        <p style="text-align: center;margin-top:10px">{{item.id}}</p>
+        <p style="text-align: center;font-size: 14px;margin-top:10px">{{item.name}}</p>
       </div>
     </div>
     
