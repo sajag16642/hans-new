@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
   clickToggle=false;
   btnToggle;
   clickEvent:any;
+  
   constructor(private _location: Location,public dialog: MatDialog, public router: Router, private socialAuth : SocialLoginService, route:ActivatedRoute) {
       
   }
@@ -77,7 +78,7 @@ export class AppComponent implements OnInit {
 
   changeOfRoutes()
   {
-     if(location.href.indexOf('dash')>-1 || location.href.indexOf('Edit')>-1 || location.href.indexOf('contactedUserProfiles')>-1 || location.href.indexOf('chat')>-1|| location.href.indexOf('register')>-1)
+     if(location.href.indexOf('dash')>-1 || location.href.indexOf('Edit')>-1 || location.href.indexOf('contactedUserProfiles')>-1 || location.href.indexOf('chat')>-1|| location.href.indexOf('register')>-1 || location.href.indexOf('history')>-1 || location.href.indexOf('myprofile')>-1 )
     { this.footer=false;
       if (location.href.indexOf('chat') >-1 ) {
         this.header = false;

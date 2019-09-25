@@ -1,8 +1,8 @@
 
-<main class='pwaSize fixed t-0 b-0 w-full HC main' style="background-color: white">
-  <div class='bg-lightblue fixed t-0 w-full pwaSize p-0-5 z-10 white hide' style="display: flex;justify-content:space-between">
-      <div class='flex-fs-c'>
-          <img src='../../assets/logo_short.png' class='w-40' style="border-radius: 100%; object-fit: cover; height: 2.5rem; width: 2.5rem; background-color: white">
+<main class='fixed t-0 b-0 w-full HC main' style="background-image:url('../../assets/bgicon.png');background-size: cover;">
+  <div class='bg-lightblue fixed t-0 w-full  p-0-5 z-10 white hide' style="display: flex;justify-content:space-between">
+      <div class='flex-fs-c setLogo' >
+          <img  src='../../assets/logo_short.png' class='w-40' style="border-radius: 100%; object-fit: cover; height: 2.5rem; width: 2.5rem; background-color: white">
           <div class='f16 white m-l-10 pointer'>Hans Matrimony</div>
       </div>
 
@@ -37,9 +37,25 @@
       </div>
   </div>
   
-  <div id="my-botui-app" class='mainBody pwaSize w-full bg-white ht-full'>
-      <bot-ui></bot-ui>
+  <div [hidden]="history!='chatbot'">
+  <div id="my-botui-app" class='mainBody  w-full bg-white ht-full'  >
+        
+            <bot-ui></bot-ui>
   </div>
+</div>
+<div>
+        <div class='mainBody  w-full bg-white ht-full'  [hidden]="history!='history'">
+                 <app-history (share)="getSelectedProfile($event)" [profile]="historyData" ></app-history>
+       </div>
+   </div>
+
+<div>
+     <div class='mainBody  w-full bg-white ht-full'  [hidden]="history!='myprofile'">
+              <app-myprofile [personalProfileData]="profileData" [familyProfileData]="familyData"></app-myprofile>
+    </div>
+</div>
+
+
   <main *ngIf="1>2" class='mainBody pwaSize w-full bg-white'>
 
       <div style="margin-top:20px;" class="section" id="body">
@@ -158,6 +174,7 @@
       </div>
   </main>
 
+
   <!-- <footer class='pwaSize w-full p-0-5' style="position:fixed; bottom: 5px;">
     <form [formGroup]="answer" style="display: flex">        
         <input placeholder="Show me some profiles" formControlName="ans" id="text" class='t-l' style="width: calc(100% - 50px); margin: 0 !important; padding: 8px 15px !important; font-size: 14px !important;" disabled>
@@ -169,5 +186,11 @@
 <!-- <footer *ngIf="userObj.identity_number==''" style="position: fixed; bottom: 10px;" class='pwaSize w-full p-0-5 flex-c-c'>
     <button class='btn btn-blue' routerLink="/login">Login</button>
 </footer> -->
-
+<footer>
+    <div class="navbar">
+        <a class="active" (click)="changeToBot()"><i style="color: white;background-color: #34b7f1;margin: 0px;font-size: 25px !important" class="fa fa-commenting-o" aria-hidden="true"></i><br></a>
+        <a (click)="changeToHistory()"  ><i style="color: white;background-color: #34b7f1;margin: 0px;font-size: 25px !important" class="fa fa-history" aria-hidden="true"></i><br></a>
+        <a (click)="changeToMyProfile()" ><i style="color: white;background-color: #34b7f1;margin: 0px;font-size: 25px !important" class="fa fa-user-o" aria-hidden="true"></i><br></a>
+      </div>
+</footer>
 </main>

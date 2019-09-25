@@ -51,6 +51,8 @@ import { RegisterFourComponent } from './register-four/register-four.component';
 import { RegisterFiveComponent } from './register-five/register-five.component';
 import { RegisterSixComponent } from './register-six/register-six.component';
 import { ChatComponent } from './chat/chat.component';
+import { HistoryComponent } from './chat/history/history.component';
+import { MyprofileComponent } from './chat/myprofile/myprofile.component';
 
 
 let config = new AuthServiceConfig([
@@ -87,6 +89,8 @@ export function provideConfig() {
     RegisterFiveComponent,
     RegisterSixComponent,
     ChatComponent,
+    HistoryComponent,
+    MyprofileComponent,
   ],
   imports: [
     AgmCoreModule.forRoot({

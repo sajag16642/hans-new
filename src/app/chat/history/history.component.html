@@ -1,0 +1,19 @@
+<main style="margin: 0px ;padding-top: 50px;text-align: center">
+  <div class="row" *ngFor="let item of profile" style="display: inline-flex;margin: 0px 0px 0px 10px;">
+    <div class="imageSet">
+      <a (click)="shareData(item.id)">
+        <img style="border-radius: 100%;width: 80px;background-color: lightblue;margin: 20px auto 0px;" src="http://hansmatrimony.s3.ap-south-1.amazonaws.com/uploads/{{item.photo}}" alt="">
+      </a>
+        <p style="text-align: center;margin-top:10px">{{item.id}}</p>
+      </div>
+    </div>
+    
+</main>
+
+<!-- <footer>
+  <div class="navbar">
+      <a [routerLink]="['/chat']" routerLinkActive="router-link-active" ><i style="color: white;background-color: #34b7f1;margin: 0px;font-size: 25px !important" class="fa fa-star-o" aria-hidden="true"></i><br>Chat</a>
+      <a class="active" ><i style="color: white;background-color: #34b7f1;margin: 0px;font-size: 25px !important" class="fa fa-clock-o" aria-hidden="true"></i><br>History</a>
+      <a [routerLink]="['/myprofile']" routerLinkActive="router-link-active" ><i style="color: white;background-color: #34b7f1;margin: 0px;font-size: 25px !important" class="fa fa-user-o" aria-hidden="true"></i><br>Profile</a>
+    </div>
+</footer> -->

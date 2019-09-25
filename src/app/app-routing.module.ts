@@ -17,6 +17,9 @@ import { RegisterFourComponent } from './register-four/register-four.component';
 import { RegisterFiveComponent } from './register-five/register-five.component';
 import { RegisterSixComponent } from './register-six/register-six.component';
 import { ChatComponent } from './chat/chat.component';
+import { HistoryComponent } from './chat/history/history.component';
+import { MyprofileComponent } from './chat/myprofile/myprofile.component';
+
 
 const routes: Routes = [
   { path: '', pathMatch: 'full',component: HomeComponent },
@@ -29,6 +32,8 @@ const routes: Routes = [
   { path: 'viewCentres', component: ViewCentresComponent},
   { path: 'contactedUserProfiles/:userId/:status', component:ContactedUserProfileComponent},
   { path: 'chat', component: ChatComponent},
+  { path: 'history', component: HistoryComponent},
+  { path: 'myprofile', component: MyprofileComponent},
   { path: 'register-one', component: RegisterOneComponent},
   { path: 'register-two', component: RegisterTwoComponent},
   { path: 'register-three', component: RegisterThreeComponent},
