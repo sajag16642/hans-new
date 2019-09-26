@@ -23,6 +23,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+ngx-google-places-autocomplete
+MIT
+
 rxjs
 Apache-2.0
                                Apache License
@@ -229,6 +232,9 @@ Apache-2.0
  
 
 
+@angular/core
+MIT
+
 tslib
 Apache-2.0
 Apache License
@@ -287,12 +293,6 @@ If the Work includes a "NOTICE" text file as part of its distribution, then any 
 
 END OF TERMS AND CONDITIONS
 
-
-@angular/core
-MIT
-
-ngx-google-places-autocomplete
-MIT
 
 angularx-social-login
 MIT
