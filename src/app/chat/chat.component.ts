@@ -211,9 +211,7 @@ export class ChatComponent implements OnInit {
       }
       var div = (<HTMLInputElement>document.getElementById('body'));
       // div.scrollIntoView(false);
-      console.log(div.scrollHeight);
-      console.log(div.offsetHeight);
-  })
+  });
       console.log(this.show_arr);
       this.DoNotshowfull = true;
 
@@ -268,6 +266,7 @@ export class ChatComponent implements OnInit {
    }
    checkUrl(num: string): Observable<any> {
        return this.http.get<any>(' https://partner.hansmatrimony.com/api/auth', {params: { ['phone_number'] : num}});
+       // tslint:disable-next-line: max-line-length
    }
 
    repeatMEssage(ans: String, mob) {
@@ -289,7 +288,7 @@ export class ChatComponent implements OnInit {
                        'Name: ' +values.name +'<br>'+
                        // tslint:disable-next-line: max-line-length
                        this.profileSet('Age: ' , String(Math.floor((Date.now() - new Date(values.birth_date).getTime())/(1000*60*60*24*365))))+
-                       this.profileSet('Height: ',values.height)+
+                       this.profileSet('Height: ', this.getHeight(Number(values.height)))+
                        this.profileSet('Weight: ',values.weight)+
                        this.profileSet('Religion: ',values.religion)+
                        this.profileSet('Caste: ',values.caste)+
@@ -791,25 +790,27 @@ export class ChatComponent implements OnInit {
      console.log(this.history);
    }
    changeToHistory() {
-     this.history = 'history';
-     console.log(localStorage.getItem('id'));
-     // tslint:disable-next-line: max-line-length
-     return this.http.post<any>('https://partner.hansmatrimony.com/api/history?id='+ localStorage.getItem('id') , {params: { ['id'] : localStorage.getItem('id')}}).subscribe(
-       (data: any) => {
-        console.log(data);
-        this.historyData = data.rejected;
-       },
-       (error: any) => {
-         console.log(error);
-       }
-     );
+     if (this.currentContact) {
+      this.history = 'history';
+      console.log(localStorage.getItem('id'));
+      // tslint:disable-next-line: max-line-length
+      return this.http.post<any>('https://partner.hansmatrimony.com/api/history?id='+ localStorage.getItem('id') , {params: { ['id'] : localStorage.getItem('id')}}).subscribe(
+        (data: any) => {
+         console.log(data);
+         this.historyData = data;
+        },
+        (error: any) => {
+          console.log(error);
+        }
+      );
+     }
    }
    changeToBot() {
     this.history = 'chatbot';
    }
    changeToMyProfile() {
+     if (this.currentContact) {
      this.history = 'myprofile';
-
      console.log(localStorage.getItem('id'));
      // tslint:disable-next-line: max-line-length
      return this.http.post<any>('https://partner.hansmatrimony.com/api/getProfile?id='+ localStorage.getItem('id') , {params: { ['id'] : localStorage.getItem('id')}}).subscribe(
@@ -822,7 +823,32 @@ export class ChatComponent implements OnInit {
          console.log(error);
        }
      );
+     }
    }
+profileReAnswer(num: any,id: any,answer: any) {
+  // tslint:disable-next-line: max-line-length
+  return this.http.post<any>('https://partner.hansmatrimony.com/api/reply?mobile='+this.currentContact+'&id='+id+'&text='+answer  , {}).subscribe(
+    (data:any) => {
+      console.log(answer);
+      console.log(num);
+      console.log(id);
+      console.log(data);
+      this.botui.message.add({
+        content:data.message
+      }).then(() => {
+        this.botui.action.button({
+          action: [{
+            text: 'SHOW',value: 'SHOW'
+          }]
+        }).then(res => {
+          this.repeatMEssage(res.value,num);
+        });
+      });
+    }, (error: any) => {
+      console.log(error);
+    });
+}
+
    getSelectedProfile(data: any) {
      this.history = 'chatbot';
     console.log(data);
@@ -842,7 +868,7 @@ export class ChatComponent implements OnInit {
         'Name: ' +personal.name +'<br>'+
         // tslint:disable-next-line: max-line-length
         this.profileSet('Age: ' , String(Math.floor((Date.now() - new Date(personal.birth_date).getTime())/(1000*60*60*24*365))))+
-        this.profileSet('Height: ',personal.height)+
+        this.profileSet('Height: ', this.getHeight(Number(personal.height))) +
         this.profileSet('Weight: ',personal.weight)+
         this.profileSet('Religion: ',family.religion)+
         this.profileSet('Caste: ',family.caste)+
@@ -884,8 +910,8 @@ export class ChatComponent implements OnInit {
           return this.botui.action.button({
             cssClass: 'styleButton',
             action: [
-              { text: 'YES', value: 'YES'},
-              {text: 'NO', value: 'NO' }
+              { text: 'YES', value: 'Yes'},
+              {text: 'NO', value: 'No' }
             ]
         }).then(res => {
          if (this.langChanged === true) {
@@ -901,7 +927,8 @@ export class ChatComponent implements OnInit {
          }
           this.answer = res.value;
           console.log('chose' + res.value);
-          this.repeatMEssage(res.value, this.currentContact);
+          console.log('Reanswered');
+          this.profileReAnswer(this.currentContact,personal.id,res.value);
         });
     });
     } else {
@@ -954,8 +981,8 @@ export class ChatComponent implements OnInit {
           return this.botui.action.button({
             cssClass: 'styleButton',
             action: [
-              { text: 'YES', value: 'YES'},
-              {text: 'NO', value: 'NO' }
+              { text: 'YES', value: 'Yes'},
+              {text: 'NO', value: 'No' }
             ]
         }).then(res => {
          if (this.langChanged === true) {
@@ -970,7 +997,8 @@ export class ChatComponent implements OnInit {
            this.langChanged = false;
          }
           console.log('chose' + res.value);
-          this.repeatMEssage(res.value, this.currentContact);
+          console.log('Reanswered');
+          this.profileReAnswer(this.currentContact,personal.id,res.value);
         });
     });
     }
