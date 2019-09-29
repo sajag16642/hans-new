@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { SelectDropDownModule } from 'ngx-select-dropdown';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
@@ -12,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 import {
   MatFormFieldModule, MatDatepickerModule, MatIconModule, MatInputModule, MatButtonToggleModule,
@@ -111,8 +113,10 @@ export function provideConfig() {
     BrowserAnimationsModule,
     MatStepperModule,
     MatFormFieldModule,
+    NgxMatSelectSearchModule,
     MatCheckboxModule,
     MatSelectModule,
+    SelectDropDownModule,
     MatSidenavModule,
     FormsModule,
     ReactiveFormsModule,

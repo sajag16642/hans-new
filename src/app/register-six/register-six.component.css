@@ -4,3 +4,9 @@
         text-align: center;
          color: #285fdd
 }
+ngx-select-dropdown .ngx-dropdown-container .ngx-dropdown-button {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    margin-top: 20px;
+}

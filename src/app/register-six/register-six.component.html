@@ -66,7 +66,7 @@
             <div class="col-md-12">
               <mat-form-field class="full-width" appearance="standard" style="height:60px">
                 <mat-label>Mother Tongue</mat-label>
-                <input type="text" matInput formControlName="stateGroup" required [matAutocomplete]="autoGroup">
+                <input type="text" matInput formControlName="stateGroup" name="stateGroupOptions" required [matAutocomplete]="autoGroup">
                 <mat-autocomplete #autoGroup="matAutocomplete">
                   <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
                     <mat-option *ngFor="let name of group.names" [value]="name"  required>
@@ -91,18 +91,29 @@
           </div> -->
           <div class="row">
             <div class="col-md-12">
-              <mat-form-field class="full-width" appearance="standard"  style="height:60px">
+              <!-- <mat-form-field class="full-width" appearance="standard"  style="height:60px">
                 <mat-label>caste</mat-label>
-                <mat-select formControlName="caste" placeholder="caste" multiple>
-                  <mat-option *ngFor="let name of getcastes" [value]="name">{{name}}</mat-option>
-                </mat-select>
+                <mat-select [formControl]="casteMultiCtrl" placeholder="Castes"  #multiSelect>
+                    <ngx-mat-select-search [formControl]="casteFilterCtrl"></ngx-mat-select-search>
+                  <mat-option *ngFor="let name of filteredCasteMulti | async" [value]="name">{{name}}
+                  </mat-option>
+                </mat-select> -->
+                <!-- <mat-form-field class="full-width" appearance="standard"  style="height:60px">
+                    <mat-label>caste</mat-label> -->
+                    <div class="full-width" appearance="standard" style="margin: 20px 0px 0px">
+                <ngx-select-dropdown  (change)="selectionChanged($event)" formControlName="selectData" [multiple]="true" [config]="config" [options]="filterCaste"></ngx-select-dropdown>
+              </div>
+                <!-- <ngx-select-dropdown [config]="config" [options]="filterCaste" 
+                  [(ngModel)]="binding"]="simple" [multiple]="false" >
+                </ngx-select-dropdown> -->
+
                 <!-- <input formControlName="caste" required placeholder="caste" [matAutocomplete]="caste" matInput type="text" > -->
                 <!-- <mat-autocomplete #caste="matAutocomplete" required  multiple>
                   <mat-option *ngFor="let name of casteo | async" [value]="name">
                     {{name}}
                   </mat-option>
                 </mat-autocomplete> -->
-              </mat-form-field> 
+              <!-- </mat-form-field>  -->
             </div>
           </div>
           <div class="row">
@@ -155,8 +166,8 @@
             <div class="col-md-12">
               <mat-form-field class="full-width" appearance="standard">
                 <mat-label>Working Status</mat-label>
-                <select matNativeControl  formControlName="working" required name="working">
-                    <option *ngFor="let  option of casteo | async" [value]="option">
+                <select matNativeControl  formControlName="working" name="Working" required name="working">
+                    <option *ngFor="let  option of Working" [value]="option">
                       {{option}}
                     </option>
                   </select> 
@@ -171,6 +182,7 @@
                 </mat-form-field>
               </div>
             </div>
+
             
             <div class="col-xs-12 m-t-20" style="margin-left:auto;margin-right:auto;text-align:center;margin-bottom: 20px;">
               <div style="margin-left:auto;margin-right:auto;display:flex">

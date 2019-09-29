@@ -5,6 +5,8 @@ import {
   OnInit,
   ElementRef,
   ViewChild,
+  OnDestroy,
+  AfterViewInit,
   Directive,
   Input
 } from '@angular/core';
@@ -21,12 +23,14 @@ import {
   ErrorStateMatcher
 } from '@angular/material/core';
 import {
-  Observable
+  Observable, Subject, ReplaySubject
 } from 'rxjs';
 import {
   startWith,
   map,
-  sample
+  sample,
+  takeUntil,
+  take
 } from 'rxjs/operators';
 import {
   AuthService
@@ -49,7 +53,8 @@ import {
   MatDialog,
   MatDialogConfig,
   MAT_DIALOG_DATA,
-  MatTooltip
+  MatTooltip,
+  MatSelect
 } from '@angular/material/';
 import { HttpClient } from '@angular/common/http';
 export interface StateGroup {
@@ -60,6 +65,10 @@ export interface hd {
   group: string;
   mapping_id: number;
   names: string[];
+}
+interface Bank {
+  id: string;
+  name: string;
 }
 
 export const _filter = (opt: string[], value: string): string[] => {
@@ -73,7 +82,7 @@ export const _filter = (opt: string[], value: string): string[] => {
   templateUrl: './register-six.component.html',
   styleUrls: ['./register-six.component.css']
 })
-export class RegisterSixComponent implements OnInit {
+export class RegisterSixComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @ViewChild('otpModal') private otpModal: any;
   @ViewChild('photoModal') private photoModal: any;
@@ -124,6 +133,8 @@ export class RegisterSixComponent implements OnInit {
   castePref: any;
   prefManglik = [];
 
+  filterCaste: any = [];
+
   Caste: Boolean = false;
   AllCastes: Boolean = false;
   HoroScopes: Boolean = false;
@@ -150,6 +161,47 @@ export class RegisterSixComponent implements OnInit {
   selectedItems = [];
   selectedItems1: any = [];
   dropdownSettings = {};
+  simple: any = [];
+
+
+  config = {
+    // displayKey: '10', // if objects array passed which key to be displayed defaults to description
+    search:true ,// true/false for the search functionlity defaults to false,
+    // tslint:disable-next-line: max-line-length
+    height: 'auto', // height of the list so that if there are more no of items it can show a scroll defaults to auto. With auto height scroll will never appear
+    placeholder:'Caste *', // text to be displayed when no item is selected defaults to Select,
+    // tslint:disable-next-line: max-line-length
+    customComparator: ()=>{} ,// a custom function using which user wants to sort the items. default is undefined and Array.sort() will be used in that case,
+    limitTo: this.filterCaste.length ,// a number thats limits the no of options displayed in the UI similar to angular's limitTo pipe
+    // moreText: 'more', // text to be displayed whenmore than one items are selected like Option 1 + 5 more
+    // noResultsFound: 'No results found!', // text to be displayed when no items are found while searching
+    searchPlaceholder:'Search' ,// label thats displayed in search input,
+    // tslint:disable-next-line: max-line-length
+    searchOnKey: 'name' // key on which search should be performed this will be selective search. if undefined this will be extensive search on all keys
+    };
+
+
+
+
+
+
+    /** control for the selected bank for multi-selection */
+  public casteMultiCtrl: FormControl = new FormControl();
+
+   /** control for the MatSelect filter keyword */
+   public casteFilterCtrl: FormControl = new FormControl();
+
+
+/** list of banks filtered by search keyword for multi-selection */
+  public filteredCasteMulti: ReplaySubject<any> = new ReplaySubject<any>(1);
+
+@ViewChild('multiSelect') multiSelect: MatSelect;
+
+/** Subject that emits when the component has been destroyed. */
+private _onDestroy = new Subject<void>();
+
+
+
 
   HigherEducation: hd[] = [{
       group: 'Engineering Design',
@@ -236,7 +288,7 @@ export class RegisterSixComponent implements OnInit {
   Religions: string[] = ['Hindu', 'Muslim', 'Sikh', 'Christian', 'Buddhist', 'Jain', 'Parsi', 'Jewish', 'Bahai'];
   MaritalStaus: string[] = ['Never Married', 'Awaiting Divorce', 'Divorced', 'Widowed', 'Anulled'];
   Occupation: string[] = ['Private Company', 'Business/Self Employed', 'Government Job', 'Doctor', 'Teacher', 'Not Working'];
-  Working: string[] = ['Working', 'Not Working', "Doesn't matter"]
+  Working: string[] = ['Working', 'Not Working', 'Doesn\'t matter'];
   AnnualIncome: any[] = ['No Income', 'Rs 0-1 Lakh', 'Rs 1-2 Lakh', 'Rs 2-3 Lakh', 'Rs 3-4 Lakh', 'Rs 4-5 Lakh', 'Rs 5-7.5 Lakh',
     'Rs 7.5-12 Lakh',
     'Rs 12-15 Lakh', 'Rs 15-20 Lakh', 'Rs 20-25 Lakh', 'Rs 25-50 Lakh', 'Rs 50Lakh-1Crore', 'Rs 1Crore+'
@@ -298,8 +350,7 @@ export class RegisterSixComponent implements OnInit {
       'Mangalik': ['', Validators.compose([])],
       'gender': ['', Validators.compose([Validators.required])],
       'age': ['', Validators.compose([Validators.required])],
-      
-      
+
     });
     this.PageOne = this._formBuilder.group({
       'email': ['', Validators.compose([Validators.required, Validators.email])],
@@ -365,9 +416,6 @@ export class RegisterSixComponent implements OnInit {
       'age_max': [''],
       'height_min': [''],
       'height_max': [''],
-      'caste': [
-        [], Validators.required
-      ],
       'marital_status': [''],
       'manglik': [''],
       'working': [''],
@@ -376,10 +424,6 @@ export class RegisterSixComponent implements OnInit {
     });
 
   }
-
-
-
-
 
   private _filterGroup(value: string): StateGroup[] {
     if (value) {
@@ -1521,7 +1565,7 @@ export class RegisterSixComponent implements OnInit {
     sixthstepdata.append('age_max', this.PreferencesDetails.value.age_max);
     sixthstepdata.append('height_min', this.Heights1[this.PreferencesDetails.value.height_min]);
     sixthstepdata.append('height_max', this.Heights1[this.PreferencesDetails.value.height_max]);
-    sixthstepdata.append('caste', this.PreferencesDetails.value.caste);
+    sixthstepdata.append('caste', this.simple);
     sixthstepdata.append('marital_status', this.PreferencesDetails.value.marital_status);
     sixthstepdata.append('manglik', this.PreferencesDetails.value.manglik);
     sixthstepdata.append('working', this.PreferencesDetails.value.working);
@@ -1566,8 +1610,23 @@ export class RegisterSixComponent implements OnInit {
   ngOnInit() {
 
     this.http.get('https://partner.hansmatrimony.com/api/getAllCaste').subscribe((res:any)=>{
-      this.getcastes = res;
-     
+      this.filterCaste = res;
+      console.log(this.filterCaste);
+
+    // set initial selection
+    console.log(this.filterCaste[10]);
+    this.casteMultiCtrl.setValue(this.filterCaste[10]);
+
+    // load the initial bank list
+    this.filteredCasteMulti.next(this.filterCaste.slice());
+
+    // listen for search field value changes
+      this.casteFilterCtrl.valueChanges
+      .pipe(takeUntil(this._onDestroy))
+      .subscribe(() => {
+        this.filterBanksMulti();
+      });
+
     });
 
     this.casteo = this.PreferencesDetails.get('caste').valueChanges.pipe(
@@ -1716,12 +1775,65 @@ export class RegisterSixComponent implements OnInit {
     };
   }
 
+  ngAfterViewInit() {
+    this.setInitialValue();
+  }
+
+  ngOnDestroy() {
+    this._onDestroy.next();
+    this._onDestroy.complete();
+  }
+  selectionChanged(caste: any) {
+    console.log(caste.val);
+    this.simple = caste.value;
+    console.log(this.simple);
+  }
+
+  // tslint:disable-next-line: use-life-cycle-interface
+  
+  // tslint:disable-next-line: use-life-cycle-interface
+  
+
+  /**
+   * Sets the initial value after the filteredBanks are loaded initially
+   */
+  private setInitialValue() {
+    this.filterCaste
+      .pipe(take(1), takeUntil(this._onDestroy))
+      .subscribe(() => {
+        // setting the compareWith property to a comparison function
+        // triggers initializing the selection according to the initial value of
+        // the form control (i.e. _initializeSelection())
+        // this needs to be done after the filteredBanks are loaded initially
+        // and after the mat-option elements are available
+        this.multiSelect.compareWith = (a: any, b: any) => a === b;
+      });
+  }
+
+  private filterBanksMulti() {
+    if (!this.filterCaste) {
+      return;
+    }
+    // get the search keyword
+    let search = this.casteFilterCtrl.value;
+    if (!search) {
+      this.filteredCasteMulti.next(this.getcastes.slice());
+      return;
+    } else {
+      search = search.toLowerCase();
+      console.log(search);
+    }
+    // filter the castes
+    this.filteredCasteMulti.next(
+      this.filterCaste.sort(name => name.toLowerCase().indexOf(search) > -1));
+  }
+
   getCastes() {
-    this.Auth.getCastes().subscribe((res) => {
+   return  this.Auth.getCastes().subscribe((res) => {
       this.castePref = res;
       console.log(this.castePref);
 
-    })
+    });
   }
   changeCaste(e) {
     console.log(e);
