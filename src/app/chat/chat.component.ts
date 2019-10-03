@@ -947,7 +947,7 @@ profileReAnswer(num: any,id: any,answer: any) {
         +
         '<b> &#128188 Work Details</b> <br><br>' +
         this.profileSet('Occupation: ',personal.occupation)+'<br>'+
-        this.profileSet('Annual Income: ',String(personal.monthly_income))+
+        this.profileSet('Annual Income: ',String(personal.monthly_income))+'LPA'+
         this.profileSet('Profession: ',personal.profession)+
         this.profileSet('Working City: ',personal.working_city)+' <br><br>'
         +
@@ -958,7 +958,7 @@ profileReAnswer(num: any,id: any,answer: any) {
         this.profileSet('Father Status: ',family.father_status)+
         this.profileSet('Mothers Occupation: ',family.occupation_mother)+
         this.profileSet('Fathers Occupation: ',family.occupation)+
-        this.profileSet('Family Income: ',String(family.family_income))+
+        this.profileSet('Family Income: ',String(family.family_income))+'LPA'+
         this.profileSet('Married Brothers: ',family.married_sons)+
         this.profileSet('Married Sisters: ',family.married_daughters)+
         this.profileSet('Unmarried Brothers: ',family.unmarried_sons)+
@@ -1018,7 +1018,7 @@ profileReAnswer(num: any,id: any,answer: any) {
         +
         '<b> &#128188 वर्क डिटेल्स</b> <br><br>' +
         this.profileSet('व्यसाय: ',personal.occupation)+
-        this.profileSet('वार्षिक आय: ',String(personal.monthly_income))+
+        this.profileSet('वार्षिक आय: ',String(personal.monthly_income))+'LPA'+
         this.profileSet('पेशा: ',personal.profession)+
         this.profileSet('कार्य स्थान: ',personal.working_city)+' <br><br>'
         +
@@ -1029,7 +1029,7 @@ profileReAnswer(num: any,id: any,answer: any) {
         this.profileSet('फादर स्टेटस: ',family.father_status)+
         this.profileSet('माता का व्यसाय: ',family.occupation_mother)+
         this.profileSet('पिता का व्यसाय : ',family.occupation)+
-        this.profileSet('पारिवारिक आय: ',String(family.family_income))+
+        this.profileSet('पारिवारिक आय: ',String(family.family_income))+'LPA'+
         this.profileSet('मैरिड भाई: ',family.married_sons)+
         this.profileSet('मैरिड बेहेने : ',family.married_daughters)+
         this.profileSet('अव्यावाहित भाई: ',family.unmarried_sons)+
@@ -1113,7 +1113,7 @@ profileReAnswer(num: any,id: any,answer: any) {
                     +
                     '<b> &#128188 वर्क डिटेल्स</b> <br><br>' +
                     this.profileSet('व्यसाय: ',valueInMessage.occupation)+
-                    this.profileSet('वार्षिक आय: ',String(valueInMessage.monthly_income))+
+                    this.profileSet('वार्षिक आय: ',String(valueInMessage.monthly_income))+'LPA'+
                     this.profileSet('पेशा: ',valueInMessage.profession)+
                     this.profileSet('कार्य स्थान: ',valueInMessage.working_city)+' <br><br>'
                     +
@@ -1124,7 +1124,7 @@ profileReAnswer(num: any,id: any,answer: any) {
                     this.profileSet('फादर स्टेटस: ',valueInMessage.father_status)+
                     this.profileSet('माता का व्यसाय: ',valueInMessage.occupation_mother)+
                     this.profileSet('पिता का व्यसाय : ',valueInMessage.occupation)+
-                    this.profileSet('पारिवारिक आय: ',String(valueInMessage.family_income))+
+                    this.profileSet('पारिवारिक आय: ',String(valueInMessage.family_income))+'LPA'+
                     this.profileSet('मैरिड भाई: ',valueInMessage.married_sons)+
                     this.profileSet('मैरिड बेहेने : ',valueInMessage.married_daughters)+
                     this.profileSet('अव्यावाहित भाई: ',valueInMessage.unmarried_sons)+
