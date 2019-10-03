@@ -36,7 +36,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '../app/Services/auth.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
-
+import { SubscriptionService } from './subscription.service';
 import { SnotifyModule, SnotifyService , ToastDefaults } from 'ng-snotify';
 import { NgxNotificationComponent, NgxNotificationModule } from 'ngx-notification';
 import { ViewCentresComponent } from './view-centres/view-centres.component';
@@ -138,7 +138,7 @@ export function provideConfig() {
   providers: [{provide : 'SnotifyToastConfig' , useValue: ToastDefaults}, AuthService , SnotifyService, {
     provide: AuthServiceConfig,
     useFactory: provideConfig
-  }],
+  } , SubscriptionService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

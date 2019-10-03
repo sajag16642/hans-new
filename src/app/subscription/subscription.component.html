@@ -12,14 +12,17 @@
                         <h6>What are Credits?</h6>
                         <p>Each Credit will give you one contact detail from 100's of profiles shared on daily basis.</p>
                     </div>
+                    <div class="text-center">
+                        <p style="color: #34b7f1;font-weight: bolder" *ngIf="points">Total Credits Left: {{points}}</p>
+                    </div>
                 </div>
             </div>
             <div class="row" id="plan-option" style="text-align: center;">
                <div class="col-sm-6 col-md-6 col-lg-6" id="button-div" style="margin: 10px 0px;">
-                  <button type="button" class="btn btn-primary"  id="buttonOnline">Online Plans</button>
+                  <button type="button" class="btn btn-primary" (click)="toggleOnline()"  [id]="changeButtonOnline()">Online Plans</button>
                </div>
                <div class="col-sm-6 col-md-6 col-lg-6" id="button-div" style="margin: 10px 0px;">
-                  <button type="button"  class="btn btn-primary"  id="buttonPersonalised">Personalised Plans</button>
+                  <button type="button"  class="btn btn-primary" (click)="togglePersonalized()"  [id]="changeButtonPersonalized()">Personalised Plans</button>
                </div>
             </div>
           
@@ -39,7 +42,7 @@
                             <p><span class="feature">Validity</span><br><span class="value" style="padding-top:10px">{{ plans?.Limited?.Validity}}</span></p>      
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-xs-12 v-align btnSet">
-                           <button type="button" class="btn btn-primary buyNow">Buy now</button>
+                           <button type="button" (click)="getRazorPay(plans?.Limited?.CurrentAmt,'live',0)" class="btn btn-primary buyNow">Buy now</button>
                         </div>
                     </div>
                     </div>
@@ -60,7 +63,7 @@
                             <p><span class="feature">Validity</span><br><span class="value" style="padding-top:10px">{{ plans?.Premium?.Validity}}</span></p>      
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 v-align btnSet">
-                           <button type="button" class="btn btn-primary buyNow">Buy now</button>
+                           <button type="button" (click)="getRazorPay(plans?.Premium?.CurrentAmt,'live',0)" class="btn btn-primary buyNow">Buy now</button>
                         </div>
                     </div>
                 </div>
@@ -81,15 +84,73 @@
                             <p><span class="feature">Validity</span><br><span class="value" style="padding-top:10px">{{ plans?.Supreme?.Validity}}</span></p>      
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 v-align btnSet">
-                           <button type="button" class="btn btn-primary buyNow">Buy now</button>
+                           <button type="button" (click)="getRazorPay(plans?.Supreme?.CurrentAmt,'live',0)" class="btn btn-primary buyNow">Buy now</button>
                         </div>
                     </div>
                 </div>
                  </div>
-      
-              
-      
-              
+            </div>
+
+            <div class="card-wrapper" *ngIf="show2">
+                <div id="option" class="option">
+                    <div id="contain">
+                        <div class="row rowSet">
+                        <div class="col-xs-4  col-sm-3 col-md-3 colSet">
+                            <p class="feature">Premium 6</p>
+                            <p id="p">{{ plans?.PersonalizedPremium6?.Charges }}</p> 
+                        </div>
+                        <div class="col-xs-4 col-sm-3  col-md-3 colSet">
+                            <p><span class="feature">Benefits</span><br><span class="value" style="padding-top:10px">{{ plans?.PersonalizedPremium6?.Benefits}}</span></p>                 
+                        </div>
+                        <div class="col-xs-4 col-sm-3 col-md-3 colSet">
+                            <p><span class="feature">Validity</span><br><span class="value" style="padding-top:10px">{{ plans?.PersonalizedPremium6?.Validity}}</span></p>      
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-xs-12 v-align btnSet">
+                           <button type="button" (click)="getRazorPay(19000,'live',1)" class="btn btn-primary buyNow">Buy now</button>
+                        </div>
+                    </div>
+                    </div>
+                 </div>
+
+                 <div id="option" class="option">
+                    <div id="contain">
+                        <div class="row rowSet">
+                        <div class="col-sm-3 col-md-3 col-lg-3 colSet">
+                            <p class="feature">Premium 12</p>
+                            <p id="p">{{ plans?.PersonalizedPremium12?.Charges }}</p> 
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3  colSet">
+                            <p><span class="feature">Benefits</span><br><span class="value" style="padding-top:10px">{{ plans?.PersonalizedPremium12?.Benefits}}</span></p>                 
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3  colSet">
+                            <p><span class="feature">Validity</span><br><span class="value" style="padding-top:10px">{{ plans?.PersonalizedPremium12?.Validity}}</span></p>      
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 v-align btnSet">
+                           <button type="button" (click)="getRazorPay(25000,'live',1)" class="btn btn-primary buyNow">Buy now</button>
+                        </div>
+                    </div>
+                </div>
+                 </div>
+
+                 <div id="option" class="option">
+                    <div id="contain">
+                        <div class="row rowSet">
+                        <div class="col-sm-3 col-md-3 col-lg-3  colSet">
+                            <p class="feature">Deluxe NRI</p>
+                            <p id="p">{{ plans?.PersonalizedDeluxeNRI?.Charges }}</p> 
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3  colSet">
+                            <p><span class="feature">Benefits</span><br><span class="value" style="padding-top:10px">{{ plans?.PersonalizedDeluxeNRI?.Benefits}}</span></p>                 
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3  colSet">
+                            <p><span class="feature">Validity</span><br><span class="value" style="padding-top:10px">{{ plans?.PersonalizedDeluxeNRI?.Validity}}</span></p>      
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 v-align btnSet">
+                           <button type="button" (click)="getRazorPay(31000,'live',1)" class="btn btn-primary buyNow">Buy now</button>
+                        </div>
+                    </div>
+                </div>
+                 </div>
             </div>
           </main>
     </main>

@@ -4,9 +4,27 @@
       <div class='flex-fs-c setLogo' >
           <img  src='../../assets/logo_short.png' class='w-40' style="border-radius: 100%; object-fit: cover; height: 2.5rem; width: 2.5rem; background-color: white">
           <div class='f16 white m-l-10 pointer'>Hans Matrimony</div>
-      </div>
+      </div > 
 
       <div style="display: flex">
+
+        <div style="margin: auto">
+            <p style="margin-bottom: 0px" *ngIf="points">
+              <i [routerLink]="['/subscription']" routerLinkActive="router-link-active"  class="pointer fa fa-money" style="font-size: 28px;position: relative; width: 50px">
+              <p style="display: inherit;
+              position: absolute;
+              position: 0px;
+              background: #34b7f1;
+              border-radius: 100%;
+              border: 2px solid white;
+              padding-left: 3px;
+              padding-right: 3px;
+              padding-bottom: 3px;
+              font-size: 20px;
+              margin-top: -20px;">{{points}}</p></i>
+            </p>
+        </div>
+
           <div class="dropdown">
               <i class="pointer fa fa-language" data-toggle="dropdown" style="font-size: 28px;"></i>
               <ul class="dropdown-menu dropdown-menu-right t-l">

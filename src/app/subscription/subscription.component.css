@@ -169,6 +169,44 @@ nav > div a.nav-item.nav-link:focus
   border: none;
 }
 
+@media only screen and (max-width: 1024px) {
+  #main {
+    background-color:#f5f5f5;
+     margin: 0px;
+     width: 100%;
+     padding-bottom: 30px;
+  }
+  .colSet {
+    width: 33%;
+  }
+  .rowSet{
+    margin: 0px;
+    padding: 0px 20px 20px;
+  }
+  .btnSet{
+    text-align: center
+  }
+  .feature{
+    font-weight: bold
+}
+#p{
+  font-weight:bold;color:#007BFF
+ }
+  .declaration{
+    padding:30px 0;
+
+  }
+  .back-ground{
+    height: auto;
+    /* background: url(https://wallpapercave.com/wp/2ujUKnj.jpg) no-repeat center; */
+    background-size: 100% 100%;
+  }
+  nav{
+    padding: 0 45px;
+  }
+  
+}
+
 @media only screen and (max-width: 900px) {
   #main {
     background-color:#f5f5f5;
@@ -280,7 +318,7 @@ nav > div a.nav-item.nav-link:focus
  }
 
  #option{
-  margin-top:25px;background-color:white;height: 110px
+  margin-top:25px;background-color:white;
  }
 
  #contain{

@@ -44,12 +44,7 @@ export class ChatComponent implements OnInit {
   profileData: any;
   familyData: any;
   history = 'chatbot';
-  profiles = [{name: 'Sid', image: '../../../assets/profile.webp', date: '1 May 2019'},
-  {name: 'Sam', image: '../../../assets/profile.webp', date: '1 May 2019'},
-  {name: 'Sid', image: '../../../assets/profile.webp', date: '1 May 2019'},
-  {name: 'Sam', image: '../../../assets/profile.webp', date: '1 May 2019'},
-  {name: 'Sid', image: '../../../assets/profile.webp', date: '1 May 2019'},
-  {name: 'Sam', image: '../../../assets/profile.webp', date: '1 May 2019'}];
+  points: any;
 
 
   constructor(
@@ -72,37 +67,15 @@ export class ChatComponent implements OnInit {
     this.botui =  BotUI('my-botui-app');
     if (localStorage.getItem('mobile_number')) {
       this.currentContact = localStorage.getItem('mobile_number');
-      this.botui.message.add({
-        content: 'Click show to starting seeing some profiles'
-      }).then(() => {
-        this.botui.action.button({
-          action: [{
-            text: 'SHOW',
-            value: 'SHOW'
-          }]
-        }).then(res => {
-            if (this.langChanged === true) {
-              this.changeLanguage(localStorage.getItem('mobile_number'), localStorage.getItem('language')).subscribe(
-                (data : any) => {
-                  console.log(data);
-                }, 
-                (error: any) => {
-                  console.log(error);
-                }
-                );
-              this.langChanged = false;
-            }
-            this.repeatMEssage(res.value, localStorage.getItem('number'));
-      });
-    });
-    } else if (this.currentUrl) {
-      this.currentContact = this.currentUrl;
-      this.checkUrl(this.currentUrl).subscribe(
+      this.checkUrl(this.currentContact).subscribe(
         (data: any) => {
+          
           let text: String = data.apiwha_autoreply;
           let id = data.id;
           console.log(text);
           console.log(id);
+          localStorage.setItem('id', id);
+          this.getCredits();
           if (text.match('SHOW')) {
             this.botui.message.add({
               type: 'html',
@@ -154,6 +127,72 @@ export class ChatComponent implements OnInit {
         (error: any) => {
           console.log(error);
     });
+      
+    } else if (this.currentUrl) {
+      this.currentContact = this.currentUrl;
+      this.showHistoryMessages(this.currentUrl);
+      setTimeout(() => {
+        this.checkUrl(this.currentUrl).subscribe(
+          (data: any) => {
+            
+            let text: String = data.apiwha_autoreply;
+            let id = data.id;
+            console.log(text);
+            console.log(id);
+            localStorage.setItem('id', id);
+            this.getCredits();
+            if (text.match('SHOW')) {
+              this.botui.message.add({
+                type: 'html',
+                content: '<h6>'+text+'</h6>'
+              }).then(() => {
+                  this.botui.action.button({
+                    action: [{
+                      text: 'SHOW',
+                      value: 'SHOW'
+                    }]
+                  }).then(res => {
+                    if (this.langChanged === true) {
+                      this.changeLanguage(this.currentUrl, localStorage.getItem('language')).subscribe(
+                        (data : any) => {
+                          console.log(data);
+                        }, 
+                        (error:any) => {
+                          console.log(error);
+                        }
+                        );
+                      this.langChanged = false;
+                    }
+                    this.repeatMEssage(res.value, this.currentUrl);
+                  });
+            });
+          } else {
+                  this.botui.action.text({
+                    action: {
+                      sub_type: 'number',
+                      placeholder: 'कृपया अपना १० अंको का मोबाइल नंबर डालें'
+                    }
+                  }).then(res => {
+                    if (this.langChanged === true) {
+                      this.changeLanguage(res.value, localStorage.getItem('language')).subscribe(
+                        (data : any) => {
+                          console.log(data);
+                        }, 
+                        (error:any) => {
+                          console.log(error);
+                        }
+                        );
+                      this.langChanged = false;
+                    }
+  
+                    this.repeatMEssage('SHOW', res.value);
+                  });
+                }
+          },
+          (error: any) => {
+            console.log(error);
+      });
+      }, 5000);
   } else {
     this.botui.message.add({
       type: 'html',
@@ -212,7 +251,7 @@ export class ChatComponent implements OnInit {
       var div = (<HTMLInputElement>document.getElementById('body'));
       // div.scrollIntoView(false);
   });
-      console.log(this.show_arr);
+    
       this.DoNotshowfull = true;
 
   }
@@ -272,6 +311,7 @@ export class ChatComponent implements OnInit {
    repeatMEssage(ans: String, mob) {
          this.chatRequest(ans, mob).subscribe(
            (data: any) => {
+            this.getCredits();
              console.log(data);
              if (data.type === 'profile') {
                  let values = data.apiwha_autoreply;
@@ -620,6 +660,21 @@ export class ChatComponent implements OnInit {
  }
  }
 
+ getProfilePhotoHistory(num: String, gen: number): String {
+  if (num === null) {
+    if (gen === 0) {
+      return '../../assets/male_pic.png';
+    } else {
+      return '../../assets/female_pic.png';
+    }
+  } else {
+    if (num.match('http')) {
+      return num;
+    } else { return 'http://hansmatrimony.s3.ap-south-1.amazonaws.com/uploads/' + num;}
+  
+  }
+  }
+
  getSiblingCount(num: string): String {
  if (num === null) {
  return 'N/A';
@@ -700,9 +755,11 @@ export class ChatComponent implements OnInit {
     this.currentContact = num;
     this.checkUrl(num).subscribe(
       (data:any) => {
+        
         let text: String = data.apiwha_autoreply;
         let id = data.id;
         localStorage.setItem('id', id);
+        this.getCredits();
         console.log(localStorage.getItem('id'));
           console.log(text);
           if (text.match('SHOW')) {
@@ -1003,4 +1060,96 @@ profileReAnswer(num: any,id: any,answer: any) {
     });
     }
    }
+   showHistoryMessages(mob:string) {
+     return this.http.get('https://partner.hansmatrimony.com/api/getMessages?from=' + mob).subscribe(
+       (data: any) => {
+         console.log(data);
+         data.forEach(element => {
+          let type :any = element.type;
+          let message: any = element.message;
+          let valueInMessage: any;
+          if (type !== 'IN') {
+           valueInMessage = JSON.parse(message).apiwha_autoreply;
+          }
+            if (type === 'IN') {
+              this.botui.message.add({
+                human: true,
+                content: message
+              });
+            } else {
+              if (valueInMessage) {
+                if (JSON.parse(message).type === 'message') {
+                  this.botui.message.add({
+                    content: valueInMessage
+                  });
+                } else {
+                  this.botui.message.add({
+                    type: 'html',
+                    // tslint:disable-next-line: max-line-length
+                    content:'<img src='+this.getProfilePhotoHistory(valueInMessage.photo, valueInMessage.gender)+' width="200" ><br>'+
+                    '<b> &#128100 पर्सनल डिटेल्स</b> <br> <br>' +
+                    'नाम: ' +valueInMessage.name +'<br>'+
+                    // tslint:disable-next-line: max-line-length
+                    this.profileSet('उम्र: ',String((Math.floor((Date.now() - new Date(valueInMessage.birth_date).getTime())/(1000*60*60*24*365)))))+
+                    this.profileSet('कद: ',this.getHeight(Number(valueInMessage.height)))+
+                    this.profileSet('वजन: ',valueInMessage.weight)+
+                    this.profileSet('धर्म: ',valueInMessage.religion)+
+                    this.profileSet('जाती: ',valueInMessage.caste)+
+                    this.profileSet('खान-पान: ',valueInMessage.food_choice)+
+                    this.profileSet('पता: ',valueInMessage.locality)+
+                    this.profileSet('वैवाहिक स्तिथि: ',valueInMessage.marital_status)+
+                    this.profileSet('विकलांगता: ',valueInMessage.disability)+' <br> <br>'
+                     +
+                    '<b> &#9803 होरोस्कोप डिटेल्स</b> <br><br>' +
+                    this.profileSet('जन्म दिवस: ',valueInMessage.birth_date)+
+                    this.profileSet('जन्म का समय: ',valueInMessage.birth_time)+
+                    this.profileSet('जन्म स्थान: ',valueInMessage.birth_place)+
+                    this.profileSet('मांगलिक: ',valueInMessage.manglik)+' <br> <br>'
+                    +
+                    '<b> &#128218 एजुकेशन डिटेल्स</b> <br><br>' +
+                    this.profileSet('शिक्षा: ',valueInMessage.education)+
+                    this.profileSet('डिग्री: ',valueInMessage.degree)+
+                    this.profileSet('कॉलेज: ',valueInMessage.college)+' <br><br>'
+                    +
+                    '<b> &#128188 वर्क डिटेल्स</b> <br><br>' +
+                    this.profileSet('व्यसाय: ',valueInMessage.occupation)+
+                    this.profileSet('वार्षिक आय: ',String(valueInMessage.monthly_income))+
+                    this.profileSet('पेशा: ',valueInMessage.profession)+
+                    this.profileSet('कार्य स्थान: ',valueInMessage.working_city)+' <br><br>'
+                    +
+                    '<b> &#128106 फॅमिली डिटेल्स</b> <br><br>' +
+                    this.profileSet('परिवार: ',valueInMessage.family_type)+
+                    this.profileSet('घर: ',valueInMessage.house_type)+
+                    this.profileSet('मदर स्टेटस: ',valueInMessage.mother_status)+
+                    this.profileSet('फादर स्टेटस: ',valueInMessage.father_status)+
+                    this.profileSet('माता का व्यसाय: ',valueInMessage.occupation_mother)+
+                    this.profileSet('पिता का व्यसाय : ',valueInMessage.occupation)+
+                    this.profileSet('पारिवारिक आय: ',String(valueInMessage.family_income))+
+                    this.profileSet('मैरिड भाई: ',valueInMessage.married_sons)+
+                    this.profileSet('मैरिड बेहेने : ',valueInMessage.married_daughters)+
+                    this.profileSet('अव्यावाहित भाई: ',valueInMessage.unmarried_sons)+
+                    this.profileSet('अव्यावाहित बेहेने : ',valueInMessage.unmarried_daughters)
+                });
+                }
+              }
+            }
+         });
+       },
+       (error: any) => {
+         console.log(error);
+       }
+     );
+   }
+getCredits() {
+ // tslint:disable-next-line: max-line-length
+ return this.http.post('https://partner.hansmatrimony.com/api/getWhatsappPoint?id='+localStorage.getItem('id'),{params:{['id']: localStorage.getItem('id')}}).subscribe(
+   (data: any) => {
+      this.points = data.whatsapp_points;
+      console.log(this.points);
+   },
+  (error: any) => {
+    console.log(error);
+  }
+ );
+}
 }
