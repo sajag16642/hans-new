@@ -1142,7 +1142,7 @@ profileReAnswer(num: any,id: any,answer: any) {
    }
 getCredits() {
  // tslint:disable-next-line: max-line-length
- return this.http.post('https://partner.hansmatrimony.com/api/getWhatsappPoint?id='+localStorage.getItem('id'),{params:{['id']: localStorage.getItem('id')}}).subscribe(
+ return this.http.post<any>('https://partner.hansmatrimony.com/api/getWhatsappPoint?id='+localStorage.getItem('id'),{}).subscribe(
    (data: any) => {
       this.points = data.whatsapp_points;
       console.log(this.points);
