@@ -69,7 +69,6 @@ export class ChatComponent implements OnInit {
       this.currentContact = localStorage.getItem('mobile_number');
       this.checkUrl(this.currentContact).subscribe(
         (data: any) => {
-          
           let text: String = data.apiwha_autoreply;
           let id = data.id;
           console.log(text);
@@ -77,30 +76,18 @@ export class ChatComponent implements OnInit {
           localStorage.setItem('id', id);
           this.getCredits();
           if (text.match('SHOW')) {
-            this.botui.message.add({
-              type: 'html',
-              content: '<h6>'+text+'</h6>'
-            }).then(() => {
-                this.botui.action.button({
-                  action: [{
-                    text: 'SHOW',
-                    value: 'SHOW'
-                  }]
-                }).then(res => {
                   if (this.langChanged === true) {
-                    this.changeLanguage(this.currentUrl, localStorage.getItem('language')).subscribe(
+                    this.changeLanguage(this.currentContact, localStorage.getItem('language')).subscribe(
                       (data : any) => {
                         console.log(data);
                       }, 
-                      (error:any) => {
+                      (error: any) => {
                         console.log(error);
                       }
                       );
                     this.langChanged = false;
                   }
-                  this.repeatMEssage(res.value, this.currentUrl);
-                });
-          });
+                  this.repeatMEssage('SHOW', this.currentContact);
         } else {
                 this.botui.action.text({
                   action: {
@@ -142,16 +129,6 @@ export class ChatComponent implements OnInit {
             localStorage.setItem('id', id);
             this.getCredits();
             if (text.match('SHOW')) {
-              this.botui.message.add({
-                type: 'html',
-                content: '<h6>'+text+'</h6>'
-              }).then(() => {
-                  this.botui.action.button({
-                    action: [{
-                      text: 'SHOW',
-                      value: 'SHOW'
-                    }]
-                  }).then(res => {
                     if (this.langChanged === true) {
                       this.changeLanguage(this.currentUrl, localStorage.getItem('language')).subscribe(
                         (data : any) => {
@@ -163,9 +140,7 @@ export class ChatComponent implements OnInit {
                         );
                       this.langChanged = false;
                     }
-                    this.repeatMEssage(res.value, this.currentUrl);
-                  });
-            });
+                    this.repeatMEssage('SHOW', this.currentUrl);
           } else {
                   this.botui.action.text({
                     action: {
@@ -219,72 +194,7 @@ export class ChatComponent implements OnInit {
     });
   });
   }
-    const data = new FormData();
-    data.append('identity_number', localStorage.getItem('identity_number'));;
-
-    this.http.post('https://partner.hansmatrimony.com/api/getProfile', data ).subscribe((res : any) =>{
-      this.user = res;
-      //console.log('mobile number = ',this.user.family.mobile);
-      //localStorage.setItem('mobile_number','91'+this.user.family.mobile);
-      console.log(localStorage.getItem('mobile_number'));
-
-    })
-
-    this.http.get('https://partner.hansmatrimony.com/api/getMessages?from='+localStorage.getItem('mobile_number')).subscribe((res : any) => {
-      this.previous_chats = res;
-      let l = this.previous_chats.length;
-      for(let i=0;i<l;i++){
-          if(this.previous_chats[i].type === 'IN'){
-            this.show_arr.push({'side':1,'data':this.previous_chats[i].message,'sent':1,'message':0,'profile':0});
-          }
-
-          else if(this.previous_chats[i].type === 'OUT'){
-              if(JSON.parse(this.previous_chats[i].message).type === 'message'){
-                this.show_arr.push({'side':1,'data':JSON.parse(this.previous_chats[i].message).apiwha_autoreply,'sent':0,'message':1,'profile':0});
-              }
-              else{
-                this.show_arr.push({'side':1,'data':JSON.parse(this.previous_chats[i].message).apiwha_autoreply,'sent':0,'message':0,'profile':1});
-              }
-            }
-
-      }
-      var div = (<HTMLInputElement>document.getElementById('body'));
-      // div.scrollIntoView(false);
-  });
-    
-      this.DoNotshowfull = true;
-
   }
-
-  knowMore() {
-    this.DoNotshowfull = false;
-   }
-
-   read(data) {
-     (<HTMLInputElement>document.getElementById('text')).value = '';
-     this.show_arr.push({'side':1,'data':this.answer.value.ans,'sent':1,'message':0,'profile':0})
-     // this.chatRequest(data);
-   }
-
-   sendresponse(data){
-     this.show_arr.push({'side':1,'data':data,'sent':1,'message':0,'profile':0})
-     // this.chatRequest(data);
-   }
-
-   showProfile(value) {
-         // const Data = new FormData();
-         // Data.append('identity_number' , localStorage.getItem('identity_number'));
-         // this.sent = false;
-         // this.profile = true;
-
-         // this.http.post('https://partner.hansmatrimony.com/api/getRecommendedProfiles' , Data).subscribe((res : any) => {
-         //   this.user_profile = res;
-         //   console.log(res);
-         // })
-
-         this.show_arr.push({'side':1,'data':value,'sent':1,'message':0,'profile':0}) ;
-         // this.chatRequest(value);
-   }
 
    chatRequest(data, mobile): Observable<any> {
        this.Data = {
@@ -350,7 +260,7 @@ export class ChatComponent implements OnInit {
                        +
                        '<b> &#128188 Work Details</b> <br><br>' +
                        this.profileSet('Occupation: ',values.occupation)+'<br>'+
-                       this.profileSet('Annual Income: ',String(values.monthly_income/100000))+
+                       this.profileSetIncome('Annual Income: ',String(values.monthly_income/100000))+
                        this.profileSet('Profession: ',values.profession)+
                        this.profileSet('Working City: ',values.working_city)+' <br><br>'
                        +
@@ -361,7 +271,7 @@ export class ChatComponent implements OnInit {
                        this.profileSet('Father Status: ',values.father_status)+
                        this.profileSet('Mothers Occupation: ',values.mother_occupation)+
                        this.profileSet('Fathers Occupation: ',values.father_occupation)+
-                       this.profileSet('Family Income: ',String(values.family_income/100000))+
+                       this.profileSetIncome('Family Income: ',String(values.family_income/100000))+
                        this.profileSet('Married Brothers: ',values.married_sons)+
                        this.profileSet('Married Sisters: ',values.married_daughters)+
                        this.profileSet('Unmarried Brothers: ',values.unmarried_sons)+
@@ -443,7 +353,7 @@ export class ChatComponent implements OnInit {
                        +
                        '<b> &#128188 वर्क डिटेल्स</b> <br><br>' +
                        this.profileSet('व्यसाय: ',values.occupation)+
-                       this.profileSet('वार्षिक आय: ',String(values.monthly_income/100000))+
+                       this.profileSetIncome('वार्षिक आय: ',String(values.monthly_income/100000))+
                        this.profileSet('पेशा: ',values.profession)+
                        this.profileSet('कार्य स्थान: ',values.working_city)+' <br><br>'
                        +
@@ -454,7 +364,7 @@ export class ChatComponent implements OnInit {
                        this.profileSet('फादर स्टेटस: ',values.father_status)+
                        this.profileSet('माता का व्यसाय: ',values.mother_occupation)+
                        this.profileSet('पिता का व्यसाय : ',values.father_occupation)+
-                       this.profileSet('पारिवारिक आय: ',String(values.family_income/100000))+
+                       this.profileSetIncome('पारिवारिक आय: ',String(values.family_income/100000))+
                        this.profileSet('मैरिड भाई: ',values.married_sons)+
                        this.profileSet('मैरिड बेहेने : ',values.married_daughters)+
                        this.profileSet('अव्यावाहित भाई: ',values.unmarried_sons)+
@@ -763,19 +673,9 @@ export class ChatComponent implements OnInit {
         console.log(localStorage.getItem('id'));
           console.log(text);
           if (text.match('SHOW')) {
-            this.botui.message.add({
-              type: 'html',
-              content: '<h6>'+text+'</h6>'
-            }).then(() => {
-                this.botui.action.button({
-                  action: [{
-                    text: 'SHOW',
-                    value: 'SHOW'
-                  }]
-                }).then(res => {
                   this.change();
                   if (this.langChanged === true) {
-                    this.changeLanguage(this.currentUrl, localStorage.getItem('language')).subscribe(
+                    this.changeLanguage(this.currentContact, localStorage.getItem('language')).subscribe(
                       (data : any) => {
                         console.log(data);
                       }, 
@@ -785,9 +685,7 @@ export class ChatComponent implements OnInit {
                       );
                     this.langChanged = false;
                   }
-                  this.repeatMEssage(res.value, num);
-                });
-          });
+                  this.repeatMEssage('SHOW', num);
         } else {
           this.botui.message.add({
             content: text
@@ -837,11 +735,18 @@ export class ChatComponent implements OnInit {
   console.log('language changed to hindi');
    }
 
-   profileSet(key:string,value:string): String {
+   profileSet(key:string,value:String): String {
     if (value != null) {
       return key+': '+value+'<br>'
     } else {return ""}
    }
+
+   profileSetIncome(key:string,value:string): String {
+    if (value != null) {
+        return key+': '+value+ ' LPA <br>'
+    } else {return ""}
+   }
+
    onSelect(feature: string) {
      this.history = feature;
      console.log(this.history);
@@ -947,7 +852,7 @@ profileReAnswer(num: any,id: any,answer: any) {
         +
         '<b> &#128188 Work Details</b> <br><br>' +
         this.profileSet('Occupation: ',personal.occupation)+'<br>'+
-        this.profileSet('Annual Income: ',String(personal.monthly_income))+'LPA'+
+        this.profileSetIncome('Annual Income: ',String(personal.monthly_income))+
         this.profileSet('Profession: ',personal.profession)+
         this.profileSet('Working City: ',personal.working_city)+' <br><br>'
         +
@@ -958,7 +863,7 @@ profileReAnswer(num: any,id: any,answer: any) {
         this.profileSet('Father Status: ',family.father_status)+
         this.profileSet('Mothers Occupation: ',family.occupation_mother)+
         this.profileSet('Fathers Occupation: ',family.occupation)+
-        this.profileSet('Family Income: ',String(family.family_income))+'LPA'+
+        this.profileSetIncome('Family Income: ',String(family.family_income))+
         this.profileSet('Married Brothers: ',family.married_sons)+
         this.profileSet('Married Sisters: ',family.married_daughters)+
         this.profileSet('Unmarried Brothers: ',family.unmarried_sons)+
@@ -1018,7 +923,7 @@ profileReAnswer(num: any,id: any,answer: any) {
         +
         '<b> &#128188 वर्क डिटेल्स</b> <br><br>' +
         this.profileSet('व्यसाय: ',personal.occupation)+
-        this.profileSet('वार्षिक आय: ',String(personal.monthly_income))+'LPA'+
+        this.profileSetIncome('वार्षिक आय: ',String(personal.monthly_income))+
         this.profileSet('पेशा: ',personal.profession)+
         this.profileSet('कार्य स्थान: ',personal.working_city)+' <br><br>'
         +
@@ -1029,7 +934,7 @@ profileReAnswer(num: any,id: any,answer: any) {
         this.profileSet('फादर स्टेटस: ',family.father_status)+
         this.profileSet('माता का व्यसाय: ',family.occupation_mother)+
         this.profileSet('पिता का व्यसाय : ',family.occupation)+
-        this.profileSet('पारिवारिक आय: ',String(family.family_income))+'LPA'+
+        this.profileSetIncome('पारिवारिक आय: ',String(family.family_income))+
         this.profileSet('मैरिड भाई: ',family.married_sons)+
         this.profileSet('मैरिड बेहेने : ',family.married_daughters)+
         this.profileSet('अव्यावाहित भाई: ',family.unmarried_sons)+
@@ -1113,7 +1018,7 @@ profileReAnswer(num: any,id: any,answer: any) {
                     +
                     '<b> &#128188 वर्क डिटेल्स</b> <br><br>' +
                     this.profileSet('व्यसाय: ',valueInMessage.occupation)+
-                    this.profileSet('वार्षिक आय: ',String(valueInMessage.monthly_income))+'LPA'+
+                    this.profileSetIncome('वार्षिक आय: ',String(valueInMessage.monthly_income))+
                     this.profileSet('पेशा: ',valueInMessage.profession)+
                     this.profileSet('कार्य स्थान: ',valueInMessage.working_city)+' <br><br>'
                     +
@@ -1124,7 +1029,7 @@ profileReAnswer(num: any,id: any,answer: any) {
                     this.profileSet('फादर स्टेटस: ',valueInMessage.father_status)+
                     this.profileSet('माता का व्यसाय: ',valueInMessage.occupation_mother)+
                     this.profileSet('पिता का व्यसाय : ',valueInMessage.occupation)+
-                    this.profileSet('पारिवारिक आय: ',String(valueInMessage.family_income))+'LPA'+
+                    this.profileSetIncome('पारिवारिक आय: ',String(valueInMessage.family_income))+
                     this.profileSet('मैरिड भाई: ',valueInMessage.married_sons)+
                     this.profileSet('मैरिड बेहेने : ',valueInMessage.married_daughters)+
                     this.profileSet('अव्यावाहित भाई: ',valueInMessage.unmarried_sons)+

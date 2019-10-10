@@ -1,0 +1,45 @@
+<div class="container-fluid" >
+  <div class="row">
+<h2 mat-dialog-title style="margin-bottom: 0px;border-bottom: 1px solid blue; width: 100%"> Checkout Summary</h2>
+</div>
+<mat-dialog-content>
+    <div class="row" style="margin-top: 20px">
+        
+        <h6>Plan Opted:</h6>
+        <p style="margin: 0px 10px">{{plan}}</p>
+      </div>
+        <div class="row" style="margin-top: 20px">
+            <h6>Benefits:</h6>
+            <p style="margin: 0px 10px">{{benefits}}</p>
+          </div>
+
+            <div class="row" style="margin-top: 20px">
+                <h6>Value:</h6>
+                <p style="margin: 0px 10px"> {{value}}</p>
+              </div>
+               
+              <div class="row" style="margin-top: 20px">
+                  <h6>Price:</h6>
+                  <p style="margin: 0px 10px"> {{price}}</p>
+                </div>
+              
+                    <form>
+                        <div class="row"> 
+                        <label style="color: blue; margin-top: 20px" for="promo">Promocode:</label>
+                        <input style="width: 200px; margin: 10px 0px 0px 10px" type="text" class="form-control" name="promo">
+                        <input style="margin-left: 10px; border-radius: 100px" type="button" value="Apply">
+                        </div>
+                      </form>
+                
+                
+          
+</mat-dialog-content>
+
+<mat-dialog-actions style="margin-top: 20px">
+  <div class="row">
+      <button class="btn btn-danger"(click)="close()">Choose Another Plan</button>
+      <button style="margin-left: 10px" class="btn btn-primary">Proceed to Payment</button>
+  </div>
+    
+</mat-dialog-actions>
+</div>

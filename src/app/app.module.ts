@@ -45,7 +45,6 @@ import { CommonModule } from '@angular/common';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ContactedUserProfileComponent } from './contacted-user-profile/contacted-user-profile.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
-import { OnboardingComponent } from './onboarding/onboarding.component';
 import { RegisterOneComponent } from './register-one/register-one.component';
 import { RegisterTwoComponent } from './register-two/register-two.component';
 import { RegisterThreeComponent } from './register-three/register-three.component';
@@ -55,6 +54,7 @@ import { RegisterSixComponent } from './register-six/register-six.component';
 import { ChatComponent } from './chat/chat.component';
 import { HistoryComponent } from './chat/history/history.component';
 import { MyprofileComponent } from './chat/myprofile/myprofile.component';
+import { SubscriptionDialogComponent } from './subscription/subscription-dialog/subscription-dialog.component';
 
 
 let config = new AuthServiceConfig([
@@ -83,7 +83,6 @@ export function provideConfig() {
     EditProfileComponent,
     ViewCentresComponent,
     ContactedUserProfileComponent,
-    OnboardingComponent,
     RegisterOneComponent,
     RegisterTwoComponent,
     RegisterThreeComponent,
@@ -93,6 +92,7 @@ export function provideConfig() {
     ChatComponent,
     HistoryComponent,
     MyprofileComponent,
+    SubscriptionDialogComponent,
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -140,6 +140,7 @@ export function provideConfig() {
     useFactory: provideConfig
   } , SubscriptionService],
   bootstrap: [AppComponent],
+  entryComponents: [SubscriptionDialogComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

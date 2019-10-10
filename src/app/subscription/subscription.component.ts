@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SubscriptionService } from '../subscription.service';
+import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material';
+import { SubscriptionDialogComponent } from './subscription-dialog/subscription-dialog.component';
 
 @Component({
   selector: 'app-subscription',
@@ -15,7 +17,8 @@ export class SubscriptionComponent implements OnInit {
   registrationFees: any;
   
 
-  constructor(private http : HttpClient, private subscriptionService : SubscriptionService) { }
+  // tslint:disable-next-line: max-line-length
+  constructor(private http : HttpClient, private subscriptionService : SubscriptionService, private matDialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -67,7 +70,6 @@ export class SubscriptionComponent implements OnInit {
           // tslint:disable-next-line: no-unused-expression
           return this.subscriptionService.payNowT(amt, type, 1);
      }
-     
    }
 
    changeButtonOnline() {
@@ -78,8 +80,23 @@ export class SubscriptionComponent implements OnInit {
    changeButtonPersonalized() {
     if (this.show2 === true) {
       return 'buttonOnline';
-    } else {return 'buttonPersonalised';}
+    } else {return 'buttonPersonalised'; }
    }
+
+   openDialog(plan: String, benefits: String, value: String , price: String) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.hasBackdrop = true;
+    dialogConfig.minHeight = 300;
+    dialogConfig.minWidth = 300;
+      dialogConfig.data = {
+        plan: plan,
+        benefit: benefits,
+        value: value,
+        price: price
+      };
+    this.matDialog.open(SubscriptionDialogComponent, dialogConfig);
+  }
 
 }
 

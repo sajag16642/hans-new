@@ -9,7 +9,6 @@ import { EditProfileComponent } from '../../src/app/edit-profile/edit-profile.co
 import { ViewCentresComponent } from './view-centres/view-centres.component';
 import { GaurdService } from './Services/gaurd.service';
 import { ContactedUserProfileComponent } from './contacted-user-profile/contacted-user-profile.component';
-import { OnboardingComponent } from './onboarding/onboarding.component';
 import { RegisterOneComponent } from './register-one/register-one.component';
 import { RegisterTwoComponent } from './register-two/register-two.component';
 import { RegisterThreeComponent } from './register-three/register-three.component';

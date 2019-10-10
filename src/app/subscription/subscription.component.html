@@ -1,5 +1,6 @@
 <ng-container>
-    <main id="main">
+    <main>
+        <div id="main">
         <main id="second-main">
             <div class="header">
                 <div class="back-ground">
@@ -42,7 +43,7 @@
                             <p><span class="feature">Validity</span><br><span class="value" style="padding-top:10px">{{ plans?.Limited?.Validity}}</span></p>      
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-xs-12 v-align btnSet">
-                           <button type="button" (click)="getRazorPay(plans?.Limited?.CurrentAmt,'live',0)" class="btn btn-primary buyNow">Buy now</button>
+                           <button type="button" (click)="openDialog('Limited',plans?.Limited?.Credits,plans?.Limited?.Validity,plans?.Limited?.CurrentAmt)" class="btn btn-primary buyNow">Buy now</button>
                         </div>
                     </div>
                     </div>
@@ -63,7 +64,7 @@
                             <p><span class="feature">Validity</span><br><span class="value" style="padding-top:10px">{{ plans?.Premium?.Validity}}</span></p>      
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 v-align btnSet">
-                           <button type="button" (click)="getRazorPay(plans?.Premium?.CurrentAmt,'live',0)" class="btn btn-primary buyNow">Buy now</button>
+                           <button type="button" (click)="openDialog('Premium',plans?.Premium?.Credits,plans?.Premium?.Validity,plans?.Premium?.CurrentAmt)" class="btn btn-primary buyNow">Buy now</button>
                         </div>
                     </div>
                 </div>
@@ -84,7 +85,7 @@
                             <p><span class="feature">Validity</span><br><span class="value" style="padding-top:10px">{{ plans?.Supreme?.Validity}}</span></p>      
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 v-align btnSet">
-                           <button type="button" (click)="getRazorPay(plans?.Supreme?.CurrentAmt,'live',0)" class="btn btn-primary buyNow">Buy now</button>
+                           <button type="button" (click)="openDialog('Supreme',plans?.Supreme?.Credits,plans?.Supreme?.Validity,plans?.Supreme?.CurrentAmt)" class="btn btn-primary buyNow">Buy now</button>
                         </div>
                     </div>
                 </div>
@@ -106,7 +107,7 @@
                             <p><span class="feature">Validity</span><br><span class="value" style="padding-top:10px">{{ plans?.PersonalizedPremium6?.Validity}}</span></p>      
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 col-xs-12 v-align btnSet">
-                           <button type="button" (click)="getRazorPay(19000,'live',1)" class="btn btn-primary buyNow">Buy now</button>
+                           <button type="button" (click)="openDialog('PersonalizedPremium6',plans?.PersonalizedPremium6?.Benefits,plans?.PersonalizedPremium6?.Validity,19000)" class="btn btn-primary buyNow">Buy now</button>
                         </div>
                     </div>
                     </div>
@@ -126,7 +127,7 @@
                             <p><span class="feature">Validity</span><br><span class="value" style="padding-top:10px">{{ plans?.PersonalizedPremium12?.Validity}}</span></p>      
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 v-align btnSet">
-                           <button type="button" (click)="getRazorPay(25000,'live',1)" class="btn btn-primary buyNow">Buy now</button>
+                           <button type="button" (click)="openDialog('PersonalizedPremium12',plans?.PersonalizedPremium12?.Benefits,plans?.PersonalizedPremium12?.Validity,25000)" class="btn btn-primary buyNow">Buy now</button>
                         </div>
                     </div>
                 </div>
@@ -146,13 +147,17 @@
                             <p><span class="feature">Validity</span><br><span class="value" style="padding-top:10px">{{ plans?.PersonalizedDeluxeNRI?.Validity}}</span></p>      
                         </div>
                         <div class="col-sm-3 col-md-3 col-lg-3 v-align btnSet">
-                           <button type="button" (click)="getRazorPay(31000,'live',1)" class="btn btn-primary buyNow">Buy now</button>
+                           <button type="button" (click)="openDialog('PersonalizedDeluxeNRI',plans?.PersonalizedDeluxeNRI?.Benefits,plans?.PersonalizedDeluxeNRI?.Validity,31000)" class="btn btn-primary buyNow">Buy now</button>
                         </div>
                     </div>
                 </div>
                  </div>
+
+                 <h2 mat-dialog-title>This is a Dialog title</h2>
+
             </div>
           </main>
+        </div>
     </main>
 
     <!-- <footer style="background-color:#f1f1f1; width: 60%;margin-left: auto;margin-right: auto;margin-top:60px">
