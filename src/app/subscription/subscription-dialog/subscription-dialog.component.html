@@ -11,10 +11,10 @@
 <mat-dialog-content>
   <div class="row">
     <div class="col-md-6 mainCol1" >
-  
+        <div class="card cardStyle" >
     <div class="row" style="margin-top: 20px">
         <div class="col-md-6">
-          <div class="row">
+          <div class="row formRow">
               <h6>Plan Opted:</h6>
               <p style="margin: 0px 10px">{{plan}}</p>
           </div>
@@ -29,28 +29,35 @@
 
           
 
-        <div class="row" style="margin-top: 20px">
+        <div class="row formRow" style="margin-top: 20px">
             <h6>Benefits:</h6>
             <p style="margin: 0px 10px">{{benefits}}</p>
           </div>
                
-              <div class="row" style="margin-top: 20px">
+              <div class="row formRow" style="margin-top: 20px">
                   <h6>Price:</h6>
-                  <p style="margin: 0px 10px"> {{price}}</p>
+                  <p style="margin: 0px 10px; font-weight: bold;font-size: 16px"> {{price}}</p>
                 </div>
-                      
-                    </div>  
+             
+                    </div> 
+                  </div>
+
                     <div class="col-md-6">
                         <form>
                             <div class="row formRow" > 
-                                <label style="color: blue; margin-top: 20px;font-size: 14px;font-weight: bold" for="promo">Full Name:</label>
+                                <label style="color: blue; margin-top: 20px;font-size: 14px;font-weight: bold" for="name">Full Name:</label>
                                 <input style=" margin: 10px 0px 0px 10px" type="text" class="form-control" name="name">
                                 </div>
 
                                 <div class="row formRow"> 
-                                    <label style="color: blue; margin-top: 20px;font-size: 14px;font-weight: bold" for="promo">Email:</label>
+                                    <label style="color: blue; margin-top: 20px;font-size: 14px;font-weight: bold" for="email">Email:</label>
                                     <input style=" margin: 10px 0px 0px 10px" type="text" class="form-control" name="email">
                                     </div>
+
+                                    <div class="row formRow"> 
+                                        <label style="color: blue; margin-top: 20px;font-size: 14px;font-weight: bold" for="mobile">Mobile Number:</label>
+                                        <input style=" margin: 10px 0px 0px 10px" type="text" class="form-control" name="mobile">
+                                        </div>
 
                                     <div class="row formRow"> 
                                         <label style="color: blue; margin-top: 20px;font-size: 14px;font-weight: bold" for="promo">Promocode:</label>
@@ -68,7 +75,7 @@
   
   <div class="row buttonArea">
         <button class="btn btn-danger"(click)="close()">Choose Another Plan</button>
-          <button  class="btn btn-primary proceedButton">Proceed to Payment</button>  
+          <button  class="btn btn-primary proceedButton ml-auto">Proceed to Payment</button>  
   </div>
 </div>
 </mat-dialog-actions>
