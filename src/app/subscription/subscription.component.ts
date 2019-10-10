@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SubscriptionService } from '../subscription.service';
 import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material';
@@ -15,13 +15,14 @@ export class SubscriptionComponent implements OnInit {
   show2 : boolean = false;
   points: any;
   registrationFees: any;
+  innerWidth: any;
   
 
   // tslint:disable-next-line: max-line-length
   constructor(private http : HttpClient, private subscriptionService : SubscriptionService, private matDialog: MatDialog) { }
 
   ngOnInit() {
-
+    this.innerWidth = window.innerWidth;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     })
@@ -83,12 +84,22 @@ export class SubscriptionComponent implements OnInit {
     } else {return 'buttonPersonalised'; }
    }
 
+   @HostListener('window:resize', ['$event'])
+onResize(event) {
+  this.innerWidth = window.innerWidth;
+  console.log(this.innerWidth);
+}
+
    openDialog(plan: String, benefits: String, value: String , price: String) {
     const dialogConfig = new MatDialogConfig();
+    if (this.innerWidth >= 1024) {
+      dialogConfig.minWidth = this.innerWidth - 200;
+      dialogConfig.minHeight = 600;
+    } else {
+    dialogConfig.minWidth = this.innerWidth - 100;
+    }
     dialogConfig.disableClose = false;
     dialogConfig.hasBackdrop = true;
-    dialogConfig.minHeight = 300;
-    dialogConfig.minWidth = 300;
       dialogConfig.data = {
         plan: plan,
         benefit: benefits,

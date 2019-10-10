@@ -5,3 +5,31 @@ h6 {
     font-weight: bold;
     color: blue;
 }
+.mainCol1 {
+    border-right: 1px solid black
+}
+.buttonArea {
+    margin: 5rem 0px
+}
+.formRow {
+    margin: 0px; padding: 0px
+}
+.proceedButton {
+    margin-left: 10px; 
+}
+@media only screen and (max-width: 1024px) {
+    .mainCol1 {
+        border-bottom: 1px solid black;
+        padding-bottom: 10px;
+        border-right: 0px solid black
+    }
+    .buttonArea {
+        margin: 10px 0px 
+    }
+    .formRow{
+        margin: 0px -15px;
+    }
+    .proceedButton {
+        margin-left: 0px; margin-top: 20px
+    }
+}
