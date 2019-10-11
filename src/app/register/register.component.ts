@@ -1117,6 +1117,7 @@ export class RegisterComponent implements OnInit {
       if (res.type == "success") {
         this.Cross_click();
         this.otpVerified = true;
+        localStorage.setItem('mobile_number', this.PageOne.value.phone) ;
         if (this.otpVerified == true) {
           console.log('vrfed', this.otpVerified);
           this.ngxNotificationService.sendMessage('Account Details Submitted Succesfully!', 'success', 'top-right');
@@ -1440,7 +1441,6 @@ export class RegisterComponent implements OnInit {
       this.openPhotoDialog(this.photoModal);
     } else {
       console.log("not modal");
-      
     }
   }
 
