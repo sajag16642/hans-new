@@ -1214,7 +1214,7 @@ export class RegisterTwoComponent implements OnInit {
     });
   }
 
-  extrastep(){
+  extrastep() {
     const secondstepdata = new FormData();
     secondstepdata.append('identity_number', localStorage.getItem('identity_number'));
     
@@ -1225,7 +1225,7 @@ export class RegisterTwoComponent implements OnInit {
     secondstepdata.append('food_choice', this.Pageextra.value.food_choice);
     this.calculateAge(this.Pageextra.value.birth_date);
 
-    if(localStorage.getItem('gender')=='Male'){
+    if (localStorage.getItem('gender') === 'Male'){
       localStorage.setItem('minAge',(this.currentAge-5).toString());
       localStorage.setItem('maxAge',(this.currentAge-1).toString());
     }
@@ -1234,6 +1234,12 @@ export class RegisterTwoComponent implements OnInit {
       localStorage.setItem('maxAge',(this.currentAge+5).toString());
     }
 
+    console.log(this.Pageextra.value.Mangalik);
+    console.log(this.Pageextra.value.birth_time);
+    console.log(this.Pageextra.value.birth_date);
+    console.log(this.Pageextra.value.stateGroup);
+    console.log(this.Pageextra.value.food_choice);
+    console.log(this.Pageextra.value.birth_date);
 
     this.Auth.newPage(secondstepdata).subscribe(suc => {
       this.suc = suc;
@@ -1516,76 +1522,76 @@ export class RegisterTwoComponent implements OnInit {
         startWith(''),
         map(value => this._filterGroup(value))
       );
-    this.HigherEducationOptions = this.EducationDetails.get('HighestDegree').valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._educGroup(value))
-      );
-    console.log(this.HigherEducationOptions);
+    // this.HigherEducationOptions = this.EducationDetails.get('HighestDegree').valueChanges
+    //   .pipe(
+    //     startWith(''),
+    //     map(value => this._educGroup(value))
+    //   );
+    // console.log(this.HigherEducationOptions);
     // tslint:disable-next-line:no-non-null-assertion
-    this.ReligionOptions = this.PageTwo.get('Religion').valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    );
+    // this.ReligionOptions = this.PageTwo.get('Religion').valueChanges.pipe(
+    //   startWith(''),
+    //   map(value => this._filter(value))
+    // );
     // tslint:disable-next-line:no-non-null-assertion
-    this.MartalStatusOtions = this.PageTwo.get('MaritalStatus').valueChanges.pipe(
-      startWith(''),
-      map(value => this._Maritalfilter(value))
-    );
+    // this.MartalStatusOtions = this.PageTwo.get('MaritalStatus').valueChanges.pipe(
+    //   startWith(''),
+    //   map(value => this._Maritalfilter(value))
+    // );
     // tslint:disable-next-line:no-non-null-assertion
-    this.CasteOptions = this.PageTwo.get('Castes').valueChanges.pipe(
-      startWith(''),
-      map(value => this._Castefilter(value))
-    );
-    this.ProfileOptions = this.PageOne.get('create').valueChanges.pipe(
-      startWith(''),
-      map(value => this._profilefilter(value))
-    );
-    this.GenderOptions = this.PageOne.get('gender').valueChanges.pipe(
-      startWith(''),
-      map(value => this._genderfilter(value))
-    );
-    this.MangalikOptions = this.PageTwo.get('Mangalik').valueChanges.pipe(
-      startWith(''),
-      map(value => this._Mangalikfilter(value))
-    );
-    this.HoroScopeOptions = this.PageTwo.get('Castes').valueChanges.pipe(
-      startWith(''),
-      map(value => this._HoroScopefilter(value))
-    );
-    this.OccupatiinOptions = this.EducationDetails.get('Occupation').valueChanges.pipe(
-      startWith(''),
-      map(value => this._ofilter(value))
-    );
-    this.AOptions = this.EducationDetails.get('AnnualIncome').valueChanges.pipe(
-      startWith(''),
-      map(value => this._Afilter(value))
-    );
-    this.FamilyOptions = this.FamilyDetails.get('FamilyType').valueChanges.pipe(
-      startWith(''),
-      map(value => this.ft(value))
-    );
-    this.fo = this.FamilyDetails.get('FatherOccupation').valueChanges.pipe(
-      startWith(''),
-      map(value => this.fato(value))
-    );
+    // this.CasteOptions = this.PageTwo.get('Castes').valueChanges.pipe(
+    //   startWith(''),
+    //   map(value => this._Castefilter(value))
+    // );
+    // this.ProfileOptions = this.PageOne.get('create').valueChanges.pipe(
+    //   startWith(''),
+    //   map(value => this._profilefilter(value))
+    // );
+    // this.GenderOptions = this.PageOne.get('gender').valueChanges.pipe(
+    //   startWith(''),
+    //   map(value => this._genderfilter(value))
+    // );
+    // this.MangalikOptions = this.PageTwo.get('Mangalik').valueChanges.pipe(
+    //   startWith(''),
+    //   map(value => this._Mangalikfilter(value))
+    // );
+    // this.HoroScopeOptions = this.PageTwo.get('Castes').valueChanges.pipe(
+    //   startWith(''),
+    //   map(value => this._HoroScopefilter(value))
+    // );
+    // this.OccupatiinOptions = this.EducationDetails.get('Occupation').valueChanges.pipe(
+    //   startWith(''),
+    //   map(value => this._ofilter(value))
+    // );
+    // this.AOptions = this.EducationDetails.get('AnnualIncome').valueChanges.pipe(
+    //   startWith(''),
+    //   map(value => this._Afilter(value))
+    // );
+    // this.FamilyOptions = this.FamilyDetails.get('FamilyType').valueChanges.pipe(
+    //   startWith(''),
+    //   map(value => this.ft(value))
+    // );
+    // this.fo = this.FamilyDetails.get('FatherOccupation').valueChanges.pipe(
+    //   startWith(''),
+    //   map(value => this.fato(value))
+    // );
     // tslint:disable-next-line:no-non-null-assertion
-    this.mo = this.FamilyDetails.get('MotherOccupation').valueChanges.pipe(
-      startWith(''),
-      map(value => this.mato(value))
-    );
-    this.bro = this.FamilyDetails.get('brother').valueChanges.pipe(
-      startWith(''),
-      map(value => this.brot(value))
-    );
-    this.sis = this.FamilyDetails.get('sister').valueChanges.pipe(
-      startWith(''),
-      map(value => this.sist(value))
-    );
-    this.stateo = this.FamilyDetails.get('state').valueChanges.pipe(
-      startWith(''),
-      map(value => this.stt(value))
-    );
+    // this.mo = this.FamilyDetails.get('MotherOccupation').valueChanges.pipe(
+    //   startWith(''),
+    //   map(value => this.mato(value))
+    // );
+    // this.bro = this.FamilyDetails.get('brother').valueChanges.pipe(
+    //   startWith(''),
+    //   map(value => this.brot(value))
+    // );
+    // this.sis = this.FamilyDetails.get('sister').valueChanges.pipe(
+    //   startWith(''),
+    //   map(value => this.sist(value))
+    // );
+    // this.stateo = this.FamilyDetails.get('state').valueChanges.pipe(
+    //   startWith(''),
+    //   map(value => this.stt(value))
+    // );
 
     // this.dropdownSettings = {
     //   singleSelection: false,
