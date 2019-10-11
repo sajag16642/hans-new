@@ -910,13 +910,15 @@ export class RegisterOneComponent implements OnInit {
     firststepdata.append('annual_income', this.PageTwo.value.AnnualIncome);
     firststepdata.append('city', this.PageTwo.value.Currentcity);
 
-    if(localStorage.getItem('gender')=='Male'){
+    console.log(this.Heights1[this.PageTwo.value.Height]);
+    localStorage.setItem('minHeight', this.Heights1[this.PageTwo.value.Height])
+
+    if (localStorage.getItem('gender') === 'Male'){
       localStorage.setItem('minHeight','4.0"');
-      localStorage.setItem('maxHeight',this.Heights[this.PageTwo.value.Height-1]);
-    }
-    else{
-      localStorage.setItem('minHeight',this.Heights[this.PageTwo.value.Height+1]);
-      localStorage.setItem('maxHeight','7.0"');
+      localStorage.setItem('maxHeight',this.Heights1[this.PageTwo.value.Height-1]);
+    } else {
+      localStorage.setItem('minHeight', this.Heights1[this.PageTwo.value.Height]);
+      localStorage.setItem('maxHeight','84');
     }
     console.log(firststepdata);
 

@@ -1229,7 +1229,7 @@ export class RegisterTwoComponent implements OnInit {
       localStorage.setItem('minAge',(this.currentAge-5).toString());
       localStorage.setItem('maxAge',(this.currentAge-1).toString());
     }
-    else{
+    else {
       localStorage.setItem('minAge',(this.currentAge+1).toString());
       localStorage.setItem('maxAge',(this.currentAge+5).toString());
     }
@@ -1617,7 +1617,7 @@ export class RegisterTwoComponent implements OnInit {
       this.castePref = res;
       console.log(this.castePref);
 
-    })
+    });
   }
   changeCaste(e) {
     console.log(e);
@@ -1625,8 +1625,6 @@ export class RegisterTwoComponent implements OnInit {
     localStorage.setItem('mapping_id', JSON.stringify(this.mapping_id));
     // this.castePref = this.castePref.filter( elem=>{ return elem.mapping_id==2});
     // console.log(this.castePref);
-
-
   }
 
 

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { SelectDropDownModule } from 'ngx-select-dropdown';
+import {MatChipsModule} from '@angular/material/chips';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
@@ -108,6 +109,7 @@ export function provideConfig() {
     AngularMultiSelectModule,
     CommonModule,
     BrowserModule,
+    MatChipsModule,
     SnotifyModule,
     MatInputModule,
     BrowserAnimationsModule,

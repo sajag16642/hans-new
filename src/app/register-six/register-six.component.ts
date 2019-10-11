@@ -10,6 +10,8 @@ import {
   Directive,
   Input
 } from '@angular/core';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
 import {
   FormControl,
   FormGroupDirective,
@@ -19,6 +21,9 @@ import {
   Validators,
   FormsModule
 } from '@angular/forms';
+
+import {MatChipInputEvent} from '@angular/material/chips';
+
 import {
   ErrorStateMatcher
 } from '@angular/material/core';
@@ -86,6 +91,22 @@ export class RegisterSixComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @ViewChild('otpModal') private otpModal: any;
   @ViewChild('photoModal') private photoModal: any;
+  @ViewChild('casteInput') casteInput: ElementRef<HTMLInputElement>;
+  @ViewChild('autoCaste') matAutocomplete: MatAutocomplete;
+
+
+  // caste filtering
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  separatorKeysCodes: number[] = [COMMA];
+  casteCtrl = new FormControl();
+  casteSearched: Observable<string[]>;
+  castess: string[] = [];
+  allFruits: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
+
+  
 
   time = {
     hour: 13,
@@ -283,7 +304,7 @@ private _onDestroy = new Subject<void>();
     letter: 'Others',
     names: ['English']
   }];
-  Heights: string[] = ['4.0"', '4.1"', '4.2"', '4.3"', '4.4"', '4.5"', '4.6"', '4.7"', '4.8"', '4.9"', '4.10"','4.11"','5.0', '5.1"', '5.2"', '5.3"', '5.4"', '5.5"', '5.6"', '5.7"', '5.8"', '5.9"','5.10"','5.11"', '6.0"', '6.1"', '6.2"', '6.3"', '6.4"', '6.5"', '6.6"', '6.7"', '6.8"', '6.9"', '6.10"','6.11"','7.0"'];
+  Heights: string[] = ['4.0"', '4.1"', '4.2"', '4.3"', '4.4"', '4.5"', '4.6"', '4.7"', '4.8"', '4.9"', '4.10"','4.11"','5.0"', '5.1"', '5.2"', '5.3"', '5.4"', '5.5"', '5.6"', '5.7"', '5.8"', '5.9"','5.10"','5.11"', '6.0"', '6.1"', '6.2"', '6.3"', '6.4"', '6.5"', '6.6"', '6.7"', '6.8"', '6.9"', '6.10"','6.11"','7.0"'];
   Heights1: string[] = ['48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84']
   Religions: string[] = ['Hindu', 'Muslim', 'Sikh', 'Christian', 'Buddhist', 'Jain', 'Parsi', 'Jewish', 'Bahai'];
   MaritalStaus: string[] = ['Never Married', 'Awaiting Divorce', 'Divorced', 'Widowed', 'Anulled'];
@@ -336,8 +357,13 @@ private _onDestroy = new Subject<void>();
   Pageextra: FormGroup;
   getcastes: any = [];
   casteo: Observable<string[]>;
+
+
+  // tslint:disable-next-line: max-line-length
   constructor(public dialog: MatDialog, private _formBuilder: FormBuilder, private Auth: AuthService, private router: Router,private http : HttpClient,
     private ngxNotificationService: NgxNotificationService) {
+
+
     this.PageTwo = this._formBuilder.group({
       'PageTwo': ['', Validators
         .compose([Validators.required])
@@ -551,6 +577,7 @@ private _onDestroy = new Subject<void>();
       return [date.getFullYear(), mnth, day].join("/");
 
     }
+    
     this.addSlashes();
 
     if (this.currentAge < 18) {
@@ -1613,6 +1640,10 @@ private _onDestroy = new Subject<void>();
       this.filterCaste = res;
       console.log(this.filterCaste);
 
+      this.casteSearched = this.casteCtrl.valueChanges.pipe(
+        startWith(null),
+        map((caste: string | null) => caste ? this._filterCaste(caste) : this.filterCaste.slice()));
+
     // set initial selection
     console.log(this.filterCaste[10]);
     this.casteMultiCtrl.setValue(this.filterCaste[10]);
@@ -1626,7 +1657,6 @@ private _onDestroy = new Subject<void>();
       .subscribe(() => {
         this.filterBanksMulti();
       });
-
     });
 
     // this.casteo = this.PreferencesDetails.get('caste').valueChanges.pipe(
@@ -1640,16 +1670,17 @@ private _onDestroy = new Subject<void>();
     console.log(localStorage.getItem('minAge'));
     console.log(localStorage.getItem('maxAge'));
 
-    let mini = this.Heights.indexOf(localStorage.getItem('minHeight'));
-    let maxi = this.Heights.indexOf(localStorage.getItem('maxHeight'));
+    this.minHeight = this.Heights[this.Heights1.indexOf(localStorage.getItem('minHeight'))];
+    this.maxHeight = this.Heights[this.Heights1.indexOf(localStorage.getItem('maxHeight'))];
 
+    console.log(this.minHeight);
+    console.log(this.maxHeight);
 
 
 
     this.minAge = parseInt(localStorage.getItem('minAge'),10);
     this.maxAge = parseInt(localStorage.getItem('maxAge'),10);
-    this.minHeight = this.Heights1[mini];
-    this.maxHeight = this.Heights1[maxi];
+    
 
     this.PreferencesDetails = this._formBuilder.group({
       age_min : [parseInt(localStorage.getItem('minAge'),10)],
@@ -1666,11 +1697,6 @@ private _onDestroy = new Subject<void>();
     }, err => {
       // console.log(err);
     });
-    this.Auth.getcastes().subscribe(res => {
-      console.log('cluster', res);
-    }, err => {
-      // console.log(err);
-    })
     if (window.screen.width > 768) {
       this.Advertise = true;
     } else {
@@ -1825,7 +1851,7 @@ private _onDestroy = new Subject<void>();
     }
     // filter the castes
     this.filteredCasteMulti.next(
-      this.filterCaste.sort(name => name.toLowerCase().indexOf(search) > -1));
+      this.filterCaste.filter(name => name.toLowerCase().indexOf(search) === 0));
   }
 
   getCastes() {
@@ -1845,6 +1871,45 @@ private _onDestroy = new Subject<void>();
 
   }
 
+  add(event: MatChipInputEvent): void {
+    // Add fruit only when MatAutocomplete is not open
+    // To make sure this does not conflict with OptionSelected Event
+    if (!this.matAutocomplete.isOpen) {
+      const input = event.input;
+      const value = event.value;
+
+      // Add our fruit
+      if ((value || '').trim()) {
+        this.castess.push(value.trim());
+      }
+
+      // Reset the input value
+      if (input) {
+        input.value = '';
+      }
+
+      this.casteCtrl.setValue(null);
+    }
+  }
+
+  remove(fruit: string): void {
+    const index = this.castess.indexOf(fruit);
+
+    if (index >= 0) {
+      this.castess.splice(index, 1);
+    }
+  }
+
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.castess.push(event.option.viewValue);
+    this.casteInput.nativeElement.value = '';
+    this.casteCtrl.setValue(null);
+  }
+
+  private _filterCaste(value: string): string[] {
+    const filterValue = value;
+    return this.filterCaste.filter(castess => castess.toLowerCase().indexOf(filterValue) === 0);
+  }
 
 
   onItemSelect(item: any) {
