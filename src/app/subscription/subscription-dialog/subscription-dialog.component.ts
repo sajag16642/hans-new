@@ -12,11 +12,14 @@ plan: String = '';
 benefits: String = '';
 value: String = '';
 price: String = ''
+innerWidth: any;
     constructor(public dialogRef: MatDialogRef<SubscriptionDialogComponent>, @Inject(MAT_DIALOG_DATA) data) {
     this.data = data;
   }
 
   ngOnInit() {
+    this.innerWidth = window.innerWidth;
+    console.log(this.innerWidth);
     this.plan = this.data.plan;
     this.benefits = this.data.benefit;
     this.value = this.data.value;
