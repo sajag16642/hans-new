@@ -96,7 +96,7 @@ onResize(event) {
       dialogConfig.minWidth = this.innerWidth - 200;
       dialogConfig.minHeight = 600;
     } else {
-    dialogConfig.minWidth = this.innerWidth - 100;
+    dialogConfig.minWidth = this.innerWidth - 50;
     }
     dialogConfig.disableClose = false;
     dialogConfig.hasBackdrop = true;
