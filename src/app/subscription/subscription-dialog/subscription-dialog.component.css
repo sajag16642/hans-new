@@ -1,5 +1,5 @@
-p {
-    font-size: 14px;
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
 }
 h6 {
     font-weight: bold;
@@ -28,11 +28,14 @@ h6 {
 .planText {
     margin: 0px 10px; font-size: 20dp; font-weight: bolder
 }
+.priceText {
+    margin: 0px 10px; font-size: 16dp; font-weight: bolder
+}
 .planRow {
     margin: 20px 0px 0px;
 }
 .otherText {
-    margin: 0px 10px; font-size: 18dp;
+    margin: 0px 10px; font-size: 16dp;
 }
 .callText {
     margin-left: auto !important;font-size: 14px
@@ -52,7 +55,7 @@ h6 {
         margin: 0px -15px;
     }
     .proceedButton {
-        margin: 20px auto;
+        margin: 30px auto;
     }
     .cardStyle {
         padding-left: 10px;
@@ -66,6 +69,9 @@ h6 {
     .planText {
         margin: 0px auto; font-size: 18dp; font-weight: bolder;padding: 0px 20px 0px 10px
     }
+    .priceText {
+        margin: 0px auto; font-size: 16dp; font-weight: bolder;padding: 0px 20px 0px 10px
+    }
     .otherText {
         margin: 0px auto; font-size: 14dp; text-align: center; padding: 0px 20px 0px 10px
     }
@@ -73,6 +79,6 @@ h6 {
         margin: 20px auto 0px;
     }
     .callText {
-        margin: 0px auto !important;font-size: 12px
+        margin: 0px auto !important;font-size: 16px
     }
 }

@@ -16,6 +16,9 @@ export class SubscriptionComponent implements OnInit {
   points: any;
   registrationFees: any;
   innerWidth: any;
+  dialogData: any;
+  formData: any;
+  price: any;
   
 
   // tslint:disable-next-line: max-line-length
@@ -63,13 +66,13 @@ export class SubscriptionComponent implements OnInit {
     );
    }
 
-   getRazorPay(amt: any, type: any,plan: any) {
+   getRazorPay(amt: any, type: any,plan: any,name: any, email: any, phone: any) {
      // plan = 0 for online plans and plan = 1 for personalized plans
      if (plan === 0) {
-      return this.subscriptionService.payNowT(amt, type, 0);
+      return this.subscriptionService.payNowT(amt, type, 0,name,email,phone);
      } else {
           // tslint:disable-next-line: no-unused-expression
-          return this.subscriptionService.payNowT(amt, type, 1);
+          return this.subscriptionService.payNowT(amt, type, 1,name,email,phone);
      }
    }
 
@@ -106,7 +109,16 @@ onResize(event) {
         value: value,
         price: price
       };
-    this.matDialog.open(SubscriptionDialogComponent, dialogConfig);
+      let dialogRef = this.matDialog.open(SubscriptionDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      data => {console.log(data);
+        this.dialogData = data;
+        this.formData = this.dialogData.formData;
+        this.price = this.dialogData.price;
+        this.getRazorPay(this.price,'live',0,this.formData.name,this.formData.email,this.formData.mobile)
+      }
+  );
   }
 
 }

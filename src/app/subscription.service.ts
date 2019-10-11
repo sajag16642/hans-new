@@ -6,7 +6,7 @@ declare var Razorpay: any;
 export class SubscriptionService {
 
   constructor() { }
-  payNowT(amt, type,plan) {
+  payNowT(amt, type,plan,name,email,phone) {
     var notes = {service:''};
     var keyId;
     if(amt==3100)
@@ -46,9 +46,9 @@ export class SubscriptionService {
           
          },
       "prefill": {
-          "name":  'test',
-          "email": 'test@xyz.com',
-          "contact": '1234567890',
+          "name":  name,
+          "email": email,
+          "contact": phone,
      
       },
       "notes": notes,

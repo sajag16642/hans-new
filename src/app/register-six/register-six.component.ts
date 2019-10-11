@@ -1629,10 +1629,10 @@ private _onDestroy = new Subject<void>();
 
     });
 
-    this.casteo = this.PreferencesDetails.get('caste').valueChanges.pipe(
-      startWith(''),
-      map(value => this._Castefilter(value))
-    );
+    // this.casteo = this.PreferencesDetails.get('caste').valueChanges.pipe(
+    //   startWith(''),
+    //   map(value => this._Castefilter(value))
+    // );
 
     console.log(localStorage.getItem('minHeight'));
     console.log(localStorage.getItem('maxHeight'));
@@ -1710,10 +1710,10 @@ private _onDestroy = new Subject<void>();
       startWith(''),
       map(value => this._profilefilter(value))
     );
-    this.GenderOptions = this.PageOne.get('gender').valueChanges.pipe(
-      startWith(''),
-      map(value => this._genderfilter(value))
-    );
+    // this.GenderOptions = this.PageOne.get('gender').valueChanges.pipe(
+    //   startWith(''),
+    //   map(value => this._genderfilter(value))
+    // );
     this.MangalikOptions = this.PageTwo.get('Mangalik').valueChanges.pipe(
       startWith(''),
       map(value => this._Mangalikfilter(value))

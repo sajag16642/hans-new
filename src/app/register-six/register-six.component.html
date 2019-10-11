@@ -16,7 +16,7 @@
               <div class="col-6">
                   <mat-form-field class="full-width" appearance="standard">
                     <mat-label>Min Age</mat-label>
-                    <input matInput type="number" [value]="minAge" formControlName="age_min">
+                    <input matInput type="number"  [value]="minAge" formControlName="age_min">
                   </mat-form-field>
                 </div>
                 <div class="col-6">
@@ -30,7 +30,7 @@
               <div class="col-6">
                   <mat-form-field class="full-width" appearance="standard">
                     <mat-label>Min Height</mat-label>
-                    <mat-select matNativeControl  formControlName="height_min" [(value)]="minHeight">
+                    <mat-select matNativeControl  [(value)]="minHeight">
                       <mat-option *ngFor="let option of Heights;let i = index" [value]="i">
                         {{option}}
                       </mat-option>
@@ -40,7 +40,7 @@
                 <div class="col-6">
                     <mat-form-field class="full-width" appearance="standard">
                       <mat-label>Max Height</mat-label>
-                      <mat-select matNativeControl  formControlName="height_max" [(value)]="maxHeight">
+                      <mat-select matNativeControl  [(value)]="maxHeight">
                         <mat-option *ngFor="let option of Heights;let i = index" [value]="i">
                           {{option}}
                         </mat-option>
@@ -66,7 +66,7 @@
             <div class="col-md-12">
               <mat-form-field class="full-width" appearance="standard" style="height:60px">
                 <mat-label>Mother Tongue</mat-label>
-                <input type="text" matInput formControlName="stateGroup" name="stateGroupOptions" required [matAutocomplete]="autoGroup">
+                <input type="text" matInput  name="stateGroupOptions" required [matAutocomplete]="autoGroup">
                 <mat-autocomplete #autoGroup="matAutocomplete">
                   <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
                     <mat-option *ngFor="let name of group.names" [value]="name"  required>
@@ -101,7 +101,7 @@
                 <!-- <mat-form-field class="full-width" appearance="standard"  style="height:60px">
                     <mat-label>caste</mat-label> -->
                     <div class="full-width" appearance="standard" style="margin: 20px 0px 0px">
-                <ngx-select-dropdown  (change)="selectionChanged($event)" formControlName="selectData" [multiple]="true" [config]="config" [options]="filterCaste"></ngx-select-dropdown>
+                <ngx-select-dropdown  (change)="selectionChanged($event)"  [multiple]="true" [config]="config" [options]="filterCaste"></ngx-select-dropdown>
               </div>
                 <!-- <ngx-select-dropdown [config]="config" [options]="filterCaste" 
                   [(ngModel)]="binding"]="simple" [multiple]="false" >
@@ -133,7 +133,7 @@
             <div class="col-md-12">
               <mat-form-field class="full-width" appearance="standard">
                 <mat-label>Marital Status</mat-label>
-                <select matNativeControl name="MaritalStatus" [value]="maritalStatus" formControlName="marital_status">
+                <select matNativeControl name="MaritalStatus" [value]="maritalStatus" >
                     <option *ngFor="let  option of MaritalStaus" [value]="option">
                       {{option}}
                     </option>
@@ -146,7 +146,7 @@
               <div class="col-md-12">
                   <mat-form-field class="full-width" appearance="standard">
                     <mat-label>Food Choice</mat-label>
-                    <select matNativeControl name="foodpreference" [value]="foodpreferences[0]" formControlName="food_choice">
+                    <select matNativeControl name="foodpreference" [value]="foodpreferences[0]" >
                       <option *ngFor="let  preferences of foodpreferences" [value]="preferences">
                         {{preferences}}
                       </option>
@@ -166,7 +166,7 @@
             <div class="col-md-12">
               <mat-form-field class="full-width" appearance="standard">
                 <mat-label>Working Status</mat-label>
-                <select matNativeControl  formControlName="working" name="Working" required name="working">
+                <select matNativeControl   name="Working" required name="working">
                     <option *ngFor="let  option of Working" [value]="option">
                       {{option}}
                     </option>
@@ -178,7 +178,7 @@
               <div class="col-md-12">
                 <mat-form-field appearance="standard" class="full-width">
                   <mat-label>About your Preferences</mat-label>
-                  <input matInput placeholder="Write about your preferences" formControlName="description">
+                  <input matInput placeholder="Write about your preferences">
                 </mat-form-field>
               </div>
             </div>

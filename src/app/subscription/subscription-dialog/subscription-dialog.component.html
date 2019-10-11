@@ -5,7 +5,7 @@
 </div>
 <div class="container-fluid" >
   <div class="row">
-<h2 mat-dialog-title style="margin-bottom: 0px;border-bottom: 1px solid blue; width: 100%"> Checkout Summary</h2>
+<h2 mat-dialog-title style="margin-bottom: 0px;border-bottom: 1px solid #285fdd; width: 100%"> Checkout Summary</h2>
 </div>
 <div class="row" style="margin-top: 10px">
     <a href="tel:9697989697" class="callText">
@@ -22,51 +22,49 @@
               <span class="planText"><u>{{plan}} Plan</u></span>
           </div>
           <div class="row formRow" style="margin-top: 20px">
-              <p class="otherText"> {{value}}</p>
+              <p class="otherText" style="font-size: 14px"> {{value}}</p>
           </div>
       
 
         <div class="row formRow" style="margin-top: 20px">
-            <p class="otherText">{{benefits}}</p>
+            <p class="otherText" style="font-size: 14px">{{benefits}}</p>
           </div>
                
               <div class="row formRow" style="margin-top: 20px">
-                  <p class="planText"> Rs. {{price}}</p>
+                  <p class="priceText"> Rs. {{price}}</p>
                 </div>
              
                     </div> 
                   </div>
 
                     <div class="col-md-6">
-                        <form>
+                        <form (ngSubmit)="onSubmit()" #formMain="ngForm">
                             <div class="row formRow" > 
-                                <label style="color: blue; margin-top: 20px;font-size: 14px;font-weight: bold" for="name">Full Name:</label>
-                                <input style=" margin: 10px 0px 0px 10px" type="text" class="form-control" name="name">
+                                <label style="color: #285fdd; margin-top: 20px;font-size: 14px;font-weight: bold" for="name">Full Name:</label>
+                                <input style=" margin: 10px 0px 0px 10px" type="text" class="form-control" ngModel name="name" #name="ngModel" required>
                                 </div>
 
                                 <div class="row formRow"> 
-                                    <label style="color: blue; margin-top: 20px;font-size: 14px;font-weight: bold" for="email">Email:</label>
-                                    <input style=" margin: 10px 0px 0px 10px" type="text" class="form-control" name="email">
+                                    <label style="color: #285fdd; margin-top: 20px;font-size: 14px;font-weight: bold" for="email">Email:</label>
+                                    <input style=" margin: 10px 0px 0px 10px" type="text" class="form-control" ngModel  name="email" required email>
                                     </div>
 
                                     <div class="row formRow"> 
-                                        <label style="color: blue; margin-top: 20px;font-size: 14px;font-weight: bold" for="mobile">Mobile Number:</label>
-                                        <input style=" margin: 10px 0px 0px 10px" type="text" class="form-control" name="mobile">
+                                        <label style="color: #285fdd; margin-top: 20px;font-size: 14px;font-weight: bold" for="mobile">Mobile Number:</label>
+                                        <input style=" margin: 10px 0px 0px 10px" type="number" class="form-control" ngModel name="mobile" required>
                                         </div>
 
                                     <div class="row formRow"> 
-                                        <label style="color: blue; margin-top: 20px;font-size: 14px;font-weight: bold" for="promo">Promocode:</label>
-                                        <input style= "margin: 10px 0px 0px 10px" type="text" class="form-control" name="promo">
-                                        <input style="margin-left: 10px;margin-top: 10px;font-size: 14px; border-radius: 100px" type="button" value="Apply">
+                                        <label style="color: #285fdd; margin-top: 20px;font-size: 14px;font-weight: bold" for="promo">Promocode:</label>
+                                        <input style= "width: 200px;margin: 10px 0px 0px 10px" type="text" class="form-control" ngModel name="promo">
+                                        <input style="color: white;background-color: #285fdd;margin-left: 10px;margin-top: 10px;font-size: 14px; border-radius: 100px" type="button" value="Apply">
                                         </div>
+
+                                        <div class="row buttonArea">
+                                            <button (click)="onSubmit()" [disabled]="!formMain.valid" class="btn btn-primary proceedButton btn-text" >Proceed to Payment</button>  
+                                    </div>
                         </form>
                     </div>
                   </div>    
 </mat-dialog-content>
-
-<mat-dialog-actions >
-  <div class="row buttonArea">
-          <button  class="btn btn-primary proceedButton btn-text" >Proceed to Payment</button>  
-  </div>
-</mat-dialog-actions>
 </div>

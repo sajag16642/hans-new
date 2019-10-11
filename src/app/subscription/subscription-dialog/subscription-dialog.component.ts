@@ -1,5 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-subscription-dialog',
@@ -13,6 +14,7 @@ benefits: String = '';
 value: String = '';
 price: String = ''
 innerWidth: any;
+@ViewChild('formMain') formName: NgForm;
     constructor(public dialogRef: MatDialogRef<SubscriptionDialogComponent>, @Inject(MAT_DIALOG_DATA) data) {
     this.data = data;
   }
@@ -28,5 +30,8 @@ innerWidth: any;
 
   close() {
     this.dialogRef.close();
+  }
+  onSubmit() {
+  this.dialogRef.close({'formData': this.formName.value, 'price': this.price});
   }
 }
