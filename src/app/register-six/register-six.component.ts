@@ -62,6 +62,7 @@ import {
   MatSelect
 } from '@angular/material/';
 import { HttpClient } from '@angular/common/http';
+import { stringify } from 'querystring';
 export interface StateGroup {
   letter: string;
   names: string[];
@@ -104,7 +105,9 @@ export class RegisterSixComponent implements OnInit, OnDestroy, AfterViewInit {
   casteCtrl = new FormControl();
   casteSearched: Observable<string[]>;
   castess: string[] = [];
-  allFruits: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
+  casteMapped: string[] = [];
+  selectedCaste: string;
+  casteString: string;
 
   
 
@@ -148,7 +151,8 @@ export class RegisterSixComponent implements OnInit, OnDestroy, AfterViewInit {
   FamilyDetails: FormGroup;
   PageTwo: FormGroup;
   mapping_id: number;
-  manglikValue: string;
+  manglikValue: string = 'Non Manglik';
+  manglikList = ['Non Manglik', 'Manglik', 'Anshik Manglik'];
   manglikPreference = ['Manglik', 'Anshik Manglik'];
   nonManglikPreference = ['Non-Manglik', 'Anshik Manglik'];
   castePref: any;
@@ -1587,14 +1591,15 @@ private _onDestroy = new Subject<void>();
     // for (let items of this.PreferencesDetails.value.caste) {
     //   this.selectedItems1.push(items.itemName);
     // }
+    this.casteString = this.casteMapped.toString();
 
     sixthstepdata.append('age_min', this.PreferencesDetails.value.age_min);
     sixthstepdata.append('age_max', this.PreferencesDetails.value.age_max);
     sixthstepdata.append('height_min', this.Heights1[this.PreferencesDetails.value.height_min]);
     sixthstepdata.append('height_max', this.Heights1[this.PreferencesDetails.value.height_max]);
-    sixthstepdata.append('caste', this.simple);
+    sixthstepdata.append('caste', this.casteString);
     sixthstepdata.append('marital_status', this.PreferencesDetails.value.marital_status);
-    sixthstepdata.append('manglik', this.PreferencesDetails.value.manglik);
+    sixthstepdata.append('manglik', this.manglikValue);
     sixthstepdata.append('working', this.PreferencesDetails.value.working);
     sixthstepdata.append('food_choice', this.PreferencesDetails.value.food_choice);
     sixthstepdata.append('mother_tongue', this.PreferencesDetails.value.stateGroup);
@@ -1636,6 +1641,9 @@ private _onDestroy = new Subject<void>();
 
   ngOnInit() {
 
+    this.selectedCaste = localStorage.getItem('selectedCaste');
+    this.getCastes();
+
     this.http.get('https://partner.hansmatrimony.com/api/getAllCaste').subscribe((res:any)=>{
       this.filterCaste = res;
       console.log(this.filterCaste);
@@ -1658,6 +1666,7 @@ private _onDestroy = new Subject<void>();
         this.filterBanksMulti();
       });
     });
+    
 
     // this.casteo = this.PreferencesDetails.get('caste').valueChanges.pipe(
     //   startWith(''),
@@ -1802,7 +1811,7 @@ private _onDestroy = new Subject<void>();
   }
 
   ngAfterViewInit() {
-    this.setInitialValue();
+    // this.setInitialValue();
   }
 
   ngOnDestroy() {
@@ -1823,18 +1832,18 @@ private _onDestroy = new Subject<void>();
   /**
    * Sets the initial value after the filteredBanks are loaded initially
    */
-  private setInitialValue() {
-    this.filterCaste
-      .pipe(take(1), takeUntil(this._onDestroy))
-      .subscribe(() => {
-        // setting the compareWith property to a comparison function
-        // triggers initializing the selection according to the initial value of
-        // the form control (i.e. _initializeSelection())
-        // this needs to be done after the filteredBanks are loaded initially
-        // and after the mat-option elements are available
-        this.multiSelect.compareWith = (a: any, b: any) => a === b;
-      });
-  }
+  // private setInitialValue() {
+  //   this.filterCaste
+  //     .pipe(take(1), takeUntil(this._onDestroy))
+  //     .subscribe(() => {
+  //       // setting the compareWith property to a comparison function
+  //       // triggers initializing the selection according to the initial value of
+  //       // the form control (i.e. _initializeSelection())
+  //       // this needs to be done after the filteredBanks are loaded initially
+  //       // and after the mat-option elements are available
+  //       this.multiSelect.compareWith = (a: any, b: any) => a === b;
+  //     });
+  // }
 
   private filterBanksMulti() {
     if (!this.filterCaste) {
@@ -1858,6 +1867,15 @@ private _onDestroy = new Subject<void>();
    return  this.Auth.getCastes().subscribe((res) => {
       this.castePref = res;
       console.log(this.castePref);
+      this.castePref.forEach(element => {
+        if (element.castes.match(localStorage.getItem('selectedCaste'))) {
+          this.casteMapped = element.castes.split(',');
+          console.log(this.casteMapped);
+          this.castess.push(element.castes.split(',')[0]);
+          this.castess.push(element.castes.split(',')[1]);
+          this.castess.push(element.castes.split(',')[2]);
+        }
+        });
 
     });
   }
@@ -1880,6 +1898,7 @@ private _onDestroy = new Subject<void>();
 
       // Add our fruit
       if ((value || '').trim()) {
+        this.casteMapped.push(value.trim());
         this.castess.push(value.trim());
       }
 
@@ -1893,14 +1912,16 @@ private _onDestroy = new Subject<void>();
   }
 
   remove(fruit: string): void {
-    const index = this.castess.indexOf(fruit);
+    const index = this.casteMapped.indexOf(fruit);
 
     if (index >= 0) {
+      this.casteMapped.splice(index, 1);
       this.castess.splice(index, 1);
     }
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
+    this.casteMapped.push(event.option.viewValue);
     this.castess.push(event.option.viewValue);
     this.casteInput.nativeElement.value = '';
     this.casteCtrl.setValue(null);

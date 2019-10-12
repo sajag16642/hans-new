@@ -422,7 +422,7 @@ export class RegisterOneComponent implements OnInit {
     return this.state.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.http.get('https://partner.hansmatrimony.com/api/getAllCaste').subscribe((res:any)=>{
       this.getcastes = res;
      
@@ -912,6 +912,10 @@ export class RegisterOneComponent implements OnInit {
 
     console.log(this.Heights1[this.PageTwo.value.Height]);
     localStorage.setItem('minHeight', this.Heights1[this.PageTwo.value.Height])
+
+
+    console.log(this.PageTwo.value.Castes);
+    localStorage.setItem('selectedCaste',this.PageTwo.value.Castes);
 
     if (localStorage.getItem('gender') === 'Male'){
       localStorage.setItem('minHeight','4.0"');
