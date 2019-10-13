@@ -1911,12 +1911,13 @@ private _onDestroy = new Subject<void>();
     }
   }
 
-  remove(fruit: string): void {
-    const index = this.casteMapped.indexOf(fruit);
+  remove(caste: string): void {
+    const index = this.castess.indexOf(caste);
+    const indexMapped = this.casteMapped.indexOf(caste);
 
-    if (index >= 0) {
-      this.casteMapped.splice(index, 1);
-      this.castess.splice(index, 1);
+    if (index >= 0 && index >= 0) {
+      this.castess.splice(index);
+      this.casteMapped.splice(indexMapped);
     }
   }
 

@@ -89,8 +89,8 @@
               </mat-form-field>
             </div>
           </div> -->
-          <div class="row">
-            <div class="col-md-12">
+          <div class="row" style=" margin: 0px 0px 80px">
+            <div class="col-md-12" style="padding:0px">
               <!-- <mat-form-field class="full-width" appearance="standard"  style="height:60px">
                 <mat-label>caste</mat-label>
                 <mat-select [formControl]="casteMultiCtrl" placeholder="Castes"  #multiSelect>
@@ -105,15 +105,15 @@
               </div> -->
 
               
-                  <mat-form-field  class="full-width" appearance="standard"  style="height:60px; margin: 10px 0px 30px">
+                  <mat-form-field  class="full-width" appearance="standard"  style="height:60px;">
                       <mat-chip-list #chipList>
-                        <mat-basic-chip style="font-size: 12px" *ngFor="let caste of castess"
+                        <mat-chip style="font-size: 12px" *ngFor="let caste of castess"
                         [selectable]="selectable"
                           [removable]="removable"
                           (removed)="remove(caste)">
                           {{caste}}
                           <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-                        </mat-basic-chip>
+                        </mat-chip>
                       <input  matInput
                               placeholder="Caste *"
                               #casteInput
