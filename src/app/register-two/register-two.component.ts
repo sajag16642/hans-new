@@ -1220,7 +1220,7 @@ export class RegisterTwoComponent implements OnInit {
     
     secondstepdata.append('manglik', this.Pageextra.value.Mangalik);
     secondstepdata.append('birth_time',  this.Pageextra.value.birth_time);
-    secondstepdata.append('birth_date', this.Pageextra.value.birth_date);
+    secondstepdata.append('birth_date', this.birthDate);
     secondstepdata.append('mother_tongue', this.Pageextra.value.stateGroup);
     secondstepdata.append('food_choice', this.Pageextra.value.food_choice);
     this.calculateAge(this.Pageextra.value.birth_date);
@@ -1233,7 +1233,7 @@ export class RegisterTwoComponent implements OnInit {
       localStorage.setItem('minAge',(this.currentAge+1).toString());
       localStorage.setItem('maxAge',(this.currentAge+5).toString());
     }
-
+    console.log(secondstepdata);
     console.log(this.Pageextra.value.Mangalik);
     console.log(this.Pageextra.value.birth_time);
     console.log(this.Pageextra.value.birth_date);
