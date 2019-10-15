@@ -19,7 +19,8 @@ import {
   FormGroup,
   NgForm,
   Validators,
-  FormsModule
+  FormsModule,
+  NgModel
 } from '@angular/forms';
 
 import {MatChipInputEvent} from '@angular/material/chips';
@@ -109,6 +110,7 @@ export class RegisterSixComponent implements OnInit, OnDestroy, AfterViewInit {
   selectedCaste: string;
   casteString: string;
 
+
   
 
   time = {
@@ -116,7 +118,6 @@ export class RegisterSixComponent implements OnInit, OnDestroy, AfterViewInit {
     minute: 30
   };
   currentCity;
-  maritalStatus;
   gender;
   motherTongue;
   caste;
@@ -124,6 +125,7 @@ export class RegisterSixComponent implements OnInit, OnDestroy, AfterViewInit {
   minHeight;
   minAge;
   maxAge;
+  workPref;
   birthDate: any;
   suc : any = [];
   indexForHeight: number;
@@ -151,6 +153,8 @@ export class RegisterSixComponent implements OnInit, OnDestroy, AfterViewInit {
   FamilyDetails: FormGroup;
   PageTwo: FormGroup;
   mapping_id: number;
+  maritalStatus;
+  MaritalStaus = ['Never Married', 'Awaiting Divorce', 'Divorced', 'Widowed', 'Anulled'];
   manglikValue: string = 'Non Manglik';
   manglikList = ['Non Manglik', 'Manglik', 'Anshik Manglik'];
   manglikPreference = ['Manglik', 'Anshik Manglik'];
@@ -311,7 +315,7 @@ private _onDestroy = new Subject<void>();
   Heights: string[] = ['4.0"', '4.1"', '4.2"', '4.3"', '4.4"', '4.5"', '4.6"', '4.7"', '4.8"', '4.9"', '4.10"','4.11"','5.0"', '5.1"', '5.2"', '5.3"', '5.4"', '5.5"', '5.6"', '5.7"', '5.8"', '5.9"','5.10"','5.11"', '6.0"', '6.1"', '6.2"', '6.3"', '6.4"', '6.5"', '6.6"', '6.7"', '6.8"', '6.9"', '6.10"','6.11"','7.0"'];
   Heights1: string[] = ['48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84']
   Religions: string[] = ['Hindu', 'Muslim', 'Sikh', 'Christian', 'Buddhist', 'Jain', 'Parsi', 'Jewish', 'Bahai'];
-  MaritalStaus: string[] = ['Never Married', 'Awaiting Divorce', 'Divorced', 'Widowed', 'Anulled'];
+  
   Occupation: string[] = ['Private Company', 'Business/Self Employed', 'Government Job', 'Doctor', 'Teacher', 'Not Working'];
   Working: string[] = ['Working', 'Not Working', 'Doesn\'t matter'];
   AnnualIncome: any[] = ['No Income', 'Rs 0-1 Lakh', 'Rs 1-2 Lakh', 'Rs 2-3 Lakh', 'Rs 3-4 Lakh', 'Rs 4-5 Lakh', 'Rs 5-7.5 Lakh',
@@ -1372,7 +1376,7 @@ private _onDestroy = new Subject<void>();
     });
   }
 
-  extrastep(){
+  extrastep() {
     const secondstepdata = new FormData();
     secondstepdata.append('identity_number', localStorage.getItem('identity_number'));
     
@@ -1595,8 +1599,8 @@ private _onDestroy = new Subject<void>();
 
     sixthstepdata.append('age_min', this.PreferencesDetails.value.age_min);
     sixthstepdata.append('age_max', this.PreferencesDetails.value.age_max);
-    sixthstepdata.append('height_min', this.Heights1[this.PreferencesDetails.value.height_min]);
-    sixthstepdata.append('height_max', this.Heights1[this.PreferencesDetails.value.height_max]);
+    sixthstepdata.append('height_min', this.Heights1[this.Heights.indexOf(this.minHeight)]);
+    sixthstepdata.append('height_max', this.Heights1[this.Heights.indexOf(this.maxHeight)]);
     sixthstepdata.append('caste', this.casteString);
     sixthstepdata.append('marital_status', this.PreferencesDetails.value.marital_status);
     sixthstepdata.append('manglik', this.manglikValue);
@@ -1604,6 +1608,18 @@ private _onDestroy = new Subject<void>();
     sixthstepdata.append('food_choice', this.PreferencesDetails.value.food_choice);
     sixthstepdata.append('mother_tongue', this.PreferencesDetails.value.stateGroup);
     sixthstepdata.append('description', this.PreferencesDetails.value.description);
+
+    console.log('age_min', this.PreferencesDetails.value.age_min);
+    console.log('age_max', this.PreferencesDetails.value.age_max);
+    console.log('height_min', this.Heights1[this.Heights.indexOf(this.minHeight)]);
+    console.log('height_max', this.Heights1[this.Heights.indexOf(this.maxHeight)]);
+    console.log('caste', this.casteString);
+    console.log('marital_status', this.PreferencesDetails.value.marital_status);
+    console.log('manglik', this.manglikValue);
+    console.log('working', this.PreferencesDetails.value.working);
+    console.log('food_choice', this.PreferencesDetails.value.food_choice);
+    console.log('mother_tongue', this.PreferencesDetails.value.stateGroup);
+    console.log('description', this.PreferencesDetails.value.description);
 
     // console.log(this.PreferencesDetails.value.caste);
     // console.log("preferences", this.PreferencesDetails);
@@ -1640,9 +1656,11 @@ private _onDestroy = new Subject<void>();
   }
 
   ngOnInit() {
-
     this.selectedCaste = localStorage.getItem('selectedCaste');
+    this.maritalStatus = localStorage.getItem('maritalStatus');
+    this.motherTongue = localStorage.getItem('motherTongue');
     this.getCastes();
+
 
     this.http.get('https://partner.hansmatrimony.com/api/getAllCaste').subscribe((res:any)=>{
       this.filterCaste = res;
@@ -1678,24 +1696,40 @@ private _onDestroy = new Subject<void>();
     console.log(localStorage.getItem('currentAge'));
     console.log(localStorage.getItem('minAge'));
     console.log(localStorage.getItem('maxAge'));
+    console.log(localStorage.getItem('maritalStatus'));
+    
 
     this.minHeight = this.Heights[this.Heights1.indexOf(localStorage.getItem('minHeight'))];
     this.maxHeight = this.Heights[this.Heights1.indexOf(localStorage.getItem('maxHeight'))];
+    this.maritalStatus = localStorage.getItem('maritalStatus');
 
     console.log(this.minHeight);
     console.log(this.maxHeight);
 
 
-
-    this.minAge = parseInt(localStorage.getItem('minAge'),10);
-    this.maxAge = parseInt(localStorage.getItem('maxAge'),10);
+    if (localStorage.getItem('minAge')) {
+      this.minAge = parseInt(localStorage.getItem('minAge'),10);
+    } else {
+      this.minAge = parseInt('18',10);
+    }
+    if (localStorage.getItem('maxAge')) {
+      this.maxAge = parseInt(localStorage.getItem('maxAge'),10);
+    } else {
+      this.maxAge = parseInt('28',10);
+    }
+    
+    
     
 
     this.PreferencesDetails = this._formBuilder.group({
       age_min : [parseInt(localStorage.getItem('minAge'),10)],
       age_max : [parseInt(localStorage.getItem('maxAge'),10)],
-      // height_min : mini,
-      // height_max : maxi,
+      stateGroup : this.motherTongue,
+      marital_status : this.maritalStatus,
+      working : 'Working',
+      food_choice : 'Vegetarian',
+      description : ''
+
     });
 
 
@@ -1933,6 +1967,7 @@ private _onDestroy = new Subject<void>();
     return this.filterCaste.filter(castess => castess.toLowerCase().indexOf(filterValue) === 0);
   }
 
+  
 
   onItemSelect(item: any) {
     console.log(item);

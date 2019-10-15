@@ -1524,7 +1524,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    localStorage.setItem('mobile_number', '') ;
     this.getCastes();
 
     // this.autocomplete();

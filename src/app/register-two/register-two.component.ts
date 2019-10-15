@@ -415,7 +415,7 @@ export class RegisterTwoComponent implements OnInit {
     const timediffernce = Math.abs(Date.now() - event);
     this.currentAge = Math.floor((timediffernce / (1000 * 3600 * 24)) / 365);
 
-    localStorage.setItem('currentAge',this.currentAge.toString());
+    localStorage.setItem('currentAge', this.currentAge.toString());
 
     function convert(str) {
       var date = new Date(str),
@@ -1240,6 +1240,9 @@ export class RegisterTwoComponent implements OnInit {
     console.log(this.Pageextra.value.stateGroup);
     console.log(this.Pageextra.value.food_choice);
     console.log(this.Pageextra.value.birth_date);
+    console.log(this.Pageextra.value.stateGroup);
+    localStorage.setItem('motherTongue', this.Pageextra.value.stateGroup);
+
 
     this.Auth.newPage(secondstepdata).subscribe(suc => {
       this.suc = suc;
@@ -1493,7 +1496,7 @@ export class RegisterTwoComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    localStorage.setItem('motherTongue', '');
     this.getCastes();
 
     // this.autocomplete();

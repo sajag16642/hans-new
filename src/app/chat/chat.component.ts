@@ -43,6 +43,7 @@ export class ChatComponent implements OnInit {
   currentContact: any;
   profileData: any;
   familyData: any;
+  preferenceData: any;
   history = 'chatbot';
   points: any;
 
@@ -780,6 +781,7 @@ export class ChatComponent implements OnInit {
         console.log(data);
         this.profileData = data.profile;
         this.familyData = data.family;
+        this.preferenceData = data.preferences;
        },
        (error: any) => {
          console.log(error);

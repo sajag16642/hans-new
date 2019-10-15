@@ -56,6 +56,9 @@ import { ChatComponent } from './chat/chat.component';
 import { HistoryComponent } from './chat/history/history.component';
 import { MyprofileComponent } from './chat/myprofile/myprofile.component';
 import { SubscriptionDialogComponent } from './subscription/subscription-dialog/subscription-dialog.component';
+import { EditPersonalDialogueComponent } from './chat/myprofile/edit-personal-dialogue/edit-personal-dialogue.component';
+import { EditFamilyDialogueComponent } from './chat/myprofile/edit-family-dialogue/edit-family-dialogue.component';
+import { EditPreferenceDialogueComponent } from './chat/myprofile/edit-preference-dialogue/edit-preference-dialogue.component';
 
 
 let config = new AuthServiceConfig([
@@ -94,6 +97,9 @@ export function provideConfig() {
     HistoryComponent,
     MyprofileComponent,
     SubscriptionDialogComponent,
+    EditPersonalDialogueComponent,
+    EditFamilyDialogueComponent,
+    EditPreferenceDialogueComponent,
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -142,7 +148,8 @@ export function provideConfig() {
     useFactory: provideConfig
   } , SubscriptionService],
   bootstrap: [AppComponent],
-  entryComponents: [SubscriptionDialogComponent],
+  // tslint:disable-next-line: max-line-length
+  entryComponents: [SubscriptionDialogComponent, EditPersonalDialogueComponent, EditPreferenceDialogueComponent, EditFamilyDialogueComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

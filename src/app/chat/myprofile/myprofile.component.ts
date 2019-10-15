@@ -1,4 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material';
+import { EditPersonalDialogueComponent } from './edit-personal-dialogue/edit-personal-dialogue.component';
+import { EditFamilyDialogueComponent } from './edit-family-dialogue/edit-family-dialogue.component';
+import { EditPreferenceDialogueComponent } from './edit-preference-dialogue/edit-preference-dialogue.component';
 
 @Component({
   selector: 'app-myprofile',
@@ -8,10 +12,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class MyprofileComponent implements OnInit {
   @Input() personalProfileData: any;
   @Input() familyProfileData: any;
+  @Input() preferenceProfileData: any;
+  innerWidth: any;
 
-  constructor() { }
+  constructor(private matDialog: MatDialog) { }
 
   ngOnInit() {
+    this.innerWidth = window.innerWidth;
   }
   setAge(dob: string) {
     if (dob != null) {
@@ -20,7 +27,12 @@ export class MyprofileComponent implements OnInit {
       return null;
     }
   }
-  getHeight(num: string){
+  @HostListener('window:resize', ['$event'])
+onResize(event) {
+  this.innerWidth = window.innerWidth;
+  console.log(this.innerWidth);
+}
+  getHeight(num: string) {
 
     switch (Number(num)) {
      case 53: return "4\'5\""
@@ -68,6 +80,81 @@ export class MyprofileComponent implements OnInit {
     } else {
     return 'http://hansmatrimony.s3.ap-south-1.amazonaws.com/uploads/'+num;
     }
+    }
+    openPersonalDialog() {
+      const dialogConfig = new MatDialogConfig();
+      if (this.innerWidth >= 1024) {
+        dialogConfig.minWidth = this.innerWidth - 200;
+        dialogConfig.minHeight = 600;
+      } else {
+      dialogConfig.minWidth = this.innerWidth - 50;
+      }
+      dialogConfig.disableClose = false;
+      dialogConfig.hasBackdrop = true;
+        dialogConfig.data = {
+          personalDetails: this.personalProfileData,
+          familyDetails: this.familyProfileData,
+        };
+        let dialogRef = this.matDialog.open(EditPersonalDialogueComponent, dialogConfig);
+  
+    //   dialogRef.afterClosed().subscribe(
+    //     data => {console.log(data);
+    //       this.dialogData = data;
+    //       this.formData = this.dialogData.formData;
+    //       this.price = this.dialogData.price;
+    //       this.getRazorPay(this.price,'live',0,this.formData.name,this.formData.email,this.formData.mobile)
+    //     }
+    // );
+    }
+
+    openFamilyDialog() {
+      const dialogConfig = new MatDialogConfig();
+      if (this.innerWidth >= 1024) {
+        dialogConfig.minWidth = this.innerWidth - 200;
+        dialogConfig.minHeight = 600;
+      } else {
+      dialogConfig.minWidth = this.innerWidth - 50;
+      }
+      dialogConfig.disableClose = false;
+      dialogConfig.hasBackdrop = true;
+        dialogConfig.data = {
+          familyDetails: this.familyProfileData
+        };
+        let dialogRef = this.matDialog.open(EditFamilyDialogueComponent, dialogConfig);
+  
+    //   dialogRef.afterClosed().subscribe(
+    //     data => {console.log(data);
+    //       this.dialogData = data;
+    //       this.formData = this.dialogData.formData;
+    //       this.price = this.dialogData.price;
+    //       this.getRazorPay(this.price,'live',0,this.formData.name,this.formData.email,this.formData.mobile)
+    //     }
+    // );
+    }
+
+    openPreferenceDialog() {
+      const dialogConfig = new MatDialogConfig();
+      if (this.innerWidth >= 1024) {
+        dialogConfig.minWidth = this.innerWidth - 200;
+        dialogConfig.minHeight = 600;
+      } else {
+      dialogConfig.minWidth = this.innerWidth - 50;
+      }
+      dialogConfig.disableClose = false;
+      dialogConfig.hasBackdrop = true;
+        dialogConfig.data = {
+          preferencesDetails: this.preferenceProfileData
+        };
+        let dialogRef = this.matDialog.open(EditPreferenceDialogueComponent, dialogConfig);
+  
+    //   dialogRef.afterClosed().subscribe(
+    //     data => {console.log(data);
+    //       this.dialogData = data;
+    //       this.formData = this.dialogData.formData;
+    //       this.price = this.dialogData.price;
+    //       this.getRazorPay(this.price,'live',0,this.formData.name,this.formData.email,this.formData.mobile)
+    //     }
+    // );
     }
 
 }

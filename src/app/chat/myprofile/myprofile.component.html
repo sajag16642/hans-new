@@ -8,7 +8,7 @@
 <div style="margin: 20px 20px;" class="card">
   <div class="row" style="margin: 10px 10px 0px;">
       <i style="background-color: #34b7f1;color: white;font-size: 15px !important;padding: 8px;height: 30px;width: 30px !important;" class="fa fa-info"></i>
-      <i style="background-color: #34b7f1;color: white;font-size: 15px !important;padding: 8px;height: 30px;width: 30px !important;" class="fa fa-pencil ml-auto"></i>
+      <i (click)="openPersonalDialog()" style="background-color: #34b7f1;color: white;font-size: 15px !important;padding: 8px;height: 30px;width: 30px !important;" class="fa fa-pencil ml-auto"></i>
   </div>
   <div class="row" style="margin: 10px 10px;">
     <div class="col-6">
@@ -187,7 +187,7 @@
           <div class="row" style="margin: 10px 10px 0px;">
               <i style="background-color: #34b7f1;color: white;font-size: 15px !important;padding: 8px;height: 30px;width: 30px !important;" class="fa fa-graduation-cap"></i>
               <h5 style="margin: auto 20px">FAMILY DETAILS</h5>
-              <i style="background-color: #34b7f1;color: white;font-size: 15px !important;padding: 8px;height: 30px;width: 30px !important;" class="fa fa-pencil ml-auto"></i>
+              <i (click)="openFamilyDialog()" style="background-color: #34b7f1;color: white;font-size: 15px !important;padding: 8px;height: 30px;width: 30px !important;" class="fa fa-pencil ml-auto"></i>
           </div>
           <div class="row" style="margin: 10px 10px;">
               <div class="col-12">
@@ -261,6 +261,73 @@
                                       </div>
             </div>
       </div>
+    
+        
+          <div class="card" style="margin: 20px 20px;">
+              <div class="row" style="margin: 10px 10px 0px;">
+                  <i style="background-color: #34b7f1;color: white;font-size: 15px !important;padding: 8px;height: 30px;width: 30px !important;" class="fa fa-graduation-cap"></i>
+                  <h5 style="margin: auto 20px">PREFERENCES</h5>
+                  <i (click)="openPreferenceDialog()" style="background-color: #34b7f1;color: white;font-size: 15px !important;padding: 8px;height: 30px;width: 30px !important;" class="fa fa-pencil ml-auto"></i>
+              </div>
+              <div class="row" style="margin: 10px 10px;">
+                  <div class="col-12">
+                    <h6 style="display: inline-block">Age Min: </h6>
+                    <p style="font-size: 14px;display: inline-block;margin-left: 10px">{{preferenceProfileData.age_min}}</p>
+                  </div>
+                  <hr style="margin: 0px 10px;width: 100%">
+                  <div class="col-12">
+                      <h6 style="display: inline-block">Age Max : </h6>
+                      <p style="font-size: 14px;display: inline-block;margin-left: 10px">{{preferenceProfileData.age_max}}</p>
+                    </div>
+                    <hr style="margin: 0px 10px;width: 100%">
+                    <div class="col-12">
+                        <h6 style="display: inline-block">Height Min : </h6>
+                        <p style="font-size: 14px;display: inline-block;margin-left: 10px">{{preferenceProfileData.height_min}}</p>
+                      </div>
+                      <hr style="margin: 0px 10px;width: 100%">
+                      <div class="col-12">
+                        <h6 style="display: inline-block">Height Max : </h6>
+                        <p style="font-size: 14px;display: inline-block;margin-left: 10px">{{preferenceProfileData.height_max}}</p>
+                      </div>
+                      <hr style="margin: 0px 10px;width: 100%">
+
+                      <div class="col-12">
+                        <h6 style="display: inline-block">Income Min : </h6>
+                        <p style="font-size: 14px;display: inline-block;margin-left: 10px">{{preferenceProfileData.income_min}}</p>
+                      </div>
+                      <hr style="margin: 0px 10px;width: 100%">
+                      <div class="col-12">
+                        <h6 style="display: inline-block">Income Max : </h6>
+                        <p style="font-size: 14px;display: inline-block;margin-left: 10px">{{preferenceProfileData.income_max}}</p>
+                      </div>
+                      <hr style="margin: 0px 10px;width: 100%">
+
+                      <div class="col-12">
+                          <h6 style="display: inline-block">Caste : </h6>
+                          <p style="font-size: 14px;display: inline-block;margin-left: 10px">{{preferenceProfileData.caste}}</p>
+                        </div>
+                        <hr style="margin: 0px 10px;width: 100%">
+                        <div class="col-12">
+                            <h6 style="display: inline-block">Manglik : </h6>
+                            <p style="font-size: 14px;display: inline-block;margin-left: 10px">{{preferenceProfileData.manglik}}</p>
+                          </div>
+                          <hr style="margin: 0px 10px;width: 100%">
+                          <div class="col-12">
+                              <h6 style="display: inline-block">Mother Tongue : </h6>
+                              <p style="font-size: 14px;display: inline-block;margin-left: 10px">{{preferenceProfileData.mother_tongue}}</p>
+                            </div>
+                            <hr style="margin: 0px 10px;width: 100%">
+                            <div class="col-12">
+                                <h6 style="display: inline-block">Food Preferences : </h6>
+                                <p style="font-size: 14px;display: inline-block;margin-left: 10px">{{preferenceProfileData.food_choice}}</p>
+                              </div>
+                              <hr style="margin: 0px 10px;width: 100%">
+                              <div class="col-12">
+                                  <h6 style="display: inline-block">Working Status: </h6>
+                                  <p style="font-size: 14px;display: inline-block;margin-left: 10px">{{preferenceProfileData.working}}</p>
+                                </div>
+                </div>
+          </div>
 </main>
 <!-- <footer>
   <div class="navbar">

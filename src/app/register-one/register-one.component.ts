@@ -231,7 +231,7 @@ export class RegisterOneComponent implements OnInit {
     letter: 'Others',
     names: ['English']
   }];
-  Heights: string[] = ['4.0"', '4.1"', '4.2"', '4.3"', '4.4"', '4.5"', '4.6"', '4.7"', '4.8"', '4.9"','4.10"','4.11"', '5.0', '5.1"', '5.2"', '5.3"', '5.4"', '5.5"', '5.6"', '5.7"', '5.8"', '5.9"','5.10"','5.11"', '6.0"', '6.1"', '6.2"', '6.3"', '6.4"', '6.5"', '6.6"', '6.7"', '6.8"', '6.9"', '7.0"'];
+  Heights: string[] = ['4.0"', '4.1"', '4.2"', '4.3"', '4.4"', '4.5"', '4.6"', '4.7"', '4.8"', '4.9"','4.10"','4.11"', '5.0', '5.1"', '5.2"', '5.3"', '5.4"', '5.5"', '5.6"', '5.7"', '5.8"', '5.9"','5.10"','5.11"', '6.0"', '6.1"', '6.2"', '6.3"', '6.4"', '6.5"', '6.6"', '6.7"', '6.8"', '6.9"', '6.10"', '6.11"', '7.0"'];
   Heights1: string[] = ['48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84']
   Religions: string[] = ['Hindu', 'Muslim', 'Sikh', 'Christian', 'Buddhist', 'Jain', 'Parsi', 'Jewish', 'Bahai'];
   MaritalStatus: string[] = ['Never Married', 'Awaiting Divorce', 'Divorced', 'Widowed', 'Anulled'];
@@ -423,6 +423,7 @@ export class RegisterOneComponent implements OnInit {
   }
 
   ngOnInit() {
+    localStorage.setItem('selectedCaste',"");
     this.http.get('https://partner.hansmatrimony.com/api/getAllCaste').subscribe((res:any)=>{
       this.getcastes = res;
      
@@ -910,20 +911,22 @@ export class RegisterOneComponent implements OnInit {
     firststepdata.append('annual_income', this.PageTwo.value.AnnualIncome);
     firststepdata.append('city', this.PageTwo.value.Currentcity);
 
-    console.log(this.Heights1[this.PageTwo.value.Height]);
-    localStorage.setItem('minHeight', this.Heights1[this.PageTwo.value.Height])
-
 
     console.log(this.PageTwo.value.Castes);
     localStorage.setItem('selectedCaste',this.PageTwo.value.Castes);
 
     if (localStorage.getItem('gender') === 'Male'){
-      localStorage.setItem('minHeight','4.0"');
+      localStorage.setItem('minHeight', '48');
       localStorage.setItem('maxHeight',this.Heights1[this.PageTwo.value.Height-1]);
+      console.log(this.Heights1[this.PageTwo.value.Height]);
     } else {
       localStorage.setItem('minHeight', this.Heights1[this.PageTwo.value.Height]);
       localStorage.setItem('maxHeight','84');
+      console.log(this.PageTwo.value.Height);
     }
+
+    localStorage.setItem('maritalStatus', this.PageTwo.value.MaritalStatus);
+
     console.log(firststepdata);
 
     this.Auth.secondPage(firststepdata).subscribe(suc => {
