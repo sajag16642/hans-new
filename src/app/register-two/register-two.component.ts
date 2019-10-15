@@ -1218,6 +1218,11 @@ export class RegisterTwoComponent implements OnInit {
     const secondstepdata = new FormData();
     secondstepdata.append('identity_number', localStorage.getItem('identity_number'));
     
+    if (this.Pageextra.value.Mangalik !== 'Non Manglik' ) {
+      secondstepdata.append('manglik', this.Pageextra.value.Mangalik);
+    } else {
+      secondstepdata.append('manglik', 'No');
+    }
     secondstepdata.append('manglik', this.Pageextra.value.Mangalik);
     secondstepdata.append('birth_time',  this.Pageextra.value.birth_time);
     secondstepdata.append('birth_date', this.birthDate);

@@ -301,7 +301,7 @@ export class ChatComponent implements OnInit {
                          console.log('chose' + res.value);
                          this.repeatMEssage(res.value, mob);
                        });
-                       } else if (data.buttons.match('Show')) {
+                       } else if (data.buttons.match('SHOW')) {
                          return this.botui.action.button({
                            action: [
                              { text: 'SHOW', value: 'SHOW'},
@@ -394,7 +394,7 @@ export class ChatComponent implements OnInit {
                          console.log('chose' + res.value);
                          this.repeatMEssage(res.value, mob);
                        });
-                       } else if (data.buttons.match('Show')) {
+                       } else if (data.buttons.match('SHOW')) {
                          return this.botui.action.button({
                            action: [
                              { text: 'SHOW', value: 'SHOW'},
@@ -666,7 +666,6 @@ export class ChatComponent implements OnInit {
     this.currentContact = num;
     this.checkUrl(num).subscribe(
       (data:any) => {
-        
         let text: String = data.apiwha_autoreply;
         let id = data.id;
         localStorage.setItem('id', id);
