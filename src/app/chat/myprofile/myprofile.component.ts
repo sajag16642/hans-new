@@ -70,15 +70,16 @@ onResize(event) {
       default: return null
   }
   }
-  getProfilePhoto(num: String, gen: number): String {
+  getProfilePhoto(num: string, gen: string): String {
     if (num === null) {
-      if (gen === 0) {
+      if (gen === 'Male') {
         return '../../assets/male_pic.png';
       } else {
         return '../../assets/female_pic.png';
       }
     } else {
-    return 'http://hansmatrimony.s3.ap-south-1.amazonaws.com/uploads/'+num;
+      let carousel: any = JSON.parse(num);
+    return 'http://hansmatrimony.s3.ap-south-1.amazonaws.com/uploads/'+carousel['3'];
     }
     }
     openPersonalDialog() {

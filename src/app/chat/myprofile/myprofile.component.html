@@ -1,6 +1,6 @@
 <main id="main" *ngIf="personalProfileData">
 <div style="margin: 0px 20px 0px;" class="card">
-  <img style="border-radius: 100px;width: 150px;background-color: lightblue;margin: 20px auto 0px;" [src]="getProfilePhoto(personalProfileData.photo,personalProfileData.gender)" alt="">
+  <img style="border-radius: 100px;width: 150px;background-color: lightblue;margin: 20px auto 0px;" [src]="getProfilePhoto(personalProfileData.carousel,personalProfileData.gender)" alt="">
   <div class="row" style="margin-bottom:20px">
     <h5 style="margin: 0px auto;margin-top: 10px;">{{personalProfileData.name}}</h5>
   </div>
