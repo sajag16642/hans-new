@@ -1962,8 +1962,8 @@ private _onDestroy = new Subject<void>();
     this.casteCtrl.setValue(null);
   }
 
-  private _filterCaste(value: string): string[] {
-    const filterValue = value;
+  private _filterCaste(value: String): string[] {
+    const filterValue = value.toLowerCase();
     return this.filterCaste.filter(castess => castess.toLowerCase().indexOf(filterValue) === 0);
   }
 
