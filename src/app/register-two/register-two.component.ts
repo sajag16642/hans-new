@@ -446,7 +446,7 @@ export class RegisterTwoComponent implements OnInit {
   calculateTime(event: any) {
       this.birthDate = convert(event);
       const timediffernce = Math.abs(Date.now() - event);
-      localStorage.setItem('currentAge1',(Math.floor((timediffernce / (1000 * 3600 * 24)) / 365)).toString());
+      localStorage.setItem('currentAge1', (Math.floor((timediffernce / (1000 * 3600 * 24)) / 365)).toString());
 
       function convert(str) {
         var date = new Date(str),
