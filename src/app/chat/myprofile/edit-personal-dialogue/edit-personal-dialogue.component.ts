@@ -83,12 +83,13 @@ export class EditPersonalDialogueComponent implements OnInit {
     console.log(this.personalForm);
     const personalDataForm = new FormData();
     personalDataForm.append('identity_number', this.personalData.identity_number);
+    personalDataForm.append('temple_id',this.personalData.temple_id);
     personalDataForm.append('about', '');
     personalDataForm.append('name', this.personalData.name);
     personalDataForm.append('birth_date', this.personalData.birth_date);
     personalDataForm.append('marital_status', this.personalForm.value.maritalStatus);
     personalDataForm.append('religion', this.familyData.religion);
-    personalDataForm.append('height', this.personal_height);
+    personalDataForm.append('height', this.Heights1[this.Heights.indexOf(this.personal_height)]);
     personalDataForm.append('weight', this.personalForm.value.personalWeight);
     personalDataForm.append('food_choice', this.personalForm.value.foodChoice);
     personalDataForm.append('caste', this.familyData.caste);
@@ -100,6 +101,7 @@ export class EditPersonalDialogueComponent implements OnInit {
     personalDataForm.append('annual_income', this.personalData.monthly_income);
     personalDataForm.append('address', this.familyData.address);
     personalDataForm.append('mobile', this.familyData.mobile);
+
 
 
     this.http.post('https://partner.hansmatrimony.com/api/updatePersonalDetails', personalDataForm).subscribe(

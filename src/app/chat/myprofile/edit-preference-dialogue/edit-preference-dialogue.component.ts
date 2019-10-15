@@ -33,11 +33,13 @@ export class EditPreferenceDialogueComponent implements OnInit {
 
     const preferenceFormData = new FormData();
     preferenceFormData.append('identity_number', this.preferenceData.identity_number);
+    preferenceFormData.append('temple_id',this.preferenceData.temple_id);
     preferenceFormData.append('caste', this.preferenceData.caste);
     preferenceFormData.append('marital_status', this.preferenceData.marital_status);
     preferenceFormData.append('manglik', this.preferenceForm.value.manglik);
     preferenceFormData.append('working', this.preferenceForm.value.working);
     preferenceFormData.append('food_choice', this.preferenceForm.value.food_choice);
+
 
 
     this.http.post('https://partner.hansmatrimony.com/api/updatePreferencesDetails', preferenceFormData).subscribe(
