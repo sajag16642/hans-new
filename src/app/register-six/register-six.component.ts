@@ -1590,6 +1590,9 @@ private _onDestroy = new Subject<void>();
   }
 
   sixthStep() {
+    if (this.manglikValue === 'Non Manglik') {
+      this.manglikValue = 'No';
+    }
     const sixthstepdata = new FormData();
 
     // for (let items of this.PreferencesDetails.value.caste) {
@@ -1603,11 +1606,6 @@ private _onDestroy = new Subject<void>();
     sixthstepdata.append('height_max', this.Heights1[this.Heights.indexOf(this.maxHeight)]);
     sixthstepdata.append('caste', this.casteString);
     sixthstepdata.append('marital_status', this.PreferencesDetails.value.marital_status);
-    if (this.manglikValue !== 'Non Manglik') {
-      sixthstepdata.append('manglik', this.manglikValue);
-    } else {
-      sixthstepdata.append('manglik', 'No');
-    }
     sixthstepdata.append('manglik', this.manglikValue);
     sixthstepdata.append('working', this.PreferencesDetails.value.working);
     sixthstepdata.append('food_choice', this.PreferencesDetails.value.food_choice);

@@ -560,7 +560,7 @@ export class ChatComponent implements OnInit {
  }
  
  getProfilePhoto(num: String, gen: number): String {
- if (num === null) {
+ if (num === null || num === '') {
    if (gen === 0) {
      return '../../assets/male_pic.png';
    } else {
