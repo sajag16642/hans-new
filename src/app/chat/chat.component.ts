@@ -46,6 +46,9 @@ export class ChatComponent implements OnInit {
   preferenceData: any;
   history = 'chatbot';
   points: any;
+  icon1 = document.getElementById("chat");
+  icon2 = document.getElementById("hist");
+  icon3 = document.getElementById("prof");
 
 
   constructor(
@@ -560,13 +563,20 @@ export class ChatComponent implements OnInit {
  }
  
  getProfilePhoto(num: String, gen: number): String {
- if (num === null || num === '') {
+ if (num === null) {
    if (gen === 0) {
      return '../../assets/male_pic.png';
    } else {
      return '../../assets/female_pic.png';
    }
  } else {
+   if (num === '') {
+    if (gen === 0) {
+      return '../../assets/male_pic.png';
+    } else {
+      return '../../assets/female_pic.png';
+    }
+   }
  return num;
  }
  }
@@ -754,6 +764,9 @@ export class ChatComponent implements OnInit {
    changeToHistory() {
      if (this.currentContact) {
       this.history = 'history';
+      document.getElementById('chat').style.backgroundColor = '#34b7f1';
+      document.getElementById('hist').style.backgroundColor = '#2a1a5e';
+      document.getElementById('prof').style.backgroundColor = '#34b7f1';
       console.log(localStorage.getItem('id'));
       // tslint:disable-next-line: max-line-length
       return this.http.post<any>('https://partner.hansmatrimony.com/api/history?id='+ localStorage.getItem('id') , {params: { ['id'] : localStorage.getItem('id')}}).subscribe(
@@ -769,10 +782,16 @@ export class ChatComponent implements OnInit {
    }
    changeToBot() {
     this.history = 'chatbot';
+    document.getElementById('hist').style.backgroundColor = '#34b7f1';
+      document.getElementById('chat').style.backgroundColor = '#2a1a5e';
+      document.getElementById('prof').style.backgroundColor = '#34b7f1';
    }
    changeToMyProfile() {
      if (this.currentContact) {
      this.history = 'myprofile';
+     document.getElementById('hist').style.backgroundColor = '#34b7f1';
+      document.getElementById('prof').style.backgroundColor = '#2a1a5e';
+      document.getElementById('chat').style.backgroundColor = '#34b7f1';
      console.log(localStorage.getItem('id'));
      // tslint:disable-next-line: max-line-length
      return this.http.post<any>('https://partner.hansmatrimony.com/api/getProfile?id='+ localStorage.getItem('id') , {params: { ['id'] : localStorage.getItem('id')}}).subscribe(

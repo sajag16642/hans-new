@@ -1,6 +1,11 @@
 <main id="main" *ngIf="personalProfileData">
 <div style="margin: 0px 20px 0px;" class="card">
-  <img style="border-radius: 100px;width: 150px;background-color: lightblue;margin: 20px auto 0px;" [src]="getProfilePhoto(personalProfileData.carousel,personalProfileData.gender)" alt="">
+  <div style="text-align: center">
+    <input style="display: none" #backfile type="file" id="backfile" accept='image/*' (change)="previewBack(backfile.files,3)"  />
+  <label for="backfile">
+  <img id="imgProfile" style="border-radius: 100px;width: 150px;background-color: lightblue;margin: 20px auto 0px;" [src]="getProfilesPhoto(personalProfileData.carousel,personalProfileData.photo,personalProfileData.gender)" alt="">
+</label>                   
+</div>
   <div class="row" style="margin-bottom:20px">
     <h5 style="margin: 0px auto;margin-top: 10px;">{{personalProfileData.name}}</h5>
   </div>

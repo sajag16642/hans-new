@@ -3,6 +3,8 @@ import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material';
 import { EditPersonalDialogueComponent } from './edit-personal-dialogue/edit-personal-dialogue.component';
 import { EditFamilyDialogueComponent } from './edit-family-dialogue/edit-family-dialogue.component';
 import { EditPreferenceDialogueComponent } from './edit-preference-dialogue/edit-preference-dialogue.component';
+import { AuthService } from 'src/app/Services/auth.service';
+import { NgxNotificationService } from 'ngx-notification';
 
 @Component({
   selector: 'app-myprofile',
@@ -14,8 +16,13 @@ export class MyprofileComponent implements OnInit {
   @Input() familyProfileData: any;
   @Input() preferenceProfileData: any;
   innerWidth: any;
+  public message: string;
+  backimagePath;
+  imgURL: any;
+  BackimgURL;
+  suc : any = [];
 
-  constructor(private matDialog: MatDialog) { }
+  constructor(private matDialog: MatDialog, private Auth: AuthService, private ngxNotificationService: NgxNotificationService) { }
 
   ngOnInit() {
     this.innerWidth = window.innerWidth;
@@ -82,6 +89,23 @@ onResize(event) {
     return 'http://hansmatrimony.s3.ap-south-1.amazonaws.com/uploads/'+carousel['3'];
     }
     }
+    getProfilesPhoto(num: string, num2: string , gen: string): String {
+      if (num === null || num === '' && num2 === null || num2 === '') {
+        if (gen === 'Male') {
+          return '../../assets/male_pic.png';
+        } else {
+          return '../../assets/female_pic.png';
+        }
+      } else {
+        if (num === null || num === '') {
+          let carousel: any = JSON.parse(num2);
+      return 'http://hansmatrimony.s3.ap-south-1.amazonaws.com/uploads/'+carousel['3'];
+        } else {
+          let carousel: any = JSON.parse(num);
+      return 'http://hansmatrimony.s3.ap-south-1.amazonaws.com/uploads/'+carousel['3'];
+        }
+      }
+      }
     openPersonalDialog() {
       const dialogConfig = new MatDialogConfig();
       if (this.innerWidth >= 1024) {
@@ -156,6 +180,45 @@ onResize(event) {
     //       this.getRazorPay(this.price,'live',0,this.formData.name,this.formData.email,this.formData.mobile)
     //     }
     // );
+    }
+
+    previewBack(files, index) {
+
+      if (files.length === 0) {
+        return;
+      } else {
+        const mimeType = files[0].type;
+        if (mimeType.match(/image\/*/) == null) {
+          this.message = 'Only images are supported.';
+          return;
+        }
+        const reader = new FileReader();
+        this.backimagePath = files[0];
+        reader.readAsDataURL(files[0]);
+        reader.onload = (_event) => {
+          this.BackimgURL = reader.result;
+          this.uploadPhoto(this.backimagePath, index);
+  
+        };
+      }
+    }
+
+    uploadPhoto(data, index) {
+      const fifthstepdata = new FormData();
+      fifthstepdata.append('identity_number', localStorage.getItem('identity_number'));
+      fifthstepdata.append('url', data);
+      fifthstepdata.append('index', index);
+  
+      this.Auth.FifthPage(fifthstepdata).subscribe(suc => {
+        this.suc = suc;
+         console.log('photos', suc);
+         document.getElementById("imgProfile").setAttribute('src', this.BackimgURL);
+        this.ngxNotificationService.sendMessage('Photo Uploaded Succesfully!', 'success', 'top-right');
+      }, err => {
+        this.ngxNotificationService.sendMessage('Photo could not be Uploaded!', 'success', 'top-right');
+        // console.log(err);
+        console.log(err);
+      }); 
     }
 
 }
