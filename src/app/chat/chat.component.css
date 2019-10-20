@@ -2,15 +2,12 @@
 /*   footer   */
 /* Place the navbar at the bottom of the page, and make it stick */
 .navbar {
-  background-color: #34b7f1;
+  background-color: white;
   overflow: hidden;
   position: fixed;
+  border: 1px solid lightgrey;
   bottom: 0;
   width: 100%;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-right: 20%;
-  padding-left: 30%;
 }
 
 /* Style the links inside the navigation bar */
@@ -45,15 +42,11 @@
 }
 @media (max-width: 576px) {
   .navbar {
-    background-color: #34b7f1;
+    background-color: white;
     overflow: hidden;
     position: fixed;
     bottom: 0;
     width: 100%;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    padding-right: 10%;
-    padding-left: 15%;
   }
     footer input {
       width: 90%;
@@ -114,15 +107,11 @@
   }
   @media (max-width: 1024px) {
     .navbar {
-      background-color: #34b7f1;
+      background-color: white;
       overflow: hidden;
       position: fixed;
       bottom: 0;
       width: 100%;
-      padding-top: 0px;
-      padding-bottom: 0px;
-      padding-right: 10%;
-      padding-left: 15%;
     }
     footer input {
       width: 90%;

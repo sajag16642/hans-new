@@ -10,21 +10,21 @@
           <input type="text" class="form-control" name="age_min" [(ngModel)]="preferenceData.age_min">
         </div>
         <hr style="margin: 0px 10px;width: 100%">
-        <div class="col-12">
-            <h6 style="display: inline-block">Age Max : </h6>
-            <input type="text" class="form-control" name="age_max" [(ngModel)]="preferenceData.age_max">
-          </div>
+      <div class="col-12">
+          <h6 style="display: inline-block">Age Max : </h6>
+          <input type="text" class="form-control" name="age_max" [(ngModel)]="preferenceData.age_max">
+         </div>
           <hr style="margin: 0px 10px;width: 100%">
           <div class="col-12">
               <h6 style="display: inline-block">Height Min : </h6>
-              <select type="text" class="form-control" name="height_min" [(ngModel)]="preferenceData.height_min" required>
+              <select type="text" class="form-control" name="height_min" [(ngModel)]="minHeight" required>
                   <option *ngFor="let item of Heights"[value]="item">{{item}}</option>
                   </select> 
             </div>
             <hr style="margin: 0px 10px;width: 100%">
             <div class="col-12">
               <h6 style="display: inline-block">Height Max : </h6>
-              <select type="text" class="form-control" name="height_max" [(ngModel)]="preferenceData.height_max" required>
+              <select type="text" class="form-control" name="height_max" [(ngModel)]="maxHeight" required>
                   <option *ngFor="let item of Heights"[value]="item">{{item}}</option>
                   </select> 
             </div>
@@ -32,12 +32,12 @@
 
             <div class="col-12">
               <h6 style="display: inline-block">Income Min : </h6>
-              <input type="text" class="form-control" name="age_max" [(ngModel)]="preferenceData.income_min">
+              <input type="text" class="form-control" name="income_min" [(ngModel)]="preferenceData.income_min">
             </div>
             <hr style="margin: 0px 10px;width: 100%">
             <div class="col-12">
               <h6 style="display: inline-block">Income Max : </h6>
-              <input type="text" class="form-control" name="age_max" [(ngModel)]="preferenceData.income_max">
+              <input type="text" class="form-control" name="income_max" [(ngModel)]="preferenceData.income_max">
             </div>
             <hr style="margin: 0px 10px;width: 100%">
 

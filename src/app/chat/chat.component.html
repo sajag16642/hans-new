@@ -205,9 +205,17 @@
 </footer> -->
 <footer>
     <div class="navbar">
-        <i (click)="changeToBot()"  id="chat" style="color: white;background-color: #2a1a5e;margin: 0px;font-size: 25px !important" class="fa fa-commenting-o" aria-hidden="true"></i><br>
-       <i (click)="changeToHistory()"  id="hist" style="color: white;background-color: #34b7f1;margin: 0px;font-size: 25px !important" class="fa fa-history" aria-hidden="true"></i><br>
-        <i (click)="changeToMyProfile()"  id="prof" style="color: white;background-color: #34b7f1;margin: 0px;font-size: 25px !important" class="fa fa-user-o" aria-hidden="true"></i><br>
+        <div class="row" style="margin: 0px auto;width: 100%">
+            <div class="col-4" style="text-align: center">
+                    <img (click)="changeToBot()" id="chat" src="../../assets/chat-blue.svg" style="width: 30px" alt="history.png"><br>
+            </div>
+            <div class="col-4" style="text-align: center">
+                    <img (click)="changeToHistory()" id="hist" src="../../assets/thumbs-up.svg" style="width: 30px" alt="history.png"><br>
+            </div>
+            <div class="col-4" style="text-align: center">
+                    <img (click)="changeToMyProfile()" id="prof" src="../../assets/avatar.svg" style="width: 30px" alt="history.png"><br>
+            </div>
+        </div>
       </div>
 </footer>
 </main>

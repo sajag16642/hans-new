@@ -110,7 +110,6 @@ export class ChatComponent implements OnInit {
                       );
                     this.langChanged = false;
                   }
-
                   this.repeatMEssage('SHOW', res.value);
                 });
               }
@@ -231,11 +230,15 @@ export class ChatComponent implements OnInit {
                  let values = data.apiwha_autoreply;
                  console.log(values.photo);
                  this.botui.message.add({
+                  loading: true,
+                    delay: 1000,
                    type: 'html',
                    content: '<img src='+this.getProfilePhoto(values.photo, values.gender)+' width="200" >'
                  }).then(() => {
                    if (values.language === 'English') {
                      this.botui.message.add({
+                       loading: true,
+                       delay: 1000,
                        type: 'html',
                        // tslint:disable-next-line: max-line-length
                        content:'<b> &#128100 Personal Details</b> <br> <br>' +
@@ -329,6 +332,8 @@ export class ChatComponent implements OnInit {
                    });
                    } else {
                      this.botui.message.add({
+                      loading: true,
+                      delay: 500,
                        type: 'html',
                        // tslint:disable-next-line: max-line-length
                        content:'<b> &#128100 पर्सनल डिटेल्स</b> <br> <br>' +
@@ -424,6 +429,8 @@ export class ChatComponent implements OnInit {
                  });
              } else {
              this.botui.message.add({
+              loading: true,
+              delay: 500,
                 type: 'html',
                  content: '<h6>'+data.apiwha_autoreply+'</h6>'
              }).then(() => {
@@ -698,6 +705,8 @@ export class ChatComponent implements OnInit {
                   this.repeatMEssage('SHOW', num);
         } else {
           this.botui.message.add({
+            loading: true,
+            delay: 500,
             content: text
           }).then(() => {
             this.botui.action.button({
@@ -717,6 +726,8 @@ export class ChatComponent implements OnInit {
 
   } else {
     this.botui.message.add({
+      loading: true,
+      delay: 500,
       content: 'कृपया अपना १० अंको का मोबाइल नंबर डालें'
     }).then(() => {
     this.botui.action.text({
@@ -764,9 +775,9 @@ export class ChatComponent implements OnInit {
    changeToHistory() {
      if (this.currentContact) {
       this.history = 'history';
-      document.getElementById('chat').style.backgroundColor = '#34b7f1';
-      document.getElementById('hist').style.backgroundColor = '#2a1a5e';
-      document.getElementById('prof').style.backgroundColor = '#34b7f1';
+      document.getElementById('chat').setAttribute('src','../../assets/chat.svg');
+      document.getElementById('hist').setAttribute('src','../../assets/thumbs-up-blue.svg');
+      document.getElementById('prof').setAttribute('src','../../assets/avatar.svg');
       console.log(localStorage.getItem('id'));
       // tslint:disable-next-line: max-line-length
       return this.http.post<any>('https://partner.hansmatrimony.com/api/history?id='+ localStorage.getItem('id') , {params: { ['id'] : localStorage.getItem('id')}}).subscribe(
@@ -782,16 +793,16 @@ export class ChatComponent implements OnInit {
    }
    changeToBot() {
     this.history = 'chatbot';
-    document.getElementById('hist').style.backgroundColor = '#34b7f1';
-      document.getElementById('chat').style.backgroundColor = '#2a1a5e';
-      document.getElementById('prof').style.backgroundColor = '#34b7f1';
+    document.getElementById('hist').setAttribute('src','../../assets/thumbs-up.svg');
+    document.getElementById('chat').setAttribute('src','../../assets/chat-blue.svg');
+    document.getElementById('prof').setAttribute('src','../../assets/avatar.svg');
    }
    changeToMyProfile() {
      if (this.currentContact) {
      this.history = 'myprofile';
-     document.getElementById('hist').style.backgroundColor = '#34b7f1';
-      document.getElementById('prof').style.backgroundColor = '#2a1a5e';
-      document.getElementById('chat').style.backgroundColor = '#34b7f1';
+     document.getElementById('hist').setAttribute('src','../../assets/thumbs-up.svg');
+     document.getElementById('prof').setAttribute('src','../../assets/avatar-blue.svg');
+      document.getElementById('chat').setAttribute('src','../../assets/chat.svg');
      console.log(localStorage.getItem('id'));
      // tslint:disable-next-line: max-line-length
      return this.http.post<any>('https://partner.hansmatrimony.com/api/getProfile?id='+ localStorage.getItem('id') , {params: { ['id'] : localStorage.getItem('id')}}).subscribe(

@@ -21,6 +21,8 @@ export class MyprofileComponent implements OnInit {
   imgURL: any;
   BackimgURL;
   suc : any = [];
+  minHeight;
+  maxHeight;
 
   constructor(private matDialog: MatDialog, private Auth: AuthService, private ngxNotificationService: NgxNotificationService) { }
 
