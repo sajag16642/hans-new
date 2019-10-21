@@ -233,7 +233,7 @@ export class ChatComponent implements OnInit {
                   loading: true,
                     delay: 1000,
                    type: 'html',
-                   content: '<img src='+this.getProfilePhoto(values.photo, values.gender)+' width="200" >'
+                   content: '<img src='+this.getProfilePhoto(values.photo, values.gender)+' width="300" >'
                  }).then(() => {
                    if (values.language === 'English') {
                      this.botui.message.add({
@@ -267,7 +267,7 @@ export class ChatComponent implements OnInit {
                        +
                        '<b> &#128188 Work Details</b> <br><br>' +
                        this.profileSet('Occupation: ',values.occupation)+'<br>'+
-                       this.profileSetIncome('Annual Income: ',String(values.monthly_income/100000))+
+                       this.profileSetIncome('Annual Income: ',String(values.monthly_income))+
                        this.profileSet('Profession: ',values.profession)+
                        this.profileSet('Working City: ',values.working_city)+' <br><br>'
                        +
@@ -278,7 +278,7 @@ export class ChatComponent implements OnInit {
                        this.profileSet('Father Status: ',values.father_status)+
                        this.profileSet('Mothers Occupation: ',values.mother_occupation)+
                        this.profileSet('Fathers Occupation: ',values.father_occupation)+
-                       this.profileSetIncome('Family Income: ',String(values.family_income/100000))+
+                       this.profileSetIncome('Family Income: ',String(values.family_income))+
                        this.profileSet('Married Brothers: ',values.married_sons)+
                        this.profileSet('Married Sisters: ',values.married_daughters)+
                        this.profileSet('Unmarried Brothers: ',values.unmarried_sons)+
@@ -362,7 +362,7 @@ export class ChatComponent implements OnInit {
                        +
                        '<b> &#128188 वर्क डिटेल्स</b> <br><br>' +
                        this.profileSet('व्यसाय: ',values.occupation)+
-                       this.profileSetIncome('वार्षिक आय: ',String(values.monthly_income/100000))+
+                       this.profileSetIncome('वार्षिक आय: ',String(values.monthly_income))+
                        this.profileSet('पेशा: ',values.profession)+
                        this.profileSet('कार्य स्थान: ',values.working_city)+' <br><br>'
                        +
@@ -373,7 +373,7 @@ export class ChatComponent implements OnInit {
                        this.profileSet('फादर स्टेटस: ',values.father_status)+
                        this.profileSet('माता का व्यसाय: ',values.mother_occupation)+
                        this.profileSet('पिता का व्यसाय : ',values.father_occupation)+
-                       this.profileSetIncome('पारिवारिक आय: ',String(values.family_income/100000))+
+                       this.profileSetIncome('पारिवारिक आय: ',String(values.family_income))+
                        this.profileSet('मैरिड भाई: ',values.married_sons)+
                        this.profileSet('मैरिड बेहेने : ',values.married_daughters)+
                        this.profileSet('अव्यावाहित भाई: ',values.unmarried_sons)+
@@ -764,7 +764,12 @@ export class ChatComponent implements OnInit {
 
    profileSetIncome(key:string,value:string): String {
     if (value != null) {
-        return key+': '+value+ ' LPA <br>'
+      if (value.length >= 3) {
+        return key+': '+ String((Number(value)/ 100000))+ ' LPA <br>'
+      } else {
+        return key+': '+ value+ ' LPA <br>'
+      }
+        
     } else {return ""}
    }
 
@@ -851,7 +856,7 @@ profileReAnswer(num: any,id: any,answer: any) {
     this.botui.message.add({
       type: 'html',
       // tslint:disable-next-line: max-line-length
-      content: '<img src='+this.getProfilePhoto('http://hansmatrimony.s3.ap-south-1.amazonaws.com/uploads/'+personal.photo, personal.gender)+' width="200" >'
+      content: '<img src='+this.getProfilePhoto('http://hansmatrimony.s3.ap-south-1.amazonaws.com/uploads/'+personal.photo, personal.gender)+' width="300" >'
     });
     if (localStorage.getItem('language') === 'English') {
       this.botui.message.add({
