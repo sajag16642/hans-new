@@ -443,7 +443,7 @@ export class ChatComponent implements OnInit {
                  }).then(res => {
                   if (this.langChanged === true) {
                     this.changeLanguage(mob, localStorage.getItem('language')).subscribe(
-                      (data : any) => {
+                      (data: any) => {
                         console.log(data);
                       }, 
                       (error:any) => {
@@ -465,7 +465,7 @@ export class ChatComponent implements OnInit {
                    }).then(() => {
                      this.router.navigateByUrl('register');
                    });
-                 } else {
+                 } else if(data.buttons.match('Show')) {
                   return this.botui.action.button({
                     action: [
                       { text: 'SHOW', value: 'SHOW'},
@@ -486,6 +486,14 @@ export class ChatComponent implements OnInit {
                   this.answer = res.value;
                   this.repeatMEssage(res.value, mob);
                 });
+                } else {
+                  return this.botui.action.button({
+                    action: [
+                      { text: 'BUY', value: 'BUY'},
+                    ]
+                  }).then(() => {
+                     this.router.navigateByUrl('subscription');
+                  });
                 }
              });
            }
@@ -1093,4 +1101,5 @@ getCredits() {
   }
  );
 }
+
 }
