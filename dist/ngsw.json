@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1571828583153,
+  "timestamp": 1571835103667,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -9,11 +9,11 @@
       "updateMode": "prefetch",
       "urls": [
         "/index.html",
-        "/main.5f297e4d1c8d183d0229.js",
+        "/main.58a4d7abd985f20515bc.js",
         "/polyfills.7e61eeabe4f75fabb7d3.js",
         "/runtime.26209474bfa8dc87a77c.js",
         "/scripts.d457d50395d3d589108c.js",
-        "/styles.224b948fc781c6c5caa2.css"
+        "/styles.9d640112e62abee81bdb.css"
       ],
       "patterns": []
     },
@@ -22,6 +22,7 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "urls": [
+        "/SemplicitaPro.96554f62871e20bd3d80.otf",
         "/address.57026215113752dcecff.webp",
         "/assets/Aprajita.webp",
         "/assets/Deepak.webp",
@@ -110,6 +111,16 @@
         "/assets/female_pic.png",
         "/assets/fingerprint_hans.svg",
         "/assets/fingerprintwhite.png",
+        "/assets/fonts/SemplicitaPro-Bold.otf",
+        "/assets/fonts/SemplicitaPro-BoldItalic.otf",
+        "/assets/fonts/SemplicitaPro-Italic.otf",
+        "/assets/fonts/SemplicitaPro-Light.otf",
+        "/assets/fonts/SemplicitaPro-LtIt.otf",
+        "/assets/fonts/SemplicitaPro-MedIt.otf",
+        "/assets/fonts/SemplicitaPro-Medium.otf",
+        "/assets/fonts/SemplicitaPro-SemibdIt.otf",
+        "/assets/fonts/SemplicitaPro-Semibold.otf",
+        "/assets/fonts/SemplicitaPro.otf",
         "/assets/history.webp",
         "/assets/icons-07.webp",
         "/assets/icons-09.webp",
@@ -169,6 +180,7 @@
   ],
   "dataGroups": [],
   "hashTable": {
+    "/SemplicitaPro.96554f62871e20bd3d80.otf": "18e2fd90bcfce6db53d3a17b22a7836d4e5f50d8",
     "/address.57026215113752dcecff.webp": "0b15e56c18817b8265e5ea96a073cc3ea2acc480",
     "/assets/Aprajita.webp": "6c66fe588e1d66e8754584544b901a2c740ce7ca",
     "/assets/Deepak.webp": "cc18c749c46f5a67388fa65751cc5380a1065461",
@@ -257,6 +269,16 @@
     "/assets/female_pic.png": "aa7bf7dbefbb7884e7942935ef489d1a6328b44b",
     "/assets/fingerprint_hans.svg": "029373f99c7035f8415600ef3cc538ab06426351",
     "/assets/fingerprintwhite.png": "9e084ce6419aa05cf1c6eb92067b1e1626a9fdc0",
+    "/assets/fonts/SemplicitaPro-Bold.otf": "a6ea25e3596ad0005d926bad42db75ea19d1dd73",
+    "/assets/fonts/SemplicitaPro-BoldItalic.otf": "9e1ab16a339c816455664e8e8ae00645694edfec",
+    "/assets/fonts/SemplicitaPro-Italic.otf": "bd6c1158f2490e14609f3fb7c1b02aaf877c27ba",
+    "/assets/fonts/SemplicitaPro-Light.otf": "93f46b6179122fc38f59fd517a3dc4455f925080",
+    "/assets/fonts/SemplicitaPro-LtIt.otf": "41708bcb2ad078bf1cfab0c5de2572b4d96978f3",
+    "/assets/fonts/SemplicitaPro-MedIt.otf": "90b14dc54271687b805cef199cf33cb9601614e8",
+    "/assets/fonts/SemplicitaPro-Medium.otf": "d61aa2a3b38c083252e8689dcf07ced16c54eb3c",
+    "/assets/fonts/SemplicitaPro-SemibdIt.otf": "35d03e6778c12af72c5157c92a595943b8ccc94d",
+    "/assets/fonts/SemplicitaPro-Semibold.otf": "d9cfeb3bbb8d4f59315ef11e111719d4374e84b4",
+    "/assets/fonts/SemplicitaPro.otf": "18e2fd90bcfce6db53d3a17b22a7836d4e5f50d8",
     "/assets/history.webp": "c001cc51d16b618f5cff31f4a072f33ed299fbd3",
     "/assets/icons-07.webp": "5d186d591772e4368d54c3b490d8dfd5a00dbd97",
     "/assets/icons-09.webp": "2116226e0e5cd3c9a7c9910ffb996a706ef93220",
@@ -308,13 +330,13 @@
     "/fontawesome-webfont.af7ae505a9eed503f8b8.woff2": "d6f48cba7d076fb6f2fd6ba993a75b9dc1ecbf0c",
     "/fontawesome-webfont.b06871f281fee6b241d6.ttf": "13b1eab65a983c7a73bc7997c479d66943f7c6cb",
     "/fontawesome-webfont.fee66e712a8a08eef580.woff": "28b782240b3e76db824e12c02754a9731a167527",
-    "/index.html": "96bf3abc94eaf92c7e5b7dd7682ff59b40bd4bfc",
-    "/main.5f297e4d1c8d183d0229.js": "09cc0c469a03f5a0c8ab593dee34286f0c3f5674",
+    "/index.html": "232a0f5798b5d44fdc29d6019df5534b839e918e",
+    "/main.58a4d7abd985f20515bc.js": "701394bb26941caf1ec5a6f9ecc91ce8fa1d0b41",
     "/polyfills.7e61eeabe4f75fabb7d3.js": "6946e10a03311677a01490b8e91741668e64e17e",
     "/redback.093eeb320fb87fb9d11c.jpg": "f5d5e7f9827faa68365a9cb4ce9601ef1b6007d0",
     "/runtime.26209474bfa8dc87a77c.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
     "/scripts.d457d50395d3d589108c.js": "10343df653129ab847621e9664b4447155ca2461",
-    "/styles.224b948fc781c6c5caa2.css": "82dc9f80ed7017bc3a48c94da0aebcf980991dc4",
+    "/styles.9d640112e62abee81bdb.css": "a1b49c17c9fcf004cd4dca4ffebc08b85a0e23fb",
     "/whatsbg.f779980799b39548bb90.webp": "a0f05bc1171a03e6e2f17bb2f84f80dc6723db5d"
   },
   "navigationUrls": [

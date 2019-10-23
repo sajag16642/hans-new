@@ -569,3 +569,7 @@ mat-form-field {
 .overflowY {
   overflow-y: auto;
 }
+@font-face{
+  font-family: semplicita;
+  src: url("./assets/fonts/SemplicitaPro.otf") format("truetype")
+}
