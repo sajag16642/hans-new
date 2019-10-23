@@ -489,7 +489,7 @@ export class ChatComponent implements OnInit {
                 } else {
                   return this.botui.action.button({
                     action: [
-                      { text: 'BUY', value: 'BUY'},
+                      { text: 'BUY CREDITS', value: 'BUY'},
                     ]
                   }).then(() => {
                      this.router.navigateByUrl('subscription');
@@ -791,6 +791,11 @@ export class ChatComponent implements OnInit {
       document.getElementById('chat').setAttribute('src','../../assets/chat.svg');
       document.getElementById('hist').setAttribute('src','../../assets/thumbs-up-blue.svg');
       document.getElementById('prof').setAttribute('src','../../assets/avatar.svg');
+
+      document.getElementById('chatText').style.color = '#FFFFFF';
+      document.getElementById('profileText').style.color = '#FFFFFF';
+    document.getElementById('historyText').style.color = '#34b7f1';
+
       console.log(localStorage.getItem('id'));
       // tslint:disable-next-line: max-line-length
       return this.http.post<any>('https://partner.hansmatrimony.com/api/history?id='+ localStorage.getItem('id') , {params: { ['id'] : localStorage.getItem('id')}}).subscribe(
@@ -809,6 +814,9 @@ export class ChatComponent implements OnInit {
     document.getElementById('hist').setAttribute('src','../../assets/thumbs-up.svg');
     document.getElementById('chat').setAttribute('src','../../assets/chat-blue.svg');
     document.getElementById('prof').setAttribute('src','../../assets/avatar.svg');
+    document.getElementById('chatText').style.color = '#34b7f1';
+    document.getElementById('historyText').style.color = '#FFFFFF';
+    document.getElementById('profileText').style.color = '#FFFFFF';
    }
    changeToMyProfile() {
      if (this.currentContact) {
@@ -816,6 +824,9 @@ export class ChatComponent implements OnInit {
      document.getElementById('hist').setAttribute('src','../../assets/thumbs-up.svg');
      document.getElementById('prof').setAttribute('src','../../assets/avatar-blue.svg');
       document.getElementById('chat').setAttribute('src','../../assets/chat.svg');
+      document.getElementById('chatText').style.color = '#FFFFFF';
+      document.getElementById('historyText').style.color = '#FFFFFF';
+    document.getElementById('profileText').style.color = '#34b7f1';
      console.log(localStorage.getItem('id'));
      // tslint:disable-next-line: max-line-length
      return this.http.post<any>('https://partner.hansmatrimony.com/api/getProfile?id='+ localStorage.getItem('id') , {params: { ['id'] : localStorage.getItem('id')}}).subscribe(

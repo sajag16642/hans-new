@@ -59,6 +59,9 @@ import { SubscriptionDialogComponent } from './subscription/subscription-dialog/
 import { EditPersonalDialogueComponent } from './chat/myprofile/edit-personal-dialogue/edit-personal-dialogue.component';
 import { EditFamilyDialogueComponent } from './chat/myprofile/edit-family-dialogue/edit-family-dialogue.component';
 import { EditPreferenceDialogueComponent } from './chat/myprofile/edit-preference-dialogue/edit-preference-dialogue.component';
+import { RouterModule } from '@angular/router';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 let config = new AuthServiceConfig([
@@ -114,7 +117,7 @@ export function provideConfig() {
     Angular5TimePickerModule,
     AngularMultiSelectModule,
     CommonModule,
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     MatChipsModule,
     SnotifyModule,
     MatInputModule,
@@ -141,7 +144,8 @@ export function provideConfig() {
     SocialLoginModule,
     HttpClientModule,MatTooltipModule,
     MatTabsModule,NgxNotificationModule,FormsModule,HttpClientModule,
-    OwlDateTimeModule,OwlNativeDateTimeModule
+    // tslint:disable-next-line: max-line-length
+    OwlDateTimeModule,OwlNativeDateTimeModule, RouterModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [{provide : 'SnotifyToastConfig' , useValue: ToastDefaults}, AuthService , SnotifyService, {
     provide: AuthServiceConfig,

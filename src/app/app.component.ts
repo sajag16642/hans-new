@@ -5,6 +5,7 @@ import { LoginComponent } from '../app/login/login.component';
 import { SocialLoginService } from './social-login.service';
 import { routerNgProbeToken } from '@angular/router/src/router_module';
 import { Location } from '@angular/common';
+import { SwUpdate } from '@angular/service-worker';
 
 export interface DialogData {
   animal: string;
@@ -28,11 +29,21 @@ export class AppComponent implements OnInit {
   btnToggle;
   clickEvent:any;
   
-  constructor(private _location: Location,public dialog: MatDialog, public router: Router, private socialAuth : SocialLoginService, route:ActivatedRoute) {
+  // tslint:disable-next-line: max-line-length
+  constructor(private swUpdate: SwUpdate, private _location: Location,public dialog: MatDialog, public router: Router, private socialAuth : SocialLoginService, route:ActivatedRoute) {
       
   }
 
   ngOnInit() {
+
+    if (this.swUpdate.isEnabled) {
+      this.swUpdate.available.subscribe(() => {
+        if (confirm('New version available. Load New Version?')) {
+          window.location.reload();
+        }
+      });
+    }
+
     this.btnToggle = document.getElementById('toggle');
   if(localStorage.getItem('loggedIn')) {  
   this.isLogin = localStorage.getItem('loggedIn');

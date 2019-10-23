@@ -566,6 +566,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+@angular/service-worker
+MIT
+
 ng-multiselect-dropdown
 MIT
 

@@ -1,0 +1,22 @@
+{
+    "name" : "Hans Matrimony",
+    "short_name": "Hans",
+    "scope": "/",
+    "icons" :[
+        {
+            "src": "./logo_192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "./logo_512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "https://hansmatrimony.com",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#34b7f1",
+    "theme_color": "#34b7f1"
+}
