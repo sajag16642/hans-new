@@ -1,6 +1,4 @@
-* {
-  font-family: 'semplicita';
-  }
+
 .link-footer {
     text-decoration: none;
     color: white
@@ -12,6 +10,7 @@
     margin-bottom: 5px;
     margin-right: 1rem;
     color:white;font-size:1rem;
+    font-family: 'semplicita';
 }
 lib-ngx-notification{
     z-index: inherit 99999;
@@ -37,6 +36,7 @@ lib-ngx-notification{
 }
 .sizeIt {
     font-size: 16px;
+    font-family: 'semplicita';
     margin: 0px 0px;
 }
 #footer {
@@ -52,6 +52,7 @@ lib-ngx-notification{
      font-family: 'Titillium Web', sans-serif; 
      font-weight: normal ; 
      font-size: 22px; 
+     font-family: 'semplicita';
      border-bottom: 2px solid #036cdb; 
      display: inline;
   }
@@ -59,6 +60,7 @@ lib-ngx-notification{
     color: white;
     margin-top: 5px;
     font-size: 16px;
+    font-family: 'semplicita';
     padding: 0%;
   }
   .footerLink:hover {
@@ -68,12 +70,14 @@ lib-ngx-notification{
     display: inline-block;
     line-height: 2rem;
     font-size: 14px;
+    font-family: 'semplicita';
     padding: 0%;
   }
   
   .iconFooter {
     background:#46132B; 
     font-size: 20px !important;
+    font-family: 'semplicita';
     margin: 0px auto;
     height: 2rem;
     width: 2rem !important;
@@ -89,6 +93,7 @@ margin-top: 0px;
 .infoText {
     color: white;
      font-size:14px;
+     font-family: 'semplicita';
      display:inline;
      margin-left: 10px;
 }
@@ -98,6 +103,7 @@ margin-top: 0px;
 .infoHead {
   color: white;
    font-size: 16px;
+   font-family: 'semplicita';
    width: 100%
 }
 @media only screen and (max-width: 900px) {
@@ -111,12 +117,14 @@ margin-top: 0px;
         display: inline;
         line-height: 2rem;
         font-size: 14px;
+        font-family: 'semplicita';
         padding: 0% ;
         margin: 0px 0px 0px 10px;
       }
       .footerLink {
         color: white;
         font-size: 14px;
+        font-family: 'semplicita';
         padding: 0%;
         margin: 0%;
       }
@@ -150,18 +158,22 @@ margin-top: 0px;
     .btn-responsive {
         padding:8px 4px;
         font-size:80%;
+        font-family: 'semplicita';
         line-height: 1;
       }
       .contact-details
       {
         margin-right: 1.3rem;
         font-size:.6rem;
+        font-family: 'semplicita';
       }
       h4 {
         font-size: 1rem;
+        font-family: 'semplicita';
     }
     .row{
         font-size: 14px;
+        font-family: 'semplicita';
     }
     .navbar-brand{
         position: relative;
@@ -169,6 +181,7 @@ margin-top: 0px;
     }
     .sizeIt {
         font-size: 12px;
+        font-family: 'semplicita';
     }
     .sizeFor {
         margin-top: 1rem;
@@ -183,6 +196,7 @@ margin-top: 0px;
     .infoText {
       color: white;
        font-size:14px;
+       font-family: 'semplicita';
        display:block;
        margin-bottom: 0px;
        margin-left: 0px
@@ -193,15 +207,16 @@ margin-top: 0px;
 }
 .footerHeadings {
   color: white;
-   font-family: 'Titillium Web', sans-serif; 
    font-weight: normal ; 
    font-size: 16px; 
+   font-family: 'semplicita';
    border-bottom: 2px solid #036cdb; 
    display: inline;
 }
 .infoHead {
   color: white;
    font-size: 16px;
+   font-family: 'semplicita';
    width: 100%
 }
 }
@@ -214,6 +229,7 @@ margin-top: 0px;
     .btn-responsive {
         padding:8px 4px;
         font-size:80%;
+        font-family: 'semplicita';
         line-height: 1;
         margin-top: 20px;
 

@@ -1,6 +1,4 @@
-* {
-font-family: 'semplicita';
-}
+
 .om {
     position: relative;
     height: 11rem;
@@ -8,6 +6,7 @@ font-family: 'semplicita';
 }
 .body {
     background: white;
+    font-family: 'semplicita'
 }
   .sideNavSet {
       background-color: white;
@@ -18,7 +17,7 @@ font-family: 'semplicita';
 } */
 .capt{
     color:white;font-size:2.3em;margin-bottom:0;font-weight: bolder;
-    text-shadow: 2px 3px 4px black;
+    text-shadow: 2px 3px 4px black;font-family: 'semplicita';
 }
 .registr{
    z-index: 999999!important; 
@@ -35,6 +34,7 @@ font-family: 'semplicita';
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    font-family: 'semplicita'
 }
 .vcenter{
 margin-top: 2em
@@ -46,12 +46,16 @@ margin-top: 2em
     margin-top: 1rem;
     width: 20rem;
     margin-bottom: 2rem;
+    font-family: 'semplicita'
 }
 .textWhats {
     font-size: 14px;
+    font-family: 'semplicita'
+    
 }
 .center {
     font-size: 1.6rem;
+    font-family: 'semplicita'
 }
 .text-left{
     margin-top: 50px;
@@ -80,6 +84,7 @@ margin-top: 2em
     font-weight:bolder;
     padding-top:1rem;
     font-size: 20px;
+    font-family: 'semplicita';
     text-align: center;
      color: #285fdd
  }
@@ -112,6 +117,7 @@ margin-top: 2em
 }
 .bannerHead {
     font-size: 22px;
+    font-family: 'semplicita';
     text-align: center;
     color: white;
 }
@@ -121,6 +127,7 @@ margin-top: 2em
 }
 .trust_text {
     font-size: 1rem;
+    font-family: 'semplicita';
 }
 .quote-text {
     color: white;
@@ -134,6 +141,7 @@ margin-top: 2em
 .text-center {
    color: white;
    font-size:12px;
+   font-family: 'semplicita';
    margin-bottom:0rem;
    margin-top:0.5rem;
    margin-left: 0.5rem;
@@ -218,6 +226,7 @@ reisterf-btn{
 }
 .sizeIt {
     font-size: 16px;
+    font-family: 'semplicita';
     margin: 0px 0px;
 }
 
@@ -230,9 +239,10 @@ reisterf-btn{
   }
   .footerHeadings {
     color: white;
-     font-family: 'Titillium Web', sans-serif; 
+     font-family: 'semplicita', sans-serif; 
      font-weight: normal ; 
      font-size: 22px; 
+     font-family: 'semplicita';
      border-bottom: 2px solid #036cdb; 
      display: inline;
   }
@@ -240,6 +250,7 @@ reisterf-btn{
     color: white;
     margin-top: 5px;
     font-size: 16px;
+    font-family: 'semplicita';
     padding: 0%;
   }
   .footerLink:hover {
@@ -255,6 +266,7 @@ reisterf-btn{
   .iconFooter {
     background:#46132B; 
     font-size: 20px !important;
+    font-family: 'semplicita';
     margin: 0%;
     height: 2rem;
     width: 2rem !important;
@@ -271,6 +283,7 @@ margin-top: 0px;
 .infoText {
     color: white;
      font-size:14px;
+     font-family: 'semplicita';
      display:inline;
      margin-left: 10px;
      font-weight: normal;
@@ -284,11 +297,13 @@ margin-top: 0px;
 .infoHead {
     color: white;
      font-size: 16px;
+     font-family: 'semplicita';
      width: 100%
 }
 @media only screen and (max-width: 600px) {
     .sizeIt {
         font-size: 12px;
+        font-family: 'semplicita'
     }
     .vcenter{
         margin-top:2.5em;
@@ -316,7 +331,8 @@ margin-top: 0px;
         display: none;
     }
     .capt{
-        color:White;Font-weight:bold;font-size:1em;margin-bottom:0;vertical-align: middle
+        color:White;Font-weight:bold;font-size:1em;margin-bottom:0;vertical-align: middle;
+        font-family: 'semplicita'
     }
     .diya{
         height:5em;
@@ -341,6 +357,7 @@ margin-top: 0px;
     .bannerHead {
         color: white;
         font-size: 14px;
+        font-family: 'semplicita'
     }
     .headerSetting {
         position: absolute;
@@ -352,6 +369,7 @@ margin-top: 0px;
     }
     .trust_text {
         font-size: 14px;
+        font-family: 'semplicita'
     }
     .sliding {
             width: 100%;
@@ -373,7 +391,8 @@ margin-top: 0px;
     }
     .text-center {
         color: white;
-        font-size:12px;;
+        font-size:12px;
+        font-family: 'semplicita';
         margin-bottom:0rem;
         margin-top:0.5rem;
         margin-left: 0.5rem;
@@ -383,6 +402,7 @@ margin-top: 0px;
         padding-top:1rem;
         text-align: center;
         font-size: 14px;
+        font-family: 'semplicita';
          color: #285fdd
      }
      .banner-img{
@@ -406,6 +426,7 @@ margin-top: 0px;
         color: white;
         width: 60%;
         font-size: 14px;
+        font-family: 'semplicita';
         border-radius: 100px;
         background-image: linear-gradient(to right top,#285fdd,#0073e9,#0085f2,#0097f9,#00a8ff);
     }
@@ -455,6 +476,7 @@ margin-top: 0px;
 
     .center {
         font-size: 1.4rem !important;
+        font-family: 'semplicita';
     }
     .mobile{
         margin-left:5px
@@ -469,6 +491,7 @@ margin-top: 0px;
     }
     .textWhats {
         font-size: 12px;
+        font-family: 'semplicita';
     }
 
     .mapImg{
@@ -488,6 +511,7 @@ margin-top: 0px;
       }
       .mat-form-field {
           font-size: 12px;
+          font-family: 'semplicita';
       }
 
       .footer {
@@ -501,12 +525,14 @@ margin-top: 0px;
         display: inline;
         line-height: 2rem;
         font-size: 14px;
+        font-family: 'semplicita';
         padding: 0% ;
         margin: 0px;
       }
       .footerLink {
         color: white;
         font-size: 14px;
+        font-family: 'semplicita';
         padding: 0%;
         margin: 0%;
       }
@@ -524,6 +550,7 @@ margin-top: 0px;
       .infoText {
         color: white;
          font-size:14px;
+         font-family: 'semplicita';
          display:block;
          margin-bottom: 0px;
          font-weight: normal;
@@ -538,15 +565,17 @@ margin-top: 0px;
     }
     .footerHeadings {
         color: white;
-         font-family: 'Titillium Web', sans-serif; 
+         font-family: 'semplicita', sans-serif; 
          font-weight: normal ; 
          font-size: 16px; 
+         font-family: 'semplicita';
          border-bottom: 2px solid #036cdb; 
          display: inline;
       }
       .infoHead {
         color: white;
          font-size: 16px;
+         font-family: 'semplicita';
          width: 100%
     }
     }
