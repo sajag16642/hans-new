@@ -54,7 +54,7 @@
     "ngx-mat-select-search": "^1.8.0",
     "ngx-notification": "^1.0.5",
     "ngx-select-dropdown": "^1.1.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "path": "^0.12.7",
     "razorpay": "^2.0.4",
     "rxjs": "~6.3.3",
